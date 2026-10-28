@@ -1,0 +1,1165 @@
+<title>Permanent Summer Voyages</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Agence de voyage indépendante à Maurice : billets d'avion, hôtels, groupes, voyages d'affaires. 35 ans d'expérience et un humain qui répond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
+<style>
+/* Layout concept: an image-led travel magazine. Full-bleed photography, quiet white pages,
+   small uppercase navigation, display serif used only for headlines. Lagoon green marks action. */
+:root{
+  --bg:#ffffff; --surface:#f3f2ee; --ink:#1b1c1b; --muted:#686a66; --line:#e2e0da;
+  --accent:#0d4d49; --accent-ink:#ffffff; --scrim:rgba(10,14,13,.42); --card:#ffffff;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Jost","Futura","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --gut:max(16px, env(safe-area-inset-left,0px));
+  --gutr:max(16px, env(safe-area-inset-right,0px));
+  --wrap:1280px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111312; --surface:#1a1d1c; --ink:#ecebe6; --muted:#9c9e98; --line:#2b2f2d;
+  --accent:#7cc7bc; --accent-ink:#0b1513; --scrim:rgba(0,0,0,.5); --card:#161918; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111312; --surface:#1a1d1c; --ink:#ecebe6; --muted:#9c9e98; --line:#2b2f2d;
+  --accent:#7cc7bc; --accent-ink:#0b1513; --scrim:rgba(0,0,0,.5); --card:#161918; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3,h4{font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--muted)}
+.display{font-family:var(--display);font-weight:400;letter-spacing:-.01em;line-height:1.05}
+.h2{font-size:clamp(26px,3.4vw,38px);line-height:1.15;font-weight:400}
+.lede{font-size:18px;color:var(--muted);max-width:60ch}
+.it{font-family:var(--serif);font-style:italic;font-weight:300}
+.section{padding-block:clamp(56px,8vw,104px)}
+.section.tight{padding-block:clamp(40px,5vw,64px)}
+.surface{background:var(--surface)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 26px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);font-size:14px;letter-spacing:.06em;font-weight:400;cursor:pointer;transition:opacity .2s,background .2s;white-space:nowrap}
+.btn:hover{opacity:.85}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.accent{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.light{background:#fff;border-color:#fff;color:#1b1c1b}
+.btn.light.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.link{border-bottom:1px solid currentColor;padding-bottom:2px;font-size:14px;letter-spacing:.04em}
+.ph{background:var(--surface)}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- header ---------- */
+.util{font-size:13px;color:var(--muted);border-bottom:1px solid var(--line)}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;min-height:36px;gap:16px}
+.util .hide-s{display:inline}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line);transition:background .25s,border-color .25s,color .25s}
+header.site .bar{display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:72px;gap:24px}
+.logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.logo b{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em}
+.logo span{font-size:10px;letter-spacing:.42em;text-transform:uppercase;margin-top:5px}
+nav.main{display:flex;justify-content:center;gap:24px;font-size:14px;letter-spacing:.03em}
+nav.main button,nav.main a{background:none;border:0;padding:24px 0;cursor:pointer;font-weight:400}
+nav.main button::after{content:"";display:inline-block;width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);margin-left:9px}
+.right{display:flex;justify-content:flex-end;align-items:center;gap:18px;font-size:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.lang button,.lang a{background:none;border:0;padding:5px 9px;font-size:12px;letter-spacing:.08em;cursor:pointer;color:var(--muted)}
+.lang [aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;padding:8px}
+.burger i{display:block;height:1px;background:currentColor;margin:6px 0}
+/* transparent header on hero pages */
+body.overlay header.site:not(.solid){background:transparent;border-color:transparent;color:#fff;position:fixed;left:0;right:0}
+body.overlay header.site:not(.solid) .lang{border-color:rgba(255,255,255,.4)}
+body.overlay header.site:not(.solid) .lang button,body.overlay header.site:not(.solid) .lang a{color:rgba(255,255,255,.75)}
+body.overlay header.site:not(.solid) .lang [aria-pressed="true"]{background:#fff;color:#1b1c1b}
+body.overlay header.site:not(.solid) .btn.ghost{color:#fff;border-color:rgba(255,255,255,.8)}
+body.overlay .util{display:none}
+
+/* mega menu */
+.mega{position:absolute;left:0;right:0;top:100%;background:var(--bg);color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.25)}
+.mega .wrap{display:grid;grid-template-columns:220px 1fr 280px;gap:40px;padding-block:36px 40px}
+.mega .regions{display:flex;flex-direction:column;gap:2px}
+.mega .regions button{display:flex;justify-content:space-between;align-items:center;text-align:left;background:none;border:0;padding:10px 12px;cursor:pointer;font-size:15px;border-radius:2px}
+.mega .regions button small{color:var(--muted);font-size:12px}
+.mega .regions button[aria-selected="true"]{background:var(--surface)}
+.mega .links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 28px;align-content:start}
+.mega .links a{font-size:15px;padding:6px 0;border-bottom:1px solid transparent}
+.mega .links a:hover{border-color:var(--line)}
+.mega .links a.all{grid-column:1/-1;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.mega .promo{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;border-radius:2px}
+.mega .promo img{width:100%;height:100%;object-fit:cover}
+.mega .promo div{position:absolute;inset:auto 0 0;padding:18px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.65))}
+.mega.insp .wrap{grid-template-columns:1fr 1fr 280px}
+.mega.insp .col{display:flex;flex-direction:column;gap:4px}
+.mega.insp .col a{padding:8px 0;font-size:15px}
+
+/* drawer */
+.drawer{position:fixed;inset:0;z-index:80;background:var(--bg);color:var(--ink);overflow:auto;padding:calc(env(safe-area-inset-top,0px) + 16px) var(--gutr) calc(env(safe-area-inset-bottom,0px) + 32px) var(--gut)}
+.drawer .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.drawer .x{background:none;border:0;font-size:30px;line-height:1;cursor:pointer;width:44px;height:44px}
+.drawer details{border-bottom:1px solid var(--line)}
+.drawer summary,.drawer > a{display:block;padding:16px 0;font-size:20px;cursor:pointer;list-style:none;border-bottom:1px solid var(--line)}
+.drawer details summary{border:0}
+.drawer details a{display:block;padding:7px 0 7px 12px;color:var(--muted)}
+.drawer details div{padding-bottom:14px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero > .ph{position:absolute;inset:0}
+.hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.05) 55%,rgba(0,0,0,.55) 100%)}
+.hero .wrap{position:relative;width:100%;padding-block:150px 48px}
+.hero h1{font-size:clamp(44px,7.2vw,104px);max-width:12ch}
+.hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:46ch;margin-top:18px;opacity:.92}
+.hero.short{min-height:min(70vh,620px)}
+.hero.short h1{font-size:clamp(40px,6vw,84px)}
+.crumbs{font-size:13px;letter-spacing:.06em;opacity:.85;margin-bottom:14px}
+.crumbs a{border-bottom:1px solid rgba(255,255,255,.5)}
+
+.search{margin-top:36px;background:var(--card);color:var(--ink);display:grid;grid-template-columns:1.4fr 1fr 1fr .8fr auto;border-radius:2px;box-shadow:0 20px 50px -20px rgba(0,0,0,.35);max-width:1040px}
+.search label{display:flex;flex-direction:column;padding:12px 18px;border-right:1px solid var(--line);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);min-width:0}
+.search input,.search select{border:0;background:transparent;padding:4px 0 0;font-size:15px;letter-spacing:0;text-transform:none;outline:none;width:100%;min-width:0}
+.search .btn{height:auto;border-radius:0 2px 2px 0}
+.search-foot{margin-top:16px;font-size:14px}
+.search-foot a{border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:1px}
+
+/* ---------- section heads ---------- */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;flex-wrap:wrap}
+.head .h2{max-width:22ch}
+.tabs{display:flex;gap:28px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow-x:auto;scrollbar-width:none}
+.tabs button{background:none;border:0;padding:12px 0;font-size:15px;cursor:pointer;color:var(--muted);border-bottom:1px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+
+/* rails & cards */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,1fr);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.rail > *{scroll-snap-align:start}
+.card{display:flex;flex-direction:column;gap:12px;min-width:0}
+.card .ph{aspect-ratio:3/4;overflow:hidden;border-radius:2px;max-width:100%}
+.card .ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.04)}
+.card h3{font-size:18px;font-weight:400;line-height:1.25}
+.card .meta{font-size:14px;color:var(--muted)}
+.card.wide .ph{aspect-ratio:4/3}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 20px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.pillar .big{font-family:var(--display);font-size:clamp(30px,3vw,40px);line-height:1.1;margin-bottom:14px}
+.pillar .big em{font-family:var(--serif);font-style:italic;font-weight:300}
+.pillar p{color:var(--muted);max-width:36ch}
+
+/* split feature */
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(32px,6vw,96px);align-items:center}
+.split.rev{grid-template-columns:1.15fr 1fr}
+.split.rev .media{order:-1}
+.split .media{aspect-ratio:3/2;overflow:hidden;border-radius:2px;max-width:100%}
+.split .text{display:flex;flex-direction:column;gap:20px;align-items:flex-start;min-width:0}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.offer{border:1px solid var(--line);padding:30px 28px;display:flex;flex-direction:column;gap:14px;background:var(--card);border-radius:2px}
+.offer .tier{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.offer h3{font-family:var(--display);font-size:28px}
+.offer ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:15px}
+.offer li{padding-left:18px;position:relative}
+.offer li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:1px;background:var(--ink)}
+
+/* big cta band */
+.band{position:relative;color:#fff;overflow:hidden}
+.band > .ph{position:absolute;inset:0}
+.band > .ph::after{content:"";position:absolute;inset:0;background:var(--scrim)}
+.band .wrap{position:relative;padding-block:clamp(88px,12vw,160px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
+.band h2{font-size:clamp(34px,5vw,64px);max-width:16ch}
+.band p{max-width:54ch;font-size:18px;opacity:.92}
+.band .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+
+/* assistance scenarios */
+.scen{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.scen .ph{aspect-ratio:1/1;border-radius:2px;overflow:hidden;max-width:100%}
+.scen .t{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.scen .t b{font-weight:400;font-size:17px}
+.scen .t span{color:var(--muted);font-size:15px}
+.clock{font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+
+/* trending tiles */
+.tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.tile{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;color:#fff;max-width:100%}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.tile:hover img{transform:scale(1.05)}
+.tile div{position:absolute;inset:auto 0 0;padding:14px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.tile b{display:block;font-weight:400;font-size:17px}
+.tile small{font-size:13px;opacity:.85}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
+.quote blockquote{margin:0;font-family:var(--serif);font-style:italic;font-weight:300;font-size:21px;line-height:1.45}
+.quote cite{display:block;margin-top:14px;font-style:normal;font-size:14px;color:var(--muted)}
+.sample{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px dashed var(--muted);color:var(--muted);padding:2px 7px;border-radius:2px;margin-top:10px}
+
+/* facts strip */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts > div{padding:26px 24px 26px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.facts > div + div{padding-left:24px;border-left:1px solid var(--line)}
+.facts dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:14px;background:none;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* destination detail */
+.dgrid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,6vw,88px)}
+.prose{display:flex;flex-direction:column;gap:20px;font-size:18px;max-width:62ch}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+.pair .ph{aspect-ratio:4/5;border-radius:2px;overflow:hidden;max-width:100%}
+.itin{list-style:none;margin:0;padding:0;counter-reset:d}
+.itin li{counter-increment:d;display:grid;grid-template-columns:72px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line);align-items:baseline}
+.itin li::before{content:"Jour " counter(d);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+html[lang="en"] .itin li::before{content:"Day " counter(d)}
+.aside{position:sticky;top:96px;align-self:start;border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:18px;background:var(--card);border-radius:2px}
+.aside h3{font-family:var(--display);font-size:26px}
+.aside .row{display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.aside .row span:first-child{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+
+/* theme tiles */
+.themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.theme{position:relative;aspect-ratio:5/4;overflow:hidden;border-radius:2px;color:#fff;max-width:100%}
+.theme img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.theme:hover img{transform:scale(1.04)}
+.theme div{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(transparent 35%,rgba(0,0,0,.62))}
+.theme h3{font-family:var(--display);font-size:30px}
+.theme p{font-size:15px;opacity:.9;max-width:40ch;margin-top:6px}
+
+/* forms */
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.form .full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field > span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{border:1px solid var(--line);background:var(--card);padding:12px 14px;border-radius:2px;font-size:16px;width:100%;min-width:0}
+.field textarea{min-height:120px;resize:vertical}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);padding:8px 14px;border-radius:999px;font-size:14px;cursor:pointer}
+.checks input{accent-color:var(--accent)}
+.done{border:1px solid var(--accent);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:16px}
+.done pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;background:var(--surface);padding:16px;margin:0;border-radius:2px;max-height:300px;overflow:auto}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;border-top:1px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:8px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:28px}
+.steps b{font-weight:400;font-size:18px}
+.steps span{color:var(--muted);font-size:15px}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+/* calendly */
+.cal{border:1px solid var(--line);min-height:680px;border-radius:2px;background:var(--card);position:relative;overflow:hidden}
+.calendly-inline-widget{min-width:280px;height:680px}
+.calfb{padding:32px;display:flex;flex-direction:column;gap:20px}
+.slots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;font-variant-numeric:tabular-nums}
+.slots div{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;border-radius:999px;color:var(--muted)}
+.slots .on{background:var(--surface);color:var(--ink);font-weight:400}
+.slots .wk{font-size:11px;letter-spacing:.08em;text-transform:uppercase;aspect-ratio:auto;padding:6px 0}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px)}
+.profile{display:flex;flex-direction:column;gap:24px;min-width:0}
+.profile .ph{aspect-ratio:4/5;border-radius:2px;overflow:hidden;max-width:100%}
+.profile .pbody{display:flex;flex-direction:column;gap:12px}
+.profile .prose{margin-top:8px}
+@media (max-width:820px){.team{grid-template-columns:1fr}}
+/* monogram */
+.mono{aspect-ratio:4/5;background:var(--accent);color:var(--accent-ink);display:flex;flex-direction:column;justify-content:space-between;padding:28px;border-radius:2px;max-width:100%}
+.mono b{font-family:var(--display);font-size:clamp(90px,12vw,160px);font-weight:400;line-height:.9}
+
+/* footer */
+footer.site{background:var(--surface);padding-block:72px 32px;margin-top:0}
+footer .cols{display:grid;grid-template-columns:1.4fr repeat(4,minmax(0,1fr));gap:36px}
+footer h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:400}
+footer .cols a{display:block;padding:4px 0;font-size:15px}
+footer .legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.news{display:flex;gap:0;margin-top:16px;max-width:380px}
+.news input{flex:1;min-width:0;border:1px solid var(--line);border-right:0;background:var(--bg);padding:12px 14px}
+.news .btn{height:auto}
+
+/* offers */
+.offers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ocard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:2px;overflow:hidden;min-width:0}
+.ocard .ph{aspect-ratio:3/2;position:relative;max-width:100%}
+.ocard .ph img{transition:transform .8s}
+.ocard:hover .ph img{transform:scale(1.04)}
+.otag{position:absolute;top:14px;left:14px;background:var(--bg);color:var(--ink);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:2px}
+.ocard .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ocard h3{font-size:20px;font-weight:400;line-height:1.25}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.price small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.price b{font-family:var(--display);font-weight:400;font-size:28px;color:var(--accent);font-variant-numeric:lining-nums}
+.price span{font-size:13px;color:var(--muted)}
+.inc{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
+.inc li{padding:12px 0 12px 26px;border-top:1px solid var(--line);position:relative}
+.inc li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:6px;border-left:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);transform:rotate(-45deg)}
+/* travellers */
+.reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.reel{display:flex;flex-direction:column;gap:12px;min-width:0;background:none;border:0;padding:0;text-align:left;cursor:pointer}
+.reel .ph{aspect-ratio:9/16;max-height:620px;position:relative;border-radius:2px;overflow:hidden;max-width:100%;width:100%}
+.reel .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.6))}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;z-index:1;color:#fff;backdrop-filter:blur(4px);background:rgba(0,0,0,.15)}
+.play::before{content:"";border-left:14px solid currentColor;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.reel .cap{position:absolute;left:16px;right:16px;bottom:16px;color:#fff;z-index:1;display:flex;flex-direction:column;gap:2px}
+.reel .cap small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.reel .cap b{font-weight:400;font-size:18px}
+.reel blockquote{margin:0;font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;line-height:1.4}
+.reels.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);grid-template-columns:none;overflow-x:auto}
+.modal{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 56px) var(--gutr) calc(env(safe-area-inset-bottom,0px) + 24px) var(--gut)}
+.modal video,.modal .soon{max-height:100%;max-width:min(420px,100%);aspect-ratio:9/16;background:#000;border-radius:2px}
+.modal .soon{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-align:center;padding:24px;position:relative;overflow:hidden;width:min(420px,100%)}
+.modal .soon img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.modal .soon *:not(img){position:relative}
+.modal .close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);right:calc(env(safe-area-inset-right,0px) + 14px);background:none;border:0;color:#fff;font-size:34px;width:44px;height:44px;cursor:pointer}
+.social{display:flex;gap:10px;align-items:center}
+.social a,.social span{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%}
+.social [data-empty]{opacity:.45}
+.social svg{width:16px;height:16px}
+.util .social a,.util .social span{width:24px;height:24px;border:0}
+.util .social svg{width:14px;height:14px}
+
+.wa{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;background:#1f7a55;color:#fff;border-radius:999px;padding:12px 18px 12px 14px;font-size:14px;box-shadow:0 10px 30px -10px rgba(0,0,0,.4)}
+.wa svg{width:22px;height:22px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:2px;font-size:14px;z-index:90}
+
+@media (max-width:1180px){
+  nav.main,.right .hide-m{display:none}
+  .burger{display:block}
+}
+@media (max-width:1080px){
+  .offers-grid,.reels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .scen{grid-template-columns:repeat(2,minmax(0,1fr))}
+  footer .cols{grid-template-columns:1fr 1fr}
+  footer .cols > :first-child{grid-column:1/-1}
+  .search{grid-template-columns:1fr 1fr}
+  .search label:nth-child(2n){border-right:0}
+  .search label{border-bottom:1px solid var(--line)}
+  .search .btn{grid-column:1/-1;height:52px;border-radius:0 0 2px 2px}
+}
+@media (max-width:820px){
+  .util .hide-s{display:none}
+  .pillars,.offers,.quotes,.themes,.types,.grid.three,.offers-grid{grid-template-columns:1fr}
+  .reels{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .split,.split.rev,.dgrid{grid-template-columns:1fr}
+  .split.rev .media{order:0}
+  .aside{position:static}
+  .facts{grid-template-columns:1fr}
+  .facts > div + div{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .steps{grid-template-columns:1fr 1fr}
+  .form{grid-template-columns:1fr}
+  .mega{display:none}
+  .wa span{display:none}
+  .wa{padding:14px}
+}
+@media (max-width:480px){
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .search{grid-template-columns:1fr}
+  .search label{border-right:0}
+  .steps{grid-template-columns:1fr}
+  .hero .wrap{padding-block:120px 32px}
+  .logo b{font-size:19px;white-space:nowrap}
+  .logo span{font-size:9px;letter-spacing:.36em}
+  .right{gap:10px}
+  .itin li{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div id="app"></div>
+
+<script>
+/*__DATA__*/
+</script>
+<script>
+(function(){
+const C = window.CONFIG, IMG = window.IMG, DESTS = window.DESTS, REGIONS = window.REGIONS, THEMES = window.THEMES;
+/* STATIC mode: set by the generated pages (window.SITE = {page, lang, root}); preview uses hash routing */
+const STATIC = !!window.SITE;
+const ROOT = STATIC ? (window.SITE.root || "") : "";
+let lang = STATIC ? window.SITE.lang : "fr";
+if (!STATIC) { try { const l = localStorage.getItem("ps-lang"); if (l === "en" || l === "fr") lang = l; } catch(e){} }
+const state = { prefill:{}, megaOpen:null, megaRegion:"io", drawer:false };
+const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const byS = s => DESTS.find(d => d.s === s);
+const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const THEME_SLUG = { hm:["lune-de-miel","honeymoon"], fam:["en-famille","family-holidays"], sun:["soleil-d-hiver","winter-sun"], saf:["safaris","safaris"], isl:["iles-ocean-indien","indian-ocean-islands"], city:["escapades-urbaines","city-breaks"], shop:["shopping-et-escales","shopping-stopovers"], asia:["asie","asia"], pil:["pelerinages","pilgrimages"], dia:["retrouver-les-siens","visiting-family"], ski:["neige-et-montagne","snow-and-mountains"], well:["bien-etre","wellness"] };
+const PAGES = {
+  fr:{ home:"", destinations:"destinations/", inspiration:"inspiration/", offres:"offres/", voyageurs:"voyageurs/", groupes:"groupes/", entreprises:"entreprises/", "a-propos":"a-propos/", appel:"reserver-un-appel/", devis:"devis/", mentions:"mentions-legales/" },
+  en:{ home:"", destinations:"destinations/", inspiration:"inspiration/", offres:"offers/", voyageurs:"travellers/", groupes:"groups/", entreprises:"business/", "a-propos":"about/", appel:"book-a-call/", devis:"quote/", mentions:"legal-notice/" }
+};
+const destSlug = (d, lg) => lg === "en" ? slugify(d.n.en) : d.s;
+/* site-relative path for a route key, e.g. "dest-maurice" -> "destinations/maurice/" (FR) or "en/destinations/mauritius/" (EN) */
+function pathFor(key, lg){
+  lg = lg || lang; const pre = lg === "en" ? "en/" : "", P = PAGES[lg];
+  if (key.startsWith("dest-")) { const d = byS(key.slice(5)); return d ? pre + "destinations/" + destSlug(d, lg) + "/" : pre; }
+  if (key.startsWith("theme-")) { const k = key.slice(6); return pre + P.inspiration + (THEME_SLUG[k] ? THEME_SLUG[k][lg==="en"?1:0] : k) + "/"; }
+  if (key.startsWith("offre-")) return pre + P.offres + key.slice(6) + "/";
+  return pre + (P[key] ?? "");
+}
+const urlFor = (key, lg) => (ROOT + pathFor(key, lg)) || "./";
+/* in STATIC mode, turn every internal "#key" link into a real page URL */
+const linkify = html => !STATIC ? html : html.replace(/href="#([a-z0-9-]+)(?:\/([a-z0-9-]+))?"/g, (m, k, anc) => `href="${urlFor(k)}${anc ? "#" + anc : ""}" data-k="${k}"`);
+const wa = (msg) => `https://wa.me/${C.whatsapp}${msg ? "?text=" + encodeURIComponent(msg) : ""}`;
+
+const U = {
+  dest:{fr:"Destinations",en:"Destinations"}, insp:{fr:"Inspiration",en:"Inspiration"}, groups:{fr:"Groupes",en:"Groups"},
+  corp:{fr:"Entreprises",en:"Business"}, about:{fr:"À propos",en:"About"}, book:{fr:"Réserver un appel",en:"Book a call"},
+  quote:{fr:"Demander un devis",en:"Request a quote"}, contact:{fr:"Contact",en:"Contact"},
+  offers:{fr:"Offres",en:"Offers"}, travellers:{fr:"Voyageurs",en:"Travellers"}, from:{fr:"À partir de",en:"From"},
+  example:{fr:"Exemple à remplacer",en:"Sample, to replace"}, seeOffer:{fr:"Voir l'offre",en:"See the offer"},
+  reach:{fr:"Joignable au",en:"Call us on"}, seeAll:{fr:"Voir toutes les destinations",en:"See all destinations"},
+  whatsapp:{fr:"Écrire sur WhatsApp",en:"Message on WhatsApp"}, discover:{fr:"Découvrir",en:"Discover"},
+  when:{fr:"Quand partir",en:"When to go"}, flight:{fr:"Depuis Maurice",en:"From Mauritius"}, ideal:{fr:"Idéal pour",en:"Ideal for"},
+  itin:{fr:"Idée d'itinéraire",en:"Sample itinerary"}, nearby:{fr:"Dans la même région",en:"In the same region"},
+  noIdea:{fr:"Vous ne savez pas où partir ?",en:"Not sure where to go?"}, inspire:{fr:"S'inspirer",en:"Get inspired"},
+  indic:{fr:"Temps de vol et compagnies à titre indicatif ; nous confirmons les options exactes dans votre devis.",en:"Flight times and routings are indicative; we confirm exact options in your quote."}
+};
+const themeName = k => { const th = THEMES.find(x => x.k === k); return th ? t(th) : (k==="grp" ? t(U.groups) : k); };
+
+/* ---------- shell ---------- */
+function header(){
+  return `
+  <div class="util"><div class="wrap">
+    <span>${t(U.reach)} <b style="font-weight:400;color:var(--ink)">${esc(C.phone)}</b><span class="hide-s"> · ${t(C.hours)}</span></span>
+    <span style="display:flex;gap:14px;align-items:center"><span class="hide-s">Français · English · Kreol</span>${social()}</span>
+  </div></div>
+  <header class="site" id="hdr">
+    <div class="wrap bar">
+      <a href="#home" class="logo" aria-label="Permanent Summer Voyages"><b>Permanent Summer</b><span>Voyages</span></a>
+      <nav class="main" aria-label="Menu">
+        <button data-mega="dest" aria-expanded="${state.megaOpen==='dest'}">${t(U.dest)}</button>
+        <button data-mega="insp" aria-expanded="${state.megaOpen==='insp'}">${t(U.insp)}</button>
+        <a href="#offres">${t(U.offers)}</a>
+        <a href="#voyageurs">${t(U.travellers)}</a>
+        <a href="#groupes">${t(U.groups)}</a>
+        <button data-mega="about" aria-expanded="${state.megaOpen==='about'}">${t(U.about)}</button>
+      </nav>
+      <div class="right">
+        <div class="lang" role="group" aria-label="Langue / Language">
+          ${["fr","en"].map(l => STATIC
+            ? `<a href="${urlFor(window.SITE.page, l)}" hreflang="${l}" lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</a>`
+            : `<button data-lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</button>`).join("")}
+        </div>
+        <a href="#appel" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.book)}</a>
+        <button class="burger" aria-label="Menu" data-act="drawer"><i></i><i></i><i></i></button>
+      </div>
+    </div>
+    ${state.megaOpen==='dest' ? megaDest() : ""}${state.megaOpen==='insp' ? megaInsp() : ""}${state.megaOpen==='about' ? megaAbout() : ""}
+  </header>`;
+}
+function megaDest(){
+  const r = state.megaRegion, list = DESTS.filter(d => d.r === r), first = list[0];
+  return `<div class="mega"><div class="wrap">
+    <div class="regions" role="tablist">${REGIONS.map(x => `<button role="tab" data-region="${x.k}" aria-selected="${x.k===r}">${t(x)} <small>${DESTS.filter(d=>d.r===x.k).length}</small></button>`).join("")}</div>
+    <div class="links"><a class="all" href="#destinations">${t(U.seeAll)} →</a>${list.map(d => `<a href="#dest-${d.s}">${t(d.n)}</a>`).join("")}</div>
+    <a class="promo" href="#dest-${first.s}">${img(first.img[0], t(first.n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t(first.c)}</div><div style="font-size:20px">${t(first.n)}</div></div></a>
+  </div></div>`;
+}
+function megaInsp(){
+  const half = Math.ceil(THEMES.length/2);
+  return `<div class="mega insp"><div class="wrap">
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Par envie",en:"By mood"})}</span>${THEMES.slice(0,half).map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">&nbsp;</span>${THEMES.slice(half).map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}<a href="#inspiration" class="link" style="align-self:flex-start;margin-top:10px">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a></div>
+    <a class="promo" href="#theme-hm">${img("honeymoon")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Ce mois-ci",en:"This month"})}</div><div style="font-size:20px">${t(THEMES[0])}</div></div></a>
+  </div></div>`;
+}
+function megaAbout(){
+  return `<div class="mega insp"><div class="wrap">
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.about)}</span><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a><a href="#groupes">${t(U.groups)}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.contact)}</span><a href="#appel">${t(U.book)}</a><a href="#devis">${t(U.quote)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp · ${esc(C.phone)}</a><div style="margin-top:12px">${social(true)}</div></div>
+    <a class="promo" href="#a-propos">${img("team","Jennifer & Christopher Kwo")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Une affaire de famille",en:"A family business"})}</div><div style="font-size:20px">Jennifer & Christopher</div></div></a>
+  </div></div>`;
+}
+const ICON = {
+  facebook:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>'
+};
+function social(){
+  const S = C.social || {};
+  return `<span class="social">${["facebook","instagram"].map(k => S[k]
+    ? `<a href="${esc(S[k])}" target="_blank" rel="noopener" aria-label="${k}">${ICON[k]}</a>`
+    : `<span data-empty title="${t({fr:'Lien à ajouter',en:'Link to add'})}" aria-label="${k}">${ICON[k]}</span>`).join("")}</span>`;
+}
+
+function drawer(){
+  if (!state.drawer) return "";
+  return `<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="top"><a href="#home" class="logo" style="align-items:flex-start"><b>Permanent Summer</b><span>Voyages</span></a><button class="x" data-act="drawer" aria-label="${t({fr:'Fermer',en:'Close'})}">×</button></div>
+    <details><summary>${t(U.dest)}</summary><div><a href="#destinations">${t(U.seeAll)}</a>${REGIONS.map(r=>`<a href="#destinations/region-${r.k}" data-filter="${r.k}">${t(r)}</a>`).join("")}</div></details>
+    <details><summary>${t(U.insp)}</summary><div><a href="#inspiration">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a>${THEMES.map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div></details>
+    <a href="#offres">${t(U.offers)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#groupes">${t(U.groups)}</a><a href="#entreprises">${t(U.corp)}</a><a href="#a-propos">${t(U.about)}</a><a href="#devis">${t(U.quote)}</a>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px">
+      <a href="#appel" class="btn accent">${t(U.book)}</a>
+      <a href="${wa()}" target="_blank" rel="noopener" class="btn ghost">${t(U.whatsapp)}</a>
+      <p class="note" style="margin-top:8px">${esc(C.phone)} · ${t(C.hours)}</p>
+      <div style="margin-top:8px">${social()}</div>
+    </div></div>`;
+}
+function footer(){
+  return `<footer class="site"><div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#home" class="logo" style="align-items:flex-start"><b>Permanent Summer</b><span>Voyages</span></a>
+        <p class="note" style="margin-top:18px;max-width:34ch">${t({fr:"Recevez nos idées de voyage et offres de groupe, une fois par mois.",en:"Get our trip ideas and group offers, once a month."})}</p>
+        <div style="margin-top:20px">${social()}</div>
+        <form class="news" data-form="news"><label for="nl" class="sr" style="position:absolute;left:-9999px">Email</label><input id="nl" type="email" required placeholder="email@exemple.com"><button class="btn">${t({fr:"S'inscrire",en:"Sign up"})}</button></form>
+      </div>
+      <div><h4>${t(U.dest)}</h4>${["maurice","dubai","paris","cape-town","seychelles","inde"].map(s=>`<a href="#dest-${s}">${t(byS(s).n)}</a>`).join("")}<a href="#destinations">${t({fr:"Voir plus",en:"See more"})}</a></div>
+      <div><h4>${t({fr:"Services",en:"Services"})}</h4><a href="#devis">${t({fr:"Billets d'avion",en:"Flights"})}</a><a href="#devis">${t({fr:"Hôtels & transferts",en:"Hotels & transfers"})}</a><a href="#groupes">${t(U.groups)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a><a href="#offres">${t(U.offers)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#inspiration">${t(U.insp)}</a></div>
+      <div><h4>${t(U.about)}</h4><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#a-propos">${t({fr:"Notre approche",en:"Our approach"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
+      <div><h4>${t(U.contact)}</h4><a href="#appel">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp</a><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.phone)}</span><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.email)}</span></div>
+    </div>
+    <div class="legal"><span>© 2026 Permanent Summer Lda · Portugal</span><span>${t({fr:"Registre agence de voyage : en cours",en:"Travel agency registration: in progress"})} · ${t({fr:"Réservations aériennes via Amadeus",en:"Air bookings via Amadeus"})}</span><span><a href="#mentions">${t({fr:"Confidentialité",en:"Privacy"})}</a> · <a href="#mentions">${t({fr:"Conditions",en:"Terms"})}</a></span></div>
+  </div></footer>
+  <a class="wa" href="${wa(lang==='fr'?'Bonjour, je souhaite organiser un voyage.':'Hello, I would like to plan a trip.')}" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.2-1.2-.2-.2-.4-.3z"/></svg><span>WhatsApp</span></a>`;
+}
+
+/* ---------- pieces ---------- */
+const card = (d, cls="") => `<a class="card ${cls}" href="#dest-${d.s}"><div class="ph">${img(d.img[0], t(d.n))}</div><div><h3>${t(d.n)}</h3><div class="meta">${t(d.c)}</div></div></a>`;
+const destOptions = (sel) => `<option value="">${t({fr:"Je ne sais pas encore",en:"Not sure yet"})}</option>` + REGIONS.map(r => `<optgroup label="${esc(t(r))}">${DESTS.filter(d=>d.r===r.k).map(d=>`<option value="${d.s}" ${d.s===sel?"selected":""}>${esc(t(d.n))}</option>`).join("")}</optgroup>`).join("");
+
+/* ---------- pages ---------- */
+function home(){
+  const tabsDef = [["hm"],["fam"],["sun"],["grp"]];
+  const cur = state.homeTab || "hm";
+  const tabList = DESTS.filter(d => d.th.includes(cur));
+  const trending = (window.HOT || []).map(byS).filter(Boolean);
+  const offers = (window.OFFERS || []).slice(0,3);
+  return `
+  <section class="hero">
+    <div class="ph">${img("mauritius","Le Morne, île Maurice",true)}</div>
+    <div class="wrap">
+      <div class="eyebrow" style="color:#fff;opacity:.9">${t({fr:"Agence de voyage indépendante · Maurice",en:"Independent travel agency · Mauritius"})}</div>
+      <h1 class="display" style="margin-top:14px">${t({fr:"Le voyage, avec quelqu'un qui décroche.",en:"Travel, with someone who picks up."})}</h1>
+      <p class="sub">${t({fr:"35 ans d'expérience, les meilleurs tarifs des compagnies, et une seule personne qui suit votre voyage avant, pendant et après.",en:"35 years of experience, the best airline fares, and one person looking after your trip before, during and after."})}</p>
+      <form class="search" data-form="search">
+        <label for="s-dest">${t({fr:"Destination",en:"Destination"})}<select id="s-dest">${destOptions()}</select></label>
+        <label for="s-out">${t({fr:"Départ",en:"Depart"})}<input id="s-out" type="date"></label>
+        <label for="s-back">${t({fr:"Retour",en:"Return"})}<input id="s-back" type="date"></label>
+        <label for="s-pax">${t({fr:"Voyageurs",en:"Travellers"})}<input id="s-pax" type="number" min="1" max="200" value="2"></label>
+        <button class="btn accent" type="submit">${t(U.quote)}</button>
+      </form>
+      <p class="search-foot">${t(U.noIdea)} <a href="#inspiration">${t(U.inspire)} →</a></p>
+    </div>
+  </section>
+
+  ${offers.length ? `<section class="section"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.offers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Offres du moment",en:"Current offers"})}</h2></div><a class="link" href="#offres">${t({fr:"Toutes les offres",en:"All offers"})}</a></div>
+    <div class="offers-grid">${offers.map(offerCard).join("")}</div>
+  </div></section>` : ""}
+
+  <section class="section" style="padding-top:0"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Nos voyages",en:"Our trips"})}</h2><a class="link" href="#destinations">${t(U.seeAll)}</a></div>
+    <div class="tabs" role="tablist">${tabsDef.map(([k])=>`<button role="tab" data-tab="${k}" aria-selected="${k===cur}">${themeName(k)}</button>`).join("")}</div>
+    <div class="rail">${tabList.map(d=>card(d)).join("")}</div>
+  </div></section>
+
+  <section class="section surface"><div class="wrap">
+    <div class="pillars">
+      <div class="pillar"><div class="big">35 <em>${t({fr:"ans",en:"years"})}</em></div><p>${t({fr:"Trois décennies en agence, des milliers de billets émis, et l'habitude des itinéraires que les sites de réservation ne savent pas faire.",en:"Three decades in agencies, thousands of tickets issued, and a habit of building the routings booking sites can't."})}</p></div>
+      <div class="pillar"><div class="big">${t({fr:"Tarifs",en:"Pro"})} <em>${t({fr:"pros",en:"fares"})}</em></div><p>${t({fr:"Accès direct aux tarifs des compagnies, aux tarifs de groupe et aux modifications de billet, sans passer par un centre d'appels.",en:"Direct access to airline fares, group fares and ticket changes, without going through a call centre."})}</p></div>
+      <div class="pillar"><div class="big">${t({fr:"Un humain",en:"A human"})} <em>${t({fr:"qui répond",en:"who answers"})}</em></div><p>${t({fr:"Vol annulé, correspondance manquée, bagage égaré : vous écrivez sur WhatsApp, quelqu'un qui connaît votre dossier répond.",en:"Cancelled flight, missed connection, lost bag: you send a WhatsApp, someone who knows your booking answers."})}</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap split">
+    <div class="text">
+      <span class="eyebrow">${t({fr:"Fêtes de fin d'année",en:"End-of-year holidays"})}</span>
+      <h2 class="h2">${t({fr:"Noël à Paris, Londres ou Dubaï : les places partent maintenant.",en:"Christmas in Paris, London or Dubai: seats are going now."})}</h2>
+      <p class="lede">${t({fr:"Les vols de décembre au départ de Maurice se remplissent dès octobre. Dites-nous vos dates, nous surveillons les tarifs et bloquons les meilleures options.",en:"December flights out of Mauritius fill up from October. Tell us your dates and we'll watch fares and hold the best options."})}</p>
+      <a class="btn" href="#theme-city">${t({fr:"Voir les escapades urbaines",en:"See city breaks"})}</a>
+    </div>
+    <div class="media ph">${img("paris2","Paris")}</div>
+  </div></section>
+
+  <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Nos formules",en:"How we work"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Trois façons de voyager avec nous",en:"Three ways to travel with us"})}</h2></div></div>
+    <div class="offers">
+      <div class="offer"><span class="tier">Essentiel</span><h3>${t({fr:"Le billet",en:"The ticket"})}</h3><p>${t({fr:"Le bon vol au bon prix, émis et suivi.",en:"The right flight at the right price, issued and looked after."})}</p><ul><li>${t({fr:"Comparaison des compagnies et des routes",en:"Airlines and routings compared"})}</li><li>${t({fr:"Changements et remboursements gérés",en:"Changes and refunds handled"})}</li><li>${t({fr:"Choix des sièges et bagages",en:"Seats and baggage sorted"})}</li></ul></div>
+      <div class="offer"><span class="tier">Signature</span><h3>${t({fr:"Le séjour",en:"The stay"})}</h3><p>${t({fr:"Vol, hôtel, transferts et excursions dans un seul dossier.",en:"Flight, hotel, transfers and excursions in one booking."})}</p><ul><li>${t({fr:"Hôtels sélectionnés et négociés",en:"Selected, negotiated hotels"})}</li><li>${t({fr:"Transferts privés à l'arrivée",en:"Private arrival transfers"})}</li><li>${t({fr:"Assistance WhatsApp pendant le voyage",en:"WhatsApp support during the trip"})}</li></ul></div>
+      <div class="offer"><span class="tier">${t({fr:"Sur-mesure",en:"Bespoke"})}</span><h3>${t({fr:"Le projet",en:"The project"})}</h3><p>${t({fr:"Circuits, groupes, mariages et voyages d'entreprise.",en:"Tours, groups, weddings and company travel."})}</p><ul><li>${t({fr:"Itinéraire construit avec vous",en:"Itinerary built with you"})}</li><li>${t({fr:"Tarifs de groupe et acomptes échelonnés",en:"Group fares and staged deposits"})}</li><li>${t({fr:"Un interlocuteur unique du début à la fin",en:"One contact from start to finish"})}</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="band">
+    <div class="ph">${img("plane2")}</div>
+    <div class="wrap">
+      <span class="eyebrow" style="color:#fff">${t({fr:"Parlons-en",en:"Let's talk"})}</span>
+      <h2 class="display">${t({fr:"Imaginons votre prochain voyage",en:"Let's imagine your next trip"})}</h2>
+      <p>${t({fr:"Quinze minutes au téléphone suffisent souvent à poser les bases : dates, budget, envies. Ensuite, nous revenons vers vous avec des options concrètes.",en:"Fifteen minutes on the phone is usually enough to set the basics: dates, budget, wishes. Then we come back with concrete options."})}</p>
+      <div class="ctas"><a href="#appel" class="btn light">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener" class="btn light ghost">${t(U.whatsapp)}</a></div>
+    </div>
+  </section>
+
+  <section class="section"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"L'assistance autrement",en:"Assistance, done differently"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Quand ça se complique, vous n'êtes pas seul.",en:"When things go wrong, you're not on your own."})}</h2></div><p class="lede" style="max-width:44ch">${t({fr:"Les applications ne répondent pas à 2h du matin. Nous, si. Quelques situations que nous réglons chaque semaine :",en:"Apps don't answer at 2am. We do. A few situations we sort out every week:"})}</p></div>
+    <div class="scen">
+      ${[["dubai2",{fr:"02:10 · Dubaï",en:"02:10 · Dubai"},{fr:"Correspondance annulée",en:"Connection cancelled"},{fr:"Rebooking sur le vol suivant et nuit d'hôtel avant même d'arriver au comptoir.",en:"Rebooked on the next flight with a hotel night before you reach the desk."}],
+         ["plane",{fr:"07:45 · Paris CDG",en:"07:45 · Paris CDG"},{fr:"Bagage égaré",en:"Lost luggage"},{fr:"Déclaration, suivi avec la compagnie et livraison à l'hôtel.",en:"Claim filed, chased with the airline, delivered to your hotel."}],
+         ["reunite",{fr:"18:30 · Johannesburg",en:"18:30 · Johannesburg"},{fr:"Changement de dernière minute",en:"Last-minute change"},{fr:"Un rendez-vous déplacé ? Nous modifions le billet au meilleur coût.",en:"Meeting moved? We change the ticket at the best possible cost."}],
+         ["candles",{fr:"10:00 · Lourdes",en:"10:00 · Lourdes"},{fr:"Groupe de 40 pèlerins",en:"A group of 40 pilgrims"},{fr:"Fauteuils roulants, autocar et hôtel confirmés pour chacun.",en:"Wheelchairs, coach and hotel confirmed for everyone."}]
+        ].map(([k,c,h,p])=>`<div><div class="ph">${img(k)}</div><div class="t"><span class="clock">${t(c)}</span><b>${t(h)}</b><span>${t(p)}</span></div></div>`).join("")}
+    </div>
+  </div></section>
+
+  <section class="section surface"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Destinations en vogue",en:"Trending destinations"})}</h2><a class="link" href="#destinations">${t(U.seeAll)}</a></div>
+    <div class="tiles">${trending.map(d=>`<a class="tile" href="#dest-${d.s}">${img(d.img[0],t(d.n))}<div><b>${t(d.n)}</b><small>${t(d.c)}</small></div></a>`).join("")}</div>
+  </div></section>
+
+  <section class="section"><div class="wrap split rev">
+    <div class="text">
+      <span class="eyebrow">${t(U.groups)}</span>
+      <h2 class="h2">${t({fr:"Mariages, pèlerinages, équipes sportives : les groupes, c'est notre spécialité.",en:"Weddings, pilgrimages, sports teams: groups are our speciality."})}</h2>
+      <p class="lede">${t({fr:"Un groupe de 12 ou de 200 demande la même chose : des tarifs bloqués tôt, une liste de passagers tenue à jour et quelqu'un qui coordonne tout le monde.",en:"A group of 12 or 200 needs the same thing: fares locked in early, an up-to-date passenger list and someone coordinating everyone."})}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#groupes">${t({fr:"Voyages de groupe",en:"Group travel"})}</a><a class="btn ghost" href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
+    </div>
+    <div class="media ph">${img("wedding")}</div>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.travellers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ils racontent leur voyage",en:"In their own words"})}</h2></div><a class="link" href="#voyageurs">${t({fr:"Toutes les vidéos",en:"All videos"})}</a></div>
+    <div class="reels rail">${(window.AMBASSADORS||[]).slice(0,4).map((a,i)=>reel(a,i,true)).join("")}</div>
+  </div></section>
+
+  <section class="section surface"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Ils voyagent avec nous",en:"They travel with us"})}</h2></div>
+    <div class="quotes">${window.TESTIMONIALS.map(q=>`<figure class="quote" style="margin:0"><blockquote>« ${t(q.q)} »</blockquote><cite>${esc(q.a)}</cite><span class="sample">${t({fr:"Exemple à remplacer",en:"Sample, to replace"})}</span></figure>`).join("")}</div>
+  </div></section>`;
+}
+
+function destinations(){
+  const f = state.filter || "all";
+  const list = f==="all" ? REGIONS : REGIONS.filter(r=>r.k===f);
+  return `
+  <section class="hero short"><div class="ph">${img("mauritius6","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${DESTS.length} destinations</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Où partir depuis Maurice",en:"Where to go from Mauritius"})}</h1>
+    <p class="sub">${t({fr:"Les routes que nous connaissons le mieux, de nos îles voisines jusqu'au Japon. Et si votre destination n'y est pas, nous vendons le monde entier.",en:"The routes we know best, from our neighbouring islands to Japan. If yours isn't here, we sell the whole world."})}</p>
+  </div></section>
+  <section class="section tight"><div class="wrap">
+    <div class="chips" role="group" aria-label="${t({fr:'Filtrer par région',en:'Filter by region'})}">
+      <button class="chip" data-filter="all" aria-pressed="${f==='all'}">${t({fr:"Toutes",en:"All"})}</button>
+      ${REGIONS.map(r=>`<button class="chip" data-filter="${r.k}" aria-pressed="${f===r.k}">${t(r)}</button>`).join("")}
+    </div>
+  </div></section>
+  ${list.map(r=>`<section class="section tight" id="region-${r.k}" style="padding-top:0;scroll-margin-top:90px"><div class="wrap">
+    <div class="head" style="margin-bottom:22px"><h2 class="h2">${t(r)}</h2><span class="note">${DESTS.filter(d=>d.r===r.k).length} destinations</span></div>
+    <div class="grid">${DESTS.filter(d=>d.r===r.k).map(d=>card(d)).join("")}</div>
+  </div></section>`).join("")}
+  <div style="height:48px"></div>`;
+}
+
+function destPage(s){
+  const d = byS(s); if (!d) return notFound();
+  const region = REGIONS.find(r=>r.k===d.r);
+  const near = DESTS.filter(x=>x.r===d.r && x.s!==d.s).slice(0,4);
+  const more = near.length < 4 ? DESTS.filter(x=>x.s!==d.s && !near.includes(x) && x.th.some(k=>d.th.includes(k))).slice(0,4-near.length) : [];
+  const second = d.img[1] || d.img[0], third = d.img[2] || "mauritius4";
+  return `
+  <section class="hero short"><div class="ph">${img(d.img[0], t(d.n), true)}</div><div class="wrap">
+    <div class="crumbs"><a href="#destinations">${t(U.dest)}</a> / ${t(region)}</div>
+    <h1 class="display">${t(d.n)}</h1>
+    <p class="sub">${t(d.t)}</p>
+  </div></section>
+  <section class="section"><div class="wrap dgrid">
+    <div style="display:flex;flex-direction:column;gap:48px;min-width:0">
+      <div class="prose"><span class="eyebrow">${t(d.c)}</span><p>${t(d.d)}</p></div>
+      <div class="pair"><div class="ph">${img(second, t(d.n))}</div><div class="ph">${img(third, "")}</div></div>
+      <div><h2 class="h2" style="margin-bottom:12px">${t(U.itin)}</h2><p class="note" style="margin-bottom:18px">${t({fr:"Une base de travail, que nous adaptons à vos dates et à votre rythme.",en:"A starting point, adapted to your dates and pace."})}</p>
+        <ol class="itin">${t(d.it).map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></div>
+    </div>
+    <aside class="aside">
+      <h3>${t({fr:"Préparer ce voyage",en:"Plan this trip"})}</h3>
+      <div class="row"><span>${t(U.when)}</span><span>${t(d.when)}</span></div>
+      <div class="row"><span>${t(U.flight)}</span><span>${t(d.fl)}</span></div>
+      <div class="row"><span>${t(U.ideal)}</span><span>${d.th.map(themeName).join(" · ")}</span></div>
+      <a href="#devis" class="btn accent" data-pre="${d.s}">${t(U.quote)}</a>
+      <a href="#appel" class="btn ghost">${t(U.book)}</a>
+      <p class="note">${t(U.indic)}</p>
+    </aside>
+  </div></section>
+  <section class="section surface"><div class="wrap">
+    <div class="head"><h2 class="h2">${near.length ? t(U.nearby) : t({fr:"Vous aimerez aussi",en:"You may also like"})}</h2><a class="link" href="#destinations">${t(U.seeAll)}</a></div>
+    <div class="grid">${near.concat(more).map(x=>card(x)).join("")}</div>
+  </div></section>`;
+}
+
+function inspiration(){
+  return `
+  <section class="hero short"><div class="ph">${img("pool","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.insp)}</div>
+    <h1 class="display" style="margin-top:12px">${t(U.noIdea)}</h1>
+    <p class="sub">${t({fr:"Partez d'une envie plutôt que d'un lieu. Nous faisons le reste.",en:"Start from a feeling rather than a place. We'll do the rest."})}</p>
+  </div></section>
+  <section class="section"><div class="wrap"><div class="themes">
+    ${THEMES.map(x=>`<a class="theme" href="#theme-${x.k}">${img(x.img,t(x))}<div><h3>${t(x)}</h3><p>${t(x.d)}</p></div></a>`).join("")}
+  </div></div></section>`;
+}
+function themePage(k){
+  const th = THEMES.find(x=>x.k===k); if (!th) return notFound();
+  const list = DESTS.filter(d=>d.th.includes(k));
+  const others = THEMES.filter(x=>x.k!==k).slice(0,3);
+  return `
+  <section class="hero short"><div class="ph">${img(th.img,t(th),true)}</div><div class="wrap">
+    <div class="crumbs"><a href="#inspiration">${t(U.insp)}</a></div>
+    <h1 class="display">${t(th)}</h1><p class="sub">${t(th.d)}</p>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="head"><h2 class="h2">${list.length} ${t({fr:"idées de destinations",en:"destination ideas"})}</h2><a class="btn ghost" href="#appel">${t(U.book)}</a></div>
+    <div class="grid">${list.map(d=>card(d)).join("")}</div>
+  </div></section>
+  <section class="section surface"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Autres inspirations",en:"More inspiration"})}</h2><a class="link" href="#inspiration">${t({fr:"Toutes",en:"All"})}</a></div>
+    <div class="themes">${others.map(x=>`<a class="theme" href="#theme-${x.k}">${img(x.img,t(x))}<div><h3>${t(x)}</h3></div></a>`).join("")}</div>
+  </div></section>`;
+}
+
+function groups(){
+  const types = [
+    ["wedding",{fr:"Mariages",en:"Weddings"},{fr:"Invités venus de France, d'Afrique du Sud ou d'Australie, ou mariage à l'étranger : vols, hébergements et transferts coordonnés.",en:"Guests flying in from France, South Africa or Australia, or a wedding abroad: flights, rooms and transfers coordinated."}],
+    ["candles",{fr:"Pèlerinages",en:"Pilgrimages"},{fr:"Lourdes, Rome, Fatima, Terre sainte ou Inde, avec l'accompagnement des personnes âgées.",en:"Lourdes, Rome, Fatima, the Holy Land or India, with care for elderly pilgrims."}],
+    ["capetown2",{fr:"Sport & écoles",en:"Sports & schools"},{fr:"Tournois, compétitions régionales et voyages scolaires, avec autorisations et assurances.",en:"Tournaments, regional competitions and school trips, with permissions and insurance."}],
+    ["corporate2",{fr:"Séminaires & incentives",en:"Seminars & incentives"},{fr:"Récompenser une équipe ou réunir un comité de direction à Dubaï, au Cap ou à Maurice.",en:"Reward a team or gather a leadership group in Dubai, Cape Town or Mauritius."}],
+    ["family",{fr:"Grandes familles",en:"Extended families"},{fr:"Trois générations, plusieurs villes de départ, un seul dossier et un seul interlocuteur.",en:"Three generations, several departure cities, one booking and one contact."}],
+    ["marrakech2",{fr:"Associations & clubs",en:"Associations & clubs"},{fr:"Voyages culturels, rencontres de diaspora et sorties de club, organisés à prix de groupe.",en:"Cultural trips, diaspora gatherings and club outings at group rates."}]
+  ];
+  return `
+  <section class="hero short"><div class="ph">${img("wedding","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.groups)}</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Voyager à 10, 40 ou 200",en:"Travelling as 10, 40 or 200"})}</h1>
+    <p class="sub">${t({fr:"Les groupes demandent une vraie coordination humaine. C'est là que notre expérience compte le plus.",en:"Groups need real human coordination. That's where our experience counts most."})}</p>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="types">${types.map(([k,h,p])=>`<div class="card wide"><div class="ph">${img(k)}</div><div><h3>${t(h)}</h3><p class="meta" style="margin-top:6px">${t(p)}</p></div></div>`).join("")}</div>
+  </div></section>
+  <section class="section surface"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Comment ça se passe",en:"How it works"})}</h2></div>
+    <ol class="steps">
+      <li><b>${t({fr:"Premier échange",en:"First conversation"})}</b><span>${t({fr:"Taille du groupe, dates, budget et contraintes.",en:"Group size, dates, budget and constraints."})}</span></li>
+      <li><b>${t({fr:"Tarifs de groupe",en:"Group fares"})}</b><span>${t({fr:"Demande aux compagnies et hôtels, devis détaillé sous 48h.",en:"Requests to airlines and hotels, detailed quote within 48h."})}</span></li>
+      <li><b>${t({fr:"Acomptes & noms",en:"Deposits & names"})}</b><span>${t({fr:"Acomptes échelonnés, liste de passagers mise à jour avec vous.",en:"Staged deposits, passenger list updated with you."})}</span></li>
+      <li><b>${t({fr:"Départ accompagné",en:"Supported departure"})}</b><span>${t({fr:"Documents envoyés, assistance joignable pendant tout le voyage.",en:"Documents sent, support reachable for the whole trip."})}</span></li>
+    </ol>
+  </div></section>
+  <section class="section"><div class="wrap split">
+    <div class="text"><span class="eyebrow">${t({fr:"Devis groupe",en:"Group quote"})}</span><h2 class="h2">${t({fr:"Parlez-nous de votre groupe",en:"Tell us about your group"})}</h2><p class="lede">${t({fr:"Réponse sous 48h avec une première estimation. Pour les groupes de plus de 30 personnes, nous vous proposons un appel.",en:"Reply within 48h with a first estimate. For groups over 30, we'll suggest a call."})}</p></div>
+    ${quoteForm({group:true})}
+  </div></section>`;
+}
+
+function corporate(){
+  return `
+  <section class="hero short"><div class="ph">${img("plane","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.corp)}</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Vos déplacements, gérés en une journée",en:"Your company travel, sorted in a day"})}</h1>
+    <p class="sub">${t({fr:"Pour les PME et entreprises de Maurice : billets, hôtels, factures et assistance, avec un interlocuteur qui connaît vos voyageurs.",en:"For Mauritian SMEs and companies: tickets, hotels, invoices and assistance, with one contact who knows your travellers."})}</p>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <dl class="facts">
+      <div><dt>${t({fr:"Réponse",en:"Response"})}</dt><dd>${t({fr:"Sous 2 heures ouvrées",en:"Within 2 working hours"})}</dd></div>
+      <div><dt>${t({fr:"Facturation",en:"Invoicing"})}</dt><dd>${t({fr:"Une facture par voyage ou mensuelle",en:"Per trip or monthly"})}</dd></div>
+      <div><dt>${t({fr:"Urgences",en:"Emergencies"})}</dt><dd>${t({fr:"Ligne WhatsApp 7j/7",en:"WhatsApp line 7 days a week"})}</dd></div>
+    </dl>
+  </div></section>
+  <section class="section" style="padding-top:0"><div class="wrap pillars">
+    <div class="pillar"><div class="big">${t({fr:"Tarifs",en:"Fares"})} <em>${t({fr:"négociés",en:"that work"})}</em></div><p>${t({fr:"Tarifs flexibles ou économiques selon le voyageur, classes affaires au bon moment, et suivi des avoirs non utilisés.",en:"Flexible or saver fares depending on the traveller, business class when it counts, and unused credits tracked."})}</p></div>
+    <div class="pillar"><div class="big">${t({fr:"Profils",en:"Traveller"})} <em>${t({fr:"voyageurs",en:"profiles"})}</em></div><p>${t({fr:"Passeports, cartes de fidélité et préférences de sièges enregistrés une fois, pour ne plus jamais les redemander.",en:"Passports, loyalty cards and seat preferences stored once, so we never need to ask again."})}</p></div>
+    <div class="pillar"><div class="big">${t({fr:"Devoir",en:"Duty"})} <em>${t({fr:"de protection",en:"of care"})}</em></div><p>${t({fr:"Nous savons où sont vos voyageurs et pouvons les réacheminer rapidement en cas de grève, météo ou crise.",en:"We know where your travellers are and can reroute them quickly in case of strikes, weather or crises."})}</p></div>
+  </div></section>
+  <section class="band"><div class="ph">${img("corporate")}</div><div class="wrap">
+    <h2 class="display">${t({fr:"Un appel de 30 minutes pour faire le point",en:"A 30-minute call to review your travel"})}</h2>
+    <p>${t({fr:"Nombre de voyages par an, destinations habituelles, process de validation : nous vous proposons une organisation simple.",en:"Trips per year, usual destinations, approval process: we'll propose a simple setup."})}</p>
+    <div class="ctas"><a href="#appel" class="btn light">${t(U.book)}</a><a href="#devis" class="btn light ghost">${t(U.quote)}</a></div>
+  </div></section>`;
+}
+
+function about(){
+  const J = {fr:[
+      "Je m'appelle Jennifer Kwo. Depuis trente-cinq ans, j'organise les voyages des Mauriciens : billets, hôtels, groupes, voyages d'affaires, et surtout les imprévus.",
+      "Après des décennies au sein de grandes agences, j'ai choisi l'indépendance pour revenir à l'essentiel : connaître chaque client, répondre moi-même au téléphone et suivre chaque dossier jusqu'au retour.",
+      "Je garde les mêmes outils professionnels et l'accès direct aux tarifs des compagnies aériennes, avec une relation directe et sans intermédiaire."],
+    en:[
+      "My name is Jennifer Kwo. For thirty-five years I've organised Mauritians' travel: tickets, hotels, groups, business trips and, above all, the unexpected.",
+      "After decades inside large agencies, I chose independence to get back to what matters: knowing every client, answering the phone myself and following every booking until you're home.",
+      "I keep the same professional tools and direct access to airline fares, with a direct relationship and no middleman."]};
+  const K = {fr:[
+      "Je suis Christopher, le fils de Jennifer. J'ai travaillé dans l'hôtellerie internationale, dans certains des établissements les plus prestigieux de Hong Kong, de Suisse et de l'île Maurice.",
+      "Voyageur dans l'âme, je cherche toujours les adresses confidentielles : la table que personne ne connaît, la plage au bout du chemin, l'hôtel qui fait la différence. Ces pépites, je les partage avec nos clients.",
+      "De l'hôtellerie, je garde un regard de l'intérieur sur ce qui fait un séjour réussi, et je l'apporte à chaque voyage que nous organisons."],
+    en:[
+      "I'm Christopher, Jennifer's son. I've worked in international hospitality, in some of the most prestigious establishments in Hong Kong, Switzerland and Mauritius.",
+      "A traveller at heart, I'm always looking for the places that don't make the guidebooks: the table nobody knows, the beach at the end of the path, the hotel that makes the difference. I share those hidden gems with our clients.",
+      "Hospitality taught me what makes a stay work from the inside, and I bring that eye to every trip we plan."]};
+  const profile = (k, name, role, paras, extra="") => `<article class="profile">
+      <div class="ph">${img(k, name)}</div>
+      <div class="pbody"><h2 class="display" style="font-size:clamp(30px,3.2vw,40px)">${name}</h2><span class="eyebrow">${t(role)}</span>
+        <div class="prose" style="font-size:17px;gap:14px">${paras[lang].map(x=>`<p>${esc(x)}</p>`).join("")}${extra}</div></div>
+    </article>`;
+  return `
+  <section class="section"><div class="wrap split" style="align-items:center">
+    <div class="text">
+      <span class="eyebrow">${t({fr:"Notre histoire",en:"Our story"})}</span>
+      <h1 class="display" style="font-size:clamp(42px,5.6vw,76px)">${t({fr:"Une affaire de famille",en:"A family business"})}</h1>
+      <p class="lede">${t({fr:"Une mère et son fils. Trente-cinq ans d'agence de voyage d'un côté, l'hôtellerie internationale de l'autre, et la même envie : que chaque voyage se passe comme prévu, ou mieux.",en:"A mother and her son. Thirty-five years in travel agencies on one side, international hospitality on the other, and the same goal: that every trip goes to plan, or better."})}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#appel" class="btn accent">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener" class="btn ghost">${t(U.whatsapp)}</a></div>
+    </div>
+    <figure class="media ph" style="aspect-ratio:4/5;margin:0">${img("team","Jennifer & Christopher Kwo",true)}</figure>
+  </div></section>
+  <section class="section surface"><div class="wrap team">
+    ${profile("jennifer","Jennifer Kwo",{fr:"Fondatrice & conseillère voyage",en:"Founder & travel advisor"},J,
+      `<p class="it" style="font-size:21px;color:var(--ink)">${t({fr:"« Un voyage réussi, c'est souvent celui où l'on n'a pas eu à penser aux détails. »",en:"“A good trip is often one where you never had to think about the details.”"})}</p>`)}
+    ${profile("christopher","Christopher Kwo",{fr:"Co-fondateur · Expérience client",en:"Co-founder · Guest experience"},K)}
+  </div></section>
+  <section class="section tight"><div class="wrap">
+    <dl class="facts">
+      <div><dt>${t({fr:"Expérience",en:"Experience"})}</dt><dd>${t({fr:"35 ans en agence, et l'hôtellerie internationale",en:"35 years in agencies, plus international hospitality"})}</dd></div>
+      <div><dt>${t({fr:"Services",en:"Services"})}</dt><dd>${t({fr:"Vols, hôtels, groupes, entreprises",en:"Flights, hotels, groups, business"})}</dd></div>
+      <div><dt>${t({fr:"Langues",en:"Languages"})}</dt><dd>Français · English · Kreol morisien</dd></div>
+    </dl>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Notre approche",en:"Our approach"})}</h2></div>
+    <div class="pillars">
+      <div class="pillar"><div class="big"><em>${t({fr:"Écouter",en:"Listen"})}</em></div><p>${t({fr:"Comprendre le voyage que vous voulez vraiment, pas seulement la destination.",en:"Understand the trip you really want, not just the destination."})}</p></div>
+      <div class="pillar"><div class="big"><em>${t({fr:"Conseiller",en:"Advise"})}</em></div><p>${t({fr:"Vous dire honnêtement quand une option est mauvaise, même si elle est moins chère.",en:"Tell you honestly when an option is a bad one, even if it's cheaper."})}</p></div>
+      <div class="pillar"><div class="big"><em>${t({fr:"Rester là",en:"Stay with you"})}</em></div><p>${t({fr:"Être joignable du premier devis jusqu'au retour à la maison.",en:"Be reachable from the first quote until you're back home."})}</p></div>
+    </div>
+  </div></section>`;
+}
+
+function book(){
+  return `
+  <section class="section"><div class="wrap dgrid" style="align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
+      <span class="eyebrow">${t(U.book)}</span>
+      <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Choisissez un créneau, nous vous appelons.",en:"Pick a time, we'll call you."})}</h1>
+      <div class="cal" id="cal">
+        <div class="calendly-inline-widget" data-url="${esc(C.calendly)}?hide_gdpr_banner=1" id="calw"></div>
+        <div class="calfb" id="calfb" hidden>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Appel découverte · 30 min",en:"Discovery call · 30 min"})}</b><span class="note">${t({fr:"Heure de Maurice (GMT+4)",en:"Mauritius time (GMT+4)"})}</span></div>
+          ${miniCal()}
+          <p class="note">${(STATIC ? t({fr:"Le calendrier ne s'est pas chargé. Ouvrez-le directement :",en:"The calendar didn't load. Open it directly:"}) : t({fr:"Aperçu : le calendrier Calendly s'affiche ici une fois le site en ligne.",en:"Preview: the Calendly calendar appears here once the site is live."}))}</p>
+          <a class="btn accent" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a>
+        </div>
+      </div>
+    </div>
+    <aside class="aside">
+      <h3>${t({fr:"Ce que nous verrons",en:"What we'll cover"})}</h3>
+      <div class="row"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><span>${t({fr:"Destination, dates, nombre de voyageurs, budget.",en:"Destination, dates, number of travellers, budget."})}</span></div>
+      <div class="row"><span>${t({fr:"Nos conseils",en:"Our advice"})}</span><span>${t({fr:"Meilleures routes, saisons, hôtels adaptés.",en:"Best routings, seasons, suitable hotels."})}</span></div>
+      <div class="row"><span>${t({fr:"La suite",en:"Next step"})}</span><span>${t({fr:"Un devis détaillé sous 24 à 48h.",en:"A detailed quote within 24–48h."})}</span></div>
+      <p class="note">${t({fr:"Vous préférez écrire ?",en:"Prefer to write?"})}</p>
+      <a class="btn ghost" href="${wa()}" target="_blank" rel="noopener">${t(U.whatsapp)}</a>
+      <p class="note" style="user-select:all">${esc(C.phone)}<br>${esc(C.email)}</p>
+    </aside>
+  </div></section>`;
+}
+function miniCal(){
+  const wk = lang==='fr' ? ["L","M","M","J","V","S","D"] : ["M","T","W","T","F","S","S"];
+  const today = new Date(); const y = today.getFullYear(), m = today.getMonth();
+  const first = (new Date(y,m,1).getDay()+6)%7, days = new Date(y,m+1,0).getDate();
+  let cells = wk.map(w=>`<div class="wk">${w}</div>`).join("");
+  for (let i=0;i<first;i++) cells += "<div></div>";
+  for (let d=1; d<=days; d++){ const dow=(first+d-1)%7; const on = d>today.getDate() && dow<6; cells += `<div class="${on?'on':''}">${d}</div>`; }
+  const mn = today.toLocaleDateString(lang==='fr'?'fr-FR':'en-GB',{month:'long',year:'numeric'});
+  return `<div><div style="text-transform:capitalize;margin-bottom:10px">${mn}</div><div class="slots">${cells}</div></div>`;
+}
+
+function quoteForm(o={}){
+  const pre = state.prefill || {};
+  const g = !!o.group;
+  return `<form class="form" data-form="quote" id="qf">
+    <label class="field"><span>${t({fr:"Type de voyage",en:"Trip type"})}</span><select id="q-type">${[["leisure",{fr:"Loisirs",en:"Leisure"}],["hm",{fr:"Lune de miel",en:"Honeymoon"}],["group",{fr:"Groupe",en:"Group"}],["biz",{fr:"Affaires",en:"Business"}],["pil",{fr:"Pèlerinage",en:"Pilgrimage"}],["family",{fr:"Visite familiale",en:"Family visit"}]].map(([v,l])=>`<option value="${v}" ${(g&&v==='group')?'selected':''}>${t(l)}</option>`).join("")}</select></label>
+    <label class="field"><span>${t({fr:"Ville de départ",en:"Departure city"})}</span><input id="q-from" value="${t({fr:'Maurice (MRU)',en:'Mauritius (MRU)'})}"></label>
+    <label class="field full"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="q-dest">${destOptions(pre.dest)}<option value="other">${t({fr:"Autre destination",en:"Other destination"})}</option></select></label>
+    <label class="field"><span>${t({fr:"Départ",en:"Departure"})}</span><input id="q-out" type="date" value="${esc(pre.out||'')}"></label>
+    <label class="field"><span>${t({fr:"Retour",en:"Return"})}</span><input id="q-back" type="date" value="${esc(pre.back||'')}"></label>
+    <label class="field"><span>${g?t({fr:"Nombre de participants",en:"Number of participants"}):t({fr:"Adultes",en:"Adults"})}</span><input id="q-ad" type="number" min="1" value="${esc(pre.pax|| (g?20:2))}"></label>
+    <label class="field"><span>${g?t({fr:"Dont enfants / seniors",en:"Of which children / seniors"}):t({fr:"Enfants",en:"Children"})}</span><input id="q-ch" type="number" min="0" value="0"></label>
+    <label class="field"><span>${t({fr:"Budget par personne",en:"Budget per person"})}</span><select id="q-bud"><option>${t({fr:"À définir",en:"To be defined"})}</option><option>&lt; Rs 50 000</option><option>Rs 50 000 – 100 000</option><option>Rs 100 000 – 200 000</option><option>&gt; Rs 200 000</option></select></label>
+    <label class="field"><span>${t({fr:"Classe",en:"Cabin"})}</span><select id="q-cab"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First</option></select></label>
+    <div class="field full"><span>${t({fr:"Services souhaités",en:"Services needed"})}</span><div class="checks">${[{fr:"Vols",en:"Flights"},{fr:"Hôtel",en:"Hotel"},{fr:"Transferts",en:"Transfers"},{fr:"Excursions",en:"Excursions"},{fr:"Assurance voyage",en:"Travel insurance"},{fr:"Visa",en:"Visa"}].map((s,i)=>`<label><input type="checkbox" name="svc" value="${esc(t(s))}" ${i<2?'checked':''}> ${t(s)}</label>`).join("")}</div></div>
+    <label class="field"><span>${t({fr:"Nom",en:"Name"})}</span><input id="q-name" required autocomplete="name"></label>
+    <label class="field"><span>WhatsApp / ${t({fr:"téléphone",en:"phone"})}</span><input id="q-tel" required autocomplete="tel" placeholder="+230 …"></label>
+    <label class="field full"><span>Email</span><input id="q-mail" type="email" autocomplete="email"></label>
+    <label class="field full"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><textarea id="q-msg" placeholder="${t({fr:'Occasion, hôtels préférés, contraintes, flexibilité des dates…',en:'Occasion, preferred hotels, constraints, date flexibility…'})}">${pre.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + pre.offer) : ""}</textarea></label>
+    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer ma demande",en:"Send my request"})}</button><span class="note">${t({fr:"Réponse sous 24h ouvrées.",en:"Reply within 24 working hours."})}</span></div>
+  </form>`;
+}
+function quotePage(){
+  return `
+  <section class="section"><div class="wrap dgrid" style="align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
+      <span class="eyebrow">${t(U.quote)}</span>
+      <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Racontez-nous votre voyage",en:"Tell us about your trip"})}</h1>
+      <p class="lede">${t({fr:"Plus vous nous donnez de détails, plus le premier devis sera juste. Rien n'est engageant.",en:"The more detail you give, the more accurate the first quote. Nothing is binding."})}</p>
+      <div id="qwrap">${quoteForm({group: state.prefill && state.prefill.type==='group'})}</div>
+    </div>
+    <aside class="aside">
+      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("map")}</div>
+      <h3>${t({fr:"Pourquoi passer par nous",en:"Why book with us"})}</h3>
+      <div class="row"><span>${t({fr:"Tarifs",en:"Fares"})}</span><span>${t({fr:"Accès direct aux tarifs des compagnies et aux tarifs de groupe.",en:"Direct access to airline and group fares."})}</span></div>
+      <div class="row"><span>${t({fr:"Suivi",en:"Follow-up"})}</span><span>${t({fr:"Une seule personne pour tout votre voyage.",en:"One person for your whole trip."})}</span></div>
+      <div class="row"><span>${t({fr:"Assistance",en:"Support"})}</span><span>${t({fr:"Joignable sur WhatsApp pendant le voyage.",en:"Reachable on WhatsApp during the trip."})}</span></div>
+    </aside>
+  </div></section>`;
+}
+const offerCard = o => `<a class="ocard" href="#offre-${o.id}"><div class="ph">${img(o.img, t(o.title))}<span class="otag">${t(o.tag)}</span></div>
+  <div class="body"><span class="note">${t(o.valid)}</span><h3>${t(o.title)}</h3>
+  <div class="price"><small>${t(U.from)}</small><b>${esc(o.price)}</b><span>${t(o.per)}</span></div>
+  ${o.sample ? `<span class="sample" style="align-self:flex-start">${t(U.example)}</span>` : ""}</div></a>`;
+function offersPage(){
+  const list = window.OFFERS || [];
+  return `
+  <section class="hero short"><div class="ph">${img("mauritius4","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.offers)}</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Offres & bons plans",en:"Offers & deals"})}</h1>
+    <p class="sub">${t({fr:"Des séjours négociés et des départs de groupe, à prix connu. Les places sont limitées : écrivez-nous pour bloquer la vôtre.",en:"Negotiated stays and group departures at a set price. Seats are limited: message us to hold yours."})}</p>
+  </div></section>
+  <section class="section"><div class="wrap">
+    ${list.length ? `<div class="offers-grid">${list.map(offerCard).join("")}</div>` : `<p class="lede">${t({fr:"Aucune offre en ce moment. Inscrivez-vous pour être prévenu.",en:"No offers right now. Sign up to be notified."})}</p>`}
+  </div></section>
+  <section class="section surface"><div class="wrap split">
+    <div class="text"><span class="eyebrow">WhatsApp</span><h2 class="h2">${t({fr:"Recevez les offres avant tout le monde",en:"Get offers before everyone else"})}</h2><p class="lede">${t({fr:"Une ou deux offres par mois, envoyées directement sur WhatsApp. Pas de spam.",en:"One or two offers a month, sent straight to WhatsApp. No spam."})}</p>
+      <a class="btn accent" href="${wa(lang==='fr'?"Bonjour, je souhaite recevoir vos offres de voyage sur WhatsApp.":"Hello, I'd like to receive your travel offers on WhatsApp.")}" target="_blank" rel="noopener">${t({fr:"M'inscrire sur WhatsApp",en:"Sign up on WhatsApp"})}</a></div>
+    <div class="media ph">${img("plane")}</div>
+  </div></section>`;
+}
+function offerPage(id){
+  const o = (window.OFFERS||[]).find(x=>x.id===id); if (!o) return notFound();
+  const d = o.dest ? byS(o.dest) : null;
+  const msg = (lang==='fr' ? "Bonjour, je suis intéressé(e) par l'offre : " : "Hello, I'm interested in the offer: ") + t(o.title) + " (" + o.price + ")";
+  const others = (window.OFFERS||[]).filter(x=>x.id!==o.id).slice(0,3);
+  return `
+  <section class="hero short"><div class="ph">${img(o.img, t(o.title), true)}</div><div class="wrap">
+    <div class="crumbs"><a href="#offres">${t(U.offers)}</a> / ${t(o.tag)}</div>
+    <h1 class="display">${t(o.title)}</h1><p class="sub">${t(o.valid)}</p>
+  </div></section>
+  <section class="section"><div class="wrap dgrid">
+    <div style="display:flex;flex-direction:column;gap:32px;min-width:0">
+      ${o.sample ? `<span class="sample" style="align-self:flex-start;margin:0">${t(U.example)}</span>` : ""}
+      <div><h2 class="h2" style="margin-bottom:14px">${t({fr:"Ce qui est inclus",en:"What's included"})}</h2><ul class="inc">${t(o.inc).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+      <p class="note">${t(o.cond)}</p>
+      ${d ? `<div class="split" style="grid-template-columns:1fr 1fr;gap:24px;align-items:center"><a class="ph" href="#dest-${d.s}" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img(d.img[1]||d.img[0], t(d.n))}</a><div class="text" style="gap:12px"><span class="eyebrow">${t(U.dest)}</span><h3 style="font-size:24px">${t(d.n)}</h3><p class="note">${t(d.t)}</p><a class="link" href="#dest-${d.s}">${t(U.discover)}</a></div></div>` : ""}
+    </div>
+    <aside class="aside">
+      <div class="price" style="border:0;padding:0;margin:0"><small>${t(U.from)}</small><b>${esc(o.price)}</b></div>
+      <span class="note" style="margin-top:-10px">${t(o.per)}</span>
+      <div class="row"><span>${t({fr:"Validité",en:"Validity"})}</span><span>${t(o.valid)}</span></div>
+      <a class="btn accent" href="${wa(msg)}" target="_blank" rel="noopener">${t({fr:"Réserver sur WhatsApp",en:"Book on WhatsApp"})}</a>
+      <a class="btn ghost" href="#devis" data-offer="${o.id}">${t(U.quote)}</a>
+      <a class="btn ghost" href="#appel">${t(U.book)}</a>
+    </aside>
+  </div></section>
+  ${others.length ? `<section class="section surface"><div class="wrap"><div class="head"><h2 class="h2">${t({fr:"Autres offres",en:"Other offers"})}</h2><a class="link" href="#offres">${t({fr:"Toutes les offres",en:"All offers"})}</a></div><div class="offers-grid">${others.map(offerCard).join("")}</div></div></section>` : ""}`;
+}
+function reel(a, i, small){
+  const d = byS(a.dest);
+  return `<button class="reel" data-video="${i}" type="button" aria-label="${esc(t(a.trip))}">
+    <div class="ph">${img(a.poster, t(a.trip))}<span class="play"></span><span class="cap"><small>${esc(a.handle)}</small><b>${t(a.trip)}</b></span></div>
+    ${small ? "" : `<blockquote>« ${t(a.q)} »</blockquote><span class="note">${t(a.name)}${d ? ` · ${t(d.n)}` : ""}</span>`}
+    ${a.sample && !small ? `<span class="sample" style="margin:0;align-self:flex-start">${t(U.example)}</span>` : ""}
+  </button>`;
+}
+function travellers(){
+  const list = window.AMBASSADORS || [];
+  return `
+  <section class="hero short"><div class="ph">${img("plane2","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.travellers)}</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Ils sont partis avec nous",en:"They travelled with us"})}</h1>
+    <p class="sub">${t({fr:"Nos ambassadeurs racontent leur voyage en quelques secondes. Des vraies personnes, de vrais itinéraires.",en:"Our ambassadors share their trip in a few seconds. Real people, real itineraries."})}</p>
+  </div></section>
+  <section class="section"><div class="wrap"><div class="reels">${list.map((a,i)=>reel(a,i)).join("")}</div></div></section>
+  <section class="section surface"><div class="wrap split">
+    <div class="text"><span class="eyebrow">${t({fr:"Ambassadeurs",en:"Ambassadors"})}</span><h2 class="h2">${t({fr:"Vous créez du contenu voyage ?",en:"Do you create travel content?"})}</h2><p class="lede">${t({fr:"Nous travaillons avec des voyageurs, couples et familles qui aiment partager. Parlons d'une collaboration.",en:"We work with travellers, couples and families who love to share. Let's talk about working together."})}</p>
+      <a class="btn" href="${wa(lang==='fr'?"Bonjour, je souhaite devenir ambassadeur Permanent Summer Voyages.":"Hello, I'd like to become a Permanent Summer Voyages ambassador.")}" target="_blank" rel="noopener">${t({fr:"Devenir ambassadeur",en:"Become an ambassador"})}</a></div>
+    <div class="media ph">${img("santorini2")}</div>
+  </div></section>`;
+}
+function videoModal(){
+  if (state.video == null) return "";
+  const a = (window.AMBASSADORS||[])[state.video]; if (!a) return "";
+  return `<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(t(a.trip))}" data-act="closevideo">
+    <button class="close" data-act="closevideo" aria-label="${t({fr:'Fermer',en:'Close'})}">×</button>
+    ${a.video ? `<video src="${esc(a.video)}" poster="${ROOT}img/${a.poster}.jpg" controls autoplay playsinline></video>`
+      : `<div class="soon">${img(a.poster)}<span class="eyebrow" style="color:#fff">${esc(a.handle)}</span><b style="font-weight:400;font-size:22px">${t(a.trip)}</b><span>${t({fr:"Vidéo bientôt disponible",en:"Video coming soon"})}</span></div>`}
+  </div>`;
+}
+
+function legal(){
+  return `<section class="section"><div class="wrap" style="max-width:820px">
+    <span class="eyebrow">${t({fr:"Mentions légales",en:"Legal notice"})}</span>
+    <h1 class="display" style="font-size:clamp(36px,4.6vw,56px);margin:12px 0 28px">${t({fr:"Informations société",en:"Company information"})}</h1>
+    <div class="prose" style="font-size:16px">
+      <p><b style="font-weight:400">Permanent Summer Lda</b><br>${t({fr:"Société de droit portugais · NIF : à compléter · Siège : Algarve, Portugal",en:"Portuguese company · NIF: to complete · Registered office: Algarve, Portugal"})}</p>
+      <p>${t({fr:"Immatriculation agence de voyage (RNAVT, Turismo de Portugal) : en cours. Garantie financière et assurance responsabilité civile professionnelle : à compléter.",en:"Travel agency registration (RNAVT, Turismo de Portugal): in progress. Financial guarantee and professional liability insurance: to complete."})}</p>
+      <p>${t({fr:"Données personnelles : les informations transmises via ce site servent uniquement à répondre à votre demande, conformément au RGPD. Politique de confidentialité et conditions générales de vente à publier avant le lancement.",en:"Personal data: information sent through this site is used only to answer your request, in line with the GDPR. Privacy policy and terms of sale to be published before launch."})}</p>
+      <p class="note">${t({fr:"Page de travail : contenu à valider avec le comptable et le juriste.",en:"Working page: content to be validated with the accountant and lawyer."})}</p>
+    </div></div></section>`;
+}
+function notFound(){ return `<section class="section"><div class="wrap"><h1 class="display h2">${t({fr:"Page introuvable",en:"Page not found"})}</h1><p style="margin-top:16px"><a class="link" href="#home">${t({fr:"Retour à l'accueil",en:"Back to home"})}</a></p></div></section>`; }
+
+/* ---------- router ---------- */
+function route(){
+  const h = STATIC ? window.SITE.page : ((location.hash || "#home").slice(1).split("/")[0] || "home");
+  let html, overlay = true;
+  if (h === "home" || h === "") html = home();
+  else if (h === "destinations") html = destinations();
+  else if (h.startsWith("dest-")) html = destPage(h.slice(5));
+  else if (h === "inspiration") html = inspiration();
+  else if (h.startsWith("theme-")) html = themePage(h.slice(6));
+  else if (h === "offres") html = offersPage();
+  else if (h.startsWith("offre-")) html = offerPage(h.slice(6));
+  else if (h === "voyageurs") html = travellers();
+  else if (h === "groupes") html = groups();
+  else if (h === "entreprises") html = corporate();
+  else if (h === "a-propos") { html = about(); overlay = false; }
+  else if (h === "appel") { html = book(); overlay = false; }
+  else if (h === "devis") { html = quotePage(); overlay = false; }
+  else if (h === "mentions") { html = legal(); overlay = false; }
+  else { html = notFound(); overlay = false; }
+  return { html, overlay, key:h };
+}
+let lastKey = null;
+function render(keepScroll){
+  const r = route();
+  document.documentElement.lang = lang;
+  document.body.classList.toggle("overlay", r.overlay);
+  document.getElementById("app").innerHTML = linkify(header() + `<main>${r.html}</main>` + footer() + drawer() + videoModal());
+  if (!STATIC) document.title = "Permanent Summer Voyages";
+  if (!keepScroll && r.key !== lastKey) window.scrollTo(0,0);
+  lastKey = r.key;
+  onScroll();
+  if (r.key === "appel") mountCalendly();
+}
+function onScroll(){
+  const hdr = document.getElementById("hdr"); if (!hdr) return;
+  hdr.classList.toggle("solid", window.scrollY > 40 || !!state.megaOpen);
+}
+/* Calendly: one loader for the inline widget (#appel page) and the popup (every "Book a call" button) */
+let calState = "idle"; const calWait = [];
+function loadCalendly(cb){
+  if (window.Calendly) { cb && cb(true); return; }
+  if (cb) calWait.push(cb);
+  if (calState !== "idle") return;
+  calState = "loading";
+  try { const l = document.createElement("link"); l.rel = "stylesheet"; l.href = "https://assets.calendly.com/assets/external/widget.css"; document.head.appendChild(l); } catch(e){}
+  const s = document.createElement("script");
+  s.src = "https://assets.calendly.com/assets/external/widget.js"; s.async = true;
+  const done = ok => { calState = ok ? "ready" : "failed"; calWait.splice(0).forEach(f => f(ok)); };
+  s.onload = () => done(!!window.Calendly); s.onerror = () => done(false);
+  document.head.appendChild(s);
+  setTimeout(() => { if (calState === "loading") done(false); }, 4000);
+}
+function mountCalendly(){
+  const fb = document.getElementById("calfb"), w = document.getElementById("calw");
+  const showFb = () => { if (w && !w.querySelector("iframe")) { w.hidden = true; fb.hidden = false; } };
+  loadCalendly(ok => {
+    if (!ok) return showFb();
+    try { window.Calendly.initInlineWidget({ url: w.dataset.url, parentElement: w }); } catch(e){ showFb(); }
+    setTimeout(showFb, 3500);
+  });
+}
+function toast(msg){ const d=document.createElement("div"); d.className="toast"; d.textContent=msg; document.body.appendChild(d); setTimeout(()=>d.remove(),2600); }
+
+/* ---------- events ---------- */
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-lang],[data-mega],[data-region],[data-tab],[data-filter],[data-act],[data-pre],[data-offer],[data-copy],[data-video],[data-k],a[href^='#']");
+  if (!el) { if (state.megaOpen && !e.target.closest(".mega")) { state.megaOpen=null; render(true); } return; }
+  if (el.dataset.lang){ lang = el.dataset.lang; try{localStorage.setItem("ps-lang",lang)}catch(_){}; render(true); return; }
+  if (el.dataset.mega){ state.megaOpen = state.megaOpen===el.dataset.mega ? null : el.dataset.mega; render(true); return; }
+  if (el.dataset.region){ state.megaRegion = el.dataset.region; render(true); return; }
+  if (el.dataset.tab){ state.homeTab = el.dataset.tab; render(true); return; }
+  if (el.dataset.act==="drawer"){ state.drawer = !state.drawer; render(true); return; }
+  if (el.dataset.act==="closevideo"){ if (e.target.closest("video,.soon")) return; state.video = null; render(true); return; }
+  if (el.dataset.video != null){ state.video = +el.dataset.video; render(true); return; }
+  const isCall = STATIC ? (el.dataset.k === "appel" && window.SITE.page !== "appel") : (el.getAttribute("href") === "#appel" && location.hash !== "#appel");
+  if (isCall && window.Calendly){
+    e.preventDefault(); state.megaOpen = null; state.drawer = false; if (STATIC) render(true);
+    try { window.Calendly.initPopupWidget({ url: C.calendly + "?hide_gdpr_banner=1" }); } catch(_) { if (STATIC) location.href = el.href; else location.hash = "appel"; }
+    return;
+  }
+  if (el.dataset.copy){ const txt = document.getElementById(el.dataset.copy).textContent; navigator.clipboard.writeText(txt).then(()=>toast(lang==='fr'?"Copié":"Copied")).catch(()=>{ const r=document.createRange(); r.selectNodeContents(document.getElementById(el.dataset.copy)); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }); return; }
+  if (el.dataset.filter){ state.filter = el.dataset.filter; if (el.tagName === "BUTTON") { render(true); return; } }
+  if (STATIC && (el.dataset.pre || el.dataset.offer)){
+    e.preventDefault();
+    location.href = el.href.split("?")[0] + "?" + (el.dataset.pre ? "dest=" + encodeURIComponent(el.dataset.pre) : "offer=" + encodeURIComponent(el.dataset.offer));
+    return;
+  }
+  if (el.dataset.pre){ state.prefill = { dest: el.dataset.pre }; }
+  if (el.dataset.offer){ const o = (window.OFFERS||[]).find(x=>x.id===el.dataset.offer); if (o) state.prefill = { dest: o.dest || "", offer: t(o.title) + " (" + o.price + ")" }; }
+  if (STATIC) { if (el.dataset.k === window.SITE.page && (state.drawer || state.megaOpen)) { state.drawer = false; state.megaOpen = null; render(true); } return; }
+  if (el.matches("a[href^='#']")){
+    state.megaOpen = null; state.drawer = false;
+    if (el.getAttribute("href") === location.hash) { e.preventDefault(); render(); window.scrollTo(0,0); }
+  }
+});
+document.addEventListener("submit", e => {
+  const f = e.target; e.preventDefault();
+  if (f.dataset.form === "search"){
+    state.prefill = { dest: f.querySelector("#s-dest").value, out: f.querySelector("#s-out").value, back: f.querySelector("#s-back").value, pax: f.querySelector("#s-pax").value };
+    if (STATIC) { const q = new URLSearchParams(Object.entries(state.prefill).filter(([,v])=>v)); location.href = urlFor("devis") + "?" + q.toString(); return; }
+    location.hash = "devis"; return;
+  }
+  if (f.dataset.form === "news"){
+    const em = (f.querySelector("input")||{}).value || "";
+    const link = wa((lang==='fr'?"Bonjour, je souhaite recevoir vos offres de voyage. Mon email : ":"Hello, I'd like to receive your travel offers. My email: ") + em);
+    f.innerHTML = `<p class="note">${lang==='fr'?"Dernière étape : confirmez sur WhatsApp.":"Last step: confirm on WhatsApp."} <a class="link" href="${link}" target="_blank" rel="noopener">WhatsApp →</a></p>`;
+    return;
+  }
+  if (f.dataset.form === "quote"){
+    const v = id => (f.querySelector("#"+id)||{}).value || "";
+    const sel = f.querySelector("#q-dest"); const destTxt = sel.value ? sel.options[sel.selectedIndex].text : (lang==='fr'?"À définir":"To be defined");
+    const svc = [...f.querySelectorAll("input[name=svc]:checked")].map(x=>x.value).join(", ");
+    const typeSel = f.querySelector("#q-type");
+    const L = lang==='fr';
+    const msg = [
+      L?"Bonjour, voici ma demande de devis :":"Hello, here is my quote request:",
+      `${L?"Type":"Type"} : ${typeSel.options[typeSel.selectedIndex].text}`,
+      `${L?"Départ de":"From"} : ${v("q-from")}`,
+      `Destination : ${destTxt}`,
+      `${L?"Dates":"Dates"} : ${v("q-out")||"?"} → ${v("q-back")||"?"}`,
+      `${L?"Voyageurs":"Travellers"} : ${v("q-ad")} + ${v("q-ch")}`,
+      `Budget : ${v("q-bud")} · ${L?"Classe":"Cabin"} : ${v("q-cab")}`,
+      `Services : ${svc||"-"}`,
+      v("q-msg") ? `${L?"Détails":"Details"} : ${v("q-msg")}` : "",
+      `— ${v("q-name")} · ${v("q-tel")}${v("q-mail")?" · "+v("q-mail"):""}`
+    ].filter(Boolean).join("\n");
+    f.outerHTML = `<div class="done">
+      <b style="font-weight:400;font-size:22px">${L?"Votre demande est prête":"Your request is ready"}</b>
+      <p class="note">${STATIC ? (L?"Envoyez-la sur WhatsApp en un clic, ou copiez le texte pour l'envoyer par email à "+esc(C.email)+".":"Send it on WhatsApp in one click, or copy the text and email it to "+esc(C.email)+".") : (L?"Aperçu : sur le site en ligne, ce formulaire sera envoyé directement par email. Ici, vous pouvez l'envoyer par WhatsApp.":"Preview: on the live site this form will be emailed directly. Here, you can send it via WhatsApp.")}</p>
+      <pre id="qmsg">${esc(msg)}</pre>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn accent" href="${wa(msg)}" target="_blank" rel="noopener">${t(U.whatsapp)}</a><button class="btn ghost" data-copy="qmsg" type="button">${L?"Copier le texte":"Copy text"}</button></div>
+    </div>`;
+  }
+});
+if (!STATIC) window.addEventListener("hashchange", () => { state.megaOpen = null; state.drawer = false; render(); });
+window.addEventListener("scroll", onScroll, { passive:true });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && (state.megaOpen || state.drawer || state.video != null)) { state.megaOpen=null; state.drawer=false; state.video=null; render(true); } });
+if (STATIC && document.getElementById("app").children.length){
+  /* page is pre-rendered: keep the HTML, only wire up what needs JS */
+  lastKey = window.SITE.page;
+  if (lastKey === "devis") {
+    const q = new URLSearchParams(location.search), o = (window.OFFERS||[]).find(x => x.id === q.get("offer"));
+    if (o) state.prefill = { dest: o.dest || "", offer: t(o.title) + " (" + o.price + ")" };
+    else if ([...q.keys()].length) state.prefill = { dest: q.get("dest") || "", out: q.get("out") || "", back: q.get("back") || "", pax: q.get("pax") || "" };
+    if ([...q.keys()].length) render(true);
+  }
+  onScroll();
+  if (lastKey === "appel") mountCalendly();
+} else render();
+loadCalendly();
+window.PSV = { render, pathFor, urlFor, slugify, destSlug, THEME_SLUG, PAGES };
+})();
+</script>
