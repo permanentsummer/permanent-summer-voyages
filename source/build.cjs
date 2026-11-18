@@ -7,7 +7,7 @@ const { JSDOM, VirtualConsole } = require("jsdom");
 
 const SRC = __dirname;
 const OUT = path.resolve(__dirname, "../docs");
-const SITE_URL = (process.argv[2] || process.env.SITE_URL || "https://voyages.permanentsummer.co").replace(/\/?$/, "/");
+const SITE_URL = (process.argv[2] || process.env.SITE_URL || "https://permanentsummervoyages.com").replace(/\/?$/, "/");
 const BRAND = "Permanent Summer Voyages";
 
 const src = fs.readFileSync(path.join(SRC, "index.src.html"), "utf8");

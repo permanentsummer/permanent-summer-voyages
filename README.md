@@ -15,18 +15,22 @@ source/   the editable source and the build script that generates docs/
    - Source: **Deploy from a branch**
    - Branch: **main**, folder **/docs**
    - Save.
-4. Custom domain: in the same page, enter `voyages.permanentsummer.co` (or the domain you choose) and save. GitHub creates a `docs/CNAME` file.
-5. At your DNS provider (Cloudflare), add a **CNAME** record:
-   `voyages` → `<your-github-username>.github.io`
-6. Back in Settings → Pages, tick **Enforce HTTPS** once it becomes available.
+4. Custom domain: in the same page, enter `permanentsummervoyages.com` and save. (`docs/CNAME` already contains it.)
+5. In Cloudflare → DNS, add these records, all set to **DNS only** (grey cloud) so GitHub can issue the HTTPS certificate:
+   - `A` · `@` → `185.199.108.153`
+   - `A` · `@` → `185.199.109.153`
+   - `A` · `@` → `185.199.110.153`
+   - `A` · `@` → `185.199.111.153`
+   - `CNAME` · `www` → `permanentsummer.github.io`
+6. Back in Settings → Pages, tick **Enforce HTTPS** once it becomes available (can take up to an hour).
 7. In Cloudflare, turn off **Scrape Shield → Email Address Obfuscation** for this domain, otherwise the email shown on the site gets rewritten.
 
 The pages use relative links, so the site also works at `https://<username>.github.io/permanent-summer-voyages/` before the domain is connected. The custom 404 page only looks right on the custom domain.
 
 ## After going live
 
-- Add the site to **Google Search Console** and submit `https://voyages.permanentsummer.co/sitemap.xml`.
-- If the final domain is different from `voyages.permanentsummer.co`, the canonical URLs, sitemap and social previews must be regenerated: run the build with the new domain (see below), or ask Claude to rebuild.
+- Add the site to **Google Search Console** and submit `https://permanentsummervoyages.com/sitemap.xml`.
+- If the final domain is different from `permanentsummervoyages.com`, the canonical URLs, sitemap and social previews must be regenerated: run the build with the new domain (see below), or ask Claude to rebuild.
 
 ## Before launch: content still to replace
 
@@ -44,7 +48,7 @@ All text that changes often (offers, hot destinations, ambassadors, phone, links
 ```
 cd source
 npm install          # first time only
-node build.cjs https://voyages.permanentsummer.co
+node build.cjs https://permanentsummervoyages.com
 ```
 
 Then upload the updated `docs/` folder. New photos go into `docs/img/` as `.jpg`, referenced by file name (without `.jpg`) in `data.js`.

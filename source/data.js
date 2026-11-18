@@ -4,7 +4,7 @@ window.CONFIG = {
   sub: "Voyages",
   phone: "+230 5773 8958",
   whatsapp: "23057738958",          // international format, digits only
-  email: "voyages@permanentsummer.co", // placeholder
+  email: "contact@permanentsummervoyages.com",
   calendly: "https://calendly.com/permanentsummer/30min",
   social: { facebook: "", instagram: "" }, // paste full profile URLs here; empty = icon shown as "link to add"
   hours: { fr: "Lun–sam, 8h–20h (heure de Maurice). Urgences voyage 7j/7.", en: "Mon–Sat, 8am–8pm (Mauritius time). Travel emergencies 7 days a week." }
