@@ -36,7 +36,7 @@ function renderPage(page, lang, root) {
   const w = dom.window; w.scrollTo = () => {};
   w.SITE = { page, lang, root };
   w.eval(dataJs); w.eval(appJs);
-  return { html: w.document.getElementById("app").innerHTML, bodyClass: w.document.body.className, w };
+  return { html: w.document.getElementById("app").innerHTML, bodyClass: w.document.body.className, theme: w.document.documentElement.dataset.theme || "dark", w };
 }
 
 /* ---------- data + helpers from a reference window ---------- */
@@ -47,7 +47,7 @@ const clip = (s, n = 158) => { s = String(s).replace(/\s+/g, " ").trim(); if (s.
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 const { EVENTS } = ref;
-const keys = ["home", "retraites", ...RETREATS.map(r => "retraite-" + r.s), "brief", "evenements", ...EVENTS.map(e => "event-" + e.k), "budget", "activites", "guide",
+const keys = ["home", "voyages", "comment", "partenaires", "retraites", ...RETREATS.map(r => "retraite-" + r.s), "brief", "evenements", ...EVENTS.map(e => "event-" + e.k), "budget", "activites", "guide",
   "destinations", ...DESTS.map(d => "dest-" + d.s), "inspiration", ...THEMES.map(t => "theme-" + t.k),
   "offres", ...OFFERS.map(o => "offre-" + o.id), "voyageurs", "groupes", "entreprises", "a-propos", "appel", "devis", "mentions"];
 
@@ -57,6 +57,15 @@ function meta(key, lg) {
   if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
     desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sous 48 h, vols de chaque participant compris.",
              "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 proposals within 48 h, every participant's flights included."); }
+  else if (key === "voyages") { title = L("Voyages sur mesure, vols compris", "Tailor-made travel, flights included");
+    desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
+             "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
+  else if (key === "comment") { title = L("Comment ça marche : retraites d'entreprise avec vols de groupe", "How it works: company retreats with group flights");
+    desc = L("Brief en 5 minutes, 3 propositions sous 48 h, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
+             "5-minute brief, 3 proposals within 48 h, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
+  else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
+    desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Groupes de 10 à 150 personnes, réservés à l'avance. Inscription gratuite.",
+             "Hotels, villas, estates: host company retreats on weekdays. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
   else if (key === "retraites") { title = L("Retraites d'entreprise en Europe et au-delà", "Company retreats in Europe and beyond");
     desc = L(`${RETREATS.length} destinations de séminaire et d'offsite : Algarve, Lisbonne, Ericeira, Majorque, Toscane, Marrakech, Croatie… Dès 10 personnes, vols compris.`,
              `${RETREATS.length} offsite and retreat destinations: Algarve, Lisbon, Ericeira, Mallorca, Tuscany, Marrakech, Croatia… From 10 people, flights included.`); image = "team_villa2"; }
@@ -81,30 +90,30 @@ function meta(key, lg) {
   else if (key === "guide") { title = L("Organiser un séminaire d'entreprise : la checklist complète", "How to plan a company offsite: the complete checklist");
     desc = L("Budget, destination, lieu, vols, programme, communication : la checklist étape par étape pour organiser un séminaire, de J-6 mois au retour.",
              "Budget, destination, venue, flights, programme, comms: the step-by-step checklist for planning an offsite, from six months out to back home."); image = "team_garden"; }
-  else if (key === "destinations") { title = L("Voyages de groupe : où partir entre amis, en famille ou en club", "Group trips: where to go with friends, family or your club");
-    desc = L(`${DESTS.length} destinations pour les voyages de groupe : Lisbonne et l'Algarve, Marrakech, les Alpes, la côte amalfitaine, Le Cap… Vols de chacun coordonnés.`,
-             `${DESTS.length} destinations for group trips: Lisbon and the Algarve, Marrakech, the Alps, the Amalfi Coast, Cape Town… Everyone's flights coordinated.`); image = "grp_beachsunset"; }
+  else if (key === "destinations") { title = L("Où partir : destinations de voyage sur mesure", "Where to go: tailor-made travel destinations");
+    desc = L(`${DESTS.length} destinations en couple, en famille ou entre amis : Lisbonne et l'Algarve, Marrakech, les Alpes, la côte amalfitaine, Le Cap… Vols compris.`,
+             `${DESTS.length} destinations for couples, families and friends: Lisbon and the Algarve, Marrakech, the Alps, the Amalfi Coast, Cape Town… Flights included.`); image = "grp_beachsunset"; }
   else if (key.startsWith("dest-")) { const d = DESTS.find(x => x.s === key.slice(5)); const n = T(d.n, lg);
-    title = L(`Voyage de groupe ${n}`, `Group trip to ${n}`); desc = clip(`${T(d.t, lg)} ${T(d.d, lg)}`); image = d.img[0];
-    crumbs = [[L("Voyages de groupe", "Group trips"), "destinations"], [n, key]]; }
-  else if (key === "inspiration") { title = L("Idées de voyages de groupe", "Group trip ideas");
-    desc = L("Entre amis, mariages et célébrations, grandes familles, clubs, équipes sportives, ski, safari : trouvez votre prochain voyage de groupe par envie.",
-             "Friends' trips, weddings and celebrations, extended families, clubs, sports teams, ski, safari: find your next group trip by mood."); image = "pool"; }
+    title = L(`Voyage sur mesure : ${n}`, `Tailor-made trip to ${n}`); desc = clip(`${T(d.t, lg)} ${T(d.d, lg)}`); image = d.img[0];
+    crumbs = [[L("Destinations", "Destinations"), "destinations"], [n, key]]; }
+  else if (key === "inspiration") { title = L("Idées de voyages", "Travel ideas");
+    desc = L("Entre amis, mariages et célébrations, en famille, pèlerinages, ski, soleil d'hiver, safari, city breaks : trouvez votre prochain voyage par envie.",
+             "Friends' trips, weddings and celebrations, family trips, pilgrimages, ski, winter sun, safaris, city breaks: find your next trip by mood."); image = "travel_seniors"; }
   else if (key.startsWith("theme-")) { const th = THEMES.find(x => x.k === key.slice(6)); const n = T(th, lg);
-    title = L(`${n} : idées de voyages de groupe`, `${n}: group trip ideas`); desc = clip(T(th.d, lg)); image = th.img;
+    title = L(`${n} : idées de voyages`, `${n}: travel ideas`); desc = clip(T(th.d, lg)); image = th.img;
     crumbs = [["Inspiration", "inspiration"], [n, key]]; }
-  else if (key === "offres") { title = L("Offres de voyages de groupe", "Group travel offers");
-    desc = L("Séjours de groupe négociés à prix connu : villas, chalets, riads. Dates limitées, réservation sur WhatsApp.",
-             "Negotiated group stays at a set price: villas, chalets, riads. Limited dates, book on WhatsApp."); image = "algarve2"; }
+  else if (key === "offres") { title = L("Offres séminaires et formules de retraite clés en main", "Offsite offers and turnkey retreats");
+    desc = L("Séminaires négociés à prix connu et retraites clés en main : Algarve, Cracovie, Crète, Ericeira, Porto, Marrakech. Vols de chaque participant sur devis.",
+             "Negotiated offsites at a set price and turnkey retreats: Algarve, Kraków, Crete, Ericeira, Porto, Marrakech. Every participant's flights quoted."); image = "venue_hotel"; }
   else if (key.startsWith("offre-")) { const o = OFFERS.find(x => x.id === key.slice(6)); const n = T(o.title, lg);
     title = `${n}, ${L("dès", "from")} ${o.price}`; desc = clip(`${T(o.valid, lg)}. ${L("Inclus", "Included")} : ${T(o.inc, lg).join(", ")}.`); image = o.img;
     crumbs = [[L("Offres", "Offers"), "offres"], [n, key]]; }
   else if (key === "voyageurs") { title = L("Nos voyageurs en vidéo", "Our travellers on video");
-    desc = L("Équipes, amis, familles et clubs racontent leur voyage en quelques secondes. De vraies personnes, de vrais itinéraires.",
-             "Teams, friends, families and clubs share their trip in a few seconds. Real people, real itineraries."); image = "plane2"; }
-  else if (key === "groupes") { title = L("Voyages de groupe : amis, mariages, familles, clubs", "Group travel: friends, weddings, families, clubs");
-    desc = L("Entre amis, mariages et célébrations, grandes familles, associations, équipes sportives, pèlerinages : tarifs de groupe et coordination de 10 à 300 voyageurs.",
-             "Friends' trips, weddings and celebrations, extended families, associations, sports teams, pilgrimages: group rates and coordination for 10 to 300 travellers."); image = "grp_sunset"; }
+    desc = L("Couples, familles et amis racontent leur voyage en quelques secondes. De vraies personnes, de vrais itinéraires.",
+             "Couples, families and friends share their trip in a few seconds. Real people, real itineraries."); image = "plane2"; }
+  else if (key === "groupes") { title = L("Voyages de groupe pour associations, clubs et équipes", "Group travel for associations, clubs and teams");
+    desc = L("Associations, clubs, équipes sportives, CSE, écoles : vols de groupe, hébergement et coordination de 10 à 300 personnes, 3 propositions sous 48 h.",
+             "Associations, clubs, sports teams, works councils, schools: group flights, accommodation and coordination for 10 to 300 people, 3 proposals within 48 h."); image = "act_rowing"; }
   else if (key === "entreprises") { title = L("Voyages d'affaires pour PME et équipes internationales", "Business travel for SMEs and international teams");
     desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME, startups et équipes internationales, avec un interlocuteur unique qui connaît vos voyageurs.",
              "Tickets, hotels, invoices and 7-day support for SMEs, startups and international teams, with one contact who knows your travellers."); image = "plane"; }
@@ -134,13 +143,13 @@ const agency = {
   sameAs: Object.values(CONFIG.social || {}).filter(Boolean)
 };
 
-function head(key, lg, root, m) {
+function head(key, lg, root, m, theme = "dark") {
   const canonical = abs(key, lg);
   const ld = [agency];
   if (m.crumbs) ld.push({ "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: [[lg === "fr" ? "Accueil" : "Home", "home"], ...m.crumbs].map(([name, k], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(k, lg) })) });
   return `<!doctype html>
-<html lang="${lg}">
+<html lang="${lg}" data-theme="${theme}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -199,7 +208,7 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
   const m = meta(key, lg);
   const file = path.join(OUT, rel, "index.html");
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, head(key, lg, root, m) + body(key, lg, root, r));
+  fs.writeFileSync(file, head(key, lg, root, m, r.theme) + body(key, lg, root, r));
   if (!m.noindex) sitemap.push(key + "|" + lg);
   r.w.close(); count++;
 }

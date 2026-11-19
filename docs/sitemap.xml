@@ -15,6 +15,48 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/"/>
   </url>
   <url>
+    <loc>https://permanentsummervoyages.com/voyages/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/voyages/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/travel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/voyages/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/travel/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/voyages/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/travel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/voyages/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/comment-ca-marche/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/comment-ca-marche/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/how-it-works/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/comment-ca-marche/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/how-it-works/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/comment-ca-marche/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/how-it-works/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/comment-ca-marche/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/proposer-votre-lieu/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/proposer-votre-lieu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/list-your-venue/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/proposer-votre-lieu/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/list-your-venue/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/proposer-votre-lieu/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/list-your-venue/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/proposer-votre-lieu/"/>
+  </url>
+  <url>
     <loc>https://permanentsummervoyages.com/retraites/</loc>
     <lastmod>2026-11-19</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/"/>
@@ -335,6 +377,62 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/taghazout/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/taghazout/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/taghazout/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/retraites/athenes/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/athenes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/athens-riviera/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/athenes/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/company-retreats/athens-riviera/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/athenes/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/athens-riviera/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/athenes/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/retraites/crete/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/crete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/crete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/crete/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/company-retreats/crete/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/crete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/crete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/crete/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/retraites/peloponnese/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/peloponnese/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/peloponnese/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/peloponnese/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/company-retreats/peloponnese/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/peloponnese/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/peloponnese/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/peloponnese/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/retraites/cyclades/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/cyclades/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/cyclades-paros-naxos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/cyclades/"/>
+  </url>
+  <url>
+    <loc>https://permanentsummervoyages.com/en/company-retreats/cyclades-paros-naxos/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/retraites/cyclades/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/company-retreats/cyclades-paros-naxos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/retraites/cyclades/"/>
   </url>
   <url>
     <loc>https://permanentsummervoyages.com/retraites/cracovie/</loc>
@@ -939,34 +1037,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/inspiration/grandes-familles/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/inspiration/associations-et-clubs/</loc>
-    <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/inspiration/associations-et-clubs/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/inspiration/associations-and-clubs/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/inspiration/associations-et-clubs/"/>
-  </url>
-  <url>
-    <loc>https://permanentsummervoyages.com/en/inspiration/associations-and-clubs/</loc>
-    <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/inspiration/associations-et-clubs/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/inspiration/associations-and-clubs/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/inspiration/associations-et-clubs/"/>
-  </url>
-  <url>
-    <loc>https://permanentsummervoyages.com/inspiration/equipes-sportives/</loc>
-    <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/inspiration/equipes-sportives/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/inspiration/sports-teams/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/inspiration/equipes-sportives/"/>
-  </url>
-  <url>
-    <loc>https://permanentsummervoyages.com/en/inspiration/sports-teams/</loc>
-    <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/inspiration/equipes-sportives/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/inspiration/sports-teams/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/inspiration/equipes-sportives/"/>
-  </url>
-  <url>
     <loc>https://permanentsummervoyages.com/inspiration/pelerinages/</loc>
     <lastmod>2026-11-19</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/inspiration/pelerinages/"/>
@@ -1051,46 +1121,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/offres/algarve-villa-groupe/</loc>
+    <loc>https://permanentsummervoyages.com/offres/offsite-villa-algarve/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/algarve-villa-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/algarve-villa-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/algarve-villa-groupe/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/offsite-villa-algarve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/offsite-villa-algarve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/offsite-villa-algarve/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/en/offers/algarve-villa-groupe/</loc>
+    <loc>https://permanentsummervoyages.com/en/offers/offsite-villa-algarve/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/algarve-villa-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/algarve-villa-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/algarve-villa-groupe/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/offsite-villa-algarve/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/offsite-villa-algarve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/offsite-villa-algarve/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/offres/ski-chalet-groupe/</loc>
+    <loc>https://permanentsummervoyages.com/offres/seminaire-cracovie/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/ski-chalet-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/ski-chalet-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/ski-chalet-groupe/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/seminaire-cracovie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/seminaire-cracovie/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/seminaire-cracovie/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/en/offers/ski-chalet-groupe/</loc>
+    <loc>https://permanentsummervoyages.com/en/offers/seminaire-cracovie/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/ski-chalet-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/ski-chalet-groupe/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/ski-chalet-groupe/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/seminaire-cracovie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/seminaire-cracovie/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/seminaire-cracovie/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/offres/marrakech-celebration/</loc>
+    <loc>https://permanentsummervoyages.com/offres/incentive-crete/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/marrakech-celebration/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/marrakech-celebration/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/marrakech-celebration/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/incentive-crete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/incentive-crete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/incentive-crete/"/>
   </url>
   <url>
-    <loc>https://permanentsummervoyages.com/en/offers/marrakech-celebration/</loc>
+    <loc>https://permanentsummervoyages.com/en/offers/incentive-crete/</loc>
     <lastmod>2026-11-19</lastmod>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/marrakech-celebration/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/marrakech-celebration/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/marrakech-celebration/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://permanentsummervoyages.com/offres/incentive-crete/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://permanentsummervoyages.com/en/offers/incentive-crete/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://permanentsummervoyages.com/offres/incentive-crete/"/>
   </url>
   <url>
     <loc>https://permanentsummervoyages.com/voyageurs/</loc>

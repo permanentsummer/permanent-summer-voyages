@@ -61,7 +61,7 @@ header.site .bar{display:grid;grid-template-columns:auto 1fr auto;align-items:ce
 .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
 .logo b{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em}
 .logo span{font-size:10px;letter-spacing:.42em;text-transform:uppercase;margin-top:5px}
-nav.main{display:flex;justify-content:center;gap:24px;font-size:14px;letter-spacing:.03em}
+nav.main{display:flex;justify-content:center;gap:22px;font-size:14px;letter-spacing:.03em}
 nav.main button,nav.main a{background:none;border:0;padding:24px 0;cursor:pointer;font-weight:400}
 nav.main button::after{content:"";display:inline-block;width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);margin-left:9px}
 .right{display:flex;justify-content:flex-end;align-items:center;gap:18px;font-size:14px}
@@ -106,10 +106,36 @@ body.overlay .util{display:none}
 .drawer details a{display:block;padding:7px 0 7px 12px;color:var(--muted)}
 .drawer details div{padding-bottom:14px}
 
+/* comparison table becomes stacked cards on phones */
+@media (max-width:700px){
+  .cmpwrap .cmpwrap{overflow:visible}
+  .cmpwrap .cmp{min-width:0;font-size:15px}
+  .cmpwrap .cmp thead{display:none}
+  .cmpwrap .cmp,.cmpwrap .cmp tbody,.cmpwrap .cmp tr,.cmpwrap .cmp td{display:block;width:100%}
+  .cmpwrap .cmp tr{border:1px solid var(--line);border-radius:2px;padding:14px 16px;margin-bottom:12px}
+  .cmpwrap .cmp td{border:0;padding:6px 0;text-align:left;display:flex;justify-content:space-between;gap:16px}
+  .cmpwrap .cmp td:first-child{font-weight:400;font-size:16px;padding-bottom:10px;margin-bottom:4px;border-bottom:1px solid var(--line);display:block}
+  .cmpwrap .cmp td::before{content:attr(data-label);color:var(--muted);font-size:13px}
+  .cmpwrap .cmp td:first-child::before{content:none}
+  .cmpwrap .cmp td.us{background:none}
+}
+
+/* phones: compact business/personal switch in the header, language moves to the drawer */
+@media (max-width:640px){
+  header.site .bar{height:auto;padding-block:10px}
+  header.site .brand{flex-direction:column;align-items:flex-start;gap:8px}
+  header.site .brand .side{display:inline-flex;font-size:11px;letter-spacing:.02em;padding:2px}
+  header.site .brand .side a{padding:3px 10px}
+  header.site .right .lang{display:none}
+}
+
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero > .ph{position:absolute;inset:0}
-.hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.05) 55%,rgba(0,0,0,.55) 100%)}
+.hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,9,.66) 0%,rgba(8,10,9,.42) 42%,rgba(8,10,9,.08) 78%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
+.hero h1,.hero .sub,.hero .eyebrow{text-shadow:0 1px 24px rgba(0,0,0,.35)}
+.hero.lean h1{font-size:clamp(40px,5.4vw,78px);max-width:13ch}
+.hero.lean .sub{max-width:40ch}
 .hero .wrap{position:relative;width:100%;padding-block:150px 48px}
 .hero h1{font-size:clamp(44px,7.2vw,104px);max-width:12ch}
 .hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:46ch;margin-top:18px;opacity:.92}
@@ -357,6 +383,24 @@ footer .legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
 .wa svg{width:22px;height:22px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:2px;font-size:14px;z-index:90}
 
+/* business / personal switch */
+.brand{display:flex;align-items:center;gap:22px;min-width:0}
+.side{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;font-size:12px;letter-spacing:.05em;white-space:nowrap}
+.side a{padding:5px 12px;border-radius:999px;color:var(--muted)}
+.side a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+body.overlay header.site:not(.solid) .side{border-color:rgba(255,255,255,.4)}
+body.overlay header.site:not(.solid) .side a{color:rgba(255,255,255,.8)}
+body.overlay header.site:not(.solid) .side a[aria-current="true"]{background:#fff;color:#1b1c1b}
+.hostlink{font-size:13px;color:var(--muted);white-space:nowrap}
+body.overlay header.site:not(.solid) .hostlink{color:rgba(255,255,255,.85)}
+.drawer .side{margin-bottom:18px}
+.minibox{background:var(--surface);padding:28px;border-radius:2px}
+.minibox .mini{margin-top:14px;box-shadow:none;border:1px solid var(--line);max-width:none}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 28px}
+.why > div{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.why b{font-weight:400;font-size:19px}
+.why span{color:var(--muted);font-size:15px}
+@media (max-width:820px){.why{grid-template-columns:1fr}}
 /* trust bar, team sizes, promise */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stats > div{padding:24px 20px 24px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -439,10 +483,13 @@ footer .legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   .check > li{grid-template-columns:1fr;gap:6px}
   .evtiles{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:1180px){
+@media (max-width:1240px){
   nav.main,.right .hide-m{display:none}
   .burger{display:block}
 }
+@media (max-width:1440px){.hostlink{display:none}}
+.logo b{white-space:nowrap}
+nav.main > *{white-space:nowrap}
 @media (max-width:1080px){
   .offers-grid,.reels{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -509,9 +556,13 @@ const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const THEME_SLUG = { amis:["entre-amis","friends-trips"], cel:["mariages-et-celebrations","weddings-and-celebrations"], fam:["grandes-familles","extended-families"], club:["associations-et-clubs","associations-and-clubs"], sport:["equipes-sportives","sports-teams"], pil:["pelerinages","pilgrimages"], ski:["neige-et-montagne","snow-and-mountains"], sun:["soleil-d-hiver","winter-sun"], saf:["safaris-en-groupe","group-safaris"], city:["escapades-urbaines","city-breaks"] };
 const byE = k => EVENTS.find(e => e.k === k);
+/* two sides: business (dark) and personal travel (light) */
+const B2C_KEYS = ["voyages","destinations","inspiration","voyageurs","devis"];
+const sideOf = k => (B2C_KEYS.includes(k) || k.startsWith("dest-") || k.startsWith("theme-")) ? "b2c" : "b2b";
+const curKey = () => STATIC ? window.SITE.page : ((location.hash || "#home").slice(1).split("/")[0] || "home");
 const PAGES = {
-  fr:{ home:"", retraites:"retraites/", brief:"organiser-une-retraite/", evenements:"evenements/", budget:"calculateur-budget/", activites:"activites-team-building/", guide:"guide-organiser-un-seminaire/", destinations:"destinations/", inspiration:"inspiration/", offres:"offres/", voyageurs:"voyageurs/", groupes:"groupes/", entreprises:"entreprises/", "a-propos":"a-propos/", appel:"reserver-un-appel/", devis:"devis/", mentions:"mentions-legales/" },
-  en:{ home:"", retraites:"company-retreats/", brief:"plan-a-retreat/", evenements:"events/", budget:"budget-calculator/", activites:"team-building-activities/", guide:"offsite-planning-guide/", destinations:"destinations/", inspiration:"inspiration/", offres:"offers/", voyageurs:"travellers/", groupes:"groups/", entreprises:"business/", "a-propos":"about/", appel:"book-a-call/", devis:"quote/", mentions:"legal-notice/" }
+  fr:{ home:"", voyages:"voyages/", comment:"comment-ca-marche/", partenaires:"proposer-votre-lieu/", retraites:"retraites/", brief:"organiser-une-retraite/", evenements:"evenements/", budget:"calculateur-budget/", activites:"activites-team-building/", guide:"guide-organiser-un-seminaire/", destinations:"destinations/", inspiration:"inspiration/", offres:"offres/", voyageurs:"voyageurs/", groupes:"groupes/", entreprises:"entreprises/", "a-propos":"a-propos/", appel:"reserver-un-appel/", devis:"devis/", mentions:"mentions-legales/" },
+  en:{ home:"", voyages:"travel/", comment:"how-it-works/", partenaires:"list-your-venue/", retraites:"company-retreats/", brief:"plan-a-retreat/", evenements:"events/", budget:"budget-calculator/", activites:"team-building-activities/", guide:"offsite-planning-guide/", destinations:"destinations/", inspiration:"inspiration/", offres:"offers/", voyageurs:"travellers/", groupes:"groups/", entreprises:"business/", "a-propos":"about/", appel:"book-a-call/", devis:"quote/", mentions:"legal-notice/" }
 };
 const destSlug = (d, lg) => lg === "en" ? slugify(d.n.en) : d.s;
 /* site-relative path for a route key, e.g. "dest-maurice" -> "destinations/maurice/" (FR) or "en/destinations/mauritius/" (EN) */
@@ -535,9 +586,12 @@ const U = {
   quote:{fr:"Demander un devis",en:"Request a quote"}, contact:{fr:"Contact",en:"Contact"},
   retreats:{fr:"Retraites",en:"Retreats"}, retreatsLong:{fr:"Retraites d'entreprise",en:"Company retreats"}, plan:{fr:"Organiser une retraite",en:"Plan a retreat"},
   getProposal:{fr:"Recevoir une proposition",en:"Get a proposal"}, allRetreats:{fr:"Toutes les destinations de retraite",en:"All retreat destinations"},
-  leisure:{fr:"Voyages de groupe",en:"Group trips"}, events:{fr:"Événements",en:"Events"}, res:{fr:"Ressources",en:"Resources"},
+  leisure:{fr:"Voyages sur mesure",en:"Tailor-made travel"}, events:{fr:"Événements",en:"Events"}, res:{fr:"Ressources",en:"Resources"},
   calc:{fr:"Calculateur de budget",en:"Budget calculator"}, lib:{fr:"Activités de team building",en:"Team-building activities"}, guide:{fr:"Guide : organiser un séminaire",en:"Guide: planning an offsite"},
   promise:{fr:"3 propositions sous 48 h, vols compris",en:"3 proposals within 48 h, flights included"},
+  biz:{fr:"Entreprises",en:"Business"}, perso:{fr:"Particuliers",en:"Personal"}, sol:{fr:"Solutions",en:"Solutions"},
+  get3:{fr:"Obtenir 3 propositions",en:"Get 3 proposals"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
+  travel:{fr:"Voyages",en:"Travel"}, grpB2B:{fr:"Associations, clubs & équipes",en:"Associations, clubs & teams"},
   offers:{fr:"Offres",en:"Offers"}, travellers:{fr:"Voyageurs",en:"Travellers"}, from:{fr:"À partir de",en:"From"},
   example:{fr:"Exemple à remplacer",en:"Sample, to replace"}, seeOffer:{fr:"Voir l'offre",en:"See the offer"},
   reach:{fr:"Joignable au",en:"Call us on"}, seeAll:{fr:"Voir toutes les destinations",en:"See all destinations"},
@@ -550,7 +604,22 @@ const U = {
 const themeName = k => { const th = THEMES.find(x => x.k === k); return th ? t(th) : (k==="grp" ? t(U.groups) : k); };
 
 /* ---------- shell ---------- */
+function sideSwitch(){
+  const sd = sideOf(curKey());
+  return `<nav class="side" aria-label="${t({fr:'Espace',en:'Space'})}"><a href="#home" aria-current="${sd==='b2b'}">${t(U.biz)}</a><a href="#voyages" aria-current="${sd==='b2c'}">${t(U.perso)}</a></nav>`;
+}
 function header(){
+  const b2c = sideOf(curKey()) === "b2c";
+  const nav = b2c ? `
+        <button data-mega="dest" aria-expanded="${state.megaOpen==='dest'}">${t(U.dest)}</button>
+        <button data-mega="insp" aria-expanded="${state.megaOpen==='insp'}">${t(U.insp)}</button>
+        <a href="#voyageurs">${t(U.travellers)}</a>
+        <a href="#a-propos">${t(U.about)}</a>` : `
+        <button data-mega="sol" aria-expanded="${state.megaOpen==='sol'}">${t(U.sol)}</button>
+        <button data-mega="ret" aria-expanded="${state.megaOpen==='ret'}">${t(U.dest)}</button>
+        <button data-mega="res" aria-expanded="${state.megaOpen==='res'}">${t(U.res)}</button>
+        <a href="#offres">${t(U.offers)}</a>
+        <a href="#a-propos">${t(U.about)}</a>`;
   return `
   <div class="util"><div class="wrap">
     <span>${t(U.reach)} <b style="font-weight:400;color:var(--ink)">${esc(C.phone)}</b><span class="hide-s"> · ${t(C.hours)}</span></span>
@@ -558,33 +627,35 @@ function header(){
   </div></div>
   <header class="site" id="hdr">
     <div class="wrap bar">
-      <a href="#home" class="logo" aria-label="Permanent Summer Voyages"><b>Permanent Summer</b><span>Voyages</span></a>
-      <nav class="main" aria-label="Menu">
-        <button data-mega="ret" aria-expanded="${state.megaOpen==='ret'}">${t(U.retreats)}</button>
-        <button data-mega="ev" aria-expanded="${state.megaOpen==='ev'}">${t(U.events)}</button>
-        <button data-mega="dest" aria-expanded="${state.megaOpen==='dest'}">${t(U.leisure)}</button>
-        <button data-mega="res" aria-expanded="${state.megaOpen==='res'}">${t(U.res)}</button>
-        <a href="#offres">${t(U.offers)}</a>
-        <button data-mega="about" aria-expanded="${state.megaOpen==='about'}">${t(U.about)}</button>
+      <div class="brand"><a href="${b2c ? "#voyages" : "#home"}" class="logo" aria-label="Permanent Summer Voyages"><b>Permanent Summer</b><span>Voyages</span></a>${sideSwitch()}</div>
+      <nav class="main" aria-label="Menu">${nav}
       </nav>
       <div class="right">
+        ${b2c ? "" : `<a href="#partenaires" class="hostlink hide-m">${t(U.host)}</a>`}
         <div class="lang" role="group" aria-label="Langue / Language">
           ${["fr","en"].map(l => STATIC
             ? `<a href="${urlFor(window.SITE.page, l)}" hreflang="${l}" lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</a>`
             : `<button data-lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</button>`).join("")}
         </div>
-        <a href="#brief" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.plan)}</a>
+        ${b2c ? `<a href="#devis" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.quote)}</a>` : `<a href="#brief" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.get3)}</a>`}
         <button class="burger" aria-label="Menu" data-act="drawer"><i></i><i></i><i></i></button>
       </div>
     </div>
-    ${state.megaOpen==='ret' ? megaRet() : ""}${state.megaOpen==='dest' ? megaDest() : ""}${state.megaOpen==='insp' ? megaInsp() : ""}${state.megaOpen==='about' ? megaAbout() : ""}${state.megaOpen==='ev' ? megaEv() : ""}${state.megaOpen==='res' ? megaRes() : ""}
+    ${state.megaOpen==='sol' ? megaSol() : ""}${state.megaOpen==='ret' ? megaRet() : ""}${state.megaOpen==='res' ? megaRes() : ""}${state.megaOpen==='dest' ? megaDest() : ""}${state.megaOpen==='insp' ? megaInsp() : ""}
   </header>`;
+}
+function megaSol(){
+  return `<div class="mega insp sol"><div class="wrap">
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.events)}</span>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#evenements" class="link" style="align-self:flex-start;margin-top:10px">${t({fr:"Tous les événements",en:"All events"})}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Groupes & services",en:"Groups & services"})}</span><a href="#groupes">${t(U.grpB2B)}</a><a href="#comment">${t(U.how)}</a><a href="#comment/vols">${t({fr:"Vols de groupe",en:"Group flights"})}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a><a href="#offres">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</a></div>
+    <a class="promo" href="#event-seminaire">${img("team_cafe", t(EVENTS[0].n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Le plus demandé",en:"Most requested"})}</div><div style="font-size:20px">${t(EVENTS[0].n)}</div></div></a>
+  </div></div>`;
 }
 function megaRet(){
   const r = state.rRegion, list = RETREATS.filter(x => x.r === r), first = list[0];
   return `<div class="mega"><div class="wrap">
     <div class="regions" role="tablist">${RREGIONS.map(x => `<button role="tab" data-rregion="${x.k}" aria-selected="${x.k===r}">${t(x)} <small>${RETREATS.filter(d=>d.r===x.k).length}</small></button>`).join("")}</div>
-    <div class="links"><a class="all" href="#retraites">${t(U.allRetreats)} →</a>${list.map(d => `<a href="#retraite-${d.s}">${t(d.n)}</a>`).join("")}<a class="all" href="#brief" style="margin-top:14px">${t(U.plan)} →</a></div>
+    <div class="links"><a class="all" href="#retraites">${t(U.allRetreats)} →</a>${list.map(d => `<a href="#retraite-${d.s}">${t(d.n)}</a>`).join("")}<a class="all" href="#offres" style="margin-top:14px">${t({fr:"Formules clés en main & offres",en:"Turnkey retreats & offers"})} →</a></div>
     <a class="promo" href="#retraite-${first.s}">${img(first.img[0], t(first.n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t(first.c)}</div><div style="font-size:20px">${t(first.n)}</div></div></a>
   </div></div>`;
 }
@@ -592,7 +663,7 @@ function megaDest(){
   const r = state.megaRegion, list = DESTS.filter(d => d.r === r), first = list[0];
   return `<div class="mega"><div class="wrap">
     <div class="regions" role="tablist">${REGIONS.map(x => `<button role="tab" data-region="${x.k}" aria-selected="${x.k===r}">${t(x)} <small>${DESTS.filter(d=>d.r===x.k).length}</small></button>`).join("")}</div>
-    <div class="links"><a class="all" href="#destinations">${t(U.seeAll)} →</a>${list.map(d => `<a href="#dest-${d.s}">${t(d.n)}</a>`).join("")}<a class="all" href="#groupes" style="margin-top:14px">${t({fr:"Tous les types de groupes",en:"Every kind of group"})} →</a><a class="all" href="#inspiration">${t(U.insp)} →</a></div>
+    <div class="links"><a class="all" href="#destinations">${t(U.seeAll)} →</a>${list.map(d => `<a href="#dest-${d.s}">${t(d.n)}</a>`).join("")}<a class="all" href="#inspiration" style="margin-top:14px">${t(U.insp)} →</a></div>
     <a class="promo" href="#dest-${first.s}">${img(first.img[0], t(first.n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t(first.c)}</div><div style="font-size:20px">${t(first.n)}</div></div></a>
   </div></div>`;
 }
@@ -601,28 +672,14 @@ function megaInsp(){
   return `<div class="mega insp"><div class="wrap">
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Par envie",en:"By mood"})}</span>${THEMES.slice(0,half).map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div>
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">&nbsp;</span>${THEMES.slice(half).map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}<a href="#inspiration" class="link" style="align-self:flex-start;margin-top:10px">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a></div>
-    <a class="promo" href="#theme-amis">${img("grp_friends")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Ce mois-ci",en:"This month"})}</div><div style="font-size:20px">${t(THEMES[0])}</div></div></a>
-  </div></div>`;
-}
-function megaEv(){
-  return `<div class="mega insp"><div class="wrap">
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Pour les entreprises",en:"For companies"})}</span>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Pour les groupes",en:"For groups"})}</span><a href="#groupes">${t({fr:"Mariages & célébrations",en:"Weddings & celebrations"})}</a><a href="#groupes">${t({fr:"Associations & clubs",en:"Associations & clubs"})}</a><a href="#groupes">${t({fr:"Équipes sportives",en:"Sports teams"})}</a><a href="#evenements" class="link" style="align-self:flex-start;margin-top:10px">${t({fr:"Tous les événements",en:"All events"})}</a></div>
-    <a class="promo" href="#event-seminaire">${img("team_cafe", t(EVENTS[0].n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Le plus demandé",en:"Most requested"})}</div><div style="font-size:20px">${t(EVENTS[0].n)}</div></div></a>
+    <a class="promo" href="#theme-amis">${img("travel_balloons")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Ce mois-ci",en:"This month"})}</div><div style="font-size:20px">${t(THEMES[0])}</div></div></a>
   </div></div>`;
 }
 function megaRes(){
   return `<div class="mega insp"><div class="wrap">
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div>
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#brief">${t(U.plan)}</a><a href="#appel">${t(U.book)}</a><a href="#retraites">${t(U.allRetreats)}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#brief">${t(U.get3)}</a><a href="#appel">${t(U.book)}</a><a href="#partenaires">${t(U.host)}</a></div>
     <a class="promo" href="#budget">${img("nomad_balcony")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Gratuit",en:"Free"})}</div><div style="font-size:20px">${t({fr:"Estimez votre budget, vols compris",en:"Estimate your budget, flights included"})}</div></div></a>
-  </div></div>`;
-}
-function megaAbout(){
-  return `<div class="mega insp"><div class="wrap">
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.about)}</span><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a><a href="#groupes">${t(U.groups)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.contact)}</span><a href="#appel">${t(U.book)}</a><a href="#devis">${t(U.quote)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp · ${esc(C.phone)}</a><div style="margin-top:12px">${social(true)}</div></div>
-    <a class="promo" href="#a-propos">${img("team","Jennifer & Christopher Kwo")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Une affaire de famille",en:"A family business"})}</div><div style="font-size:20px">Jennifer & Christopher</div></div></a>
   </div></div>`;
 }
 const ICON = {
@@ -638,16 +695,21 @@ function social(){
 
 function drawer(){
   if (!state.drawer) return "";
-  return `<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
-    <div class="top"><a href="#home" class="logo" style="align-items:flex-start"><b>Permanent Summer</b><span>Voyages</span></a><button class="x" data-act="drawer" aria-label="${t({fr:'Fermer',en:'Close'})}">×</button></div>
-    <details open><summary>${t(U.retreats)}</summary><div><a href="#retraites">${t(U.allRetreats)}</a>${RETREATS.map(r=>`<a href="#retraite-${r.s}">${t(r.n)}</a>`).join("")}</div></details>
-    <details><summary>${t(U.events)}</summary><div><a href="#evenements">${t({fr:"Tous les événements",en:"All events"})}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div></details>
-    <details><summary>${t(U.leisure)}</summary><div><a href="#groupes">${t({fr:"Tous les types de groupes",en:"Every kind of group"})}</a><a href="#destinations">${t(U.seeAll)}</a>${THEMES.map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div></details>
+  const b2c = sideOf(curKey()) === "b2c";
+  const body = b2c ? `
+    <details open><summary>${t(U.dest)}</summary><div><a href="#destinations">${t(U.seeAll)}</a>${DESTS.map(d=>`<a href="#dest-${d.s}">${t(d.n)}</a>`).join("")}</div></details>
+    <details><summary>${t(U.insp)}</summary><div><a href="#inspiration">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a>${THEMES.map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div></details>
+    <a href="#voyageurs">${t(U.travellers)}</a><a href="#a-propos">${t(U.about)}</a>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#devis" class="btn accent">${t(U.quote)}</a><a href="#appel" class="btn ghost">${t(U.book)}</a>` : `
+    <details open><summary>${t(U.sol)}</summary><div><a href="#evenements">${t({fr:"Tous les événements",en:"All events"})}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#comment">${t(U.how)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div></details>
+    <details><summary>${t(U.dest)}</summary><div><a href="#retraites">${t(U.allRetreats)}</a>${RETREATS.map(r=>`<a href="#retraite-${r.s}">${t(r.n)}</a>`).join("")}</div></details>
     <details><summary>${t(U.res)}</summary><div><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div></details>
-    <a href="#offres">${t(U.offers)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#a-propos">${t(U.about)}</a>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px">
-      <a href="#brief" class="btn accent">${t(U.plan)}</a>
-      <a href="#appel" class="btn ghost">${t(U.book)}</a>
+    <a href="#offres">${t(U.offers)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t(U.about)}</a>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#brief" class="btn accent">${t(U.get3)}</a><a href="#appel" class="btn ghost">${t(U.book)}</a>`;
+  return `<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="top"><a href="${b2c ? "#voyages" : "#home"}" class="logo" style="align-items:flex-start"><b>Permanent Summer</b><span>Voyages</span></a><button class="x" data-act="drawer" aria-label="${t({fr:'Fermer',en:'Close'})}">×</button></div>
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">${sideSwitch()}<div class="lang" role="group" aria-label="Langue / Language">${["fr","en"].map(l => STATIC ? `<a href="${urlFor(window.SITE.page, l)}" hreflang="${l}" lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</a>` : `<button data-lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</button>`).join("")}</div></div>
+    ${body}
       <a href="${wa()}" target="_blank" rel="noopener" class="btn ghost">${t(U.whatsapp)}</a>
       <p class="note" style="margin-top:8px">${esc(C.phone)} · ${t(C.hours)}</p>
       <div style="margin-top:8px">${social()}</div>
@@ -662,9 +724,9 @@ function footer(){
         <div style="margin-top:20px">${social()}</div>
         <form class="news" data-form="news"><label for="nl" class="sr" style="position:absolute;left:-9999px">Email</label><input id="nl" type="email" required placeholder="email@exemple.com"><button class="btn">${t({fr:"S'inscrire",en:"Sign up"})}</button></form>
       </div>
-      <div><h4>${t(U.retreatsLong)}</h4>${["algarve","lisbonne","ericeira","majorque","toscane","marrakech"].map(s=>`<a href="#retraite-${s}">${t(byR(s).n)}</a>`).join("")}<a href="#retraites">${t({fr:"Voir plus",en:"See more"})}</a></div>
-      <div><h4>${t(U.events)}</h4>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.leisure)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
-      <div><h4>${t(U.res)}</h4><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a><a href="#offres">${t(U.offers)}</a><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
+      <div><h4>${t(U.biz)}</h4><a href="#retraites">${t(U.retreatsLong)}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#offres">${t(U.offers)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
+      <div><h4>${t(U.res)}</h4><a href="#comment">${t(U.how)}</a><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
+      <div><h4>${t(U.perso)}</h4><a href="#voyages">${t(U.leisure)}</a><a href="#destinations">${t(U.dest)}</a><a href="#inspiration">${t(U.insp)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#devis">${t(U.quote)}</a></div>
       <div><h4>${t(U.contact)}</h4><a href="#appel">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp</a><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.phone)}</span><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.email)}</span></div>
     </div>
     <div class="legal"><span>© 2026 Permanent Summer Lda · Portugal</span><span>${t({fr:"Billets d'avion émis par notre partenaire agréé",en:"Flight tickets issued by our licensed partner"})}</span><span><a href="#mentions">${t({fr:"Confidentialité",en:"Privacy"})}</a> · <a href="#mentions">${t({fr:"Conditions",en:"Terms"})}</a></span></div>
@@ -707,7 +769,7 @@ function compareTable(){
   ];
   return `<div class="cmpwrap"><table class="cmp">
     <thead><tr><th></th><th class="us">Permanent Summer Voyages</th><th>${t({fr:"En interne",en:"In-house"})}</th><th>${t({fr:"Agence de séminaires classique",en:"Typical retreat agency"})}</th></tr></thead>
-    <tbody>${rows.map(([l,a,b,c,k])=>`<tr class="${k?'key':''}"><td>${t(l)}</td><td class="us">${a}</td><td>${b}</td><td>${c}</td></tr>`).join("")}</tbody>
+    <tbody>${rows.map(([l,a,b,c,k])=>`<tr class="${k?'key':''}"><td>${t(l)}</td><td class="us" data-label="Permanent Summer">${a}</td><td data-label="${t({fr:"En interne",en:"In-house"})}">${b}</td><td data-label="${t({fr:"Agence classique",en:"Typical agency"})}">${c}</td></tr>`).join("")}</tbody>
   </table></div>`;
 }
 const packageCard = k => `<a class="pk" href="#brief" data-rpre="${k.rdest}" data-nights="${k.nights}"><div class="ph">${img(k.img, t(k.n))}<span class="tag">${k.nights} ${t({fr:"nuits",en:"nights"})} · ${t(k.size)} ${t({fr:"pers.",en:"people"})}</span></div>
@@ -730,99 +792,133 @@ function guideStrip(){
 }
 
 function home(){
-  const trending = (window.HOT || []).map(byS).filter(Boolean).slice(0,6);
-  const offers = (window.OFFERS || []).slice(0,3);
-  const featured = ["algarve","lisbonne","ericeira","majorque","toscane","marrakech","croatie","porto"].map(byR).filter(Boolean);
+  const featured = ["algarve","lisbonne","ericeira","majorque","athenes","toscane","marrakech","cracovie"].map(byR).filter(Boolean);
   return `
-  <section class="hero">
+  <section class="hero lean">
     <div class="ph">${img("team_walk", t({fr:"Une équipe se promène en bord de mer au soleil",en:"A team walking along the seafront in the sun"}), true)}</div>
     <div class="wrap">
-      <div class="eyebrow" style="color:#fff;opacity:.9">${t({fr:"Retraites d'entreprise · Séminaires · Voyages de groupe",en:"Company retreats · Offsites · Group travel"})}</div>
-      <h1 class="display" style="margin-top:14px">${t({fr:"Réunissez votre équipe. On s'occupe de tout, vols compris.",en:"Bring your team together. We handle everything, flights included."})}</h1>
-      <p class="sub">${t({fr:"Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. Un seul interlocuteur, du billet d'avion de chaque participant au dernier dîner.",en:"Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. One contact, from every participant's plane ticket to the last dinner."})}</p>
+      <h1 class="display">${t({fr:"Vos retraites d'entreprise, vols compris.",en:"Company retreats, flights included."})}</h1>
+      <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant. 3 propositions sous 48 h.",en:"The venue, the programme and every participant's plane ticket. 3 proposals within 48 h."})}</p>
+      <div class="ctas"><a class="btn accent" href="#brief">${t(U.get3)}</a><a class="btn light ghost" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
+    </div>
+  </section>
+
+  <section class="section tight"><div class="wrap">
+    <div class="minibox"><span class="eyebrow">${t({fr:"Commencez ici",en:"Start here"})}</span>
       <form class="mini" data-form="minibrief">
         <label for="m-pax">${t({fr:"Participants",en:"People"})}<input id="m-pax" type="number" min="10" max="2000" value="20"></label>
         <label for="m-dest">${t({fr:"Destination",en:"Destination"})}<select id="m-dest">${retreatOptions()}</select></label>
         <label for="m-month">${t({fr:"Période",en:"When"})}<select id="m-month">${monthOptions()}</select></label>
         <button class="btn accent" type="submit">${t(U.getProposal)}</button>
       </form>
-      <p class="search-foot">${t({fr:"Un voyage entre amis, en famille ou une célébration ?",en:"A trip with friends, family or a celebration?"})} <a href="#groupes">${t(U.leisure)} →</a></p>
     </div>
-  </section>
-
-  <section class="section tight"><div class="wrap">${statsBar()}</div></section>
-
-  <section class="section surface"><div class="wrap problem">
-    <div class="big">${t({fr:"40 personnes. 12 villes. <em>Un tableur.</em>",en:"40 people. 12 cities. <em>One spreadsheet.</em>"})}</div>
-    <div style="display:flex;flex-direction:column;gap:22px">
-      <p class="lede" style="color:var(--ink)">${t({fr:"Vous avez été chargé d'organiser le prochain séminaire ? Ce sont des semaines de messages, de devis de lieux et de vols à coordonner. Nous prenons tout en charge, pour que vous puissiez profiter du voyage avec votre équipe.",en:"Been put in charge of the next offsite? That's weeks of messages, venue quotes and flights to coordinate. We take all of it on, so you can enjoy the trip with your team."})}</p>
-      <ul class="inc">
-        <li>${t({fr:"<b>Les vols de chaque participant</b>, depuis sa propre ville, coordonnés pour arriver le même jour.",en:"<b>Every participant's flight</b>, from their own city, coordinated to land the same day."})}</li>
-        <li>${t({fr:"<b>Le lieu, le programme et les activités</b> : villas, salles de réunion, surf, cuisine, bateau.",en:"<b>Venue, programme and activities</b>: villas, meeting rooms, surf, cooking, boats."})}</li>
-        <li>${t({fr:"<b>Un humain qui répond 7j/7</b>, avant, pendant et après le voyage.",en:"<b>A human who answers 7 days a week</b>, before, during and after the trip."})}</li>
-      </ul>
-    </div>
+    <div style="margin-top:40px">${statsBar()}</div>
   </div></section>
 
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Pour toutes les tailles d'équipe",en:"For every team size"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Quelle est la taille de votre groupe ?",en:"How big is your group?"})}</h2></div></div>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Pour toutes les tailles d'équipe",en:"For every team size"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Quelle est la taille de votre équipe ?",en:"How big is your team?"})}</h2></div></div>
     ${sizeCards()}
   </div></section>
 
-  <section class="section" style="padding-top:0"><div class="wrap">
+  <section class="section surface"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.retreatsLong)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Des lieux qui font naître les idées",en:"Places that spark ideas"})}</h2></div><a class="link" href="#retraites">${t(U.allRetreats)} (${RETREATS.length})</a></div>
     <div class="grid">${featured.map(retreatCard).join("")}</div>
   </div></section>
 
-  <section class="section surface"><div class="wrap">
+  <section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.events)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Un format pour chaque objectif",en:"A format for every goal"})}</h2></div><a class="link" href="#evenements">${t({fr:"Tous les événements",en:"All events"})}</a></div>
     ${eventTiles()}
   </div></section>
 
+  <section class="section surface"><div class="wrap split">
+    <div class="text">
+      <span class="eyebrow">${t({fr:"Ce qui nous différencie",en:"What makes us different"})}</span>
+      <h2 class="h2">${t({fr:"Les autres agences s'arrêtent au lieu. Nous réservons aussi les vols.",en:"Other agencies stop at the venue. We book the flights too."})}</h2>
+      <ul class="inc">
+        <li>${t({fr:"Le billet de chaque participant, depuis sa ville",en:"Every participant's ticket, from their own city"})}</li>
+        <li>${t({fr:"Des arrivées coordonnées le même jour",en:"Coordinated same-day arrivals"})}</li>
+        <li>${t({fr:"Un budget par personne, vols inclus",en:"One budget per person, flights included"})}</li>
+        <li>${t({fr:"Un humain joignable 7j/7 si un vol change",en:"A human reachable 7 days a week if a flight changes"})}</li>
+      </ul>
+      <a class="link" href="#comment">${t(U.how)}</a>
+    </div>
+    <div class="media ph">${img("team_sail")}</div>
+  </div></section>
+
   <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Ce qui nous différencie",en:"What makes us different"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Les autres agences s'arrêtent au lieu. Nous réservons aussi les vols.",en:"Other agencies stop at the venue. We book the flights too."})}</h2></div></div>
-    ${compareTable()}
-    <div style="margin-top:36px">${promiseBox()}</div>
-  </div></section>
+    <div class="head"><h2 class="h2">${t({fr:"Ce que disent les organisateurs",en:"What organisers say"})}</h2></div>
+    <div class="quotes">${window.TESTIMONIALS.map(q=>`<figure class="quote" style="margin:0"><blockquote>« ${t(q.q)} »</blockquote><cite>${esc(q.a)}</cite><span class="sample">${t({fr:"Exemple à remplacer",en:"Sample, to replace"})}</span></figure>`).join("")}</div>
+    <div style="margin-top:56px">${promiseBox()}</div>
+  </div></section>`;
+}
 
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Nos retraites les plus demandées",en:"Our most requested retreats"})}</h2></div><a class="link" href="#retraites">${t(U.allRetreats)}</a></div>
-    <div class="grid">${PACKAGES.map(packageCard).join("")}</div>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Activités de team building",en:"Team-building activities"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Les moments dont votre équipe parlera pendant des années",en:"The moments your team will talk about for years"})}</h2></div><a class="link" href="#activites">${t({fr:"Voir les",en:"See all"})} ${ACTLIB.length} ${t({fr:"activités",en:"activities"})}</a></div>
-    <div class="tiles four">${ACTIVITIES.map(a=>`<a class="tile" href="#activites">${img(a.img, t(a))}<div><b>${t(a)}</b></div></a>`).join("")}</div>
-  </div></section>
-
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Comment ça marche",en:"How it works"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"De la première idée au retour à la maison",en:"From first idea to back home"})}</h2></div><a class="btn accent" href="#brief">${t(U.plan)}</a></div>
-    ${howSteps()}
-  </div></section>
-
-  <section class="band">
-    <div class="ph">${img("team_sail")}</div>
+function voyagesHome(){
+  const hot = (window.HOT || []).map(byS).filter(Boolean).slice(0,6);
+  return `
+  <section class="hero lean">
+    <div class="ph">${img("travel_couple", t({fr:"Deux voyageurs face à un paysage",en:"Two travellers looking at a view"}), true)}</div>
     <div class="wrap">
-      <span class="eyebrow" style="color:#fff">${t(U.calc)}</span>
-      <h2 class="display">${t({fr:"Combien coûte votre séminaire ?",en:"How much will your offsite cost?"})}</h2>
-      <p>${t({fr:"Nombre de participants, nuits, niveau du lieu, villes de départ : obtenez une fourchette par personne, vols compris, en 30 secondes.",en:"Group size, nights, venue level, departure cities: get a per-person range, flights included, in 30 seconds."})}</p>
-      <div class="ctas"><a href="#budget" class="btn light">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a><a href="#brief" class="btn light ghost">${t(U.plan)}</a></div>
+      <h1 class="display">${t({fr:"Vos voyages sur mesure, vols compris.",en:"Tailor-made trips, flights included."})}</h1>
+      <p class="sub">${t({fr:"En couple, en famille ou entre amis : quelqu'un qui organise tout, et qui répond pendant le voyage.",en:"As a couple, a family or with friends: someone who plans it all, and who answers during the trip."})}</p>
+      <div class="ctas"><a class="btn accent" href="#devis">${t(U.quote)}</a><a class="btn light ghost" href="#destinations">${t(U.dest)}</a></div>
     </div>
   </section>
 
-  ${casesSection()}
-
-  <section class="section"><div class="wrap split rev">
-    <div class="text">
-      <span class="eyebrow">${t(U.leisure)}</span>
-      <h2 class="h2">${t({fr:"Amis, familles, mariages, clubs : les groupes, c'est notre spécialité.",en:"Friends, families, weddings, clubs: groups are our speciality."})}</h2>
-      <p class="lede">${t({fr:"Dès 10 personnes et sans limite : des tarifs de groupe bloqués tôt, une liste de participants tenue à jour et quelqu'un qui coordonne tout le monde, même quand chacun part d'une ville différente.",en:"From 10 people, no upper limit: group fares locked in early, an up-to-date participant list and someone coordinating everyone, even when each person flies from a different city."})}</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#groupes">${t(U.leisure)}</a><a class="btn ghost" href="#destinations">${t(U.seeAll)}</a></div>
+  <section class="section tight"><div class="wrap">
+    <div class="minibox"><span class="eyebrow">${t({fr:"Votre prochain voyage",en:"Your next trip"})}</span>
+      <form class="mini" data-form="search">
+        <label for="s-dest">${t({fr:"Destination",en:"Destination"})}<select id="s-dest">${destOptions()}</select></label>
+        <label for="s-out">${t({fr:"Départ",en:"Departure"})}<input id="s-out" type="date"></label>
+        <label for="s-pax">${t({fr:"Voyageurs",en:"Travellers"})}<input id="s-pax" type="number" min="1" value="2"></label>
+        <button class="btn accent" type="submit">${t(U.quote)}</button>
+      </form>
     </div>
-    <div class="media ph">${img("grp_celebrate")}</div>
+  </div></section>
+
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.dest)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Où partir cette année",en:"Where to go this year"})}</h2></div><a class="link" href="#destinations">${t(U.seeAll)} (${DESTS.length})</a></div>
+    <div class="tiles">${hot.map(d=>`<a class="tile" href="#dest-${d.s}">${img(d.img[0],t(d.n))}<div><b>${t(d.n)}</b><small>${t(d.c)}</small></div></a>`).join("")}</div>
   </div></section>
 
   <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.insp)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Partir d'une envie",en:"Start from a feeling"})}</h2></div><a class="link" href="#inspiration">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a></div>
+    <div class="themes">${THEMES.slice(0,6).map(x=>`<a class="theme" href="#theme-${x.k}">${img(x.img,t(x))}<div><h3>${t(x)}</h3><p>${t(x.d)}</p></div></a>`).join("")}</div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Pourquoi passer par nous",en:"Why book with us"})}</h2></div>
+    <div class="why">
+      <div><b>${t({fr:"Les bons vols, au bon prix",en:"The right flights, at the right price"})}</b><span>${t({fr:"Accès direct aux tarifs des compagnies : les correspondances qui tiennent, les bagages compris, les meilleurs horaires.",en:"Direct access to airline fares: connections that work, bags included, the best times."})}</span></div>
+      <div><b>${t({fr:"Une seule personne",en:"One person"})}</b><span>${t({fr:"Vols, hôtels, transferts, excursions : un seul interlocuteur, du premier message au retour.",en:"Flights, hotels, transfers, excursions: one contact, from the first message to coming home."})}</span></div>
+      <div><b>${t({fr:"Quelqu'un répond, même à 2 h du matin",en:"Someone answers, even at 2 am"})}</b><span>${t({fr:"Correspondance annulée ? Nous vous replaçons sur le premier vol avant même que vous arriviez au comptoir.",en:"Connection cancelled? We rebook you on the first flight before you even reach the desk."})}</span></div>
+    </div>
+  </div></section>
+
+  <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.travellers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ils sont partis avec nous",en:"They travelled with us"})}</h2></div><a class="link" href="#voyageurs">${t({fr:"Toutes les vidéos",en:"All videos"})}</a></div>
+    <div class="reels">${(window.AMBASSADORS||[]).slice(0,3).map((a,i)=>reel(a,i)).join("")}</div>
+  </div></section>
+
+  <section class="section"><div class="wrap split">
+    <div class="text"><span class="eyebrow">${t(U.book)}</span><h2 class="h2">${t({fr:"Parlons de votre prochain voyage",en:"Let's talk about your next trip"})}</h2><p class="lede">${t({fr:"Trente minutes pour poser les bases : dates, budget, envies. Vous recevez ensuite un devis détaillé.",en:"Thirty minutes to set the basics: dates, budget, wishes. Then you get a detailed quote."})}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="${wa()}" target="_blank" rel="noopener">WhatsApp</a></div></div>
+    <div class="media ph">${img("travel_balloons")}</div>
+  </div></section>`;
+}
+
+function howPage(){
+  return `
+  <section class="section"><div class="wrap">
+    <span class="eyebrow">${t(U.how)}</span>
+    <h1 class="display" style="font-size:clamp(38px,5vw,64px);margin:12px 0 14px;max-width:18ch">${t({fr:"Du brief au retour de toute l'équipe",en:"From brief to everyone back home"})}</h1>
+    <p class="lede" style="margin-bottom:44px">${t({fr:"Un seul interlocuteur pour le lieu, le programme, les activités et les vols de chaque participant.",en:"One contact for the venue, programme, activities and every participant's flights."})}</p>
+    ${howSteps()}
+  </div></section>
+  <section class="section surface" id="vols" style="scroll-margin-top:90px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Vols de groupe",en:"Group flights"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Les autres agences s'arrêtent au lieu. Nous réservons aussi les vols.",en:"Other agencies stop at the venue. We book the flights too."})}</h2></div></div>
+    ${compareTable()}
+  </div></section>
+  <section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t({fr:"L'assistance autrement",en:"Assistance, done differently"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Quand ça se complique, quelqu'un répond.",en:"When things go wrong, someone answers."})}</h2></div></div>
     <div class="scen">
       ${[["plane2",{fr:"02:10 · Francfort",en:"02:10 · Frankfurt"},{fr:"Correspondance annulée",en:"Connection cancelled"},{fr:"Rebooking sur le premier vol du matin et nuit d'hôtel avant même d'arriver au comptoir.",en:"Rebooked on the first morning flight with a hotel night before you reach the desk."}],
@@ -832,22 +928,81 @@ function home(){
         ].map(([k,c,h,p])=>`<div><div class="ph">${img(k)}</div><div class="t"><span class="clock">${t(c)}</span><b>${t(h)}</b><span>${t(p)}</span></div></div>`).join("")}
     </div>
   </div></section>
-
-  ${offers.length ? `<section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t(U.offers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Offres du moment",en:"Current offers"})}</h2></div><a class="link" href="#offres">${t({fr:"Toutes les offres",en:"All offers"})}</a></div>
-    <div class="offers-grid">${offers.map(offerCard).join("")}</div>
-  </div></section>` : ""}
-
-  <section class="section" style="padding-top:${offers.length?0:''}"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t(U.leisure)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Où partir en groupe",en:"Where to go as a group"})}</h2></div><a class="link" href="#destinations">${t(U.seeAll)}</a></div>
-    <div class="tiles">${trending.map(d=>`<a class="tile" href="#dest-${d.s}">${img(d.img[0],t(d.n))}<div><b>${t(d.n)}</b><small>${t(d.c)}</small></div></a>`).join("")}</div>
-  </div></section>
-
   <section class="section surface"><div class="wrap">
-    <div class="head"><h2 class="h2">${t({fr:"Ce que disent les organisateurs",en:"What organisers say"})}</h2></div>
-    <div class="quotes">${window.TESTIMONIALS.map(q=>`<figure class="quote" style="margin:0"><blockquote>« ${t(q.q)} »</blockquote><cite>${esc(q.a)}</cite><span class="sample">${t({fr:"Exemple à remplacer",en:"Sample, to replace"})}</span></figure>`).join("")}</div>
+    <div class="faq" style="max-width:820px"><h2 class="h2" style="margin-bottom:14px">${t({fr:"Prix et facturation",en:"Pricing and invoicing"})}</h2>
+      ${[[{fr:"Comment est fixé le prix ?",en:"How is the price set?"},{fr:"Chaque proposition détaille le budget par personne : lieu, vols, activités et nos honoraires d'organisation, fixés à l'avance. Pas de frais cachés.",en:"Each proposal details the budget per person: venue, flights, activities and our planning fee, agreed upfront. No hidden costs."}],
+         [{fr:"Qui facture quoi ?",en:"Who invoices what?"},{fr:"Nous facturons nos honoraires d'organisation. Les lieux et prestataires vous facturent directement, au tarif que nous avons négocié, et les billets d'avion sont émis par notre partenaire agence agréé.",en:"We invoice our planning fee. Venues and suppliers invoice you directly at the rate we negotiated, and flight tickets are issued by our licensed travel agency partner."}],
+         [{fr:"Quel budget prévoir ?",en:"What budget should we plan?"},{fr:"Le plus souvent entre 700 et 2 000 € par personne pour 3 nuits, vols compris. Notre calculateur vous donne une première fourchette en 30 secondes.",en:"Usually €700 to €2,000 per person for 3 nights, flights included. Our calculator gives you a first range in 30 seconds."}]
+        ].map(([q,a])=>`<details><summary>${t(q)}</summary><p>${t(a)}</p></details>`).join("")}
+    </div>
   </div></section>
-  ${guideStrip()}`;
+  <section class="section"><div class="wrap">${promiseBox()}</div></section>`;
+}
+
+/* ---------- venue partners ---------- */
+function partnersPage(){
+  return `
+  <section class="hero short"><div class="ph">${img("venue_manor", t({fr:"Un manoir avec jardins",en:"A manor house with gardens"}), true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t({fr:"Hôtels, villas, domaines",en:"Hotels, villas, estates"})}</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Accueillez des retraites d'entreprise en semaine",en:"Host company retreats on weekdays"})}</h1>
+    <p class="sub">${t({fr:"Présentez votre lieu en 10 minutes. L'inscription est gratuite.",en:"Present your venue in 10 minutes. Listing is free."})}</p>
+    <div class="ctas"><a class="btn accent" href="#partenaires/vform">${t(U.host)}</a></div>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="head"><h2 class="h2">${t({fr:"Pourquoi travailler avec nous",en:"Why work with us"})}</h2></div>
+    <div class="why">
+      <div><b>${t({fr:"Des réservations en semaine",en:"Weekday bookings"})}</b><span>${t({fr:"Les retraites d'entreprise ont lieu du lundi au vendredi, quand vos chambres sont le moins demandées.",en:"Company retreats run Monday to Friday, when your rooms are least in demand."})}</span></div>
+      <div><b>${t({fr:"Des groupes entiers",en:"Whole groups"})}</b><span>${t({fr:"De 10 à 150 personnes, souvent en privatisation, pour plusieurs nuits.",en:"From 10 to 150 people, often on an exclusive-use basis, for several nights."})}</span></div>
+      <div><b>${t({fr:"Chambres, repas et salles",en:"Rooms, meals and meeting space"})}</b><span>${t({fr:"Nos clients réservent l'hébergement, la restauration, les salles et souvent les activités sur place.",en:"Our clients book accommodation, food and drink, meeting rooms and often on-site activities."})}</span></div>
+      <div><b>${t({fr:"Réservé à l'avance",en:"Booked well ahead"})}</b><span>${t({fr:"Les retraites se planifient plusieurs mois à l'avance : moins d'annulations de dernière minute.",en:"Retreats are planned months ahead: fewer last-minute cancellations."})}</span></div>
+      <div><b>${t({fr:"Des voyageurs professionnels",en:"Professional guests"})}</b><span>${t({fr:"Des équipes en déplacement de travail, encadrées par nous du début à la fin.",en:"Teams on a work trip, looked after by us from start to finish."})}</span></div>
+      <div><b>${t({fr:"Les vols, c'est nous",en:"We handle the flights"})}</b><span>${t({fr:"Nous réservons les vols de chaque participant et coordonnons les arrivées : vos équipes accueillent un groupe, pas quarante arrivées dispersées.",en:"We book every participant's flights and coordinate arrivals: your team welcomes one group, not forty scattered arrivals."})}</span></div>
+    </div>
+  </div></section>
+  <section class="section surface"><div class="wrap split">
+    <div class="text"><span class="eyebrow">${t({fr:"Ce que nous recherchons",en:"What we look for"})}</span><h2 class="h2">${t({fr:"Des lieux où une équipe peut travailler et se retrouver",en:"Places where a team can work and reconnect"})}</h2>
+      <ul class="inc">
+        <li>${t({fr:"10 chambres ou plus, ou la possibilité de privatiser",en:"10 or more rooms, or the option of exclusive use"})}</li>
+        <li>${t({fr:"Une salle de réunion ou un espace adaptable",en:"A meeting room or a flexible space"})}</li>
+        <li>${t({fr:"Un wifi fiable",en:"Reliable wifi"})}</li>
+        <li>${t({fr:"À moins de 1 h 30 d'un aéroport",en:"Within 1.5 hours of an airport"})}</li>
+        <li>${t({fr:"Des activités sur place ou à proximité",en:"Activities on site or nearby"})}</li>
+      </ul></div>
+    <div class="media ph">${img("venue_hotel")}</div>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="head"><h2 class="h2">${t(U.how)}</h2></div>
+    <ol class="steps">
+      <li><b>${t({fr:"Présentez votre lieu",en:"Present your venue"})}</b><span>${t({fr:"Le formulaire ci-dessous prend 10 minutes.",en:"The form below takes 10 minutes."})}</span></li>
+      <li><b>${t({fr:"Premier échange",en:"First call"})}</b><span>${t({fr:"Nous parlons capacités, tarifs groupe et conditions.",en:"We discuss capacity, group rates and terms."})}</span></li>
+      <li><b>${t({fr:"Proposé à nos clients",en:"Proposed to our clients"})}</b><span>${t({fr:"Votre lieu entre dans nos propositions quand il correspond au brief.",en:"Your venue goes into our proposals when it fits the brief."})}</span></li>
+      <li><b>${t({fr:"Réservation",en:"Booking"})}</b><span>${t({fr:"Vous facturez le client directement ; nous coordonnons tout le reste.",en:"You invoice the client directly; we coordinate everything else."})}</span></li>
+    </ol>
+  </div></section>
+  <section class="section surface" id="vform" style="scroll-margin-top:90px"><div class="wrap dgrid" style="align-items:start">
+    <form class="form" data-form="venue">
+      <label class="field"><span>${t({fr:"Nom du lieu",en:"Venue name"})}</span><input id="v-name" required></label>
+      <label class="field"><span>${t({fr:"Site web",en:"Website"})}</span><input id="v-web" type="url" placeholder="https://"></label>
+      <label class="field"><span>${t({fr:"Ville et pays",en:"City and country"})}</span><input id="v-loc" required></label>
+      <label class="field"><span>${t({fr:"Type de lieu",en:"Venue type"})}</span><select id="v-type">${[{fr:"Hôtel",en:"Hotel"},{fr:"Villa",en:"Villa"},{fr:"Domaine / quinta / finca",en:"Estate / quinta / finca"},{fr:"Manoir / château",en:"Manor / château"},{fr:"Résidence / appartements",en:"Serviced apartments"},{fr:"Autre",en:"Other"}].map(x=>`<option>${t(x)}</option>`).join("")}</select></label>
+      <label class="field"><span>${t({fr:"Nombre de chambres",en:"Number of rooms"})}</span><input id="v-rooms" type="number" min="1"></label>
+      <label class="field"><span>${t({fr:"Capacité max. (personnes)",en:"Max capacity (people)"})}</span><input id="v-cap" type="number" min="1"></label>
+      <label class="field"><span>${t({fr:"Salle de réunion (personnes)",en:"Meeting room (people)"})}</span><input id="v-meet" type="number" min="0"></label>
+      <label class="field"><span>${t({fr:"Aéroport le plus proche",en:"Nearest airport"})}</span><input id="v-air"></label>
+      <label class="field"><span>${t({fr:"Votre nom",en:"Your name"})}</span><input id="v-contact" required autocomplete="name"></label>
+      <label class="field"><span>Email</span><input id="v-mail" type="email" required autocomplete="email"></label>
+      <label class="field full"><span>${t({fr:"Téléphone",en:"Phone"})}</span><input id="v-tel" autocomplete="tel"></label>
+      <label class="field full"><span>${t({fr:"Présentez votre lieu",en:"Tell us about your venue"})}</span><textarea id="v-msg" placeholder="${t({fr:'Activités, saisons, privatisation possible, tarifs groupe…',en:'Activities, seasons, exclusive use, group rates…'})}"></textarea></label>
+      <div class="full"><button class="btn accent" type="submit">${t(U.host)}</button></div>
+    </form>
+    <aside class="aside">
+      <h3>${t({fr:"Questions fréquentes",en:"FAQ"})}</h3>
+      <div class="row"><span>${t({fr:"Combien ça coûte ?",en:"What does it cost?"})}</span><span>${t({fr:"L'inscription est gratuite. Nous travaillons à la commission sur les réservations confirmées, convenue avec vous.",en:"Listing is free. We work on commission on confirmed bookings, agreed with you."})}</span></div>
+      <div class="row"><span>${t({fr:"Qui facture ?",en:"Who invoices?"})}</span><span>${t({fr:"Vous facturez le client directement.",en:"You invoice the client directly."})}</span></div>
+      <div class="row"><span>${t({fr:"Quelles régions ?",en:"Which regions?"})}</span><span>${t({fr:"Europe, Méditerranée et quelques destinations long-courrier.",en:"Europe, the Mediterranean and a few long-haul destinations."})}</span></div>
+      <a class="btn ghost" href="#appel">${t(U.book)}</a>
+    </aside>
+  </div></section>`;
 }
 
 /* ---------- retreats ---------- */
@@ -887,14 +1042,6 @@ function retreatsPage(){
     <div class="head" style="margin-bottom:22px"><h2 class="h2">${t(g)}</h2><span class="note">${RETREATS.filter(r=>r.r===g.k).length} destinations</span></div>
     <div class="grid">${RETREATS.filter(r=>r.r===g.k).map(retreatCard).join("")}</div>
   </div></section>`).join("")}
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Prêtes à réserver, adaptables à votre équipe",en:"Ready to book, adaptable to your team"})}</h2></div></div>
-    <div class="grid">${PACKAGES.map(packageCard).join("")}</div>
-  </div></section>
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">${t({fr:"Ce qui nous différencie",en:"What makes us different"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Le lieu, le programme et les vols de chacun",en:"The venue, the programme and everyone's flights"})}</h2></div></div>
-    ${compareTable()}
-  </div></section>
   <section class="section surface"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t({fr:"Inclus",en:"Included"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ce dont on s'occupe",en:"What we take care of"})}</h2></div></div>
     <div class="incl">
@@ -1025,7 +1172,7 @@ function briefPage(){
         <label class="field"><span>${t({fr:"Votre nom",en:"Your name"})}</span><input id="b-name" required autocomplete="name"></label>
         <label class="field"><span>Email</span><input id="b-mail" type="email" required autocomplete="email"></label>
         <label class="field"><span>${t({fr:"Téléphone / WhatsApp",en:"Phone / WhatsApp"})}</span><input id="b-tel" autocomplete="tel"></label>
-        <label class="field full"><span>${t({fr:"Type d'événement",en:"Event type"})}</span><select id="b-type">${EVENTS.map(e=>`<option value="${e.k}" ${e.k===(p.ev||"seminaire")?"selected":""}>${esc(t(e.n))}</option>`).join("")}<option value="group" ${p.ev==="group"?"selected":""}>${t({fr:"Voyage de groupe (amis, famille, club…)",en:"Group trip (friends, family, club…)"})}</option></select></label>
+        <label class="field full"><span>${t({fr:"Type d'événement",en:"Event type"})}</span><select id="b-type">${EVENTS.map(e=>`<option value="${e.k}" ${e.k===(p.ev||"seminaire")?"selected":""}>${esc(t(e.n))}</option>`).join("")}<option value="group" ${p.ev==="group"?"selected":""}>${t({fr:"Association, club ou équipe sportive",en:"Association, club or sports team"})}</option></select></label>
         <label class="field"><span>${t({fr:"Nombre de participants",en:"Number of people"})}</span><input id="b-pax" type="number" min="10" value="${esc(p.pax || 20)}" required></label>
         <label class="field"><span>${t({fr:"Nombre de nuits",en:"Number of nights"})}</span><select id="b-nights">${["2","3","4","5","6+"].map(n=>`<option ${n===String(p.nights||"3")?"selected":""}>${n}</option>`).join("")}</select></label>
         <label class="field"><span>${t({fr:"Période souhaitée",en:"Preferred period"})}</span><select id="b-month">${monthOptions(p.month)}</select></label>
@@ -1035,7 +1182,7 @@ function briefPage(){
         <label class="field"><span>${t({fr:"On s'occupe des vols ?",en:"Shall we book the flights?"})}</span><select id="b-flights"><option>${t({fr:"Oui, pour tout le monde",en:"Yes, for everyone"})}</option><option>${t({fr:"Pour une partie du groupe",en:"For part of the group"})}</option><option>${t({fr:"Non, pas besoin",en:"No, not needed"})}</option></select></label>
         <div class="field full"><span>${t({fr:"Objectifs",en:"Goals"})}</span>${chips("goal", goals)}</div>
         <div class="field full"><span>${t({fr:"Activités qui vous tentent",en:"Activities you like"})}</span>${chips("act", acts)}</div>
-        <label class="field full"><span>${t({fr:"Autre chose à savoir ?",en:"Anything else?"})}</span><textarea id="b-msg" placeholder="${t({fr:'Style de lieu, besoins en salles, régimes alimentaires, dates fixes…',en:'Venue style, meeting room needs, dietary needs, fixed dates…'})}"></textarea></label>
+        <label class="field full"><span>${t({fr:"Autre chose à savoir ?",en:"Anything else?"})}</span><textarea id="b-msg" placeholder="${t({fr:'Style de lieu, besoins en salles, régimes alimentaires, dates fixes…',en:'Venue style, meeting room needs, dietary needs, fixed dates…'})}">${p.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + p.offer) : ""}</textarea></label>
         <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer mon brief",en:"Send my brief"})}</button><span class="note">${t({fr:"3 propositions sous 48 h.",en:"3 proposals within 48 h."})}</span></div>
       </form></div>
     </div>
@@ -1056,9 +1203,9 @@ function destinations(){
   const list = f==="all" ? REGIONS : REGIONS.filter(r=>r.k===f);
   return `
   <section class="hero short"><div class="ph">${img("grp_beachsunset","",true)}</div><div class="wrap">
-    <div class="eyebrow" style="color:#fff">${t(U.leisure)} · ${DESTS.length} destinations</div>
-    <h1 class="display" style="margin-top:12px">${t({fr:"Où partir en groupe",en:"Where to go as a group"})}</h1>
-    <p class="sub">${t({fr:"Entre amis, en famille, pour un mariage ou avec votre club : les destinations que nous organisons le plus souvent pour les groupes. Et si la vôtre n'y est pas, nous réservons partout dans le monde.",en:"With friends, family, for a wedding or with your club: the destinations we most often organise for groups. If yours isn't here, we book anywhere in the world."})}</p>
+    <div class="eyebrow" style="color:#fff">${DESTS.length} destinations</div>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Où partir",en:"Where to go"})}</h1>
+    <p class="sub">${t({fr:"En couple, en famille ou entre amis : les destinations que nous organisons le plus souvent, vols compris. Et si la vôtre n'y est pas, nous réservons partout dans le monde.",en:"As a couple, a family or with friends: the destinations we organise most often, flights included. If yours isn't here, we book anywhere in the world."})}</p>
   </div></section>
   <section class="section tight"><div class="wrap">
     <div class="chips" role="group" aria-label="${t({fr:'Filtrer par région',en:'Filter by region'})}">
@@ -1093,7 +1240,7 @@ function destPage(s){
         <ol class="itin">${t(d.it).map(x=>`<li><span>${esc(x)}</span></li>`).join("")}</ol></div>
     </div>
     <aside class="aside">
-      <h3>${t({fr:"Préparer ce voyage de groupe",en:"Plan this group trip"})}</h3>
+      <h3>${t({fr:"Préparer ce voyage",en:"Plan this trip"})}</h3>
       <div class="row"><span>${t(U.when)}</span><span>${t(d.when)}</span></div>
       <div class="row"><span>${t(U.flight)}</span><span>${t(d.fl)}</span></div>
       <div class="row"><span>${t(U.ideal)}</span><span>${d.th.map(themeName).join(" · ")}</span></div>
@@ -1111,7 +1258,7 @@ function destPage(s){
 
 function inspiration(){
   return `
-  <section class="hero short"><div class="ph">${img("pool","",true)}</div><div class="wrap">
+  <section class="hero short"><div class="ph">${img("travel_seniors","",true)}</div><div class="wrap">
     <div class="eyebrow" style="color:#fff">${t(U.insp)}</div>
     <h1 class="display" style="margin-top:12px">${t(U.noIdea)}</h1>
     <p class="sub">${t({fr:"Partez d'une envie plutôt que d'un lieu. Nous faisons le reste.",en:"Start from a feeling rather than a place. We'll do the rest."})}</p>
@@ -1141,38 +1288,33 @@ function themePage(k){
 
 function groups(){
   const types = [
-    ["grp_friends","amis",{fr:"Entre amis",en:"Friends' trips"},{fr:"Dix, vingt ou trente amis qui partent de villes différentes : villa, activités et vols de chacun, sans tableur partagé.",en:"Ten, twenty or thirty friends flying from different cities: villa, activities and everyone's flights, with no shared spreadsheet."}],
-    ["wedding","cel",{fr:"Mariages & célébrations",en:"Weddings & celebrations"},{fr:"Mariage à l'étranger, anniversaire marquant, EVJF ou EVG : invités venus de plusieurs pays, chambres et transferts coordonnés.",en:"Destination weddings, milestone birthdays, bachelor and bachelorette trips: guests from several countries, rooms and transfers coordinated."}],
-    ["family","fam",{fr:"Grandes familles",en:"Extended families"},{fr:"Trois générations, plusieurs villes de départ, un seul dossier et un seul interlocuteur.",en:"Three generations, several departure cities, one booking and one contact."}],
-    ["act_longtable","club",{fr:"Associations & clubs",en:"Associations & clubs"},{fr:"Voyages culturels, anciens élèves, comités d'entreprise : tarifs de groupe et liste de participants tenue à jour.",en:"Cultural trips, alumni, works councils: group rates and an up-to-date participant list."}],
-    ["act_rowing","sport",{fr:"Équipes sportives",en:"Sports teams"},{fr:"Tournois, stages et tournées : vols de groupe, hébergement, terrains et transport du matériel.",en:"Tournaments, training camps and tours: group flights, accommodation, pitches and kit transport."}],
-    ["candles","pil",{fr:"Pèlerinages",en:"Pilgrimages"},{fr:"Lourdes, Rome, Fatima ou la Terre sainte, avec l'accompagnement des personnes âgées.",en:"Lourdes, Rome, Fatima or the Holy Land, with care for elderly pilgrims."}]
+    ["act_longtable",{fr:"Associations & clubs",en:"Associations & clubs"},{fr:"Voyages culturels, rencontres annuelles, clubs de service : tarifs de groupe et liste de participants tenue à jour.",en:"Cultural trips, annual gatherings, service clubs: group rates and an up-to-date participant list."}],
+    ["sport_team",{fr:"Équipes sportives",en:"Sports teams"},{fr:"Tournois, stages et tournées : vols de groupe, hébergement, terrains et transport du matériel.",en:"Tournaments, training camps and tours: group flights, accommodation, pitches and kit transport."}],
+    ["corporate",{fr:"CSE & comités d'entreprise",en:"Works councils & staff committees"},{fr:"Voyages de salariés clés en main, avec un budget maîtrisé et un seul interlocuteur.",en:"Turnkey staff trips, on a controlled budget with one contact."}],
+    ["act_workshop2",{fr:"Écoles, universités & alumni",en:"Schools, universities & alumni"},{fr:"Voyages d'études, séminaires de promotion et retrouvailles d'anciens élèves.",en:"Study trips, class seminars and alumni reunions."}]
   ];
   return `
-  <section class="hero short"><div class="ph">${img("grp_sunset","",true)}</div><div class="wrap">
-    <div class="eyebrow" style="color:#fff">${t(U.leisure)}</div>
-    <h1 class="display" style="margin-top:12px">${t({fr:"Voyager à 10, 40 ou 200",en:"Travelling as 10, 40 or 200"})}</h1>
-    <p class="sub">${t({fr:"Les groupes demandent une vraie coordination humaine, surtout quand chacun part d'une ville différente. C'est là que notre expérience compte le plus.",en:"Groups need real human coordination, especially when everyone flies from a different city. That's where our experience counts most."})}</p>
+  <section class="hero short"><div class="ph">${img("act_rowing","",true)}</div><div class="wrap">
+    <div class="eyebrow" style="color:#fff">${t(U.biz)}</div>
+    <h1 class="display" style="margin-top:12px">${t(U.grpB2B)}</h1>
+    <p class="sub">${t({fr:"Des groupes de 10 à 300 personnes, partis de villes différentes, coordonnés par une seule équipe.",en:"Groups of 10 to 300 people, flying from different cities, coordinated by one team."})}</p>
   </div></section>
   <section class="section"><div class="wrap">
-    <div class="types">${types.map(([k,th,h,p])=>`<a class="card wide" href="#theme-${th}"><div class="ph">${img(k, t(h))}</div><div><h3>${t(h)}</h3><p class="meta" style="margin-top:6px">${t(p)}</p></div></a>`).join("")}</div>
+    <div class="types">${types.map(([k,h,p])=>`<a class="card wide" href="#brief" data-ev="group"><div class="ph">${img(k, t(h))}</div><div><h3>${t(h)}</h3><p class="meta" style="margin-top:6px">${t(p)}</p></div></a>`).join("")}</div>
   </div></section>
   <section class="section surface"><div class="wrap">
-    <div class="head"><h2 class="h2">${t({fr:"Comment ça se passe",en:"How it works"})}</h2></div>
+    <div class="head"><h2 class="h2">${t(U.how)}</h2></div>
     <ol class="steps">
       <li><b>${t({fr:"Premier échange",en:"First conversation"})}</b><span>${t({fr:"Taille du groupe, dates, budget et contraintes.",en:"Group size, dates, budget and constraints."})}</span></li>
-      <li><b>${t({fr:"Tarifs de groupe",en:"Group fares"})}</b><span>${t({fr:"Demande aux compagnies et hôtels, devis détaillé sous 48h.",en:"Requests to airlines and hotels, detailed quote within 48h."})}</span></li>
+      <li><b>${t({fr:"Tarifs de groupe",en:"Group fares"})}</b><span>${t({fr:"Demande aux compagnies et hôtels, propositions sous 48 h.",en:"Requests to airlines and hotels, proposals within 48 h."})}</span></li>
       <li><b>${t({fr:"Acomptes & noms",en:"Deposits & names"})}</b><span>${t({fr:"Acomptes échelonnés, liste de passagers mise à jour avec vous.",en:"Staged deposits, passenger list updated with you."})}</span></li>
       <li><b>${t({fr:"Départ accompagné",en:"Supported departure"})}</b><span>${t({fr:"Documents envoyés, assistance joignable pendant tout le voyage.",en:"Documents sent, support reachable for the whole trip."})}</span></li>
     </ol>
+    <div style="margin-top:40px"><a class="btn accent" href="#brief" data-ev="group">${t(U.get3)}</a></div>
   </div></section>
-  <section class="section"><div class="wrap split">
-    <div class="text"><span class="eyebrow">${t({fr:"Devis groupe",en:"Group quote"})}</span><h2 class="h2">${t({fr:"Parlez-nous de votre groupe",en:"Tell us about your group"})}</h2><p class="lede">${t({fr:"Réponse sous 48h avec une première estimation. Pour les groupes de plus de 30 personnes, nous vous proposons un appel.",en:"Reply within 48h with a first estimate. For groups over 30, we'll suggest a call."})}</p></div>
-    ${quoteForm({group:true})}
-  </div></section>
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Destinations</span><h2 class="h2" style="margin-top:10px">${t({fr:"Où partir en groupe",en:"Where to go as a group"})}</h2></div><a class="link" href="#destinations">${t(U.seeAll)}</a></div>
-    <div class="grid">${(window.HOT||[]).map(byS).filter(Boolean).slice(0,4).map(d=>card(d)).join("")}</div>
+  <section class="section"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t(U.dest)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Destinations faciles pour les groupes",en:"Easy destinations for groups"})}</h2></div><a class="link" href="#retraites">${t(U.allRetreats)}</a></div>
+    <div class="grid">${["lisbonne","barcelone","cracovie","athenes"].map(byR).filter(Boolean).map(retreatCard).join("")}</div>
   </div></section>`;
 }
 
@@ -1298,8 +1440,8 @@ function quoteForm(o={}){
   const pre = state.prefill || {};
   const g = !!o.group;
   return `<form class="form" data-form="quote" id="qf">
-    <label class="field"><span>${t({fr:"Type de voyage",en:"Trip type"})}</span><select id="q-type">${[["group",{fr:"Voyage de groupe",en:"Group trip"}],["friends",{fr:"Entre amis",en:"Friends' trip"}],["cel",{fr:"Mariage / célébration",en:"Wedding / celebration"}],["family",{fr:"Grande famille",en:"Extended family"}],["club",{fr:"Association / club / sport",en:"Association / club / sports"}],["pil",{fr:"Pèlerinage",en:"Pilgrimage"}],["biz",{fr:"Voyage d'affaires",en:"Business travel"}],["leisure",{fr:"Voyage individuel",en:"Individual trip"}]].map(([v,l])=>`<option value="${v}" ${(g&&v==='group')?'selected':''}>${t(l)}</option>`).join("")}</select></label>
-    <label class="field"><span>${t({fr:"Villes de départ",en:"Departure cities"})}</span><input id="q-from" placeholder="${t({fr:'Ex. : Paris 12, Lyon 6, Bruxelles 4',en:'E.g. London 12, Paris 6, Berlin 4'})}"></label>
+    <label class="field"><span>${t({fr:"Type de voyage",en:"Trip type"})}</span><select id="q-type">${[["couple",{fr:"En couple",en:"Couple"}],["family",{fr:"En famille",en:"Family"}],["friends",{fr:"Entre amis",en:"Friends"}],["cel",{fr:"Mariage / célébration",en:"Wedding / celebration"}],["solo",{fr:"En solo",en:"Solo"}],["pil",{fr:"Pèlerinage",en:"Pilgrimage"}]].map(([v,l])=>`<option value="${v}" ${(g&&v==='group')?'selected':''}>${t(l)}</option>`).join("")}</select></label>
+    <label class="field"><span>${t({fr:"Villes de départ",en:"Departure cities"})}</span><input id="q-from" placeholder="${t({fr:'Ex. : Paris',en:'E.g. London'})}"></label>
     <label class="field full"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="q-dest">${destOptions(pre.dest)}<option value="other">${t({fr:"Autre destination",en:"Other destination"})}</option></select></label>
     <label class="field"><span>${t({fr:"Départ",en:"Departure"})}</span><input id="q-out" type="date" value="${esc(pre.out||'')}"></label>
     <label class="field"><span>${t({fr:"Retour",en:"Return"})}</span><input id="q-back" type="date" value="${esc(pre.back||'')}"></label>
@@ -1340,24 +1482,25 @@ const offerCard = o => `<a class="ocard" href="#offre-${o.id}"><div class="ph">$
 function offersPage(){
   const list = window.OFFERS || [];
   return `
-  <section class="hero short"><div class="ph">${img("algarve2","",true)}</div><div class="wrap">
+  <section class="hero short"><div class="ph">${img("venue_hotel","",true)}</div><div class="wrap">
     <div class="eyebrow" style="color:#fff">${t(U.offers)}</div>
-    <h1 class="display" style="margin-top:12px">${t({fr:"Offres & bons plans",en:"Offers & deals"})}</h1>
-    <p class="sub">${t({fr:"Des séjours de groupe négociés, à prix connu : villas, chalets, riads. Les dates sont limitées : écrivez-nous pour bloquer les vôtres.",en:"Negotiated group stays at a set price: villas, chalets, riads. Dates are limited: message us to hold yours."})}</p>
+    <h1 class="display" style="margin-top:12px">${t({fr:"Offres & formules clés en main",en:"Offers & turnkey retreats"})}</h1>
+    <p class="sub">${t({fr:"Des séminaires négociés à prix connu, et nos retraites les plus demandées, prêtes à adapter à votre équipe.",en:"Negotiated offsites at a set price, and our most requested retreats, ready to adapt to your team."})}</p>
   </div></section>
   <section class="section"><div class="wrap">
-    ${list.length ? `<div class="offers-grid">${list.map(offerCard).join("")}</div>` : `<p class="lede">${t({fr:"Aucune offre en ce moment. Inscrivez-vous pour être prévenu.",en:"No offers right now. Sign up to be notified."})}</p>`}
+    <div class="head"><div><span class="eyebrow">${t(U.offers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Offres du moment",en:"Current offers"})}</h2></div></div>
+    ${list.length ? `<div class="offers-grid">${list.map(offerCard).join("")}</div>` : `<p class="lede">${t({fr:"Aucune offre en ce moment.",en:"No offers right now."})}</p>`}
   </div></section>
-  <section class="section surface"><div class="wrap split">
-    <div class="text"><span class="eyebrow">WhatsApp</span><h2 class="h2">${t({fr:"Recevez les offres avant tout le monde",en:"Get offers before everyone else"})}</h2><p class="lede">${t({fr:"Une ou deux offres par mois, envoyées directement sur WhatsApp. Pas de spam.",en:"One or two offers a month, sent straight to WhatsApp. No spam."})}</p>
-      <a class="btn accent" href="${wa(lang==='fr'?"Bonjour, je souhaite recevoir vos offres de voyage sur WhatsApp.":"Hello, I'd like to receive your travel offers on WhatsApp.")}" target="_blank" rel="noopener">${t({fr:"M'inscrire sur WhatsApp",en:"Sign up on WhatsApp"})}</a></div>
-    <div class="media ph">${img("plane")}</div>
-  </div></section>`;
+  <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Nos retraites les plus demandées",en:"Our most requested retreats"})}</h2></div></div>
+    <div class="grid">${PACKAGES.map(packageCard).join("")}</div>
+  </div></section>
+  <section class="section"><div class="wrap">${promiseBox()}</div></section>`;
 }
 function offerPage(id){
   const o = (window.OFFERS||[]).find(x=>x.id===id); if (!o) return notFound();
-  const d = o.dest ? byS(o.dest) : null;
-  const msg = (lang==='fr' ? "Bonjour, je suis intéressé(e) par l'offre : " : "Hello, I'm interested in the offer: ") + t(o.title) + " (" + o.price + ")";
+  const r = o.rdest ? byR(o.rdest) : null;
+  const msg = (lang==='fr' ? "Bonjour, nous sommes intéressés par l'offre : " : "Hello, we're interested in the offer: ") + t(o.title) + " (" + o.price + ")";
   const others = (window.OFFERS||[]).filter(x=>x.id!==o.id).slice(0,3);
   return `
   <section class="hero short"><div class="ph">${img(o.img, t(o.title), true)}</div><div class="wrap">
@@ -1369,14 +1512,14 @@ function offerPage(id){
       ${o.sample ? `<span class="sample" style="align-self:flex-start;margin:0">${t(U.example)}</span>` : ""}
       <div><h2 class="h2" style="margin-bottom:14px">${t({fr:"Ce qui est inclus",en:"What's included"})}</h2><ul class="inc">${t(o.inc).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
       <p class="note">${t(o.cond)}</p>
-      ${d ? `<div class="split" style="grid-template-columns:1fr 1fr;gap:24px;align-items:center"><a class="ph" href="#dest-${d.s}" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img(d.img[1]||d.img[0], t(d.n))}</a><div class="text" style="gap:12px"><span class="eyebrow">${t(U.dest)}</span><h3 style="font-size:24px">${t(d.n)}</h3><p class="note">${t(d.t)}</p><a class="link" href="#dest-${d.s}">${t(U.discover)}</a></div></div>` : ""}
+      ${r ? `<div class="split" style="grid-template-columns:1fr 1fr;gap:24px;align-items:center"><a class="ph" href="#retraite-${r.s}" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img(r.img[0], t(r.n))}</a><div class="text" style="gap:12px"><span class="eyebrow">${t(U.dest)}</span><h3 style="font-size:24px">${t(r.n)}</h3><p class="note">${t(r.t)}</p><a class="link" href="#retraite-${r.s}">${t(U.discover)}</a></div></div>` : ""}
     </div>
     <aside class="aside">
       <div class="price" style="border:0;padding:0;margin:0"><small>${t(U.from)}</small><b>${esc(o.price)}</b></div>
       <span class="note" style="margin-top:-10px">${t(o.per)}</span>
       <div class="row"><span>${t({fr:"Validité",en:"Validity"})}</span><span>${t(o.valid)}</span></div>
-      <a class="btn accent" href="${wa(msg)}" target="_blank" rel="noopener">${t({fr:"Réserver sur WhatsApp",en:"Book on WhatsApp"})}</a>
-      <a class="btn ghost" href="#devis" data-offer="${o.id}">${t(U.quote)}</a>
+      <a class="btn accent" href="#brief" data-offer="${o.id}" data-rpre="${o.rdest||""}">${t({fr:"Recevoir le devis avec vols",en:"Get the quote with flights"})}</a>
+      <a class="btn ghost" href="${wa(msg)}" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
     </aside>
   </div></section>
@@ -1425,7 +1568,7 @@ function eventsHub(){
   </div></section>
   <section class="section"><div class="wrap">
     <div class="types">${EVENTS.map(e=>`<a class="card wide" href="#event-${e.k}"><div class="ph">${img(e.img, t(e.n))}</div><div><span class="eyebrow">${t(e.size)} · ${t(e.len)}</span><h3 style="margin-top:6px">${t(e.n)}</h3><p class="meta" style="margin-top:6px">${t(e.t)}</p></div></a>`).join("")}
-      <a class="card wide" href="#groupes"><div class="ph">${img("grp_celebrate", t(U.leisure))}</div><div><span class="eyebrow">${t({fr:"Dès 10 personnes",en:"From 10 people"})}</span><h3 style="margin-top:6px">${t(U.leisure)}</h3><p class="meta" style="margin-top:6px">${t({fr:"Amis, familles, mariages, clubs et équipes sportives.",en:"Friends, families, weddings, clubs and sports teams."})}</p></div></a>
+      <a class="card wide" href="#groupes"><div class="ph">${img("sport_team", t(U.grpB2B))}</div><div><span class="eyebrow">${t({fr:"Dès 10 personnes",en:"From 10 people"})}</span><h3 style="margin-top:6px">${t(U.grpB2B)}</h3><p class="meta" style="margin-top:6px">${t({fr:"Associations, clubs, équipes sportives, CSE, écoles.",en:"Associations, clubs, sports teams, works councils, schools."})}</p></div></a>
     </div>
     <div style="margin-top:48px">${promiseBox()}</div>
   </div></section>`;
@@ -1593,6 +1736,9 @@ function route(){
   const h = STATIC ? window.SITE.page : ((location.hash || "#home").slice(1).split("/")[0] || "home");
   let html, overlay = true;
   if (h === "home" || h === "") html = home();
+  else if (h === "voyages") html = voyagesHome();
+  else if (h === "comment") { html = howPage(); overlay = false; }
+  else if (h === "partenaires") html = partnersPage();
   else if (h === "retraites") html = retreatsPage();
   else if (h.startsWith("retraite-")) html = retreatPage(h.slice(9));
   else if (h === "brief") { html = briefPage(); overlay = false; }
@@ -1621,6 +1767,7 @@ let lastKey = null;
 function render(keepScroll){
   const r = route();
   document.documentElement.lang = lang;
+  document.documentElement.dataset.theme = sideOf(r.key) === "b2c" ? "light" : "dark";
   document.body.classList.toggle("overlay", r.overlay);
   document.getElementById("app").innerHTML = linkify(header() + `<main>${r.html}</main>` + footer() + drawer() + videoModal());
   if (!STATIC) document.title = "Permanent Summer Voyages";
@@ -1706,7 +1853,7 @@ document.addEventListener("click", e => {
   }
   if (el.dataset.rpre || el.dataset.pax || el.dataset.ev){ state.prefill = { rdest: el.dataset.rpre || "", pax: el.dataset.pax || "", nights: el.dataset.nights || "", ev: el.dataset.ev || "" }; }
   if (el.dataset.pre){ state.prefill = { dest: el.dataset.pre }; }
-  if (el.dataset.offer){ const o = (window.OFFERS||[]).find(x=>x.id===el.dataset.offer); if (o) state.prefill = { dest: o.dest || "", offer: t(o.title) + " (" + o.price + ")" }; }
+  if (el.dataset.offer){ const o = (window.OFFERS||[]).find(x=>x.id===el.dataset.offer); if (o) state.prefill = { rdest: o.rdest || "", offer: t(o.title) + " (" + o.price + ")" }; }
   if (STATIC) { if (el.dataset.k === window.SITE.page && (state.drawer || state.megaOpen)) { state.drawer = false; state.megaOpen = null; render(true); } return; }
   if (el.matches("a[href^='#']")){
     state.megaOpen = null; state.drawer = false;
@@ -1716,7 +1863,8 @@ document.addEventListener("click", e => {
 document.addEventListener("submit", e => {
   const f = e.target; e.preventDefault();
   if (f.dataset.form === "search"){
-    state.prefill = { dest: f.querySelector("#s-dest").value, out: f.querySelector("#s-out").value, back: f.querySelector("#s-back").value, pax: f.querySelector("#s-pax").value };
+    const g = id => (f.querySelector(id) || {}).value || "";
+    state.prefill = { dest: g("#s-dest"), out: g("#s-out"), back: g("#s-back"), pax: g("#s-pax") };
     if (STATIC) { const q = new URLSearchParams(Object.entries(state.prefill).filter(([,v])=>v)); location.href = urlFor("devis") + "?" + q.toString(); return; }
     location.hash = "devis"; return;
   }
@@ -1738,6 +1886,15 @@ document.addEventListener("submit", e => {
       `Budget : ${data.budget} · ${L?"Vols":"Flights"} : ${data.flights}`, `${L?"Objectifs":"Goals"} : ${data.goals||"-"}`, `${L?"Activités":"Activities"} : ${data.activities||"-"}`,
       data.notes ? `${L?"Détails":"Details"} : ${data.notes}` : "", `— ${data.name} · ${data.email}${data.phone?" · "+data.phone:""}`].filter(Boolean).join("\n");
     sendForm(f, data, msg, L ? "Brief envoyé. Nous revenons vers vous sous 48 h avec nos propositions." : "Brief sent. We'll come back to you within 48 hours with our proposals.");
+    return;
+  }
+  if (f.dataset.form === "venue"){
+    const v = id => (f.querySelector("#"+id)||{}).value || ""; const L = lang==='fr';
+    const data = { form:"venue", lang, venue:v("v-name"), website:v("v-web"), location:v("v-loc"), type:v("v-type"), rooms:v("v-rooms"), capacity:v("v-cap"), meeting:v("v-meet"), airport:v("v-air"), name:v("v-contact"), email:v("v-mail"), phone:v("v-tel"), notes:v("v-msg") };
+    const msg = [L?"Bonjour, je souhaite proposer mon lieu :":"Hello, I'd like to list my venue:", `${data.venue} (${data.type}) · ${data.location}`, data.website,
+      `${L?"Chambres":"Rooms"} : ${data.rooms||"-"} · ${L?"Capacité":"Capacity"} : ${data.capacity||"-"} · ${L?"Salle":"Meeting room"} : ${data.meeting||"-"}`, `${L?"Aéroport":"Airport"} : ${data.airport||"-"}`,
+      data.notes, `— ${data.name} · ${data.email}${data.phone?" · "+data.phone:""}`].filter(Boolean).join("\n");
+    sendForm(f, data, msg, L ? "Merci ! Nous revenons vers vous sous quelques jours." : "Thank you! We'll be in touch within a few days.");
     return;
   }
   if (f.dataset.form === "news"){
@@ -1783,12 +1940,12 @@ if (STATIC && document.getElementById("app").children.length){
   lastKey = window.SITE.page;
   if (lastKey === "brief") {
     const q = new URLSearchParams(location.search);
-    if ([...q.keys()].length) { state.prefill = { rdest: q.get("rdest") || "", pax: q.get("pax") || "", month: q.get("month") || "", nights: q.get("nights") || "", ev: q.get("ev") || "" }; render(true); }
+    const o = (window.OFFERS||[]).find(x => x.id === q.get("offer"));
+    if ([...q.keys()].length) { state.prefill = { rdest: q.get("rdest") || "", pax: q.get("pax") || "", month: q.get("month") || "", nights: q.get("nights") || "", ev: q.get("ev") || "", offer: o ? t(o.title) + " (" + o.price + ")" : "" }; render(true); }
   }
   if (lastKey === "devis") {
-    const q = new URLSearchParams(location.search), o = (window.OFFERS||[]).find(x => x.id === q.get("offer"));
-    if (o) state.prefill = { dest: o.dest || "", offer: t(o.title) + " (" + o.price + ")" };
-    else if ([...q.keys()].length) state.prefill = { dest: q.get("dest") || "", out: q.get("out") || "", back: q.get("back") || "", pax: q.get("pax") || "" };
+    const q = new URLSearchParams(location.search);
+    if ([...q.keys()].length) state.prefill = { dest: q.get("dest") || "", out: q.get("out") || "", back: q.get("back") || "", pax: q.get("pax") || "" };
     if ([...q.keys()].length) render(true);
   }
   onScroll();

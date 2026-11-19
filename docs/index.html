@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,165 +35,85 @@
   </div></div>
   <header class="site" id="hdr">
     <div class="wrap bar">
-      <a href="./" data-k="home" class="logo" aria-label="Permanent Summer Voyages"><b>Permanent Summer</b><span>Voyages</span></a>
+      <div class="brand"><a href="./" data-k="home" class="logo" aria-label="Permanent Summer Voyages"><b>Permanent Summer</b><span>Voyages</span></a><nav class="side" aria-label="Espace"><a href="./" data-k="home" aria-current="true">Entreprises</a><a href="voyages/" data-k="voyages" aria-current="false">Particuliers</a></nav></div>
       <nav class="main" aria-label="Menu">
-        <button data-mega="ret" aria-expanded="false">Retraites</button>
-        <button data-mega="ev" aria-expanded="false">Événements</button>
-        <button data-mega="dest" aria-expanded="false">Voyages de groupe</button>
+        <button data-mega="sol" aria-expanded="false">Solutions</button>
+        <button data-mega="ret" aria-expanded="false">Destinations</button>
         <button data-mega="res" aria-expanded="false">Ressources</button>
         <a href="offres/" data-k="offres">Offres</a>
-        <button data-mega="about" aria-expanded="false">À propos</button>
+        <a href="a-propos/" data-k="a-propos">À propos</a>
       </nav>
       <div class="right">
+        <a href="proposer-votre-lieu/" data-k="partenaires" class="hostlink hide-m">Proposer votre lieu</a>
         <div class="lang" role="group" aria-label="Langue / Language">
           <a href="./" hreflang="fr" lang="fr" aria-pressed="true">FR</a><a href="en/" hreflang="en" lang="en" aria-pressed="false">EN</a>
         </div>
-        <a href="organiser-une-retraite/" data-k="brief" class="btn ghost hide-m" style="height:40px;padding:0 18px">Organiser une retraite</a>
+        <a href="organiser-une-retraite/" data-k="brief" class="btn ghost hide-m" style="height:40px;padding:0 18px">Obtenir 3 propositions</a>
         <button class="burger" aria-label="Menu" data-act="drawer"><i></i><i></i><i></i></button>
       </div>
     </div>
     
   </header><main>
-  <section class="hero">
+  <section class="hero lean">
     <div class="ph"><img src="img/team_walk.jpg" alt="Une équipe se promène en bord de mer au soleil" fetchpriority="high" decoding="async"></div>
     <div class="wrap">
-      <div class="eyebrow" style="color:#fff;opacity:.9">Retraites d'entreprise · Séminaires · Voyages de groupe</div>
-      <h1 class="display" style="margin-top:14px">Réunissez votre équipe. On s'occupe de tout, vols compris.</h1>
-      <p class="sub">Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. Un seul interlocuteur, du billet d'avion de chaque participant au dernier dîner.</p>
-      <form class="mini" data-form="minibrief">
-        <label for="m-pax">Participants<input id="m-pax" type="number" min="10" max="2000" value="20"></label>
-        <label for="m-dest">Destination<select id="m-dest"><option value="">Ouvert aux idées</option><optgroup label="Portugal"><option value="algarve">Algarve</option><option value="lisbonne">Lisbonne</option><option value="ericeira">Ericeira</option><option value="porto">Porto &amp; Douro</option><option value="madere">Madère</option><option value="acores">Açores</option></optgroup><optgroup label="Espagne"><option value="majorque">Majorque</option><option value="barcelone">Barcelone</option><option value="seville">Séville</option></optgroup><optgroup label="Italie"><option value="rome">Rome</option><option value="toscane">Florence &amp; Toscane</option><option value="milan-come">Milan &amp; lac de Côme</option><option value="pouilles">Pouilles</option></optgroup><optgroup label="Europe centrale"><option value="vienne">Vienne</option><option value="prague">Prague</option><option value="budapest">Budapest</option><option value="cracovie">Cracovie</option><option value="zakopane">Zakopane &amp; Tatras</option><option value="gdansk">Gdańsk &amp; Sopot</option></optgroup><optgroup label="Balkans &amp; au-delà"><option value="serbie">Belgrade &amp; Serbie</option><option value="croatie">Split &amp; îles croates</option><option value="istanbul">Istanbul</option><option value="georgie">Tbilissi &amp; Géorgie</option></optgroup><optgroup label="Maroc &amp; long-courrier"><option value="marrakech">Marrakech &amp; Agafay</option><option value="taghazout">Taghazout</option><option value="ile-maurice">Île Maurice</option></optgroup></select></label>
-        <label for="m-month">Période<select id="m-month"><option value="">Flexible</option><option value="2026-12">Décembre 2026</option><option value="2027-01">Janvier 2027</option><option value="2027-02">Février 2027</option><option value="2027-03">Mars 2027</option><option value="2027-03">Avril 2027</option><option value="2027-04">Mai 2027</option><option value="2027-05">Juin 2027</option><option value="2027-06">Juillet 2027</option><option value="2027-07">Août 2027</option><option value="2027-08">Septembre 2027</option><option value="2027-09">Octobre 2027</option><option value="2027-11">Novembre 2027</option><option value="2027-12">Décembre 2027</option><option value="2028-01">Janvier 2028</option><option value="2028-02">Février 2028</option></select></label>
-        <button class="btn accent" type="submit">Recevoir une proposition</button>
-      </form>
-      <p class="search-foot">Un voyage entre amis, en famille ou une célébration ? <a href="groupes/" data-k="groupes">Voyages de groupe →</a></p>
+      <h1 class="display">Vos retraites d'entreprise, vols compris.</h1>
+      <p class="sub">Le lieu, le programme et le billet d'avion de chaque participant. 3 propositions sous 48 h.</p>
+      <div class="ctas"><a class="btn accent" href="organiser-une-retraite/" data-k="brief">Obtenir 3 propositions</a><a class="btn light ghost" href="calculateur-budget/" data-k="budget">Estimer mon budget</a></div>
     </div>
   </section>
 
-  <section class="section tight"><div class="wrap"><div class="stats">
+  <section class="section tight"><div class="wrap">
+    <div class="minibox"><span class="eyebrow">Commencez ici</span>
+      <form class="mini" data-form="minibrief">
+        <label for="m-pax">Participants<input id="m-pax" type="number" min="10" max="2000" value="20"></label>
+        <label for="m-dest">Destination<select id="m-dest"><option value="">Ouvert aux idées</option><optgroup label="Portugal"><option value="algarve">Algarve</option><option value="lisbonne">Lisbonne</option><option value="ericeira">Ericeira</option><option value="porto">Porto &amp; Douro</option><option value="madere">Madère</option><option value="acores">Açores</option></optgroup><optgroup label="Espagne"><option value="majorque">Majorque</option><option value="barcelone">Barcelone</option><option value="seville">Séville</option></optgroup><optgroup label="Italie"><option value="rome">Rome</option><option value="toscane">Florence &amp; Toscane</option><option value="milan-come">Milan &amp; lac de Côme</option><option value="pouilles">Pouilles</option></optgroup><optgroup label="Grèce"><option value="athenes">Athènes &amp; Riviera</option><option value="crete">Crète</option><option value="peloponnese">Péloponnèse</option><option value="cyclades">Cyclades (Paros &amp; Naxos)</option></optgroup><optgroup label="Europe centrale"><option value="vienne">Vienne</option><option value="prague">Prague</option><option value="budapest">Budapest</option><option value="cracovie">Cracovie</option><option value="zakopane">Zakopane &amp; Tatras</option><option value="gdansk">Gdańsk &amp; Sopot</option></optgroup><optgroup label="Balkans &amp; au-delà"><option value="serbie">Belgrade &amp; Serbie</option><option value="croatie">Split &amp; îles croates</option><option value="istanbul">Istanbul</option><option value="georgie">Tbilissi &amp; Géorgie</option></optgroup><optgroup label="Maroc &amp; long-courrier"><option value="marrakech">Marrakech &amp; Agafay</option><option value="taghazout">Taghazout</option><option value="ile-maurice">Île Maurice</option></optgroup></select></label>
+        <label for="m-month">Période<select id="m-month"><option value="">Flexible</option><option value="2026-12">Décembre 2026</option><option value="2027-01">Janvier 2027</option><option value="2027-02">Février 2027</option><option value="2027-03">Mars 2027</option><option value="2027-03">Avril 2027</option><option value="2027-04">Mai 2027</option><option value="2027-05">Juin 2027</option><option value="2027-06">Juillet 2027</option><option value="2027-07">Août 2027</option><option value="2027-08">Septembre 2027</option><option value="2027-09">Octobre 2027</option><option value="2027-11">Novembre 2027</option><option value="2027-12">Décembre 2027</option><option value="2028-01">Janvier 2028</option><option value="2028-02">Février 2028</option></select></label>
+        <button class="btn accent" type="submit">Recevoir une proposition</button>
+      </form>
+    </div>
+    <div style="margin-top:40px"><div class="stats">
     <div><b>10 → 500+</b><span>participants par groupe</span></div>
-    <div><b>26</b><span>destinations de retraite en Europe et au-delà</span></div>
+    <div><b>30</b><span>destinations de retraite en Europe et au-delà</span></div>
     <div><b>48 h</b><span>pour recevoir 3 propositions complètes</span></div>
     <div><b>35 ans</b><span>d'expérience en agence de voyage</span></div>
-  </div></div></section>
-
-  <section class="section surface"><div class="wrap problem">
-    <div class="big">40 personnes. 12 villes. <em>Un tableur.</em></div>
-    <div style="display:flex;flex-direction:column;gap:22px">
-      <p class="lede" style="color:var(--ink)">Vous avez été chargé d'organiser le prochain séminaire ? Ce sont des semaines de messages, de devis de lieux et de vols à coordonner. Nous prenons tout en charge, pour que vous puissiez profiter du voyage avec votre équipe.</p>
-      <ul class="inc">
-        <li><b>Les vols de chaque participant</b>, depuis sa propre ville, coordonnés pour arriver le même jour.</li>
-        <li><b>Le lieu, le programme et les activités</b> : villas, salles de réunion, surf, cuisine, bateau.</li>
-        <li><b>Un humain qui répond 7j/7</b>, avant, pendant et après le voyage.</li>
-      </ul>
-    </div>
+  </div></div>
   </div></section>
 
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Pour toutes les tailles d'équipe</span><h2 class="h2" style="margin-top:10px">Quelle est la taille de votre groupe ?</h2></div></div>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">Pour toutes les tailles d'équipe</span><h2 class="h2" style="margin-top:10px">Quelle est la taille de votre équipe ?</h2></div></div>
     <div class="sizes"><a class="size" href="organiser-une-retraite/" data-k="brief" data-pax="20"><div class="ph"><img src="img/team_small.jpg" alt="Petite équipe" loading="lazy" decoding="async"></div><div class="b"><span class="eyebrow">Petite équipe</span><span class="n">10–30 <small style="font-family:var(--body);font-size:15px;color:var(--muted)">personnes</small></span><p>Villa ou quinta privatisée, programme sur mesure, ambiance de maison partagée. Idéal pour une startup ou un comité de direction.</p><span class="link" style="align-self:flex-start">Recevoir une proposition →</span></div></a><a class="size" href="organiser-une-retraite/" data-k="brief" data-pax="50"><div class="ph"><img src="img/team_villa2.jpg" alt="Toute l'entreprise" loading="lazy" decoding="async"></div><div class="b"><span class="eyebrow">Toute l'entreprise</span><span class="n">30–100 <small style="font-family:var(--body);font-size:15px;color:var(--muted)">personnes</small></span><p>Hôtel boutique ou domaine avec plénière et salles de sous-commission, activités en parallèle, vols depuis plusieurs pays.</p><span class="link" style="align-self:flex-start">Recevoir une proposition →</span></div></a><a class="size" href="organiser-une-retraite/" data-k="brief" data-pax="150"><div class="ph"><img src="img/act_dinner2.jpg" alt="Grand groupe" loading="lazy" decoding="async"></div><div class="b"><span class="eyebrow">Grand groupe</span><span class="n">100+ <small style="font-family:var(--body);font-size:15px;color:var(--muted)">personnes</small></span><p>Kick-off, convention ou incentive : plusieurs hôtels, arrivées par vagues, transferts et soirée privatisée.</p><span class="link" style="align-self:flex-start">Recevoir une proposition →</span></div></a></div>
   </div></section>
 
-  <section class="section" style="padding-top:0"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Retraites d'entreprise</span><h2 class="h2" style="margin-top:10px">Des lieux qui font naître les idées</h2></div><a class="link" href="retraites/" data-k="retraites">Toutes les destinations de retraite (26)</a></div>
-    <div class="grid"><a class="card rcard" href="retraites/algarve/" data-k="retraite-algarve"><div class="ph"><img src="img/algarve.jpg" alt="Algarve" loading="lazy" decoding="async"></div><div><h3>Algarve</h3><div class="meta">Portugal</div><div class="vibes"><span>Mer</span><span>Surf</span><span>Villas</span></div></div></a><a class="card rcard" href="retraites/lisbonne/" data-k="retraite-lisbonne"><div class="ph"><img src="img/lisbon.jpg" alt="Lisbonne" loading="lazy" decoding="async"></div><div><h3>Lisbonne</h3><div class="meta">Portugal</div><div class="vibes"><span>Ville</span><span>Rooftops</span><span>Culture</span></div></div></a><a class="card rcard" href="retraites/ericeira/" data-k="retraite-ericeira"><div class="ph"><img src="img/ericeira.jpg" alt="Ericeira" loading="lazy" decoding="async"></div><div><h3>Ericeira</h3><div class="meta">Portugal</div><div class="vibes"><span>Surf</span><span>Nature</span><span>Décontracté</span></div></div></a><a class="card rcard" href="retraites/majorque/" data-k="retraite-majorque"><div class="ph"><img src="img/mallorca.jpg" alt="Majorque" loading="lazy" decoding="async"></div><div><h3>Majorque</h3><div class="meta">Espagne</div><div class="vibes"><span>Mer</span><span>Villas</span><span>Soleil</span></div></div></a><a class="card rcard" href="retraites/toscane/" data-k="retraite-toscane"><div class="ph"><img src="img/tuscany.jpg" alt="Florence &amp; Toscane" loading="lazy" decoding="async"></div><div><h3>Florence &amp; Toscane</h3><div class="meta">Italie</div><div class="vibes"><span>Vignes</span><span>Villas</span><span>Art</span></div></div></a><a class="card rcard" href="retraites/marrakech/" data-k="retraite-marrakech"><div class="ph"><img src="img/agafay.jpg" alt="Marrakech &amp; Agafay" loading="lazy" decoding="async"></div><div><h3>Marrakech &amp; Agafay</h3><div class="meta">Maroc</div><div class="vibes"><span>Désert</span><span>Riads</span><span>Soirées</span></div></div></a><a class="card rcard" href="retraites/croatie/" data-k="retraite-croatie"><div class="ph"><img src="img/croatia.jpg" alt="Split &amp; îles croates" loading="lazy" decoding="async"></div><div><h3>Split &amp; îles croates</h3><div class="meta">Croatie</div><div class="vibes"><span>Mer</span><span>Voile</span><span>Îles</span></div></div></a><a class="card rcard" href="retraites/porto/" data-k="retraite-porto"><div class="ph"><img src="img/porto.jpg" alt="Porto &amp; Douro" loading="lazy" decoding="async"></div><div><h3>Porto &amp; Douro</h3><div class="meta">Portugal</div><div class="vibes"><span>Ville</span><span>Vin</span><span>Vallée du Douro</span></div></div></a></div>
+  <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">Retraites d'entreprise</span><h2 class="h2" style="margin-top:10px">Des lieux qui font naître les idées</h2></div><a class="link" href="retraites/" data-k="retraites">Toutes les destinations de retraite (30)</a></div>
+    <div class="grid"><a class="card rcard" href="retraites/algarve/" data-k="retraite-algarve"><div class="ph"><img src="img/algarve.jpg" alt="Algarve" loading="lazy" decoding="async"></div><div><h3>Algarve</h3><div class="meta">Portugal</div><div class="vibes"><span>Mer</span><span>Surf</span><span>Villas</span></div></div></a><a class="card rcard" href="retraites/lisbonne/" data-k="retraite-lisbonne"><div class="ph"><img src="img/lisbon.jpg" alt="Lisbonne" loading="lazy" decoding="async"></div><div><h3>Lisbonne</h3><div class="meta">Portugal</div><div class="vibes"><span>Ville</span><span>Rooftops</span><span>Culture</span></div></div></a><a class="card rcard" href="retraites/ericeira/" data-k="retraite-ericeira"><div class="ph"><img src="img/ericeira.jpg" alt="Ericeira" loading="lazy" decoding="async"></div><div><h3>Ericeira</h3><div class="meta">Portugal</div><div class="vibes"><span>Surf</span><span>Nature</span><span>Décontracté</span></div></div></a><a class="card rcard" href="retraites/majorque/" data-k="retraite-majorque"><div class="ph"><img src="img/mallorca.jpg" alt="Majorque" loading="lazy" decoding="async"></div><div><h3>Majorque</h3><div class="meta">Espagne</div><div class="vibes"><span>Mer</span><span>Villas</span><span>Soleil</span></div></div></a><a class="card rcard" href="retraites/athenes/" data-k="retraite-athenes"><div class="ph"><img src="img/athens.jpg" alt="Athènes &amp; Riviera" loading="lazy" decoding="async"></div><div><h3>Athènes &amp; Riviera</h3><div class="meta">Grèce</div><div class="vibes"><span>Ville</span><span>Mer</span><span>Histoire</span></div></div></a><a class="card rcard" href="retraites/toscane/" data-k="retraite-toscane"><div class="ph"><img src="img/tuscany.jpg" alt="Florence &amp; Toscane" loading="lazy" decoding="async"></div><div><h3>Florence &amp; Toscane</h3><div class="meta">Italie</div><div class="vibes"><span>Vignes</span><span>Villas</span><span>Art</span></div></div></a><a class="card rcard" href="retraites/marrakech/" data-k="retraite-marrakech"><div class="ph"><img src="img/agafay.jpg" alt="Marrakech &amp; Agafay" loading="lazy" decoding="async"></div><div><h3>Marrakech &amp; Agafay</h3><div class="meta">Maroc</div><div class="vibes"><span>Désert</span><span>Riads</span><span>Soirées</span></div></div></a><a class="card rcard" href="retraites/cracovie/" data-k="retraite-cracovie"><div class="ph"><img src="img/krakow.jpg" alt="Cracovie" loading="lazy" decoding="async"></div><div><h3>Cracovie</h3><div class="meta">Pologne</div><div class="vibes"><span>Ville</span><span>Histoire</span><span>Budget malin</span></div></div></a></div>
   </div></section>
 
-  <section class="section surface"><div class="wrap">
+  <section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">Événements</span><h2 class="h2" style="margin-top:10px">Un format pour chaque objectif</h2></div><a class="link" href="evenements/" data-k="evenements">Tous les événements</a></div>
     <div class="evtiles"><a href="evenements/seminaire-entreprise/" data-k="event-seminaire"><div class="ph"><img src="img/act_workshop3.jpg" alt="Séminaire d'entreprise" loading="lazy" decoding="async"></div><b>Séminaire d'entreprise</b><small>15 à 200 personnes</small></a><a href="evenements/team-building/" data-k="event-team-building"><div class="ph"><img src="img/act_hikegroup.jpg" alt="Retraite de team building" loading="lazy" decoding="async"></div><b>Retraite de team building</b><small>10 à 150 personnes</small></a><a href="evenements/seminaire-de-direction/" data-k="event-direction"><div class="ph"><img src="img/team_ridge.jpg" alt="Séminaire de direction" loading="lazy" decoding="async"></div><b>Séminaire de direction</b><small>6 à 25 personnes</small></a><a href="evenements/kick-off-commercial/" data-k="event-kickoff"><div class="ph"><img src="img/corporate2.jpg" alt="Kick-off commercial" loading="lazy" decoding="async"></div><b>Kick-off commercial</b><small>30 à 500 personnes</small></a><a href="evenements/voyage-incentive/" data-k="event-incentive"><div class="ph"><img src="img/team_cove.jpg" alt="Voyage incentive" loading="lazy" decoding="async"></div><b>Voyage incentive</b><small>10 à 100 personnes</small></a></div>
   </div></section>
 
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Ce qui nous différencie</span><h2 class="h2" style="margin-top:10px">Les autres agences s'arrêtent au lieu. Nous réservons aussi les vols.</h2></div></div>
-    <div class="cmpwrap"><table class="cmp">
-    <thead><tr><th></th><th class="us">Permanent Summer Voyages</th><th>En interne</th><th>Agence de séminaires classique</th></tr></thead>
-    <tbody><tr class=""><td>Recherche et négociation des lieux</td><td class="us"><span class="yes">Oui</span></td><td><span class="part">Des semaines de recherche</span></td><td><span class="yes">Oui</span></td></tr><tr class=""><td>Programme et activités sur mesure</td><td class="us"><span class="yes">Oui</span></td><td><span class="part">À construire soi-même</span></td><td><span class="yes">Oui</span></td></tr><tr class="key"><td>Vols de chaque participant, depuis sa ville</td><td class="us"><span class="yes">Oui</span></td><td><span class="part">Chacun réserve le sien</span></td><td><span class="no">Non</span></td></tr><tr class="key"><td>Arrivées coordonnées le même jour</td><td class="us"><span class="yes">Oui</span></td><td><span class="no">Non</span></td><td><span class="no">Non</span></td></tr><tr class="key"><td>Changements de vol gérés pendant le voyage</td><td class="us"><span class="yes">Oui</span></td><td><span class="no">Non</span></td><td><span class="no">Non</span></td></tr><tr class="key"><td>Un budget global par personne, vols inclus</td><td class="us"><span class="yes">Oui</span></td><td><span class="part">Tableur</span></td><td><span class="part">Hors vols</span></td></tr><tr class=""><td>Un interlocuteur joignable 7j/7</td><td class="us"><span class="yes">Oui</span></td><td><span class="no">Non</span></td><td><span class="part">Selon l'agence</span></td></tr></tbody>
-  </table></div>
-    <div style="margin-top:36px"><div class="promise"><div><span class="eyebrow">Notre engagement</span><div style="margin-top:6px"><b>3 propositions sous 48 h, vols compris</b></div><p class="note" style="margin-top:6px">Lieu, programme, activités, vols de chaque participant et budget par personne. Sans engagement.</p></div><a class="btn accent" href="organiser-une-retraite/" data-k="brief">Organiser une retraite</a></div></div>
-  </div></section>
-
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Formules clés en main</span><h2 class="h2" style="margin-top:10px">Nos retraites les plus demandées</h2></div><a class="link" href="retraites/" data-k="retraites">Toutes les destinations de retraite</a></div>
-    <div class="grid"><a class="pk" href="organiser-une-retraite/" data-k="brief" data-rpre="ericeira" data-nights="3"><div class="ph"><img src="img/act_surfteam.jpg" alt="Surf &amp; stratégie" loading="lazy" decoding="async"><span class="tag">3 nuits · 10 à 40 pers.</span></div>
-  <div><span class="eyebrow">Ericeira, Portugal</span><h3 style="margin-top:4px">Surf &amp; stratégie</h3></div><ul><li>Surf house privatisée</li><li>2 sessions de surf avec moniteurs</li><li>Salle de travail équipée</li><li>Barbecue et dîner au coucher du soleil</li></ul><span class="link" style="align-self:flex-start">Recevoir le devis →</span></a><a class="pk" href="organiser-une-retraite/" data-k="brief" data-rpre="algarve" data-nights="4"><div class="ph"><img src="img/algarve2.jpg" alt="Villa offsite" loading="lazy" decoding="async"><span class="tag">4 nuits · 12 à 40 pers.</span></div>
-  <div><span class="eyebrow">Algarve, Portugal</span><h3 style="margin-top:4px">Villa offsite</h3></div><ul><li>Villa entière avec chef</li><li>Bateau vers les grottes de Benagil</li><li>Randonnée des Sept Vallées</li><li>Transferts depuis Faro</li></ul><span class="link" style="align-self:flex-start">Recevoir le devis →</span></a><a class="pk" href="organiser-une-retraite/" data-k="brief" data-rpre="porto" data-nights="3"><div class="ph"><img src="img/porto2.jpg" alt="Vin &amp; vision" loading="lazy" decoding="async"><span class="tag">3 nuits · 15 à 80 pers.</span></div>
-  <div><span class="eyebrow">Porto &amp; Douro, Portugal</span><h3 style="margin-top:4px">Vin &amp; vision</h3></div><ul><li>Hôtel boutique à Porto</li><li>Journée dans une quinta du Douro</li><li>Croisière sur le fleuve</li><li>Salle de réunion dans un ancien entrepôt</li></ul><span class="link" style="align-self:flex-start">Recevoir le devis →</span></a><a class="pk" href="organiser-une-retraite/" data-k="brief" data-rpre="marrakech" data-nights="3"><div class="ph"><img src="img/marrakech.jpg" alt="Riad &amp; désert" loading="lazy" decoding="async"><span class="tag">3 nuits · 15 à 120 pers.</span></div>
-  <div><span class="eyebrow">Marrakech, Maroc</span><h3 style="margin-top:4px">Riad &amp; désert</h3></div><ul><li>Riad ou hôtel privatisé</li><li>Dîner sous les étoiles dans l'Agafay</li><li>Journée dans l'Atlas</li><li>Guide dans la médina</li></ul><span class="link" style="align-self:flex-start">Recevoir le devis →</span></a></div>
-  </div></section>
-
-  <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Activités de team building</span><h2 class="h2" style="margin-top:10px">Les moments dont votre équipe parlera pendant des années</h2></div><a class="link" href="activites-team-building/" data-k="activites">Voir les 20 activités</a></div>
-    <div class="tiles four"><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_surfgroup.jpg" alt="Surf" loading="lazy" decoding="async"><div><b>Surf</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_cooking.jpg" alt="Cours de cuisine" loading="lazy" decoding="async"><div><b>Cours de cuisine</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_boat.jpg" alt="Bateau &amp; catamaran" loading="lazy" decoding="async"><div><b>Bateau &amp; catamaran</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_hike.jpg" alt="Randonnées" loading="lazy" decoding="async"><div><b>Randonnées</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/croatia2.jpg" alt="Voile &amp; régates" loading="lazy" decoding="async"><div><b>Voile &amp; régates</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_workshop.jpg" alt="Ateliers &amp; stratégie" loading="lazy" decoding="async"><div><b>Ateliers &amp; stratégie</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_yoga.jpg" alt="Yoga &amp; bien-être" loading="lazy" decoding="async"><div><b>Yoga &amp; bien-être</b></div></a><a class="tile" href="activites-team-building/" data-k="activites"><img src="img/act_kayak.jpg" alt="Kayak &amp; paddle" loading="lazy" decoding="async"><div><b>Kayak &amp; paddle</b></div></a></div>
-  </div></section>
-
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Comment ça marche</span><h2 class="h2" style="margin-top:10px">De la première idée au retour à la maison</h2></div><a class="btn accent" href="organiser-une-retraite/" data-k="brief">Organiser une retraite</a></div>
-    <ol class="steps">
-      <li><b>Votre brief</b><span>5 minutes : taille de l'équipe, villes de départ, dates, budget, envies.</span></li>
-      <li><b>3 propositions sous 48 h</b><span>Trois options complètes : lieu, programme, activités, vols et budget par personne.</span></li>
-      <li><b>On réserve tout</b><span>Les vols de chacun, le lieu, les transferts et les activités.</span></li>
-      <li><b>On reste joignables</b><span>Un interlocuteur sur WhatsApp 7j/7, jusqu'au retour de tous.</span></li>
-    </ol>
-  </div></section>
-
-  <section class="band">
-    <div class="ph"><img src="img/team_sail.jpg" alt="" loading="lazy" decoding="async"></div>
-    <div class="wrap">
-      <span class="eyebrow" style="color:#fff">Calculateur de budget</span>
-      <h2 class="display">Combien coûte votre séminaire ?</h2>
-      <p>Nombre de participants, nuits, niveau du lieu, villes de départ : obtenez une fourchette par personne, vols compris, en 30 secondes.</p>
-      <div class="ctas"><a href="calculateur-budget/" data-k="budget" class="btn light">Estimer mon budget</a><a href="organiser-une-retraite/" data-k="brief" class="btn light ghost">Organiser une retraite</a></div>
-    </div>
-  </section>
-
-  
-
-  <section class="section"><div class="wrap split rev">
+  <section class="section surface"><div class="wrap split">
     <div class="text">
-      <span class="eyebrow">Voyages de groupe</span>
-      <h2 class="h2">Amis, familles, mariages, clubs : les groupes, c'est notre spécialité.</h2>
-      <p class="lede">Dès 10 personnes et sans limite : des tarifs de groupe bloqués tôt, une liste de participants tenue à jour et quelqu'un qui coordonne tout le monde, même quand chacun part d'une ville différente.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="groupes/" data-k="groupes">Voyages de groupe</a><a class="btn ghost" href="destinations/" data-k="destinations">Voir toutes les destinations</a></div>
+      <span class="eyebrow">Ce qui nous différencie</span>
+      <h2 class="h2">Les autres agences s'arrêtent au lieu. Nous réservons aussi les vols.</h2>
+      <ul class="inc">
+        <li>Le billet de chaque participant, depuis sa ville</li>
+        <li>Des arrivées coordonnées le même jour</li>
+        <li>Un budget par personne, vols inclus</li>
+        <li>Un humain joignable 7j/7 si un vol change</li>
+      </ul>
+      <a class="link" href="comment-ca-marche/" data-k="comment">Comment ça marche</a>
     </div>
-    <div class="media ph"><img src="img/grp_celebrate.jpg" alt="" loading="lazy" decoding="async"></div>
-  </div></section>
-
-  <section class="section surface"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">L'assistance autrement</span><h2 class="h2" style="margin-top:10px">Quand ça se complique, quelqu'un répond.</h2></div></div>
-    <div class="scen">
-      <div><div class="ph"><img src="img/plane2.jpg" alt="" loading="lazy" decoding="async"></div><div class="t"><span class="clock">02:10 · Francfort</span><b>Correspondance annulée</b><span>Rebooking sur le premier vol du matin et nuit d'hôtel avant même d'arriver au comptoir.</span></div></div><div><div class="ph"><img src="img/plane.jpg" alt="" loading="lazy" decoding="async"></div><div class="t"><span class="clock">07:45 · Lisbonne</span><b>Un participant bloqué</b><span>Son vol depuis Berlin est annulé : il arrive l'après-midi même, l'équipe ne l'attend pas.</span></div></div><div><div class="ph"><img src="img/mallorca2.jpg" alt="" loading="lazy" decoding="async"></div><div class="t"><span class="clock">11:00 · Majorque</span><b>Météo capricieuse</b><span>Le catamaran est déplacé au lendemain, un cours de cuisine le remplace.</span></div></div><div><div class="ph"><img src="img/act_longtable.jpg" alt="" loading="lazy" decoding="async"></div><div class="t"><span class="clock">18:30 · Toscane</span><b>Huit personnes de plus</b><span>La direction s'invite au dernier dîner : table, chambres et transferts ajoutés dans l'heure.</span></div></div>
-    </div>
+    <div class="media ph"><img src="img/team_sail.jpg" alt="" loading="lazy" decoding="async"></div>
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Offres</span><h2 class="h2" style="margin-top:10px">Offres du moment</h2></div><a class="link" href="offres/" data-k="offres">Toutes les offres</a></div>
-    <div class="offers-grid"><a class="ocard" href="offres/algarve-villa-groupe/" data-k="offre-algarve-villa-groupe"><div class="ph"><img src="img/terrace_sea.jpg" alt="Algarve, villa pour 16, 4 nuits" loading="lazy" decoding="async"><span class="otag">Groupe</span></div>
-  <div class="body"><span class="note">Avril à juin 2027</span><h3>Algarve, villa pour 16, 4 nuits</h3>
-  <div class="price"><small>À partir de</small><b>€ 590</b><span>par personne, hors vols</span></div>
-  <span class="sample" style="align-self:flex-start">Exemple à remplacer</span></div></a><a class="ocard" href="offres/ski-chalet-groupe/" data-k="offre-ski-chalet-groupe"><div class="ph"><img src="img/ski.jpg" alt="Chalet avec chef dans les Alpes, 7 nuits" loading="lazy" decoding="async"><span class="otag">Neige</span></div>
-  <div class="body"><span class="note">Janvier à mars 2027</span><h3>Chalet avec chef dans les Alpes, 7 nuits</h3>
-  <div class="price"><small>À partir de</small><b>€ 1 190</b><span>par personne, base 14 personnes</span></div>
-  <span class="sample" style="align-self:flex-start">Exemple à remplacer</span></div></a><a class="ocard" href="offres/marrakech-celebration/" data-k="offre-marrakech-celebration"><div class="ph"><img src="img/souk.jpg" alt="Marrakech, riad privatisé et nuit dans l'Agafay" loading="lazy" decoding="async"><span class="otag">Célébration</span></div>
-  <div class="body"><span class="note">Mars à mai et octobre-novembre 2027</span><h3>Marrakech, riad privatisé et nuit dans l'Agafay</h3>
-  <div class="price"><small>À partir de</small><b>€ 790</b><span>par personne, base 20 personnes</span></div>
-  <span class="sample" style="align-self:flex-start">Exemple à remplacer</span></div></a></div>
-  </div></section>
-
-  <section class="section" style="padding-top:0"><div class="wrap">
-    <div class="head"><div><span class="eyebrow">Voyages de groupe</span><h2 class="h2" style="margin-top:10px">Où partir en groupe</h2></div><a class="link" href="destinations/" data-k="destinations">Voir toutes les destinations</a></div>
-    <div class="tiles"><a class="tile" href="destinations/portugal/" data-k="dest-portugal"><img src="img/lisbon2.jpg" alt="Lisbonne &amp; Algarve" loading="lazy" decoding="async"><div><b>Lisbonne &amp; Algarve</b><small>Portugal</small></div></a><a class="tile" href="destinations/alpes/" data-k="dest-alpes"><img src="img/alps.jpg" alt="Alpes" loading="lazy" decoding="async"><div><b>Alpes</b><small>Suisse, France, Autriche</small></div></a><a class="tile" href="destinations/italie/" data-k="dest-italie"><img src="img/italy.jpg" alt="Côte amalfitaine" loading="lazy" decoding="async"><div><b>Côte amalfitaine</b><small>Italie</small></div></a><a class="tile" href="destinations/santorin/" data-k="dest-santorin"><img src="img/santorini.jpg" alt="Santorin &amp; Cyclades" loading="lazy" decoding="async"><div><b>Santorin &amp; Cyclades</b><small>Grèce</small></div></a><a class="tile" href="destinations/cape-town/" data-k="dest-cape-town"><img src="img/capetown.jpg" alt="Le Cap" loading="lazy" decoding="async"><div><b>Le Cap</b><small>Afrique du Sud</small></div></a><a class="tile" href="destinations/dubai/" data-k="dest-dubai"><img src="img/dubai.jpg" alt="Dubaï" loading="lazy" decoding="async"><div><b>Dubaï</b><small>Émirats arabes unis</small></div></a></div>
-  </div></section>
-
-  <section class="section surface"><div class="wrap">
     <div class="head"><h2 class="h2">Ce que disent les organisateurs</h2></div>
     <div class="quotes"><figure class="quote" style="margin:0"><blockquote>« Trente-deux personnes venant de six pays, et tout le monde a atterri à Faro le même après-midi. Nous n'avons eu à gérer aucun vol. »</blockquote><cite>Head of People, SaaS company</cite><span class="sample">Exemple à remplacer</span></figure><figure class="quote" style="margin:0"><blockquote>« Trois propositions complètes en deux jours, budget par personne compris. Le choix a pris dix minutes. »</blockquote><cite>Office manager, design agency</cite><span class="sample">Exemple à remplacer</span></figure><figure class="quote" style="margin:0"><blockquote>« Un vol annulé la veille du départ : une personne nous a répondu sur WhatsApp et a tout réglé avant le dîner. »</blockquote><cite>Organiser, group of 18 friends</cite><span class="sample">Exemple à remplacer</span></figure></div>
-  </div></section>
-  <section class="section surface"><div class="wrap split">
-    <div class="text"><span class="eyebrow">Guide gratuit</span><h2 class="h2">Organiser un séminaire : la checklist complète, de J-6 mois au retour</h2>
-      <p class="lede">Budget, choix du lieu, vols, programme, communication aux participants : tout ce qu'on vérifie pour chaque retraite, étape par étape.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="guide-organiser-un-seminaire/" data-k="guide">Lire le guide</a><a class="btn ghost" href="calculateur-budget/" data-k="budget">Calculateur de budget</a></div></div>
-    <div class="media ph"><img src="img/act_workshop2.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div style="margin-top:56px"><div class="promise"><div><span class="eyebrow">Notre engagement</span><div style="margin-top:6px"><b>3 propositions sous 48 h, vols compris</b></div><p class="note" style="margin-top:6px">Lieu, programme, activités, vols de chaque participant et budget par personne. Sans engagement.</p></div><a class="btn accent" href="organiser-une-retraite/" data-k="brief">Organiser une retraite</a></div></div>
   </div></section></main><footer class="site"><div class="wrap">
     <div class="cols">
       <div>
@@ -202,9 +122,9 @@
         <div style="margin-top:20px"><span class="social"><span data-empty="" title="Lien à ajouter" aria-label="facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"></path></svg></span><span data-empty="" title="Lien à ajouter" aria-label="instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"></circle></svg></span></span></div>
         <form class="news" data-form="news"><label for="nl" class="sr" style="position:absolute;left:-9999px">Email</label><input id="nl" type="email" required="" placeholder="email@exemple.com"><button class="btn">S'inscrire</button></form>
       </div>
-      <div><h4>Retraites d'entreprise</h4><a href="retraites/algarve/" data-k="retraite-algarve">Algarve</a><a href="retraites/lisbonne/" data-k="retraite-lisbonne">Lisbonne</a><a href="retraites/ericeira/" data-k="retraite-ericeira">Ericeira</a><a href="retraites/majorque/" data-k="retraite-majorque">Majorque</a><a href="retraites/toscane/" data-k="retraite-toscane">Florence &amp; Toscane</a><a href="retraites/marrakech/" data-k="retraite-marrakech">Marrakech &amp; Agafay</a><a href="retraites/" data-k="retraites">Voir plus</a></div>
-      <div><h4>Événements</h4><a href="evenements/seminaire-entreprise/" data-k="event-seminaire">Séminaire d'entreprise</a><a href="evenements/team-building/" data-k="event-team-building">Retraite de team building</a><a href="evenements/seminaire-de-direction/" data-k="event-direction">Séminaire de direction</a><a href="evenements/kick-off-commercial/" data-k="event-kickoff">Kick-off commercial</a><a href="evenements/voyage-incentive/" data-k="event-incentive">Voyage incentive</a><a href="groupes/" data-k="groupes">Voyages de groupe</a><a href="entreprises/" data-k="entreprises">Voyages d'affaires</a></div>
-      <div><h4>Ressources</h4><a href="calculateur-budget/" data-k="budget">Calculateur de budget</a><a href="activites-team-building/" data-k="activites">Activités de team building</a><a href="guide-organiser-un-seminaire/" data-k="guide">Guide : organiser un séminaire</a><a href="offres/" data-k="offres">Offres</a><a href="a-propos/" data-k="a-propos">Notre histoire</a><a href="mentions-legales/" data-k="mentions">Mentions légales</a></div>
+      <div><h4>Entreprises</h4><a href="retraites/" data-k="retraites">Retraites d'entreprise</a><a href="evenements/seminaire-entreprise/" data-k="event-seminaire">Séminaire d'entreprise</a><a href="evenements/team-building/" data-k="event-team-building">Retraite de team building</a><a href="evenements/seminaire-de-direction/" data-k="event-direction">Séminaire de direction</a><a href="evenements/kick-off-commercial/" data-k="event-kickoff">Kick-off commercial</a><a href="evenements/voyage-incentive/" data-k="event-incentive">Voyage incentive</a><a href="groupes/" data-k="groupes">Associations, clubs &amp; équipes</a><a href="offres/" data-k="offres">Offres</a><a href="entreprises/" data-k="entreprises">Voyages d'affaires</a></div>
+      <div><h4>Ressources</h4><a href="comment-ca-marche/" data-k="comment">Comment ça marche</a><a href="calculateur-budget/" data-k="budget">Calculateur de budget</a><a href="activites-team-building/" data-k="activites">Activités de team building</a><a href="guide-organiser-un-seminaire/" data-k="guide">Guide : organiser un séminaire</a><a href="proposer-votre-lieu/" data-k="partenaires">Proposer votre lieu</a><a href="a-propos/" data-k="a-propos">Notre histoire</a><a href="mentions-legales/" data-k="mentions">Mentions légales</a></div>
+      <div><h4>Particuliers</h4><a href="voyages/" data-k="voyages">Voyages sur mesure</a><a href="destinations/" data-k="destinations">Destinations</a><a href="inspiration/" data-k="inspiration">Inspiration</a><a href="voyageurs/" data-k="voyageurs">Voyageurs</a><a href="devis/" data-k="devis">Demander un devis</a></div>
       <div><h4>Contact</h4><a href="reserver-un-appel/" data-k="appel">Réserver un appel</a><a href="https://wa.me/351924477353" target="_blank" rel="noopener">WhatsApp</a><span style="display:block;padding:4px 0;font-size:15px;user-select:all">+351 924 477 353</span><span style="display:block;padding:4px 0;font-size:15px;user-select:all">contact@permanentsummervoyages.com</span></div>
     </div>
     <div class="legal"><span>© 2026 Permanent Summer Lda · Portugal</span><span>Billets d'avion émis par notre partenaire agréé</span><span><a href="mentions-legales/" data-k="mentions">Confidentialité</a> · <a href="mentions-legales/" data-k="mentions">Conditions</a></span></div>

@@ -59,7 +59,7 @@ header.site .bar{display:grid;grid-template-columns:auto 1fr auto;align-items:ce
 .logo{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
 .logo b{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.02em}
 .logo span{font-size:10px;letter-spacing:.42em;text-transform:uppercase;margin-top:5px}
-nav.main{display:flex;justify-content:center;gap:24px;font-size:14px;letter-spacing:.03em}
+nav.main{display:flex;justify-content:center;gap:22px;font-size:14px;letter-spacing:.03em}
 nav.main button,nav.main a{background:none;border:0;padding:24px 0;cursor:pointer;font-weight:400}
 nav.main button::after{content:"";display:inline-block;width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);margin-left:9px}
 .right{display:flex;justify-content:flex-end;align-items:center;gap:18px;font-size:14px}
@@ -104,10 +104,36 @@ body.overlay .util{display:none}
 .drawer details a{display:block;padding:7px 0 7px 12px;color:var(--muted)}
 .drawer details div{padding-bottom:14px}
 
+/* comparison table becomes stacked cards on phones */
+@media (max-width:700px){
+  .cmpwrap .cmpwrap{overflow:visible}
+  .cmpwrap .cmp{min-width:0;font-size:15px}
+  .cmpwrap .cmp thead{display:none}
+  .cmpwrap .cmp,.cmpwrap .cmp tbody,.cmpwrap .cmp tr,.cmpwrap .cmp td{display:block;width:100%}
+  .cmpwrap .cmp tr{border:1px solid var(--line);border-radius:2px;padding:14px 16px;margin-bottom:12px}
+  .cmpwrap .cmp td{border:0;padding:6px 0;text-align:left;display:flex;justify-content:space-between;gap:16px}
+  .cmpwrap .cmp td:first-child{font-weight:400;font-size:16px;padding-bottom:10px;margin-bottom:4px;border-bottom:1px solid var(--line);display:block}
+  .cmpwrap .cmp td::before{content:attr(data-label);color:var(--muted);font-size:13px}
+  .cmpwrap .cmp td:first-child::before{content:none}
+  .cmpwrap .cmp td.us{background:none}
+}
+
+/* phones: compact business/personal switch in the header, language moves to the drawer */
+@media (max-width:640px){
+  header.site .bar{height:auto;padding-block:10px}
+  header.site .brand{flex-direction:column;align-items:flex-start;gap:8px}
+  header.site .brand .side{display:inline-flex;font-size:11px;letter-spacing:.02em;padding:2px}
+  header.site .brand .side a{padding:3px 10px}
+  header.site .right .lang{display:none}
+}
+
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero > .ph{position:absolute;inset:0}
-.hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.05) 55%,rgba(0,0,0,.55) 100%)}
+.hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,9,.66) 0%,rgba(8,10,9,.42) 42%,rgba(8,10,9,.08) 78%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
+.hero h1,.hero .sub,.hero .eyebrow{text-shadow:0 1px 24px rgba(0,0,0,.35)}
+.hero.lean h1{font-size:clamp(40px,5.4vw,78px);max-width:13ch}
+.hero.lean .sub{max-width:40ch}
 .hero .wrap{position:relative;width:100%;padding-block:150px 48px}
 .hero h1{font-size:clamp(44px,7.2vw,104px);max-width:12ch}
 .hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:46ch;margin-top:18px;opacity:.92}
@@ -355,6 +381,24 @@ footer .legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
 .wa svg{width:22px;height:22px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:2px;font-size:14px;z-index:90}
 
+/* business / personal switch */
+.brand{display:flex;align-items:center;gap:22px;min-width:0}
+.side{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;font-size:12px;letter-spacing:.05em;white-space:nowrap}
+.side a{padding:5px 12px;border-radius:999px;color:var(--muted)}
+.side a[aria-current="true"]{background:var(--ink);color:var(--bg)}
+body.overlay header.site:not(.solid) .side{border-color:rgba(255,255,255,.4)}
+body.overlay header.site:not(.solid) .side a{color:rgba(255,255,255,.8)}
+body.overlay header.site:not(.solid) .side a[aria-current="true"]{background:#fff;color:#1b1c1b}
+.hostlink{font-size:13px;color:var(--muted);white-space:nowrap}
+body.overlay header.site:not(.solid) .hostlink{color:rgba(255,255,255,.85)}
+.drawer .side{margin-bottom:18px}
+.minibox{background:var(--surface);padding:28px;border-radius:2px}
+.minibox .mini{margin-top:14px;box-shadow:none;border:1px solid var(--line);max-width:none}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px 28px}
+.why > div{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.why b{font-weight:400;font-size:19px}
+.why span{color:var(--muted);font-size:15px}
+@media (max-width:820px){.why{grid-template-columns:1fr}}
 /* trust bar, team sizes, promise */
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .stats > div{padding:24px 20px 24px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
@@ -437,10 +481,13 @@ footer .legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);
   .check > li{grid-template-columns:1fr;gap:6px}
   .evtiles{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media (max-width:1180px){
+@media (max-width:1240px){
   nav.main,.right .hide-m{display:none}
   .burger{display:block}
 }
+@media (max-width:1440px){.hostlink{display:none}}
+.logo b{white-space:nowrap}
+nav.main > *{white-space:nowrap}
 @media (max-width:1080px){
   .offers-grid,.reels{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
