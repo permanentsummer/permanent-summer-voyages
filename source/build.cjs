@@ -41,57 +41,82 @@ function renderPage(page, lang, root) {
 
 /* ---------- data + helpers from a reference window ---------- */
 const ref = renderPage("home", "fr", "").w;
-const { DESTS, THEMES, OFFERS, REGIONS, CONFIG, PSV } = ref;
+const { DESTS, THEMES, OFFERS, REGIONS, CONFIG, PSV, RETREATS, RREGIONS } = ref;
 const T = (o, lg) => (o && typeof o === "object") ? (o[lg] ?? o.fr) : o;
 const clip = (s, n = 158) => { s = String(s).replace(/\s+/g, " ").trim(); if (s.length <= n) return s; const c = s.slice(0, n - 1); return c.slice(0, c.lastIndexOf(" ")).replace(/[,;:.\s]+$/, "") + "…"; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-const keys = ["home", "destinations", ...DESTS.map(d => "dest-" + d.s), "inspiration", ...THEMES.map(t => "theme-" + t.k),
+const { EVENTS } = ref;
+const keys = ["home", "retraites", ...RETREATS.map(r => "retraite-" + r.s), "brief", "evenements", ...EVENTS.map(e => "event-" + e.k), "budget", "activites", "guide",
+  "destinations", ...DESTS.map(d => "dest-" + d.s), "inspiration", ...THEMES.map(t => "theme-" + t.k),
   "offres", ...OFFERS.map(o => "offre-" + o.id), "voyageurs", "groupes", "entreprises", "a-propos", "appel", "devis", "mentions"];
 
 function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
-  let title, desc, image = "mauritius", crumbs = null, noindex = false;
-  if (key === "home") { title = L(`${BRAND} · Agence de voyage à Maurice`, `${BRAND} · Travel agency in Mauritius`);
-    desc = L("Agence de voyage indépendante à Maurice : billets d'avion, hôtels, groupes et voyages d'affaires. 35 ans d'expérience et un humain qui répond, même pendant votre voyage.",
-             "Independent travel agency in Mauritius: flights, hotels, groups and business travel. 35 years of experience and a human who answers, even during your trip."); }
-  else if (key === "destinations") { title = L("Destinations au départ de Maurice", "Destinations from Mauritius");
-    desc = L(`${DESTS.length} destinations que nous connaissons par cœur, de Rodrigues au Japon : vols, hôtels, transferts et circuits organisés depuis l'île Maurice.`,
-             `${DESTS.length} destinations we know by heart, from Rodrigues to Japan: flights, hotels, transfers and tours arranged from Mauritius.`); }
+  let title, desc, image = "team_walk", crumbs = null, noindex = false;
+  if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
+    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sous 48 h, vols de chaque participant compris.",
+             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 proposals within 48 h, every participant's flights included."); }
+  else if (key === "retraites") { title = L("Retraites d'entreprise en Europe et au-delà", "Company retreats in Europe and beyond");
+    desc = L(`${RETREATS.length} destinations de séminaire et d'offsite : Algarve, Lisbonne, Ericeira, Majorque, Toscane, Marrakech, Croatie… Dès 10 personnes, vols compris.`,
+             `${RETREATS.length} offsite and retreat destinations: Algarve, Lisbon, Ericeira, Mallorca, Tuscany, Marrakech, Croatia… From 10 people, flights included.`); image = "team_villa2"; }
+  else if (key.startsWith("retraite-")) { const r = RETREATS.find(x => x.s === key.slice(9)); const n = T(r.n, lg);
+    title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
+    crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
+  else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
+    desc = L("Décrivez votre projet en 5 minutes et recevez 3 propositions complètes sous 48 heures : lieu, programme, activités, vols et budget par personne.",
+             "Describe your project in 5 minutes and get 3 complete proposals within 48 hours: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
+  else if (key === "evenements") { title = L("Séminaires, team building, incentives et voyages de groupe", "Offsites, team building, incentives and group trips");
+    desc = L("Séminaire d'entreprise, team building, séminaire de direction, kick-off commercial, voyage incentive : un format pour chaque objectif, vols compris.",
+             "Company offsites, team building, leadership retreats, sales kickoffs, incentive trips: a format for every goal, flights included."); image = "act_workshop3"; }
+  else if (key.startsWith("event-")) { const e = EVENTS.find(x => x.k === key.slice(6)); const n = T(e.n, lg);
+    title = L(`${n} : organisation clé en main, vols compris`, `${n}: fully organised, flights included`); desc = clip(`${T(e.t, lg)} ${T(e.d, lg)}`); image = e.img;
+    crumbs = [[L("Événements", "Events"), "evenements"], [n, key]]; }
+  else if (key === "budget") { title = L("Calculateur de budget séminaire, vols compris", "Offsite budget calculator, flights included");
+    desc = L("Combien coûte un séminaire d'entreprise ? Estimez votre budget par personne en 30 secondes : hébergement, salles, activités, transferts et vols.",
+             "How much does a company offsite cost? Estimate your per-person budget in 30 seconds: accommodation, meeting rooms, activities, transfers and flights."); image = "team_garden"; }
+  else if (key === "activites") { title = L("Activités de team building : 20 idées par énergie et taille de groupe", "Team-building activities: 20 ideas by energy and group size");
+    desc = L("Surf, régate, canyoning, cours de cuisine, chasse au trésor, yoga, nettoyage de plage : des activités de team building testées pour les groupes de 8 à 300 personnes.",
+             "Surfing, regattas, canyoning, cooking classes, treasure hunts, yoga, beach clean-ups: team-building activities for groups of 8 to 300."); image = "team_ridge2"; }
+  else if (key === "guide") { title = L("Organiser un séminaire d'entreprise : la checklist complète", "How to plan a company offsite: the complete checklist");
+    desc = L("Budget, destination, lieu, vols, programme, communication : la checklist étape par étape pour organiser un séminaire, de J-6 mois au retour.",
+             "Budget, destination, venue, flights, programme, comms: the step-by-step checklist for planning an offsite, from six months out to back home."); image = "team_garden"; }
+  else if (key === "destinations") { title = L("Voyages de groupe : où partir entre amis, en famille ou en club", "Group trips: where to go with friends, family or your club");
+    desc = L(`${DESTS.length} destinations pour les voyages de groupe : Lisbonne et l'Algarve, Marrakech, les Alpes, la côte amalfitaine, Le Cap… Vols de chacun coordonnés.`,
+             `${DESTS.length} destinations for group trips: Lisbon and the Algarve, Marrakech, the Alps, the Amalfi Coast, Cape Town… Everyone's flights coordinated.`); image = "grp_beachsunset"; }
   else if (key.startsWith("dest-")) { const d = DESTS.find(x => x.s === key.slice(5)); const n = T(d.n, lg);
-    title = d.s === "maurice" ? L("Vacances à l'île Maurice : séjours et retours au pays", "Holidays in Mauritius: stays and trips home")
-      : L(`Voyage ${n} depuis Maurice`, `${n} trips from Mauritius`); desc = clip(`${T(d.t, lg)} ${T(d.d, lg)}`); image = d.img[0];
-    crumbs = [[L("Destinations", "Destinations"), "destinations"], [n, key]]; }
-  else if (key === "inspiration") { title = L("Idées de voyage", "Travel ideas");
-    desc = L("Lune de miel, famille, safari, pèlerinage, shopping à Dubaï : trouvez votre prochain voyage par envie, au départ de l'île Maurice.",
-             "Honeymoon, family, safari, pilgrimage, Dubai shopping: find your next trip by mood, departing from Mauritius."); image = "pool"; }
+    title = L(`Voyage de groupe ${n}`, `Group trip to ${n}`); desc = clip(`${T(d.t, lg)} ${T(d.d, lg)}`); image = d.img[0];
+    crumbs = [[L("Voyages de groupe", "Group trips"), "destinations"], [n, key]]; }
+  else if (key === "inspiration") { title = L("Idées de voyages de groupe", "Group trip ideas");
+    desc = L("Entre amis, mariages et célébrations, grandes familles, clubs, équipes sportives, ski, safari : trouvez votre prochain voyage de groupe par envie.",
+             "Friends' trips, weddings and celebrations, extended families, clubs, sports teams, ski, safari: find your next group trip by mood."); image = "pool"; }
   else if (key.startsWith("theme-")) { const th = THEMES.find(x => x.k === key.slice(6)); const n = T(th, lg);
-    title = L(`${n} : idées de voyage depuis Maurice`, `${n}: trip ideas from Mauritius`); desc = clip(T(th.d, lg)); image = th.img;
+    title = L(`${n} : idées de voyages de groupe`, `${n}: group trip ideas`); desc = clip(T(th.d, lg)); image = th.img;
     crumbs = [["Inspiration", "inspiration"], [n, key]]; }
-  else if (key === "offres") { title = L("Offres de voyage", "Travel offers");
-    desc = L("Séjours négociés et départs de groupe au départ de Maurice, à prix connu. Places limitées, réservation sur WhatsApp.",
-             "Negotiated stays and group departures from Mauritius at a set price. Limited seats, book on WhatsApp."); image = "mauritius4"; }
+  else if (key === "offres") { title = L("Offres de voyages de groupe", "Group travel offers");
+    desc = L("Séjours de groupe négociés à prix connu : villas, chalets, riads. Dates limitées, réservation sur WhatsApp.",
+             "Negotiated group stays at a set price: villas, chalets, riads. Limited dates, book on WhatsApp."); image = "algarve2"; }
   else if (key.startsWith("offre-")) { const o = OFFERS.find(x => x.id === key.slice(6)); const n = T(o.title, lg);
     title = `${n}, ${L("dès", "from")} ${o.price}`; desc = clip(`${T(o.valid, lg)}. ${L("Inclus", "Included")} : ${T(o.inc, lg).join(", ")}.`); image = o.img;
     crumbs = [[L("Offres", "Offers"), "offres"], [n, key]]; }
   else if (key === "voyageurs") { title = L("Nos voyageurs en vidéo", "Our travellers on video");
-    desc = L("Nos ambassadeurs racontent leur voyage en quelques secondes : lune de miel, famille, groupes. De vraies personnes, de vrais itinéraires.",
-             "Our ambassadors share their trip in a few seconds: honeymoons, families, groups. Real people, real itineraries."); image = "plane2"; }
-  else if (key === "groupes") { title = L("Voyages de groupe : mariages, pèlerinages, sport", "Group travel: weddings, pilgrimages, sport");
-    desc = L("Mariages, pèlerinages, équipes sportives, séminaires : tarifs de groupe, liste de passagers et coordination de 10 à 200 voyageurs au départ de Maurice.",
-             "Weddings, pilgrimages, sports teams, seminars: group fares, passenger lists and coordination for 10 to 200 travellers from Mauritius."); image = "wedding"; }
-  else if (key === "entreprises") { title = L("Voyages d'affaires pour entreprises à Maurice", "Business travel for companies in Mauritius");
-    desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME et entreprises de Maurice, avec un interlocuteur unique qui connaît vos voyageurs.",
-             "Tickets, hotels, invoices and 7-day support for Mauritian SMEs and companies, with one contact who knows your travellers."); image = "plane"; }
+    desc = L("Équipes, amis, familles et clubs racontent leur voyage en quelques secondes. De vraies personnes, de vrais itinéraires.",
+             "Teams, friends, families and clubs share their trip in a few seconds. Real people, real itineraries."); image = "plane2"; }
+  else if (key === "groupes") { title = L("Voyages de groupe : amis, mariages, familles, clubs", "Group travel: friends, weddings, families, clubs");
+    desc = L("Entre amis, mariages et célébrations, grandes familles, associations, équipes sportives, pèlerinages : tarifs de groupe et coordination de 10 à 300 voyageurs.",
+             "Friends' trips, weddings and celebrations, extended families, associations, sports teams, pilgrimages: group rates and coordination for 10 to 300 travellers."); image = "grp_sunset"; }
+  else if (key === "entreprises") { title = L("Voyages d'affaires pour PME et équipes internationales", "Business travel for SMEs and international teams");
+    desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME, startups et équipes internationales, avec un interlocuteur unique qui connaît vos voyageurs.",
+             "Tickets, hotels, invoices and 7-day support for SMEs, startups and international teams, with one contact who knows your travellers."); image = "plane"; }
   else if (key === "a-propos") { title = L("À propos : Jennifer & Christopher Kwo", "About us: Jennifer & Christopher Kwo");
-    desc = L("Une agence familiale : 35 ans d'expérience en agence de voyage et l'hôtellerie internationale, au service des voyageurs de Maurice.",
-             "A family agency: 35 years in travel agencies plus international hospitality, serving travellers from Mauritius."); image = "team"; }
+    desc = L("Une agence familiale : 35 ans d'expérience en agence de voyage et l'hôtellerie internationale, au service des équipes et des groupes.",
+             "A family agency: 35 years in travel agencies plus international hospitality, serving teams and groups."); image = "team"; }
   else if (key === "appel") { title = L("Réserver un appel", "Book a call");
-    desc = L("Choisissez un créneau de 30 minutes pour parler de votre voyage : dates, budget, envies. Devis détaillé sous 24 à 48h.",
-             "Pick a 30-minute slot to talk about your trip: dates, budget, wishes. Detailed quote within 24 to 48 hours."); image = "plane2"; }
-  else if (key === "devis") { title = L("Demander un devis", "Request a quote");
-    desc = L("Décrivez votre voyage et recevez un devis personnalisé sous 24h ouvrées : vols, hôtels, transferts, excursions.",
-             "Describe your trip and get a tailored quote within 24 working hours: flights, hotels, transfers, excursions."); image = "map"; }
+    desc = L("Choisissez un créneau de 30 minutes pour parler de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
+             "Pick a 30-minute slot to talk about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
+  else if (key === "devis") { title = L("Demander un devis de voyage de groupe", "Request a group trip quote");
+    desc = L("Décrivez votre voyage de groupe et recevez un devis personnalisé sous 24 h ouvrées : vols, hébergement, transferts, activités.",
+             "Describe your group trip and get a tailored quote within 24 working hours: flights, accommodation, transfers, activities."); image = "map"; }
   else if (key === "mentions") { title = L("Mentions légales", "Legal notice"); desc = L("Informations légales de Permanent Summer Lda.", "Legal information for Permanent Summer Lda."); noindex = true; }
   if (key !== "home") title += ` | ${BRAND}`;
   return { title, desc, image, crumbs, noindex };
@@ -101,7 +126,8 @@ const abs = (key, lg) => SITE_URL + PSV.pathFor(key, lg);
 const agency = {
   "@context": "https://schema.org", "@type": "TravelAgency", "@id": SITE_URL + "#agency",
   name: BRAND, url: SITE_URL, logo: SITE_URL + "assets/favicon.svg", image: SITE_URL + "img/team.jpg",
-  telephone: CONFIG.phone.replace(/\s/g, ""), email: CONFIG.email, areaServed: ["Mauritius", "Rodrigues"],
+  telephone: CONFIG.phone.replace(/\s/g, ""), email: CONFIG.email, areaServed: ["Europe", "Africa", "Asia"],
+  description: "Company retreats, offsites and group travel, flights included.",
   knowsLanguage: ["fr", "en"], parentOrganization: { "@type": "Organization", name: "Permanent Summer Lda" },
   founder: [{ "@type": "Person", name: "Jennifer Kwo" }, { "@type": "Person", name: "Christopher Kwo" }],
   contactPoint: { "@type": "ContactPoint", telephone: CONFIG.phone.replace(/\s/g, ""), contactType: "customer service", availableLanguage: ["French", "English"] },
