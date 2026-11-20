@@ -134,7 +134,7 @@ function meta(key, lg) {
 const abs = (key, lg) => SITE_URL + PSV.pathFor(key, lg);
 const agency = {
   "@context": "https://schema.org", "@type": "TravelAgency", "@id": SITE_URL + "#agency",
-  name: BRAND, url: SITE_URL, logo: SITE_URL + "assets/favicon.svg", image: SITE_URL + "img/team.jpg",
+  name: BRAND, url: SITE_URL, logo: SITE_URL + "icon-512.png", image: SITE_URL + "img/team.jpg",
   telephone: CONFIG.phone.replace(/\s/g, ""), email: CONFIG.email, areaServed: ["Europe", "Africa", "Asia"],
   description: "Company retreats, offsites and group travel, flights included.",
   knowsLanguage: ["fr", "en"], parentOrganization: { "@type": "Organization", name: "Permanent Summer Lda" },
@@ -169,10 +169,13 @@ ${m.noindex ? '<meta name="robots" content="noindex">\n' : ""}<link rel="canonic
 <meta property="og:locale:alternate" content="${lg === "fr" ? "en_GB" : "fr_FR"}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d4d49">
+<link rel="icon" href="${root}favicon.ico" sizes="32x32">
 <link rel="icon" href="${root}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${root}apple-touch-icon.png">
+<link rel="manifest" href="${root}site.webmanifest">
 ${FONTS}
 <link rel="stylesheet" href="${root}assets/style.css">
-<link rel="preload" as="image" href="${root}img/${m.image}.jpg">
+<link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">
 <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld)}</script>
 </head>`;
 }
@@ -194,9 +197,19 @@ fs.mkdirSync(path.join(OUT, "assets"), { recursive: true });
 fs.writeFileSync(path.join(OUT, "assets/style.css"), BASE_CSS + css.trim() + "\n");
 fs.writeFileSync(path.join(OUT, "assets/data.js"), dataJs);
 fs.writeFileSync(path.join(OUT, "assets/app.js"), appJs.trim() + "\n");
-fs.writeFileSync(path.join(OUT, "assets/favicon.svg"),
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0d4d49"/><text x="32" y="43" text-anchor="middle" font-family="Didot,Bodoni 72,Georgia,serif" font-size="30" fill="#fff">PS</text></svg>\n`);
+/* browser icons (source/brand) */
+for (const f of ["favicon.svg","favicon.ico","apple-touch-icon.png","icon-192.png","icon-512.png"])
+  fs.copyFileSync(path.join(__dirname, "brand", f), path.join(OUT, f === "favicon.svg" ? "assets/favicon.svg" : f));
+fs.writeFileSync(path.join(OUT, "site.webmanifest"), JSON.stringify({ name: BRAND, short_name: "PS Voyages", icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/icon-512.png", sizes: "512x512", type: "image/png" }], theme_color: "#111312", background_color: "#111312", display: "browser" }) + "\n");
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
+/* phone-sized copies of every photo (img/m/), used through srcset */
+{ const IMG = path.join(OUT, "img"), M = path.join(IMG, "m"); fs.mkdirSync(M, { recursive: true });
+  const { execFileSync } = require("child_process");
+  for (const f of fs.readdirSync(IMG).filter(f => f.endsWith(".jpg"))) {
+    const dst = path.join(M, f); if (fs.existsSync(dst)) continue;
+    try { execFileSync("convert", [path.join(IMG, f), "-resize", "1100x1100>", "-strip", "-interlace", "Plane", "-quality", "70", dst]); }
+    catch (e) { fs.copyFileSync(path.join(IMG, f), dst); }
+  } }
 
 let count = 0; const sitemap = [];
 for (const lg of ["fr", "en"]) for (const key of keys) {

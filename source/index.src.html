@@ -71,7 +71,8 @@ nav.main button::after{content:"";display:inline-block;width:6px;height:6px;bord
 .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;padding:8px}
 .burger i{display:block;height:1px;background:currentColor;margin:6px 0}
 /* transparent header on hero pages */
-body.overlay header.site:not(.solid){background:transparent;border-color:transparent;color:#fff;position:fixed;left:0;right:0}
+body.overlay header.site{position:fixed;left:0;right:0}
+body.overlay header.site:not(.solid){background:transparent;border-color:transparent;color:#fff}
 body.overlay header.site:not(.solid) .lang{border-color:rgba(255,255,255,.4)}
 body.overlay header.site:not(.solid) .lang button,body.overlay header.site:not(.solid) .lang a{color:rgba(255,255,255,.75)}
 body.overlay header.site:not(.solid) .lang [aria-pressed="true"]{background:#fff;color:#1b1c1b}
@@ -130,7 +131,7 @@ body.overlay .util{display:none}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero{position:relative;min-height:min(92vh,860px);min-height:min(92svh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero > .ph{position:absolute;inset:0}
 .hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,9,.66) 0%,rgba(8,10,9,.42) 42%,rgba(8,10,9,.08) 78%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
 .hero h1,.hero .sub,.hero .eyebrow{text-shadow:0 1px 24px rgba(0,0,0,.35)}
@@ -139,7 +140,7 @@ body.overlay .util{display:none}
 .hero .wrap{position:relative;width:100%;padding-block:150px 48px}
 .hero h1{font-size:clamp(44px,7.2vw,104px);max-width:12ch}
 .hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:46ch;margin-top:18px;opacity:.92}
-.hero.short{min-height:min(70vh,620px)}
+.hero.short{min-height:min(70vh,620px);min-height:min(70svh,620px)}
 .hero.short h1{font-size:clamp(40px,6vw,84px)}
 .crumbs{font-size:13px;letter-spacing:.06em;opacity:.85;margin-bottom:14px}
 .crumbs a{border-bottom:1px solid rgba(255,255,255,.5)}
@@ -550,7 +551,8 @@ if (!STATIC) { try { const l = localStorage.getItem("ps-lang"); if (l === "en" |
 const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilter:"all", drawer:false, acat:"all", calc:{ pax:25, nights:3, level:1, region:"pt", fly:"eu", act:1 } };
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+/* phones get the 900px version, larger screens the full one */
+const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const byS = s => DESTS.find(d => d.s === s);
 const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -1785,9 +1787,15 @@ function render(keepScroll){
   onScroll();
   if (r.key === "appel") mountCalendly();
 }
+let scrollTick = false, wasSolid = null;
 function onScroll(){
-  const hdr = document.getElementById("hdr"); if (!hdr) return;
-  hdr.classList.toggle("solid", window.scrollY > 40 || !!state.megaOpen);
+  if (scrollTick) return; scrollTick = true;
+  (window.requestAnimationFrame || (f => setTimeout(f, 16)))(() => {
+    scrollTick = false;
+    const hdr = document.getElementById("hdr"); if (!hdr) return;
+    const solid = window.scrollY > 40 || !!state.megaOpen;
+    if (solid !== wasSolid || hdr.classList.contains("solid") !== solid) { hdr.classList.toggle("solid", solid); wasSolid = solid; }
+  });
 }
 /* Calendly: one loader for the inline widget (#appel page) and the popup (every "Book a call" button) */
 let calState = "idle"; const calWait = [];

@@ -10,7 +10,8 @@ if (!STATIC) { try { const l = localStorage.getItem("ps-lang"); if (l === "en" |
 const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilter:"all", drawer:false, acat:"all", calc:{ pax:25, nights:3, level:1, region:"pt", fly:"eu", act:1 } };
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+/* phones get the 900px version, larger screens the full one */
+const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const byS = s => DESTS.find(d => d.s === s);
 const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -1245,9 +1246,15 @@ function render(keepScroll){
   onScroll();
   if (r.key === "appel") mountCalendly();
 }
+let scrollTick = false, wasSolid = null;
 function onScroll(){
-  const hdr = document.getElementById("hdr"); if (!hdr) return;
-  hdr.classList.toggle("solid", window.scrollY > 40 || !!state.megaOpen);
+  if (scrollTick) return; scrollTick = true;
+  (window.requestAnimationFrame || (f => setTimeout(f, 16)))(() => {
+    scrollTick = false;
+    const hdr = document.getElementById("hdr"); if (!hdr) return;
+    const solid = window.scrollY > 40 || !!state.megaOpen;
+    if (solid !== wasSolid || hdr.classList.contains("solid") !== solid) { hdr.classList.toggle("solid", solid); wasSolid = solid; }
+  });
 }
 /* Calendly: one loader for the inline widget (#appel page) and the popup (every "Book a call" button) */
 let calState = "idle"; const calWait = [];

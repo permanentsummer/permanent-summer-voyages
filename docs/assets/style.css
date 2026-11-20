@@ -69,7 +69,8 @@ nav.main button::after{content:"";display:inline-block;width:6px;height:6px;bord
 .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer;padding:8px}
 .burger i{display:block;height:1px;background:currentColor;margin:6px 0}
 /* transparent header on hero pages */
-body.overlay header.site:not(.solid){background:transparent;border-color:transparent;color:#fff;position:fixed;left:0;right:0}
+body.overlay header.site{position:fixed;left:0;right:0}
+body.overlay header.site:not(.solid){background:transparent;border-color:transparent;color:#fff}
 body.overlay header.site:not(.solid) .lang{border-color:rgba(255,255,255,.4)}
 body.overlay header.site:not(.solid) .lang button,body.overlay header.site:not(.solid) .lang a{color:rgba(255,255,255,.75)}
 body.overlay header.site:not(.solid) .lang [aria-pressed="true"]{background:#fff;color:#1b1c1b}
@@ -128,7 +129,7 @@ body.overlay .util{display:none}
 }
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero{position:relative;min-height:min(92vh,860px);min-height:min(92svh,860px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero > .ph{position:absolute;inset:0}
 .hero > .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,10,9,.66) 0%,rgba(8,10,9,.42) 42%,rgba(8,10,9,.08) 78%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,0) 60%,rgba(0,0,0,.45) 100%)}
 .hero h1,.hero .sub,.hero .eyebrow{text-shadow:0 1px 24px rgba(0,0,0,.35)}
@@ -137,7 +138,7 @@ body.overlay .util{display:none}
 .hero .wrap{position:relative;width:100%;padding-block:150px 48px}
 .hero h1{font-size:clamp(44px,7.2vw,104px);max-width:12ch}
 .hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:46ch;margin-top:18px;opacity:.92}
-.hero.short{min-height:min(70vh,620px)}
+.hero.short{min-height:min(70vh,620px);min-height:min(70svh,620px)}
 .hero.short h1{font-size:clamp(40px,6vw,84px)}
 .crumbs{font-size:13px;letter-spacing:.06em;opacity:.85;margin-bottom:14px}
 .crumbs a{border-bottom:1px solid rgba(255,255,255,.5)}
