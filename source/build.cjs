@@ -2,6 +2,7 @@
    Usage (from this folder): npm install && node build.cjs [SITE_URL]
    Reads index.src.html + data.js here, writes every page into ../docs (GitHub Pages folder).
    Photos live in ../docs/img and are never deleted by the build. */
+const VER = Date.now().toString(36);
 const fs = require("fs"), path = require("path");
 const { JSDOM, VirtualConsole } = require("jsdom");
 
@@ -53,7 +54,7 @@ const keys = ["home", "voyages", "comment", "partenaires", "retraites", ...RETRE
 
 function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
-  let title, desc, image = "team_walk", crumbs = null, noindex = false;
+  let title, desc, image = "hero_sandboard", crumbs = null, noindex = false;
   if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
     desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sur mesure, vols de chaque participant compris.",
              "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 tailored proposals, every participant's flights included."); }
@@ -174,7 +175,7 @@ ${m.noindex ? '<meta name="robots" content="noindex">\n' : ""}<link rel="canonic
 <link rel="apple-touch-icon" href="${root}apple-touch-icon.png">
 <link rel="manifest" href="${root}site.webmanifest">
 ${FONTS}
-<link rel="stylesheet" href="${root}assets/style.css">
+<link rel="stylesheet" href="${root}assets/style.css?v=${VER}">
 <link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">
 <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld)}</script>
 </head>`;
@@ -184,7 +185,7 @@ const body = (key, lg, root, r) => `
 <div id="app">${r.html}</div>
 <script>window.SITE=${JSON.stringify({ page: key, lang: lg, root })};</script>
 <script src="${root}assets/data.js"></script>
-<script src="${root}assets/app.js"></script>
+<script src="${root}assets/app.js?v=${VER}"></script>
 </body>
 </html>
 `;
@@ -226,7 +227,7 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
   r.w.close(); count++;
 }
 /* 404: GitHub Pages serves it at any depth, so it uses root-absolute links */
-{ const r = renderPage("404", "en", "/"); const m = { title: `Page not found | ${BRAND}`, desc: "This page doesn't exist.", image: "team_walk", noindex: true };
+{ const r = renderPage("404", "en", "/"); const m = { title: `Page not found | ${BRAND}`, desc: "This page doesn't exist.", image: "hero_sandboard", noindex: true };
   fs.writeFileSync(path.join(OUT, "404.html"), head("home", "en", "/", m).replace(/<link rel="canonical"[^>]*>\n/, "") + body("404", "en", "/", r)); }
 
 /* old addresses (French at the root, English under /en/) redirect to the new ones */

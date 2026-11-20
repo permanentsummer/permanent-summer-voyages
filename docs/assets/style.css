@@ -546,7 +546,10 @@ nav.main > *{white-space:nowrap}
 .mini label,.search label{padding:8px 22px}
 .mini label:first-child,.search label:first-child{padding-left:30px}
 .mini .btn,.search .btn{height:56px;border-radius:999px}
-.news input{border-radius:999px 0 0 999px;padding-left:20px}
-.news .btn{border-radius:0 999px 999px 0}
+.news{gap:8px}
+.news input{border-radius:999px;border-right:1px solid var(--line);padding-left:20px}
+.news .btn{border-radius:999px}
+.lang{padding:2px}
+.lang button,.lang a{border-radius:999px}
 .field input,.field select,.field textarea,.mega .regions button,.toast{border-radius:12px}
 @media (max-width:1080px){.mini,.search{border-radius:22px}.mini .btn,.search .btn{border-radius:999px;margin:8px 4px 4px;height:52px}.mini label:first-child,.search label:first-child{padding-left:22px}}

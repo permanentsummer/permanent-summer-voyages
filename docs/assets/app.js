@@ -109,7 +109,7 @@ function megaSol(){
   return `<div class="mega insp sol"><div class="wrap">
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t(U.events)}</span>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#evenements" class="link" style="align-self:flex-start;margin-top:10px">${t({fr:"Tous les événements",en:"All events"})}</a></div>
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Groupes & services",en:"Groups & services"})}</span><a href="#groupes">${t(U.grpB2B)}</a><a href="#comment">${t(U.how)}</a><a href="#comment/vols">${t({fr:"Vols de groupe",en:"Group flights"})}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a><a href="#offres">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</a></div>
-    <a class="promo" href="#event-seminaire">${img("team_cafe", t(EVENTS[0].n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Le plus demandé",en:"Most requested"})}</div><div style="font-size:20px">${t(EVENTS[0].n)}</div></div></a>
+    <a class="promo" href="#event-seminaire">${img("offsite_pergola", t(EVENTS[0].n))}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Le plus demandé",en:"Most requested"})}</div><div style="font-size:20px">${t(EVENTS[0].n)}</div></div></a>
   </div></div>`;
 }
 function megaRet(){
@@ -209,7 +209,7 @@ function statsBar(){
   </div>`;
 }
 function sizeCards(){
-  const S = [["sz_small","10–30",20,{fr:"Petite équipe",en:"Small team"},{fr:"Villa ou quinta privatisée, programme sur mesure, ambiance de maison partagée. Idéal pour une startup ou un comité de direction.",en:"An exclusive-use villa or quinta, a tailored programme, a shared-house feel. Ideal for a startup or leadership team."}],
+  const S = [["sz_forest","10–30",20,{fr:"Petite équipe",en:"Small team"},{fr:"Villa ou quinta privatisée, programme sur mesure, ambiance de maison partagée. Idéal pour une startup ou un comité de direction.",en:"An exclusive-use villa or quinta, a tailored programme, a shared-house feel. Ideal for a startup or leadership team."}],
              ["sz_company","30–100",50,{fr:"Toute l'entreprise",en:"The whole company"},{fr:"Hôtel boutique ou domaine avec plénière et salles de sous-commission, activités en parallèle, vols depuis plusieurs pays.",en:"A boutique hotel or estate with a plenary and breakout rooms, parallel activities, flights from several countries."}],
              ["sz_large","100+",150,{fr:"Grand groupe",en:"Large group"},{fr:"Kick-off, convention ou incentive : plusieurs hôtels, arrivées par vagues, transferts et soirée privatisée.",en:"Kickoff, convention or incentive: several hotels, arrivals in waves, transfers and a private party."}]];
   return `<div class="sizes">${S.map(([im,r,pax,h,p])=>`<a class="size" href="#brief" data-pax="${pax}"><div class="ph">${img(im, t(h))}</div><div class="b"><span class="eyebrow">${t(h)}</span><span class="n">${r} <small style="font-family:var(--body);font-size:15px;color:var(--muted)">${t({fr:"personnes",en:"people"})}</small></span><p>${t(p)}</p><span class="link" style="align-self:flex-start">${t(U.getProposal)} →</span></div></a>`).join("")}</div>`;
@@ -256,7 +256,7 @@ function home(){
   const featured = ["algarve","lisbonne","ericeira","majorque","athenes","toscane","marrakech","cracovie"].map(byR).filter(Boolean);
   return `
   <section class="hero center">
-    <div class="ph">${img("team_walk", t({fr:"Une équipe fait du sandboard sur les dunes",en:"A team sandboarding on the dunes"}), true)}</div>
+    <div class="ph">${img("hero_sandboard", t({fr:"Une équipe fait du sandboard sur les dunes",en:"A team sandboarding on the dunes"}), true)}</div>
     <div class="wrap">
       <h1 class="display">${t({fr:"Vos retraites d'entreprise, vols compris.",en:"Company retreats, flights included."})}</h1>
       <div class="lower">
