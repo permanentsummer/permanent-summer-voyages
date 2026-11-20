@@ -1,6 +1,6 @@
 <title>Permanent Summer Voyages</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Retraites d'entreprise, séminaires et voyages de groupe en Europe et au-delà, vols de chaque participant compris. 3 propositions sous 48 h.">
+<meta name="description" content="Retraites d'entreprise, séminaires et voyages de groupe en Europe et au-delà, vols de chaque participant compris. 3 propositions sur mesure.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap">
@@ -466,7 +466,7 @@ body.overlay header.site:not(.solid) .hostlink{color:rgba(255,255,255,.85)}
 .check > li > b{font-family:var(--display);font-weight:400;font-size:22px}
 .check ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
 .check ul li{padding:3px 0}
-.evtiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.evtiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
 .evtiles a{display:flex;flex-direction:column;gap:10px;min-width:0}
 .evtiles .ph{aspect-ratio:3/4;overflow:hidden;border-radius:2px}
 .evtiles b{font-weight:400;font-size:17px;line-height:1.25}
@@ -546,7 +546,7 @@ const EVENTS = window.EVENTS || [], PACKAGES = window.PACKAGES || [], ACTLIB = w
 /* STATIC mode: set by the generated pages (window.SITE = {page, lang, root}); preview uses hash routing */
 const STATIC = !!window.SITE;
 const ROOT = STATIC ? (window.SITE.root || "") : "";
-let lang = STATIC ? window.SITE.lang : "fr";
+let lang = STATIC ? window.SITE.lang : "en";
 if (!STATIC) { try { const l = localStorage.getItem("ps-lang"); if (l === "en" || l === "fr") lang = l; } catch(e){} }
 const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilter:"all", drawer:false, acat:"all", calc:{ pax:25, nights:3, level:1, region:"pt", fly:"eu", act:1 } };
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
@@ -567,9 +567,9 @@ const PAGES = {
   en:{ home:"", voyages:"travel/", comment:"how-it-works/", partenaires:"list-your-venue/", retraites:"company-retreats/", brief:"plan-a-retreat/", evenements:"events/", budget:"budget-calculator/", activites:"team-building-activities/", guide:"offsite-planning-guide/", destinations:"destinations/", inspiration:"inspiration/", offres:"offers/", voyageurs:"travellers/", groupes:"groups/", entreprises:"business/", "a-propos":"about/", appel:"book-a-call/", devis:"quote/", mentions:"legal-notice/" }
 };
 const destSlug = (d, lg) => lg === "en" ? slugify(d.n.en) : d.s;
-/* site-relative path for a route key, e.g. "dest-maurice" -> "destinations/maurice/" (FR) or "en/destinations/mauritius/" (EN) */
+/* site-relative path for a route key: English at the root ("destinations/mauritius/"), French under /fr/ ("fr/destinations/maurice/") */
 function pathFor(key, lg){
-  lg = lg || lang; const pre = lg === "en" ? "en/" : "", P = PAGES[lg];
+  lg = lg || lang; const pre = lg === "fr" ? "fr/" : "", P = PAGES[lg];
   if (key.startsWith("dest-")) { const d = byS(key.slice(5)); return d ? pre + "destinations/" + destSlug(d, lg) + "/" : pre; }
   if (key.startsWith("theme-")) { const k = key.slice(6); return pre + P.inspiration + (THEME_SLUG[k] ? THEME_SLUG[k][lg==="en"?1:0] : k) + "/"; }
   if (key.startsWith("offre-")) return pre + P.offres + key.slice(6) + "/";
@@ -590,7 +590,7 @@ const U = {
   getProposal:{fr:"Recevoir une proposition",en:"Get a proposal"}, allRetreats:{fr:"Toutes les destinations de retraite",en:"All retreat destinations"},
   leisure:{fr:"Voyages sur mesure",en:"Tailor-made travel"}, events:{fr:"Événements",en:"Events"}, res:{fr:"Ressources",en:"Resources"},
   calc:{fr:"Calculateur de budget",en:"Budget calculator"}, lib:{fr:"Activités de team building",en:"Team-building activities"}, guide:{fr:"Guide : organiser un séminaire",en:"Guide: planning an offsite"},
-  promise:{fr:"3 propositions sous 48 h, vols compris",en:"3 proposals within 48 h, flights included"},
+  promise:{fr:"3 propositions sur mesure, vols compris",en:"3 tailored proposals, flights included"},
   biz:{fr:"Entreprises",en:"Business"}, perso:{fr:"Particuliers",en:"Personal"}, sol:{fr:"Solutions",en:"Solutions"},
   get3:{fr:"Obtenir 3 propositions",en:"Get 3 proposals"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
   travel:{fr:"Voyages",en:"Travel"}, grpB2B:{fr:"Associations, clubs & équipes",en:"Associations, clubs & teams"},
@@ -745,14 +745,14 @@ function statsBar(){
   return `<div class="stats">
     <div><b>10 → 500+</b><span>${t({fr:"participants par groupe",en:"people per group"})}</span></div>
     <div><b>${RETREATS.length}</b><span>${t({fr:"destinations de retraite en Europe et au-delà",en:"retreat destinations in Europe and beyond"})}</span></div>
-    <div><b>48 h</b><span>${t({fr:"pour recevoir 3 propositions complètes",en:"to get 3 complete proposals"})}</span></div>
+    <div><b>1</b><span>${t({fr:"seul interlocuteur, du lieu aux vols",en:"single contact, from venue to flights"})}</span></div>
     <div><b>35 ${t({fr:"ans",en:"years"})}</b><span>${t({fr:"d'expérience en agence de voyage",en:"of travel agency experience"})}</span></div>
   </div>`;
 }
 function sizeCards(){
-  const S = [["team_small","10–30",20,{fr:"Petite équipe",en:"Small team"},{fr:"Villa ou quinta privatisée, programme sur mesure, ambiance de maison partagée. Idéal pour une startup ou un comité de direction.",en:"An exclusive-use villa or quinta, a tailored programme, a shared-house feel. Ideal for a startup or leadership team."}],
-             ["team_villa2","30–100",50,{fr:"Toute l'entreprise",en:"The whole company"},{fr:"Hôtel boutique ou domaine avec plénière et salles de sous-commission, activités en parallèle, vols depuis plusieurs pays.",en:"A boutique hotel or estate with a plenary and breakout rooms, parallel activities, flights from several countries."}],
-             ["act_dinner2","100+",150,{fr:"Grand groupe",en:"Large group"},{fr:"Kick-off, convention ou incentive : plusieurs hôtels, arrivées par vagues, transferts et soirée privatisée.",en:"Kickoff, convention or incentive: several hotels, arrivals in waves, transfers and a private party."}]];
+  const S = [["sz_small","10–30",20,{fr:"Petite équipe",en:"Small team"},{fr:"Villa ou quinta privatisée, programme sur mesure, ambiance de maison partagée. Idéal pour une startup ou un comité de direction.",en:"An exclusive-use villa or quinta, a tailored programme, a shared-house feel. Ideal for a startup or leadership team."}],
+             ["sz_company","30–100",50,{fr:"Toute l'entreprise",en:"The whole company"},{fr:"Hôtel boutique ou domaine avec plénière et salles de sous-commission, activités en parallèle, vols depuis plusieurs pays.",en:"A boutique hotel or estate with a plenary and breakout rooms, parallel activities, flights from several countries."}],
+             ["sz_large","100+",150,{fr:"Grand groupe",en:"Large group"},{fr:"Kick-off, convention ou incentive : plusieurs hôtels, arrivées par vagues, transferts et soirée privatisée.",en:"Kickoff, convention or incentive: several hotels, arrivals in waves, transfers and a private party."}]];
   return `<div class="sizes">${S.map(([im,r,pax,h,p])=>`<a class="size" href="#brief" data-pax="${pax}"><div class="ph">${img(im, t(h))}</div><div class="b"><span class="eyebrow">${t(h)}</span><span class="n">${r} <small style="font-family:var(--body);font-size:15px;color:var(--muted)">${t({fr:"personnes",en:"people"})}</small></span><p>${t(p)}</p><span class="link" style="align-self:flex-start">${t(U.getProposal)} →</span></div></a>`).join("")}</div>`;
 }
 function promiseBox(){
@@ -800,7 +800,7 @@ function home(){
     <div class="ph">${img("team_walk", t({fr:"Une équipe se promène en bord de mer au soleil",en:"A team walking along the seafront in the sun"}), true)}</div>
     <div class="wrap">
       <h1 class="display">${t({fr:"Vos retraites d'entreprise, vols compris.",en:"Company retreats, flights included."})}</h1>
-      <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant. 3 propositions sous 48 h.",en:"The venue, the programme and every participant's plane ticket. 3 proposals within 48 h."})}</p>
+      <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant, organisés par une seule équipe.",en:"The venue, the programme and every participant's plane ticket, handled by one team."})}</p>
       <div class="ctas"><a class="btn accent" href="#brief">${t(U.get3)}</a><a class="btn light ghost" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
     </div>
   </section>
@@ -943,40 +943,47 @@ function howPage(){
 
 /* ---------- venue partners ---------- */
 function partnersPage(){
+  const types = [["venue_hotel",{fr:"Hôtels boutique",en:"Boutique hotels"},{fr:"15 à 80 chambres, une salle de réunion, un restaurant.",en:"15 to 80 rooms, a meeting room, a restaurant."}],
+                 ["terrace_sea",{fr:"Villas & fincas",en:"Villas & fincas"},{fr:"Privatisées pour 10 à 30 personnes, avec chef.",en:"Exclusive use for 10 to 30 people, with a chef."}],
+                 ["tuscany",{fr:"Domaines, quintas & manoirs",en:"Estates, quintas & manors"},{fr:"De l'espace, du calme et une grande table.",en:"Space, calm and one long table."}],
+                 ["ericeira2",{fr:"Surf houses & hôtels de plage",en:"Surf houses & beach hotels"},{fr:"Pour les équipes qui veulent bouger.",en:"For teams who want to get active."}]];
   return `
-  <section class="hero short"><div class="ph">${img("venue_manor", t({fr:"Un manoir avec jardins",en:"A manor house with gardens"}), true)}</div><div class="wrap">
-    <div class="eyebrow" style="color:#fff">${t({fr:"Hôtels, villas, domaines",en:"Hotels, villas, estates"})}</div>
-    <h1 class="display" style="margin-top:12px">${t({fr:"Accueillez des retraites d'entreprise en semaine",en:"Host company retreats on weekdays"})}</h1>
-    <p class="sub">${t({fr:"Présentez votre lieu en 10 minutes. L'inscription est gratuite.",en:"Present your venue in 10 minutes. Listing is free."})}</p>
-    <div class="ctas"><a class="btn accent" href="#partenaires/vform">${t(U.host)}</a></div>
+  <section class="hero lean"><div class="ph">${img("venue_manor", t({fr:"Un manoir avec jardins",en:"A manor house with gardens"}), true)}</div><div class="wrap">
+    <h1 class="display">${t({fr:"Remplissez vos semaines avec des retraites d'entreprise.",en:"Fill your weekdays with company retreats."})}</h1>
+    <p class="sub">${t({fr:"Des équipes entières, plusieurs nuits, chambres, repas et salles réservés ensemble. Inscription gratuite.",en:"Whole teams, several nights, rooms, meals and meeting space booked together. Free to list."})}</p>
+    <div class="ctas"><a class="btn accent" href="#partenaires/vform">${t(U.host)}</a><a class="btn light ghost" href="#appel">${t(U.book)}</a></div>
   </div></section>
-  <section class="section"><div class="wrap">
-    <div class="head"><h2 class="h2">${t({fr:"Pourquoi travailler avec nous",en:"Why work with us"})}</h2></div>
+  <section class="section tight"><div class="wrap"><div class="stats">
+    <div><b>10–150</b><span>${t({fr:"invités par groupe",en:"guests per group"})}</span></div>
+    <div><b>2–5</b><span>${t({fr:"nuits, surtout du lundi au jeudi",en:"nights, mostly Monday to Thursday"})}</span></div>
+    <div><b>3–6</b><span>${t({fr:"mois de réservation à l'avance en moyenne",en:"months booked ahead on average"})}</span></div>
+    <div><b>${RETREATS.length}</b><span>${t({fr:"destinations où nous envoyons des équipes",en:"destinations where we send teams"})}</span></div>
+  </div></div></section>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Une réservation, plusieurs revenus",en:"One booking, several revenue lines"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ce qu'une retraite apporte à votre lieu",en:"What a retreat brings to your venue"})}</h2></div></div>
     <div class="why">
-      <div><b>${t({fr:"Des réservations en semaine",en:"Weekday bookings"})}</b><span>${t({fr:"Les retraites d'entreprise ont lieu du lundi au vendredi, quand vos chambres sont le moins demandées.",en:"Company retreats run Monday to Friday, when your rooms are least in demand."})}</span></div>
-      <div><b>${t({fr:"Des groupes entiers",en:"Whole groups"})}</b><span>${t({fr:"De 10 à 150 personnes, souvent en privatisation, pour plusieurs nuits.",en:"From 10 to 150 people, often on an exclusive-use basis, for several nights."})}</span></div>
-      <div><b>${t({fr:"Chambres, repas et salles",en:"Rooms, meals and meeting space"})}</b><span>${t({fr:"Nos clients réservent l'hébergement, la restauration, les salles et souvent les activités sur place.",en:"Our clients book accommodation, food and drink, meeting rooms and often on-site activities."})}</span></div>
-      <div><b>${t({fr:"Réservé à l'avance",en:"Booked well ahead"})}</b><span>${t({fr:"Les retraites se planifient plusieurs mois à l'avance : moins d'annulations de dernière minute.",en:"Retreats are planned months ahead: fewer last-minute cancellations."})}</span></div>
-      <div><b>${t({fr:"Des voyageurs professionnels",en:"Professional guests"})}</b><span>${t({fr:"Des équipes en déplacement de travail, encadrées par nous du début à la fin.",en:"Teams on a work trip, looked after by us from start to finish."})}</span></div>
-      <div><b>${t({fr:"Les vols, c'est nous",en:"We handle the flights"})}</b><span>${t({fr:"Nous réservons les vols de chaque participant et coordonnons les arrivées : vos équipes accueillent un groupe, pas quarante arrivées dispersées.",en:"We book every participant's flights and coordinate arrivals: your team welcomes one group, not forty scattered arrivals."})}</span></div>
+      <div><b>${t({fr:"Toutes les chambres, d'un coup",en:"Every room, in one go"})}</b><span>${t({fr:"Souvent en privatisation, sur vos jours les plus calmes.",en:"Often exclusive use, on your quietest days."})}</span></div>
+      <div><b>${t({fr:"Pension complète",en:"Full board"})}</b><span>${t({fr:"Petits-déjeuners, déjeuners, pauses café et dîners pour tout le groupe.",en:"Breakfasts, lunches, coffee breaks and dinners for the whole group."})}</span></div>
+      <div><b>${t({fr:"Salles et matériel",en:"Meeting space and equipment"})}</b><span>${t({fr:"Plénière, sous-commissions, vidéoprojecteur : facturés à la journée.",en:"Plenary, breakouts, AV: charged by the day."})}</span></div>
+      <div><b>${t({fr:"Activités et soirées",en:"Activities and evenings"})}</b><span>${t({fr:"Spa, dîner privé, cours de cuisine, bar : les équipes dépensent sur place.",en:"Spa, private dinner, cooking class, bar: teams spend on site."})}</span></div>
+      <div><b>${t({fr:"Des arrivées groupées",en:"Grouped arrivals"})}</b><span>${t({fr:"Nous réservons les vols de chacun : un seul check-in, pas quarante.",en:"We book everyone's flights: one check-in, not forty."})}</span></div>
+      <div><b>${t({fr:"Des clients qui reviennent",en:"Clients who come back"})}</b><span>${t({fr:"Une retraite réussie devient souvent un rendez-vous annuel.",en:"A great retreat often becomes an annual event."})}</span></div>
     </div>
   </div></section>
-  <section class="section surface"><div class="wrap split">
-    <div class="text"><span class="eyebrow">${t({fr:"Ce que nous recherchons",en:"What we look for"})}</span><h2 class="h2">${t({fr:"Des lieux où une équipe peut travailler et se retrouver",en:"Places where a team can work and reconnect"})}</h2>
-      <ul class="inc">
-        <li>${t({fr:"10 chambres ou plus, ou la possibilité de privatiser",en:"10 or more rooms, or the option of exclusive use"})}</li>
-        <li>${t({fr:"Une salle de réunion ou un espace adaptable",en:"A meeting room or a flexible space"})}</li>
-        <li>${t({fr:"Un wifi fiable",en:"Reliable wifi"})}</li>
-        <li>${t({fr:"À moins de 1 h 30 d'un aéroport",en:"Within 1.5 hours of an airport"})}</li>
-        <li>${t({fr:"Des activités sur place ou à proximité",en:"Activities on site or nearby"})}</li>
-      </ul></div>
-    <div class="media ph">${img("venue_hotel")}</div>
+  <section class="section surface"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Les lieux que nous recherchons",en:"The places we're looking for"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Des lieux où une équipe peut travailler et se retrouver",en:"Places where a team can work and reconnect"})}</h2></div></div>
+    <div class="grid">${types.map(([k,h,d])=>`<div class="card"><div class="ph">${img(k, t(h))}</div><div><h3>${t(h)}</h3><p class="meta" style="margin-top:6px">${t(d)}</p></div></div>`).join("")}</div>
+    <ul class="inc" style="margin-top:36px;max-width:760px">
+      <li>${t({fr:"10 chambres ou plus, ou la possibilité de privatiser",en:"10 or more rooms, or the option of exclusive use"})}</li>
+      <li>${t({fr:"Une salle de réunion ou un espace adaptable, et un wifi fiable",en:"A meeting room or flexible space, and reliable wifi"})}</li>
+      <li>${t({fr:"À moins de 1 h 30 d'un aéroport, avec des activités autour",en:"Within 1.5 hours of an airport, with activities nearby"})}</li>
+    </ul>
   </div></section>
   <section class="section"><div class="wrap">
     <div class="head"><h2 class="h2">${t(U.how)}</h2></div>
     <ol class="steps">
       <li><b>${t({fr:"Présentez votre lieu",en:"Present your venue"})}</b><span>${t({fr:"Le formulaire ci-dessous prend 10 minutes.",en:"The form below takes 10 minutes."})}</span></li>
-      <li><b>${t({fr:"Premier échange",en:"First call"})}</b><span>${t({fr:"Nous parlons capacités, tarifs groupe et conditions.",en:"We discuss capacity, group rates and terms."})}</span></li>
+      <li><b>${t({fr:"Premier échange",en:"First call"})}</b><span>${t({fr:"Capacités, tarifs groupe, saisons et conditions.",en:"Capacity, group rates, seasons and terms."})}</span></li>
       <li><b>${t({fr:"Proposé à nos clients",en:"Proposed to our clients"})}</b><span>${t({fr:"Votre lieu entre dans nos propositions quand il correspond au brief.",en:"Your venue goes into our proposals when it fits the brief."})}</span></li>
       <li><b>${t({fr:"Réservation",en:"Booking"})}</b><span>${t({fr:"Vous facturez le client directement ; nous coordonnons tout le reste.",en:"You invoice the client directly; we coordinate everything else."})}</span></li>
     </ol>
@@ -1019,7 +1026,7 @@ function monthOptions(sel){
 function howSteps(){
   return `<ol class="steps">
       <li><b>${t({fr:"Votre brief",en:"Your brief"})}</b><span>${t({fr:"5 minutes : taille de l'équipe, villes de départ, dates, budget, envies.",en:"5 minutes: team size, departure cities, dates, budget, wishes."})}</span></li>
-      <li><b>${t({fr:"3 propositions sous 48 h",en:"3 proposals within 48 h"})}</b><span>${t({fr:"Trois options complètes : lieu, programme, activités, vols et budget par personne.",en:"Three complete options: venue, programme, activities, flights and budget per person."})}</span></li>
+      <li><b>${t({fr:"3 propositions sur mesure",en:"3 tailored proposals"})}</b><span>${t({fr:"Trois options complètes : lieu, programme, activités, vols et budget par personne.",en:"Three complete options: venue, programme, activities, flights and budget per person."})}</span></li>
       <li><b>${t({fr:"On réserve tout",en:"We book everything"})}</b><span>${t({fr:"Les vols de chacun, le lieu, les transferts et les activités.",en:"Everyone's flights, the venue, transfers and activities."})}</span></li>
       <li><b>${t({fr:"On reste joignables",en:"We stay on call"})}</b><span>${t({fr:"Un interlocuteur sur WhatsApp 7j/7, jusqu'au retour de tous.",en:"One contact on WhatsApp 7 days a week, until everyone is home."})}</span></li>
     </ol>`;
@@ -1080,7 +1087,7 @@ function retreatsPage(){
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_workshop")}</div>
       <h3>${t({fr:"Un projet de retraite ?",en:"Planning a retreat?"})}</h3>
-      <p class="note">${t({fr:"Décrivez votre projet en 5 minutes. 3 propositions complètes sous 48 h, vols compris.",en:"Describe your project in 5 minutes. 3 complete proposals within 48 hours, flights included."})}</p>
+      <p class="note">${t({fr:"Décrivez votre projet en 5 minutes. 3 propositions complètes, vols compris.",en:"Describe your project in 5 minutes. 3 complete proposals, flights included."})}</p>
       <a class="btn accent" href="#brief">${t(U.plan)}</a>
       <a class="btn ghost" href="#budget">${t(U.calc)}</a>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
@@ -1150,7 +1157,7 @@ function retreatPage(sl){
       <a href="#brief" class="btn accent" data-rpre="${r.s}">${t({fr:"3 propositions pour ",en:"3 proposals for "})}${name}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
       ${advisor()}
-      <p class="note">${t({fr:"Réponse sous 48 h : lieux, programme, vols et budget par personne.",en:"Reply within 48 h: venues, programme, flights and budget per person."})}</p>
+      <p class="note">${t({fr:"Vous recevez 3 propositions : lieux, programme, vols et budget par personne.",en:"You get 3 proposals: venues, programme, flights and budget per person."})}</p>
     </aside>
   </div></section>
   <section class="section surface"><div class="wrap">
@@ -1168,7 +1175,7 @@ function briefPage(){
     <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
       <span class="eyebrow">${t(U.plan)}</span>
       <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Parlez-nous de votre équipe",en:"Tell us about your team"})}</h1>
-      <p class="lede">${t({fr:"5 minutes pour nous donner l'essentiel. Vous recevez 3 propositions complètes sous 48 heures, vols compris, sans engagement.",en:"5 minutes to give us the essentials. You'll get 3 complete proposals within 48 hours, flights included, with no commitment."})}</p>
+      <p class="lede">${t({fr:"5 minutes pour nous donner l'essentiel. Vous recevez 3 propositions complètes, vols compris, sans engagement.",en:"5 minutes to give us the essentials. You'll get 3 complete proposals, flights included, with no commitment."})}</p>
       <div id="bwrap"><form class="form" data-form="brief" id="bf">
         <label class="field"><span>${t({fr:"Entreprise ou organisation",en:"Company or organisation"})}</span><input id="b-co" required autocomplete="organization"></label>
         <label class="field"><span>${t({fr:"Votre nom",en:"Your name"})}</span><input id="b-name" required autocomplete="name"></label>
@@ -1185,13 +1192,13 @@ function briefPage(){
         <div class="field full"><span>${t({fr:"Objectifs",en:"Goals"})}</span>${chips("goal", goals)}</div>
         <div class="field full"><span>${t({fr:"Activités qui vous tentent",en:"Activities you like"})}</span>${chips("act", acts)}</div>
         <label class="field full"><span>${t({fr:"Autre chose à savoir ?",en:"Anything else?"})}</span><textarea id="b-msg" placeholder="${t({fr:'Style de lieu, besoins en salles, régimes alimentaires, dates fixes…',en:'Venue style, meeting room needs, dietary needs, fixed dates…'})}">${p.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + p.offer) : ""}</textarea></label>
-        <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer mon brief",en:"Send my brief"})}</button><span class="note">${t({fr:"3 propositions sous 48 h.",en:"3 proposals within 48 h."})}</span></div>
+        <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer mon brief",en:"Send my brief"})}</button><span class="note">${t({fr:"3 propositions sur mesure, sans engagement.",en:"3 tailored proposals, no commitment."})}</span></div>
       </form></div>
     </div>
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_cooking")}</div>
       <h3>${t({fr:"Et ensuite ?",en:"What happens next?"})}</h3>
-      <div class="row"><span>${t({fr:"Sous 48 h",en:"Within 48 h"})}</span><span>${t({fr:"3 propositions : lieux, programme, vols, budget par personne.",en:"3 proposals: venues, programme, flights, budget per person."})}</span></div>
+      <div class="row"><span>${t({fr:"Ensuite",en:"Next"})}</span><span>${t({fr:"3 propositions : lieux, programme, vols, budget par personne.",en:"3 proposals: venues, programme, flights, budget per person."})}</span></div>
       <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"30 minutes pour affiner ensemble, si vous le souhaitez.",en:"30 minutes to refine it together, if you like."})}</span></div>
       <div class="row"><span>${t({fr:"On réserve",en:"We book"})}</span><span>${t({fr:"Vous validez, nous réservons tout.",en:"You approve, we book everything."})}</span></div>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
@@ -1308,7 +1315,7 @@ function groups(){
     <div class="head"><h2 class="h2">${t(U.how)}</h2></div>
     <ol class="steps">
       <li><b>${t({fr:"Premier échange",en:"First conversation"})}</b><span>${t({fr:"Taille du groupe, dates, budget et contraintes.",en:"Group size, dates, budget and constraints."})}</span></li>
-      <li><b>${t({fr:"Tarifs de groupe",en:"Group fares"})}</b><span>${t({fr:"Demande aux compagnies et hôtels, propositions sous 48 h.",en:"Requests to airlines and hotels, proposals within 48 h."})}</span></li>
+      <li><b>${t({fr:"Tarifs de groupe",en:"Group fares"})}</b><span>${t({fr:"Demande aux compagnies et aux hôtels, puis propositions détaillées.",en:"Requests to airlines and hotels, then detailed proposals."})}</span></li>
       <li><b>${t({fr:"Acomptes & noms",en:"Deposits & names"})}</b><span>${t({fr:"Acomptes échelonnés, liste de passagers mise à jour avec vous.",en:"Staged deposits, passenger list updated with you."})}</span></li>
       <li><b>${t({fr:"Départ accompagné",en:"Supported departure"})}</b><span>${t({fr:"Documents envoyés, assistance joignable pendant tout le voyage.",en:"Documents sent, support reachable for the whole trip."})}</span></li>
     </ol>
@@ -1421,7 +1428,7 @@ function book(){
       <h3>${t({fr:"Ce que nous verrons",en:"What we'll cover"})}</h3>
       <div class="row"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><span>${t({fr:"Destination, dates, nombre de voyageurs, budget.",en:"Destination, dates, number of travellers, budget."})}</span></div>
       <div class="row"><span>${t({fr:"Nos conseils",en:"Our advice"})}</span><span>${t({fr:"Meilleures routes, saisons, hôtels adaptés.",en:"Best routings, seasons, suitable hotels."})}</span></div>
-      <div class="row"><span>${t({fr:"La suite",en:"Next step"})}</span><span>${t({fr:"Un devis détaillé sous 24 à 48h.",en:"A detailed quote within 24–48h."})}</span></div>
+      <div class="row"><span>${t({fr:"La suite",en:"Next step"})}</span><span>${t({fr:"Un devis détaillé, sans engagement.",en:"A detailed quote, no commitment."})}</span></div>
       <p class="note">${t({fr:"Vous préférez écrire ?",en:"Prefer to write?"})}</p>
       <a class="btn ghost" href="${wa()}" target="_blank" rel="noopener">${t(U.whatsapp)}</a>
       <p class="note" style="user-select:all">${esc(C.phone)}<br>${esc(C.email)}</p>
@@ -1457,7 +1464,7 @@ function quoteForm(o={}){
     <label class="field"><span>WhatsApp / ${t({fr:"téléphone",en:"phone"})}</span><input id="q-tel" required autocomplete="tel" placeholder="+33 …"></label>
     <label class="field full"><span>Email</span><input id="q-mail" type="email" autocomplete="email"></label>
     <label class="field full"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><textarea id="q-msg" placeholder="${t({fr:'Occasion, hôtels préférés, contraintes, flexibilité des dates…',en:'Occasion, preferred hotels, constraints, date flexibility…'})}">${pre.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + pre.offer) : ""}</textarea></label>
-    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer ma demande",en:"Send my request"})}</button><span class="note">${t({fr:"Réponse sous 24h ouvrées.",en:"Reply within 24 working hours."})}</span></div>
+    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer ma demande",en:"Send my request"})}</button><span class="note">${t({fr:"Nous revenons vers vous très vite.",en:"We will get back to you shortly."})}</span></div>
   </form>`;
 }
 function quotePage(){
@@ -1488,7 +1495,7 @@ function offersPage(){
   <section class="hero short"><div class="ph">${img("venue_hotel","",true)}</div><div class="wrap">
     <div class="eyebrow" style="color:#fff">${t(U.offers)}</div>
     <h1 class="display" style="margin-top:12px">${t({fr:"Offres & formules clés en main",en:"Offers & turnkey retreats"})}</h1>
-    <p class="sub">${t({fr:"Nos retraites les plus demandées, prêtes à adapter à votre équipe. Devis avec les vols de chaque participant sous 48 h.",en:"Our most requested retreats, ready to adapt to your team. Quote with every participant's flights within 48 h."})}</p>
+    <p class="sub">${t({fr:"Nos retraites les plus demandées, prêtes à adapter à votre équipe. Devis avec les vols de chaque participant.",en:"Our most requested retreats, ready to adapt to your team. Quote with every participant's flights."})}</p>
   </div></section>
   ${list.length ? `<section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.offers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Offres du moment",en:"Current offers"})}</h2></div></div>
@@ -1595,7 +1602,7 @@ function eventPage(k){
     </div>
     <aside class="aside">
       <h3>${t({fr:"Votre projet",en:"Your project"})}</h3>
-      <p class="note">${t({fr:"Décrivez votre équipe en 5 minutes : 3 propositions complètes sous 48 h, vols compris.",en:"Describe your team in 5 minutes: 3 complete proposals within 48 h, flights included."})}</p>
+      <p class="note">${t({fr:"Décrivez votre équipe en 5 minutes : 3 propositions complètes, vols compris.",en:"Describe your team in 5 minutes: 3 complete proposals, flights included."})}</p>
       <a href="#brief" class="btn accent" data-ev="${e.k}">${t(U.getProposal)}</a>
       <a href="#budget" class="btn ghost">${t(U.calc)}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
@@ -1902,7 +1909,7 @@ document.addEventListener("submit", e => {
       `${L?"Période":"Period"} : ${data.period} · Destination : ${data.destination}`, `${L?"Villes de départ":"Departure cities"} : ${data.departure_cities||"-"}`,
       `Budget : ${data.budget} · ${L?"Vols":"Flights"} : ${data.flights}`, `${L?"Objectifs":"Goals"} : ${data.goals||"-"}`, `${L?"Activités":"Activities"} : ${data.activities||"-"}`,
       data.notes ? `${L?"Détails":"Details"} : ${data.notes}` : "", `— ${data.name} · ${data.email}${data.phone?" · "+data.phone:""}`].filter(Boolean).join("\n");
-    sendForm(f, data, msg, L ? "Brief envoyé. Nous revenons vers vous sous 48 h avec nos propositions." : "Brief sent. We'll come back to you within 48 hours with our proposals.");
+    sendForm(f, data, msg, L ? "Brief envoyé. Nous revenons vers vous très vite avec nos propositions." : "Brief sent. We'll come back to youours with our proposals.");
     return;
   }
   if (f.dataset.form === "venue"){
@@ -1940,7 +1947,7 @@ document.addEventListener("submit", e => {
     ].filter(Boolean).join("\n");
     const data = { form:"quote", lang, type:typeSel.options[typeSel.selectedIndex].text, from:v("q-from"), destination:destTxt, depart:v("q-out"), return:v("q-back"),
       adults:v("q-ad"), children:v("q-ch"), budget:v("q-bud"), cabin:v("q-cab"), services:svc, notes:v("q-msg"), name:v("q-name"), phone:v("q-tel"), email:v("q-mail") };
-    sendForm(f, data, msg, L ? "Demande envoyée. Réponse sous 24 h ouvrées." : "Request sent. Reply within 24 working hours.");
+    sendForm(f, data, msg, L ? "Demande envoyée. Nous revenons vers vous très vite." : "Request sent. We will get back to you shortly.");
   }
 });
 function setCalc(k, v){

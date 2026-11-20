@@ -1,6 +1,6 @@
 # Permanent Summer Voyages: website
 
-Static website: 172 pages in French and English plus photos, sitemap and SEO tags. No server and no database needed.
+Static website in English (root) and French (/fr/) plus photos, sitemap and SEO tags. No server and no database needed.
 
 ```
 docs/     the website itself (GitHub Pages publishes this folder)

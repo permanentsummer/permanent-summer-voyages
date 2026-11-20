@@ -55,14 +55,14 @@ function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
   let title, desc, image = "team_walk", crumbs = null, noindex = false;
   if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
-    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sous 48 h, vols de chaque participant compris.",
-             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 proposals within 48 h, every participant's flights included."); }
+    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sur mesure, vols de chaque participant compris.",
+             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 tailored proposals, every participant's flights included."); }
   else if (key === "voyages") { title = L("Voyages sur mesure, vols compris", "Tailor-made travel, flights included");
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
   else if (key === "comment") { title = L("Comment ça marche : retraites d'entreprise avec vols de groupe", "How it works: company retreats with group flights");
-    desc = L("Brief en 5 minutes, 3 propositions sous 48 h, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
-             "5-minute brief, 3 proposals within 48 h, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
+    desc = L("Brief en 5 minutes, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
+             "5-minute brief, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
     desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Groupes de 10 à 150 personnes, réservés à l'avance. Inscription gratuite.",
              "Hotels, villas, estates: host company retreats on weekdays. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
@@ -73,8 +73,8 @@ function meta(key, lg) {
     title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
     crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
   else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
-    desc = L("Décrivez votre projet en 5 minutes et recevez 3 propositions complètes sous 48 heures : lieu, programme, activités, vols et budget par personne.",
-             "Describe your project in 5 minutes and get 3 complete proposals within 48 hours: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
+    desc = L("Décrivez votre projet en 5 minutes et recevez 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
+             "Describe your project in 5 minutes and get 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
   else if (key === "evenements") { title = L("Séminaires, team building, incentives et voyages de groupe", "Offsites, team building, incentives and group trips");
     desc = L("Séminaire d'entreprise, team building, séminaire de direction, kick-off commercial, voyage incentive : un format pour chaque objectif, vols compris.",
              "Company offsites, team building, leadership retreats, sales kickoffs, incentive trips: a format for every goal, flights included."); image = "act_workshop3"; }
@@ -112,8 +112,8 @@ function meta(key, lg) {
     desc = L("Couples, familles et amis racontent leur voyage en quelques secondes. De vraies personnes, de vrais itinéraires.",
              "Couples, families and friends share their trip in a few seconds. Real people, real itineraries."); image = "plane2"; }
   else if (key === "groupes") { title = L("Voyages de groupe pour associations, clubs et équipes", "Group travel for associations, clubs and teams");
-    desc = L("Associations, clubs, équipes sportives, CSE, écoles : vols de groupe, hébergement et coordination de 10 à 300 personnes, 3 propositions sous 48 h.",
-             "Associations, clubs, sports teams, works councils, schools: group flights, accommodation and coordination for 10 to 300 people, 3 proposals within 48 h."); image = "act_rowing"; }
+    desc = L("Associations, clubs, équipes sportives, CSE, écoles : vols de groupe, hébergement et coordination de 10 à 300 personnes, 3 propositions sur mesure.",
+             "Associations, clubs, sports teams, works councils, schools: group flights, accommodation and coordination for 10 to 300 people, 3 tailored proposals."); image = "act_rowing"; }
   else if (key === "entreprises") { title = L("Voyages d'affaires pour PME et équipes internationales", "Business travel for SMEs and international teams");
     desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME, startups et équipes internationales, avec un interlocuteur unique qui connaît vos voyageurs.",
              "Tickets, hotels, invoices and 7-day support for SMEs, startups and international teams, with one contact who knows your travellers."); image = "plane"; }
@@ -124,8 +124,8 @@ function meta(key, lg) {
     desc = L("Choisissez un créneau de 30 minutes pour parler de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
              "Pick a 30-minute slot to talk about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
   else if (key === "devis") { title = L("Demander un devis de voyage de groupe", "Request a group trip quote");
-    desc = L("Décrivez votre voyage de groupe et recevez un devis personnalisé sous 24 h ouvrées : vols, hébergement, transferts, activités.",
-             "Describe your group trip and get a tailored quote within 24 working hours: flights, accommodation, transfers, activities."); image = "map"; }
+    desc = L("Décrivez votre voyage de groupe et recevez un devis personnalisé : vols, hébergement, transferts, activités.",
+             "Describe your group trip and get a tailored quote: flights, accommodation, transfers, activities."); image = "map"; }
   else if (key === "mentions") { title = L("Mentions légales", "Legal notice"); desc = L("Informations légales de Permanent Summer Lda.", "Legal information for Permanent Summer Lda."); noindex = true; }
   if (key !== "home") title += ` | ${BRAND}`;
   return { title, desc, image, crumbs, noindex };
@@ -158,7 +158,7 @@ function head(key, lg, root, m, theme = "dark") {
 ${m.noindex ? '<meta name="robots" content="noindex">\n' : ""}<link rel="canonical" href="${canonical}">
 <link rel="alternate" hreflang="fr" href="${abs(key, "fr")}">
 <link rel="alternate" hreflang="en" href="${abs(key, "en")}">
-<link rel="alternate" hreflang="x-default" href="${abs(key, "fr")}">
+<link rel="alternate" hreflang="x-default" href="${abs(key, "en")}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${BRAND}">
 <meta property="og:title" content="${esc(m.title)}">
@@ -226,8 +226,22 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
   r.w.close(); count++;
 }
 /* 404: GitHub Pages serves it at any depth, so it uses root-absolute links */
-{ const r = renderPage("404", "fr", "/"); const m = { title: `Page introuvable | ${BRAND}`, desc: "Cette page n'existe pas.", image: "mauritius", noindex: true };
-  fs.writeFileSync(path.join(OUT, "404.html"), head("home", "fr", "/", m).replace(/<link rel="canonical"[^>]*>\n/, "") + body("404", "fr", "/", r)); }
+{ const r = renderPage("404", "en", "/"); const m = { title: `Page not found | ${BRAND}`, desc: "This page doesn't exist.", image: "team_walk", noindex: true };
+  fs.writeFileSync(path.join(OUT, "404.html"), head("home", "en", "/", m).replace(/<link rel="canonical"[^>]*>\n/, "") + body("404", "en", "/", r)); }
+
+/* old addresses (French at the root, English under /en/) redirect to the new ones */
+let redirects = 0;
+for (const lg of ["fr", "en"]) for (const key of keys) {
+  const now = PSV.pathFor(key, lg);
+  const old = lg === "fr" ? now.replace(/^fr\//, "") : "en/" + now;
+  const file = path.join(OUT, old, "index.html");
+  if (fs.existsSync(file)) continue;
+  const to = SITE_URL + now;
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, `<!doctype html><html lang="${lg}"><head><meta charset="utf-8"><title>${BRAND}</title><link rel="canonical" href="${to}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script></head><body><a href="${to}">${to}</a></body></html>\n`);
+  redirects++;
+}
+console.log("redirects:", redirects);
 
 const today = new Date().toISOString().slice(0, 10);
 const urls = [...new Set(sitemap.map(x => x.split("|")[0]))].flatMap(key => ["fr", "en"].map(lg => `  <url>
@@ -235,7 +249,7 @@ const urls = [...new Set(sitemap.map(x => x.split("|")[0]))].flatMap(key => ["fr
     <lastmod>${today}</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="${abs(key, "fr")}"/>
     <xhtml:link rel="alternate" hreflang="en" href="${abs(key, "en")}"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(key, "fr")}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${abs(key, "en")}"/>
   </url>`));
 fs.writeFileSync(path.join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

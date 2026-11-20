@@ -464,7 +464,7 @@ body.overlay header.site:not(.solid) .hostlink{color:rgba(255,255,255,.85)}
 .check > li > b{font-family:var(--display);font-weight:400;font-size:22px}
 .check ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
 .check ul li{padding:3px 0}
-.evtiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.evtiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
 .evtiles a{display:flex;flex-direction:column;gap:10px;min-width:0}
 .evtiles .ph{aspect-ratio:3/4;overflow:hidden;border-radius:2px}
 .evtiles b{font-weight:400;font-size:17px;line-height:1.25}

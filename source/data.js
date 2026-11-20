@@ -576,7 +576,7 @@ window.RFACTOR = { pt:1, es:1.1, it:1.15, gr:1.05, ce:0.9, ea:0.85, far:1.1 };
 
 /* ---------- EVENT TYPES (one page each) ---------- */
 window.EVENTS = [
- { k:"seminaire", slug:["seminaire-entreprise","company-offsite"], img:"act_workshop3",
+ { k:"seminaire", slug:["seminaire-entreprise","company-offsite"], img:"ev_seminar",
    n:{fr:"Séminaire d'entreprise",en:"Company offsite"},
    t:{fr:"Réunir toute l'équipe hors du bureau pour travailler, décider et repartir alignés.",en:"Bring the whole team out of the office to work, decide and come back aligned."},
    d:{fr:"Le séminaire, c'est le format le plus demandé : deux à quatre jours avec des sessions de travail le matin, une activité qui soude l'après-midi et un dîner qui reste dans les mémoires. Nous trouvons le lieu avec la bonne salle, nous construisons le programme avec vous et nous réservons les vols de chaque participant, depuis sa ville.",en:"The offsite is our most requested format: two to four days with work sessions in the morning, a bonding activity in the afternoon and a dinner people remember. We find the venue with the right meeting room, build the programme with you and book every participant's flights from their own city."},
@@ -608,7 +608,7 @@ window.EVENTS = [
    dests:["porto","toscane","milan-come","acores"],
    faq:[[{fr:"Pouvez-vous gérer des changements de dernière minute ?",en:"Can you handle last-minute changes?"},{fr:"Oui. Les vols sont réservés par nos soins : un départ avancé ou un participant ajouté se règle par un message WhatsApp.",en:"Yes. We book the flights ourselves: an earlier departure or an extra participant is sorted with one WhatsApp message."}],
         [{fr:"Le lieu peut-il être entièrement privatisé ?",en:"Can the venue be exclusive-use?"},{fr:"C'est ce que nous recommandons pour ce format : villa, quinta ou petit hôtel entier.",en:"That's what we recommend for this format: a whole villa, quinta or small hotel."}]]},
- { k:"kickoff", slug:["kick-off-commercial","sales-kickoff"], img:"corporate2",
+ { k:"kickoff", slug:["kick-off-commercial","sales-kickoff"], img:"ev_kickoff",
    n:{fr:"Kick-off commercial",en:"Sales kickoff"},
    t:{fr:"Lancer l'année avec toute la force de vente au même endroit.",en:"Launch the year with the whole sales force in one place."},
    d:{fr:"Plénière, ateliers produits, remise de prix et grande soirée : le kick-off demande une logistique précise, souvent pour des équipes qui arrivent de plusieurs pays. C'est exactement là que gérer les vols change tout.",en:"Plenary, product workshops, awards and a big party: a kickoff needs precise logistics, often for teams flying in from several countries. That's exactly where handling the flights changes everything."},
@@ -618,7 +618,7 @@ window.EVENTS = [
    dests:["lisbonne","barcelone","istanbul","seville"],
    faq:[[{fr:"Comment gérez-vous 200 vols différents ?",en:"How do you handle 200 different flights?"},{fr:"Chaque participant renseigne sa ville et ses préférences dans un formulaire. Nous réservons par vagues d'arrivée et tenons une liste à jour, partagée avec vous.",en:"Each participant fills in their city and preferences in a form. We book in arrival waves and keep an up-to-date list shared with you."}],
         [{fr:"Organisez-vous la plénière et la technique ?",en:"Do you handle the plenary and AV?"},{fr:"Nous réservons le lieu avec son équipe technique et coordonnons avec vos intervenants.",en:"We book the venue with its AV team and coordinate with your speakers."}]]},
- { k:"incentive", slug:["voyage-incentive","incentive-trip"], img:"team_cove",
+ { k:"incentive", slug:["voyage-incentive","incentive-trip"], img:"ev_incentive",
    n:{fr:"Voyage incentive",en:"Incentive trip"},
    t:{fr:"Récompenser vos meilleurs éléments avec un voyage qu'ils n'oublieront pas.",en:"Reward your best people with a trip they won't forget."},
    d:{fr:"Le voyage incentive, c'est une récompense, pas un séminaire déguisé : un très bel hôtel, des expériences exclusives et presque pas de réunions. Nous gérons tout, y compris les vols en classe supérieure et les accompagnants.",en:"An incentive trip is a reward, not an offsite in disguise: a beautiful hotel, exclusive experiences and almost no meetings. We handle everything, including premium-cabin flights and plus-ones."},
@@ -627,7 +627,17 @@ window.EVENTS = [
    agenda:{fr:["Jour 1 : accueil VIP, dîner de gala","Jour 2 : bateau privatisé, après-midi libre","Jour 3 : expérience exclusive (dégustation, vol en hélicoptère, chef)","Jour 4 : spa ou excursion, dîner de clôture","Jour 5 : départs"],en:["Day 1: VIP welcome, gala dinner","Day 2: private boat, free afternoon","Day 3: exclusive experience (tasting, helicopter, chef's table)","Day 4: spa or excursion, closing dinner","Day 5: departures"]},
    dests:["ile-maurice","marrakech","pouilles","madere"],
    faq:[[{fr:"Les conjoints peuvent-ils venir ?",en:"Can partners come along?"},{fr:"Oui, c'est fréquent pour ce format. Nous gérons leurs vols et un programme adapté.",en:"Yes, it's common for this format. We handle their flights and a tailored programme."}],
-        [{fr:"Peut-on partir loin ?",en:"Can we go long-haul?"},{fr:"Oui : l'île Maurice, le Maroc ou l'Afrique du Sud sont des classiques. Nous réservons les vols long-courriers en même temps que le reste.",en:"Yes: Mauritius, Morocco or South Africa are classics. We book the long-haul flights together with everything else."}]]}
+        [{fr:"Peut-on partir loin ?",en:"Can we go long-haul?"},{fr:"Oui : l'île Maurice, le Maroc ou l'Afrique du Sud sont des classiques. Nous réservons les vols long-courriers en même temps que le reste.",en:"Yes: Mauritius, Morocco or South Africa are classics. We book the long-haul flights together with everything else."}]]},
+ { k:"client", slug:["evenement-clients","client-event"], img:"ev_client",
+   n:{fr:"Événement clients & partenaires",en:"Client & partner event"},
+   t:{fr:"Inviter vos meilleurs clients quelque part dont ils se souviendront.",en:"Take your best clients somewhere they'll remember."},
+   d:{fr:"Un voyage pour vos clients, distributeurs ou partenaires : moins de réunions, plus de moments partagés. Nous gérons les invitations, les vols de chaque invité depuis sa ville, un lieu qui fait bonne impression et un programme qui laisse le temps de parler affaires sans en avoir l'air.",en:"A trip for your clients, distributors or partners: fewer meetings, more shared moments. We handle invitations, each guest's flights from their own city, a venue that makes an impression and a programme that leaves room to talk business without it feeling like work."},
+   who:{fr:["Grands comptes et clients fidèles","Distributeurs et revendeurs","Partenaires et prescripteurs","Lancements avec invités"],en:["Key accounts and loyal clients","Distributors and resellers","Partners and referrers","Launches with invited guests"]},
+   size:{fr:"10 à 150 personnes",en:"10 to 150 people"}, len:{fr:"2 à 4 nuits",en:"2 to 4 nights"}, lead:{fr:"3 à 6 mois",en:"3 to 6 months"},
+   agenda:{fr:["Jour 1 : accueil personnalisé, dîner d'ouverture","Jour 2 : courte présentation le matin, expérience locale l'après-midi","Jour 3 : temps libre et rendez-vous individuels, dîner de gala","Jour 4 : départs"],en:["Day 1: personal welcome, opening dinner","Day 2: short presentation in the morning, local experience in the afternoon","Day 3: free time and one-to-one meetings, gala dinner","Day 4: departures"]},
+   dests:["lisbonne","toscane","athenes","majorque"],
+   faq:[[{fr:"Gérez-vous les invitations ?",en:"Do you handle invitations?"},{fr:"Oui : formulaire d'inscription, collecte des informations de vol et suivi des réponses, à vos couleurs.",en:"Yes: registration form, flight details collection and RSVP tracking, in your branding."}],
+        [{fr:"Les invités viennent de pays différents ?",en:"Guests come from different countries?"},{fr:"C'est le cas le plus fréquent. Nous réservons chaque vol et coordonnons les arrivées pour que l'accueil se fasse ensemble.",en:"That's the most common case. We book every flight and coordinate arrivals so guests are welcomed together."}]]}
 ];
 
 /* ---------- TURNKEY RETREAT PACKAGES (quote only, no price) ---------- */
