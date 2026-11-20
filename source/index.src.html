@@ -556,8 +556,8 @@ nav.main > *{white-space:nowrap}
 .field input,.field select,.field textarea,.mega .regions button,.toast{border-radius:12px}
 @media (max-width:1080px){.mini,.search{border-radius:22px}.mini .btn,.search .btn{border-radius:999px;margin:8px 4px 4px;height:52px}.mini label:first-child,.search label:first-child{padding-left:22px}}
 
-/* scrolling performance: skip rendering sections far below the screen */
-main > section:not(:first-child),main > div > section:not(:first-child){content-visibility:auto;contain-intrinsic-size:auto 760px}
+/* phones/tablets: no zoom-on-hover (a touch while scrolling counts as hover) */
+@media (hover:none),(pointer:coarse){.card:hover .ph img,.tile:hover img,.theme:hover img,.ocard:hover .ph img{transform:none}.card .ph img,.tile img,.theme img,.ocard .ph img{transition:none}}
 </style>
 
 <div id="app"></div>
@@ -579,7 +579,7 @@ const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilte
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 /* phones get the 900px version, larger screens the full one */
-const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${eager ? "" : `${ROOT}img/s/${k}.jpg 700w, `}${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 55vw, 40vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const byS = s => DESTS.find(d => d.s === s);
 const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");

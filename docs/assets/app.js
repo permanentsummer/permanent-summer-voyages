@@ -11,7 +11,7 @@ const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilte
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 /* phones get the 900px version, larger screens the full one */
-const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${eager ? "" : `${ROOT}img/s/${k}.jpg 700w, `}${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 55vw, 40vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const byS = s => DESTS.find(d => d.s === s);
 const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");

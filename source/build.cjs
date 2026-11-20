@@ -211,13 +211,7 @@ fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
     try { execFileSync("convert", [path.join(IMG, f), "-resize", "1100x1100>", "-strip", "-interlace", "Plane", "-quality", "70", dst]); }
     catch (e) { fs.copyFileSync(path.join(IMG, f), dst); }
   }
-  /* small baseline copies (img/s/) for cards: cheap to decode while scrolling on phones */
-  const SM = path.join(IMG, "s"); fs.mkdirSync(SM, { recursive: true });
-  for (const f of fs.readdirSync(IMG).filter(f => f.endsWith(".jpg"))) {
-    const dst = path.join(SM, f); if (fs.existsSync(dst)) continue;
-    try { execFileSync("convert", [path.join(IMG, f), "-resize", "700x700>", "-strip", "-quality", "68", dst]); }
-    catch (e) { fs.copyFileSync(path.join(IMG, "m", f), dst); }
-  } }
+  }
 
 let count = 0; const sitemap = [];
 for (const lg of ["fr", "en"]) for (const key of keys) {
