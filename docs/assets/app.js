@@ -202,8 +202,8 @@ const destOptions = (sel) => `<option value="">${t({fr:"Je ne sais pas encore",e
 /* ---------- pages ---------- */
 function statsBar(){
   return `<div class="stats">
-    <div><b>10 → 500+</b><span>${t({fr:"participants par groupe",en:"people per group"})}</span></div>
-    <div><b>300</b><span>${t({fr:"hôtels, villas et lieux partenaires dans 38 pays",en:"partner hotels, villas and venues in 38 countries"})}</span></div>
+    <div><b>+300</b><span>${t({fr:"hôtels, villas et lieux partenaires",en:"partner hotels, villas and venues"})}</span></div>
+    <div><b>+200</b><span>${t({fr:"destinations",en:"destinations"})}</span></div>
     <div><b>1</b><span>${t({fr:"seul interlocuteur, du lieu aux vols",en:"single contact, from venue to flights"})}</span></div>
     <div><b>35 ${t({fr:"ans",en:"years"})}</b><span>${t({fr:"d'expérience en agence de voyage",en:"of travel agency experience"})}</span></div>
   </div>`;
@@ -255,12 +255,14 @@ function guideStrip(){
 function home(){
   const featured = ["algarve","lisbonne","ericeira","majorque","athenes","toscane","marrakech","cracovie"].map(byR).filter(Boolean);
   return `
-  <section class="hero lean">
-    <div class="ph">${img("team_walk", t({fr:"Une équipe se promène en bord de mer au soleil",en:"A team walking along the seafront in the sun"}), true)}</div>
+  <section class="hero center">
+    <div class="ph">${img("team_walk", t({fr:"Une équipe fait du sandboard sur les dunes",en:"A team sandboarding on the dunes"}), true)}</div>
     <div class="wrap">
       <h1 class="display">${t({fr:"Vos retraites d'entreprise, vols compris.",en:"Company retreats, flights included."})}</h1>
-      <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant, organisés par une seule équipe.",en:"The venue, the programme and every participant's plane ticket, handled by one team."})}</p>
-      <div class="ctas"><a class="btn accent" href="#brief">${t(U.get3)}</a><a class="btn light ghost" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
+      <div class="lower">
+        <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant, organisés par une seule équipe.",en:"The venue, the programme and every participant's plane ticket, handled by one team."})}</p>
+        <div class="ctas"><a class="btn accent" href="#brief">${t(U.get3)}</a><a class="btn light" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
+      </div>
     </div>
   </section>
 
@@ -409,14 +411,14 @@ function partnersPage(){
   return `
   <section class="hero lean"><div class="ph">${img("venue_manor", t({fr:"Un manoir avec jardins",en:"A manor house with gardens"}), true)}</div><div class="wrap">
     <h1 class="display">${t({fr:"Remplissez vos semaines avec des retraites d'entreprise.",en:"Fill your weekdays with company retreats."})}</h1>
-    <p class="sub">${t({fr:"Rejoignez un réseau de 300 hôtels, villas et lieux partenaires. Des équipes entières, plusieurs nuits, chambres, repas et salles réservés ensemble. Inscription gratuite.",en:"Join a network of 300 partner hotels, villas and venues. Whole teams, several nights, rooms, meals and meeting space booked together. Free to list."})}</p>
+    <p class="sub">${t({fr:"Rejoignez un réseau de plus de 300 hôtels, villas et lieux partenaires. Des équipes entières, plusieurs nuits, chambres, repas et salles réservés ensemble. Inscription gratuite.",en:"Join a network of over 300 partner hotels, villas and venues. Whole teams, several nights, rooms, meals and meeting space booked together. Free to list."})}</p>
     <div class="ctas"><a class="btn accent" href="#partenaires/vform">${t(U.host)}</a><a class="btn light ghost" href="#appel">${t(U.book)}</a></div>
   </div></section>
   <section class="section tight"><div class="wrap"><div class="stats">
     <div><b>10–150</b><span>${t({fr:"invités par groupe",en:"guests per group"})}</span></div>
     <div><b>2–5</b><span>${t({fr:"nuits, surtout du lundi au jeudi",en:"nights, mostly Monday to Thursday"})}</span></div>
     <div><b>3–6</b><span>${t({fr:"mois de réservation à l'avance en moyenne",en:"months booked ahead on average"})}</span></div>
-    <div><b>300</b><span>${t({fr:"lieux partenaires dans 38 pays, à vos côtés",en:"partner venues in 38 countries, alongside yours"})}</span></div>
+    <div><b>+300</b><span>${t({fr:"lieux partenaires dans 38 pays, à vos côtés",en:"partner venues in 38 countries, alongside yours"})}</span></div>
   </div></div></section>
   <section class="section" style="padding-top:24px"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t({fr:"Une réservation, plusieurs revenus",en:"One booking, several revenue lines"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ce qu'une retraite apporte à votre lieu",en:"What a retreat brings to your venue"})}</h2></div></div>

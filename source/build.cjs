@@ -65,7 +65,7 @@ function meta(key, lg) {
              "5-minute brief, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
     desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez 300 lieux partenaires dans 38 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
-             "Hotels, villas, estates: host company retreats on weekdays. Join 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
+             "Hotels, villas, estates: host company retreats on weekdays. Join over 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
   else if (key === "retraites") { title = L("Retraites d'entreprise en Europe et au-delà", "Company retreats in Europe and beyond");
     desc = L(`${RETREATS.length} destinations de séminaire et d'offsite : Algarve, Lisbonne, Ericeira, Majorque, Toscane, Marrakech, Croatie… Dès 10 personnes, vols compris.`,
              `${RETREATS.length} offsite and retreat destinations: Algarve, Lisbon, Ericeira, Mallorca, Tuscany, Marrakech, Croatia… From 10 people, flights included.`); image = "team_villa2"; }
