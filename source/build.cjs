@@ -200,7 +200,7 @@ fs.writeFileSync(path.join(OUT, "assets/app.js"), appJs.trim() + "\n");
 /* browser icons (source/brand) */
 for (const f of ["favicon.svg","favicon.ico","apple-touch-icon.png","icon-192.png","icon-512.png"])
   fs.copyFileSync(path.join(__dirname, "brand", f), path.join(OUT, f === "favicon.svg" ? "assets/favicon.svg" : f));
-fs.writeFileSync(path.join(OUT, "site.webmanifest"), JSON.stringify({ name: BRAND, short_name: "PS Voyages", icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/icon-512.png", sizes: "512x512", type: "image/png" }], theme_color: "#111312", background_color: "#111312", display: "browser" }) + "\n");
+fs.writeFileSync(path.join(OUT, "site.webmanifest"), JSON.stringify({ name: BRAND, short_name: "PS Voyages", icons: [{ src: "/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "/icon-512.png", sizes: "512x512", type: "image/png" }], theme_color: "#FFFFFF", background_color: "#FFFFFF", display: "browser" }) + "\n");
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 /* phone-sized copies of every photo (img/m/), used through srcset */
 { const IMG = path.join(OUT, "img"), M = path.join(IMG, "m"); fs.mkdirSync(M, { recursive: true });
