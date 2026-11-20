@@ -243,10 +243,14 @@ window.THEMES = [
 ];
 
 /* SAMPLE testimonials, shown with an "example" label. Replace with real client quotes (name, role, company) as soon as you have them. */
-window.TESTIMONIALS = [
- { q:{fr:"Trente-deux personnes venant de six pays, et tout le monde a atterri à Faro le même après-midi. Nous n'avons eu à gérer aucun vol.",en:"Thirty-two people from six countries, and everyone landed in Faro the same afternoon. We didn't have to deal with a single flight."}, a:"Head of People, SaaS company" },
- { q:{fr:"Trois propositions complètes en deux jours, budget par personne compris. Le choix a pris dix minutes.",en:"Three complete proposals in two days, budget per person included. Choosing took ten minutes."}, a:"Office manager, design agency" },
- { q:{fr:"Un vol annulé la veille du départ : une personne nous a répondu sur WhatsApp et a tout réglé avant le dîner.",en:"A flight cancelled the day before departure: someone answered on WhatsApp and sorted it before dinner."}, a:"Organiser, group of 18 friends" }
+/* sample programmes shown on the business homepage (real formats we organise, not client quotes) */
+window.PROGRAMS = [
+ { r:"ericeira", img:"act_surfteam", pax:25, nights:3, t:{fr:"Surf avec moniteurs chaque matin, ateliers l'après-midi dans un hôtel perché sur la falaise, poisson grillé au port le soir.",en:"Surf with instructors every morning, workshops in the afternoon at a clifftop hotel, grilled fish at the harbour in the evening."}},
+ { r:"lisbonne", img:"act_nata", pax:40, nights:3, t:{fr:"Atelier pastel de nata à Belém, chasse au trésor dans les ruelles de l'Alfama, voilier au coucher du soleil sur le Tage.",en:"Pastel de nata workshop in Belém, treasure hunt through the lanes of Alfama, sunset sailing on the Tagus."}},
+ { r:"rome", img:"act_pasta", pax:30, nights:3, t:{fr:"Cours de pâtes fraîches avec une cheffe romaine, Colisée en visite privée à l'ouverture, dîner dans le Trastevere.",en:"Fresh pasta class with a Roman chef, private Colosseum visit at opening time, dinner in Trastevere."}},
+ { r:"toscane", img:"act_wine", pax:18, nights:4, t:{fr:"Dégustation de Chianti chez le vigneron, vélo électrique dans le Val d'Orcia, dîner long table au milieu des vignes.",en:"Chianti tasting with the winemaker, e-bikes through the Val d'Orcia, a long-table dinner among the vines."}},
+ { r:"majorque", img:"act_boat", pax:20, nights:3, t:{fr:"Catamaran vers les criques, randonnée dans la Serra de Tramuntana, barbecue à la grande table d'un manoir majorquin.",en:"Catamaran to the coves, a hike in the Serra de Tramuntana, barbecue at the long table of a Mallorcan manor."}},
+ { r:"cracovie", img:"act_hunt", pax:50, nights:3, t:{fr:"Chasse au trésor dans la vieille ville, cours de pierogi, descente dans la mine de sel de Wieliczka.",en:"Old-town treasure hunt, pierogi cooking class, a trip down the Wieliczka salt mine."}}
 ];
 
 /* ---------- HOT DESTINATIONS (home "Group trips") — order = display order, use slugs from DESTS ---------- */
@@ -255,38 +259,9 @@ window.HOT = ["portugal","alpes","italie","santorin","cape-town","dubai"];
 /* ---------- OFFERS — add new ones at the top. sample:true shows an "example" label; remove it for real offers.
    id: short url name · dest: slug from DESTS (optional) · img: key from IMG · price: text as shown · per: "per person" note
    tag: small label · valid: validity text · inc: what's included · cond: conditions ---------- */
-window.OFFERS = [
- { id:"offsite-villa-algarve", sample:true, rdest:"algarve", img:"terrace_sea",
-   tag:{fr:"Petite équipe",en:"Small team"},
-   title:{fr:"Offsite en villa, Algarve, 3 nuits",en:"Villa offsite, Algarve, 3 nights"},
-   price:"690 €", per:{fr:"par personne hors vols, base 16 personnes",en:"per person excl. flights, based on 16 people"},
-   valid:{fr:"Mars à juin 2027, du lundi au jeudi",en:"March to June 2027, Monday to Thursday"},
-   inc:{fr:["Villa privatisée de 8 chambres avec piscine","Pension complète avec chef","Espace de travail équipé","Bateau vers les grottes de Benagil","Transferts depuis Faro"],en:["Exclusive-use 8-bedroom villa with pool","Full board with a private chef","Equipped workspace","Boat to the Benagil caves","Transfers from Faro"]},
-   cond:{fr:"Prix indicatif selon disponibilité. Vols de chaque participant sur devis.",en:"Indicative price subject to availability. Every participant's flights quoted separately."}},
- { id:"seminaire-cracovie", sample:true, rdest:"cracovie", img:"meeting_room",
-   tag:{fr:"Séminaire",en:"Offsite"},
-   title:{fr:"Séminaire à Cracovie, 3 nuits",en:"Kraków offsite, 3 nights"},
-   price:"490 €", per:{fr:"par personne hors vols, base 40 personnes",en:"per person excl. flights, based on 40 people"},
-   valid:{fr:"Avril à octobre 2027",en:"April to October 2027"},
-   inc:{fr:["Hôtel design dans la vieille ville, petits-déjeuners","Salle plénière et 2 salles de sous-commission","Chasse au trésor dans la vieille ville","Dîner dans une cave voûtée","Transferts aéroport"],en:["Design hotel in the old town, breakfasts","Plenary and 2 breakout rooms","Old-town treasure hunt","Dinner in a vaulted cellar","Airport transfers"]},
-   cond:{fr:"Prix indicatif selon disponibilité. Vols sur devis.",en:"Indicative price subject to availability. Flights quoted separately."}},
- { id:"incentive-crete", sample:true, rdest:"crete", img:"crete2",
-   tag:{fr:"Incentive",en:"Incentive"},
-   title:{fr:"Incentive en Crète, 4 nuits",en:"Crete incentive, 4 nights"},
-   price:"1 190 €", per:{fr:"par personne hors vols, base 30 personnes",en:"per person excl. flights, based on 30 people"},
-   valid:{fr:"Mai, juin, septembre 2027",en:"May, June, September 2027"},
-   inc:{fr:["Resort 5★ en demi-pension","Dîner de gala sur la plage","Jeep safari dans les montagnes","Cours de cuisine crétoise","Transferts et accompagnement"],en:["5★ resort, half board","Gala dinner on the beach","Jeep safari in the mountains","Cretan cooking class","Transfers and on-site support"]},
-   cond:{fr:"Prix indicatif selon disponibilité. Vols sur devis.",en:"Indicative price subject to availability. Flights quoted separately."}}
-];
+window.OFFERS = []; /* real offers only: id, rdest, img, tag, title, price, per, valid, inc, cond (FR/EN) */
 
-window.AMBASSADORS = [
- { sample:true, name:{fr:"Couple",en:"Couple"}, handle:"@a_venir", dest:"japon", poster:"japan2", video:"", trip:{fr:"Deux semaines au Japon",en:"Two weeks in Japan"}, q:{fr:"Chaque train, chaque ryokan : tout était prêt.",en:"Every train, every ryokan: everything was ready."}},
- { sample:true, name:{fr:"Famille",en:"Family"}, handle:"@a_venir", dest:"kruger", poster:"kruger2", video:"", trip:{fr:"Premier safari en famille",en:"First family safari"}, q:{fr:"Les enfants en parlent encore.",en:"The kids are still talking about it."}},
- { sample:true, name:{fr:"Entre amis",en:"Friends"}, handle:"@a_venir", dest:"marrakech", poster:"marrakech2", video:"", trip:{fr:"40 ans à Marrakech",en:"A 40th in Marrakech"}, q:{fr:"Un riad pour nous seuls et une nuit dans le désert.",en:"A riad all to ourselves and a night in the desert."}},
- { sample:true, name:{fr:"Grande famille",en:"Extended family"}, handle:"@a_venir", dest:"alpes", poster:"alps2", video:"", trip:{fr:"Trois générations au ski",en:"Three generations skiing"}, q:{fr:"Les forfaits, les cours, le chalet : tout était prêt.",en:"Passes, lessons, chalet: everything was ready."}},
- { sample:true, name:{fr:"Voyageuse solo",en:"Solo traveller"}, handle:"@a_venir", dest:"sri-lanka", poster:"srilanka2", video:"", trip:{fr:"Le Sri Lanka en train",en:"Sri Lanka by train"}, q:{fr:"Un vol modifié en route, réglé en dix minutes sur WhatsApp.",en:"A flight changed mid-trip, sorted in ten minutes on WhatsApp."}},
- { sample:true, name:{fr:"Mariés",en:"Newlyweds"}, handle:"@a_venir", dest:"italie", poster:"italy2", video:"", trip:{fr:"Mariage sur la côte amalfitaine",en:"Wedding on the Amalfi Coast"}, q:{fr:"Quatre-vingts invités de cinq pays, sans un seul souci.",en:"Eighty guests from five countries, without a single hitch."}}
-];
+window.AMBASSADORS = []; /* traveller videos: { name, handle, dest, poster, video:"videos/x.mp4", trip, q } (FR/EN) */
 
 /* ---------- COMPANY RETREATS ---------- */
 window.RREGIONS = [
@@ -578,7 +553,7 @@ window.ACTIVITIES = [
  { img:"act_cooking", fr:"Cours de cuisine", en:"Cooking classes" },
  { img:"act_boat", fr:"Bateau & catamaran", en:"Boat & catamaran days" },
  { img:"act_hike", fr:"Randonnées", en:"Hikes" },
- { img:"croatia2", fr:"Voile & régates", en:"Sailing & regattas" },
+ { img:"act_regatta", fr:"Voile & régates", en:"Sailing & regattas" },
  { img:"act_workshop", fr:"Ateliers & stratégie", en:"Workshops & strategy" },
  { img:"act_yoga", fr:"Yoga & bien-être", en:"Yoga & wellness" },
  { img:"act_kayak", fr:"Kayak & paddle", en:"Kayak & paddle" }
@@ -657,6 +632,12 @@ window.EVENTS = [
 
 /* ---------- TURNKEY RETREAT PACKAGES (quote only, no price) ---------- */
 window.PACKAGES = [
+ { id:"cracovie-seminaire", rdest:"cracovie", img:"meeting_room", nights:3, size:{fr:"20 à 80",en:"20 to 80"},
+   n:{fr:"Séminaire en vieille ville",en:"Old-town offsite"}, place:{fr:"Cracovie, Pologne",en:"Kraków, Poland"},
+   inc:{fr:["Hôtel design dans la vieille ville","Salle plénière et salles de sous-commission","Chasse au trésor dans la vieille ville","Dîner dans une cave voûtée"],en:["Design hotel in the old town","Plenary and breakout rooms","Old-town treasure hunt","Dinner in a vaulted cellar"]}},
+ { id:"crete-incentive", rdest:"crete", img:"crete2", nights:4, size:{fr:"20 à 150",en:"20 to 150"},
+   n:{fr:"Incentive au soleil",en:"Incentive in the sun"}, place:{fr:"Crète, Grèce",en:"Crete, Greece"},
+   inc:{fr:["Resort 5★ en bord de mer","Dîner de gala sur la plage","Jeep safari dans les montagnes","Cours de cuisine crétoise"],en:["5★ seafront resort","Gala dinner on the beach","Jeep safari in the mountains","Cretan cooking class"]}},
  { id:"surf-strategie", rdest:"ericeira", img:"act_surfteam", nights:3, size:{fr:"10 à 40",en:"10 to 40"},
    n:{fr:"Surf & stratégie",en:"Surf & strategy"}, place:{fr:"Ericeira, Portugal",en:"Ericeira, Portugal"},
    inc:{fr:["Surf house privatisée","2 sessions de surf avec moniteurs","Salle de travail équipée","Barbecue et dîner au coucher du soleil"],en:["Private surf house","2 surf sessions with instructors","Equipped workspace","Barbecue and sunset dinner"]}},
@@ -684,39 +665,43 @@ window.ACTLIB = [
    n:{fr:"Catamaran & snorkeling",en:"Catamaran & snorkelling"}, d:{fr:"Un ou plusieurs bateaux privatisés, déjeuner à bord et baignade dans une crique.",en:"One or more private boats, lunch on board and a swim in a cove."}},
  { cat:"sea", img:"act_kayak", e:2, size:"10–40", dur:{fr:"3 h",en:"3 h"}, where:["algarve","majorque","croatie"],
    n:{fr:"Kayak dans les grottes",en:"Sea-cave kayaking"}, d:{fr:"Le long des falaises, avec un guide pour 8 personnes.",en:"Along the cliffs, with one guide per 8 people."}},
- { cat:"sea", img:"croatia2", e:2, size:"12–60", dur:{fr:"½ journée",en:"Half day"}, where:["croatie","majorque","gdansk"],
+ { cat:"sea", img:"act_regatta", e:2, size:"12–60", dur:{fr:"½ journée",en:"Half day"}, where:["croatie","majorque","gdansk"],
    n:{fr:"Régate entre équipes",en:"Team regatta"}, d:{fr:"Plusieurs voiliers avec skipper, une course amicale et une remise de prix.",en:"Several skippered sailboats, a friendly race and a prize-giving."}},
  { cat:"sea", img:"act_rowing", e:3, size:"12–48", dur:{fr:"2 h",en:"2 h"}, where:["porto","lisbonne","vienne"],
    n:{fr:"Course d'aviron",en:"Rowing race"}, d:{fr:"Des bateaux à huit rameurs : impossible d'avancer sans se synchroniser.",en:"Eight-rower boats: you can't move forward without getting in sync."}},
  { cat:"adv", img:"act_hikegroup", e:2, size:"10–100", dur:{fr:"½ journée",en:"Half day"}, where:["algarve","madere","zakopane","georgie"],
    n:{fr:"Randonnée panoramique",en:"Scenic hike"}, d:{fr:"Un itinéraire adapté au groupe, pique-nique local et guide de montagne.",en:"A route matched to the group, a local picnic and a mountain guide."}},
- { cat:"adv", img:"madeira", e:3, size:"8–30", dur:{fr:"½ journée",en:"Half day"}, where:["madere","acores"],
+ { cat:"adv", img:"act_canyon", e:3, size:"8–30", dur:{fr:"½ journée",en:"Half day"}, where:["madere","acores"],
    n:{fr:"Canyoning",en:"Canyoning"}, d:{fr:"Rappels, sauts et toboggans naturels, encadrés par des guides certifiés.",en:"Abseiling, jumps and natural slides, led by certified guides."}},
- { cat:"adv", img:"tuscany2", e:2, size:"10–50", dur:{fr:"3 h",en:"3 h"}, where:["ericeira","toscane","majorque","pouilles"],
+ { cat:"adv", img:"act_ebike", e:2, size:"10–50", dur:{fr:"3 h",en:"3 h"}, where:["ericeira","toscane","majorque","pouilles"],
    n:{fr:"Balade en vélo électrique",en:"E-bike ride"}, d:{fr:"Routes côtières ou vignobles, accessible à tous grâce à l'assistance.",en:"Coastal roads or vineyards, accessible to everyone thanks to the motor."}},
- { cat:"adv", img:"agafay", e:1, size:"15–200", dur:{fr:"Soirée",en:"Evening"}, where:["marrakech"],
+ { cat:"adv", img:"act_desert", e:1, size:"15–200", dur:{fr:"Soirée",en:"Evening"}, where:["marrakech"],
    n:{fr:"Soirée dans le désert",en:"Desert evening"}, d:{fr:"Quad ou dromadaire au coucher du soleil, puis dîner sous les étoiles.",en:"Quad bikes or camels at sunset, then dinner under the stars."}},
  { cat:"food", img:"act_cooking", e:1, size:"10–40", dur:{fr:"3 h",en:"3 h"}, where:["lisbonne","toscane","pouilles","marrakech"],
    n:{fr:"Cours de cuisine locale",en:"Local cooking class"}, d:{fr:"On cuisine en équipes, on mange ensemble ce qu'on a préparé.",en:"Cook in teams, then eat together what you made."}},
- { cat:"food", img:"act_cooking2", e:2, size:"12–80", dur:{fr:"3 h",en:"3 h"}, where:["barcelone","seville","majorque","lisbonne"],
+ { cat:"food", img:"act_paella", e:2, size:"12–80", dur:{fr:"3 h",en:"3 h"}, where:["barcelone","seville","majorque","lisbonne"],
    n:{fr:"Concours de cuisine",en:"Cook-off challenge"}, d:{fr:"Paella, pâtes fraîches ou tapas : un chef juge, une équipe gagne.",en:"Paella, fresh pasta or tapas: a chef judges, one team wins."}},
+ { cat:"food", img:"act_nata", e:1, size:"8–40", dur:{fr:"2 h",en:"2 h"}, where:["lisbonne","porto","ericeira"],
+   n:{fr:"Atelier pastel de nata",en:"Pastel de nata workshop"}, d:{fr:"Pâte feuilletée, crème, cuisson au four très chaud : chacun repart avec ses pastéis, encore tièdes.",en:"Puff pastry, custard, a very hot oven: everyone leaves with their own pastéis, still warm."}},
+ { cat:"food", img:"act_pasta", e:1, size:"8–40", dur:{fr:"3 h",en:"3 h"}, where:["rome","toscane","pouilles","milan-come"],
+   n:{fr:"Cours de pâtes fraîches",en:"Fresh pasta class"}, d:{fr:"Avec une cheffe italienne : tagliatelles, raviolis et orecchiette, puis on mange ensemble.",en:"With an Italian chef: tagliatelle, ravioli and orecchiette, then everyone eats together."}},
  { cat:"food", img:"act_wine", e:1, size:"10–100", dur:{fr:"2 h",en:"2 h"}, where:["porto","toscane","georgie","milan-come"],
    n:{fr:"Dégustation de vins",en:"Wine tasting"}, d:{fr:"Dans une quinta, un domaine toscan ou une cave géorgienne, avec le vigneron.",en:"At a quinta, a Tuscan estate or a Georgian cellar, with the winemaker."}},
  { cat:"food", img:"act_longtable", e:1, size:"10–300", dur:{fr:"Soirée",en:"Evening"}, where:["algarve","pouilles","toscane","lisbonne"],
    n:{fr:"Dîner long table",en:"Long-table dinner"}, d:{fr:"Une grande table dressée dans un lieu inattendu : vignes, plage, cour de palais.",en:"One long table set somewhere unexpected: vineyard, beach, palace courtyard."}},
  { cat:"crea", img:"act_workshop3", e:1, size:"10–200", dur:{fr:"½ journée",en:"Half day"}, where:["lisbonne","porto","barcelone","vienne"],
    n:{fr:"Atelier stratégie animé",en:"Facilitated strategy workshop"}, d:{fr:"Avec un facilitateur indépendant, pour sortir de la réunion avec des décisions.",en:"With an independent facilitator, so the session ends with decisions."}},
- { cat:"crea", img:"lisbon2", e:2, size:"15–200", dur:{fr:"3 h",en:"3 h"}, where:["lisbonne","porto","prague","cracovie"],
+ { cat:"crea", img:"act_hunt", e:2, size:"15–200", dur:{fr:"3 h",en:"3 h"}, where:["lisbonne","porto","prague","cracovie"],
    n:{fr:"Chasse au trésor en ville",en:"City treasure hunt"}, d:{fr:"Énigmes sur smartphone à travers la vieille ville, par équipes mélangées.",en:"Smartphone riddles through the old town, in mixed teams."}},
- { cat:"crea", img:"porto", e:1, size:"8–30", dur:{fr:"2 h",en:"2 h"}, where:["porto","lisbonne","seville"],
+ { cat:"crea", img:"act_tiles", e:1, size:"8–30", dur:{fr:"2 h",en:"2 h"}, where:["porto","lisbonne","seville"],
    n:{fr:"Atelier azulejos ou céramique",en:"Tile or ceramics workshop"}, d:{fr:"Chacun repart avec sa création, peinte à la main.",en:"Everyone leaves with their own hand-painted piece."}},
  { cat:"well", img:"act_yoga", e:1, size:"8–60", dur:{fr:"1 h",en:"1 h"}, where:["ericeira","algarve","taghazout","majorque"],
    n:{fr:"Yoga au lever du soleil",en:"Sunrise yoga"}, d:{fr:"Tous niveaux, face à la mer ou dans le jardin du lieu.",en:"All levels, facing the sea or in the venue's garden."}},
  { cat:"well", img:"spa", e:1, size:"8–40", dur:{fr:"2 h",en:"2 h"}, where:["marrakech","istanbul","budapest","zakopane"],
    n:{fr:"Hammam & thermes",en:"Hammam & thermal baths"}, d:{fr:"Hammam traditionnel ou bains thermaux privatisés pour le groupe.",en:"Traditional hammam or thermal baths reserved for the group."}},
- { cat:"impact", img:"ericeira", e:2, size:"10–200", dur:{fr:"½ journée",en:"Half day"}, where:["ericeira","algarve","acores"],
+ { cat:"impact", img:"act_cleanup", e:2, size:"10–200", dur:{fr:"½ journée",en:"Half day"}, where:["ericeira","algarve","acores"],
    n:{fr:"Nettoyage de plage",en:"Beach clean-up"}, d:{fr:"Avec une association locale, suivi d'un déjeuner partagé.",en:"With a local association, followed by a shared lunch."}},
- { cat:"impact", img:"tuscany", e:2, size:"10–80", dur:{fr:"½ journée",en:"Half day"}, where:["toscane","algarve","porto"],
+ { cat:"impact", img:"act_farm", e:2, size:"10–80", dur:{fr:"½ journée",en:"Half day"}, where:["toscane","algarve","porto"],
    n:{fr:"Journée à la ferme",en:"Farm day"}, d:{fr:"Plantation, récolte ou cueillette dans une ferme bio, puis repas avec les producteurs.",en:"Planting, harvesting or picking at an organic farm, then a meal with the growers."}}
 ];
 

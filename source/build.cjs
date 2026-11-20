@@ -49,7 +49,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const { EVENTS } = ref;
 const keys = ["home", "voyages", "comment", "partenaires", "retraites", ...RETREATS.map(r => "retraite-" + r.s), "brief", "evenements", ...EVENTS.map(e => "event-" + e.k), "budget", "activites", "guide",
   "destinations", ...DESTS.map(d => "dest-" + d.s), "inspiration", ...THEMES.map(t => "theme-" + t.k),
-  "offres", ...OFFERS.map(o => "offre-" + o.id), "voyageurs", "groupes", "entreprises", "a-propos", "appel", "devis", "mentions"];
+  "offres", ...OFFERS.map(o => "offre-" + o.id), ...(ref.AMBASSADORS.length ? ["voyageurs"] : []), "groupes", "entreprises", "a-propos", "appel", "devis", "mentions"];
 
 function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;

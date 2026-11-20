@@ -1,6 +1,6 @@
 # Permanent Summer Voyages: website
 
-Static website: 112 pages (56 in French, 56 in English) plus photos, sitemap and SEO tags. No server and no database needed.
+Static website: 172 pages in French and English plus photos, sitemap and SEO tags. No server and no database needed.
 
 ```
 docs/     the website itself (GitHub Pages publishes this folder)
@@ -32,14 +32,12 @@ The pages use relative links, so the site also works at `https://<username>.gith
 - Add the site to **Google Search Console** and submit `https://permanentsummervoyages.com/sitemap.xml`.
 - If the final domain is different from `permanentsummervoyages.com`, the canonical URLs, sitemap and social previews must be regenerated: run the build with the new domain (see below), or ask Claude to rebuild.
 
-## Before launch: content still to replace
+## Adding content later
 
-- Offers: the 3 current offers are examples (marked "Exemple à remplacer").
-- Ambassadors: the 6 video cards are examples. Add vertical MP4s to `docs/videos/` and set `video: "videos/name.mp4"` in `source/data.js`.
-- Testimonials: the 3 quotes are examples.
+- Offers: add real offers to `OFFERS` in `source/data.js` (the section appears automatically).
+- Traveller videos: add entries to `AMBASSADORS` with vertical MP4s in `docs/videos/`; the Travellers page and menu link come back automatically.
+- Case studies: add real ones to `CASES`.
 - Facebook and Instagram links: `social` in `source/data.js`.
-- Email address: `email` in `source/data.js` (currently a placeholder).
-- Legal notice: NIF, RNAVT number, insurance.
 
 ## Updating content
 

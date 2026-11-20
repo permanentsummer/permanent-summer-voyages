@@ -613,7 +613,7 @@ function header(){
   const nav = b2c ? `
         <button data-mega="dest" aria-expanded="${state.megaOpen==='dest'}">${t(U.dest)}</button>
         <button data-mega="insp" aria-expanded="${state.megaOpen==='insp'}">${t(U.insp)}</button>
-        <a href="#voyageurs">${t(U.travellers)}</a>
+        <a href="#devis">${t(U.quote)}</a>
         <a href="#a-propos">${t(U.about)}</a>` : `
         <button data-mega="sol" aria-expanded="${state.megaOpen==='sol'}">${t(U.sol)}</button>
         <button data-mega="ret" aria-expanded="${state.megaOpen==='ret'}">${t(U.dest)}</button>
@@ -699,7 +699,7 @@ function drawer(){
   const body = b2c ? `
     <details open><summary>${t(U.dest)}</summary><div><a href="#destinations">${t(U.seeAll)}</a>${DESTS.map(d=>`<a href="#dest-${d.s}">${t(d.n)}</a>`).join("")}</div></details>
     <details><summary>${t(U.insp)}</summary><div><a href="#inspiration">${t({fr:"Toutes les inspirations",en:"All inspiration"})}</a>${THEMES.map(x=>`<a href="#theme-${x.k}">${t(x)}</a>`).join("")}</div></details>
-    <a href="#voyageurs">${t(U.travellers)}</a><a href="#a-propos">${t(U.about)}</a>
+    <a href="#a-propos">${t(U.about)}</a>
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#devis" class="btn accent">${t(U.quote)}</a><a href="#appel" class="btn ghost">${t(U.book)}</a>` : `
     <details open><summary>${t(U.sol)}</summary><div><a href="#evenements">${t({fr:"Tous les événements",en:"All events"})}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#comment">${t(U.how)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div></details>
     <details><summary>${t(U.dest)}</summary><div><a href="#retraites">${t(U.allRetreats)}</a>${RETREATS.map(r=>`<a href="#retraite-${r.s}">${t(r.n)}</a>`).join("")}</div></details>
@@ -726,7 +726,7 @@ function footer(){
       </div>
       <div><h4>${t(U.biz)}</h4><a href="#retraites">${t(U.retreatsLong)}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#offres">${t(U.offers)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
       <div><h4>${t(U.res)}</h4><a href="#comment">${t(U.how)}</a><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
-      <div><h4>${t(U.perso)}</h4><a href="#voyages">${t(U.leisure)}</a><a href="#destinations">${t(U.dest)}</a><a href="#inspiration">${t(U.insp)}</a><a href="#voyageurs">${t(U.travellers)}</a><a href="#devis">${t(U.quote)}</a></div>
+      <div><h4>${t(U.perso)}</h4><a href="#voyages">${t(U.leisure)}</a><a href="#destinations">${t(U.dest)}</a><a href="#inspiration">${t(U.insp)}</a><a href="#devis">${t(U.quote)}</a></div>
       <div><h4>${t(U.contact)}</h4><a href="#appel">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp</a><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.phone)}</span><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.email)}</span></div>
     </div>
     <div class="legal"><span>© 2026 Permanent Summer Lda · Portugal</span><span>${t({fr:"Billets d'avion émis par notre partenaire agréé",en:"Flight tickets issued by our licensed partner"})}</span><span><a href="#mentions">${t({fr:"Confidentialité",en:"Privacy"})}</a> · <a href="#mentions">${t({fr:"Conditions",en:"Terms"})}</a></span></div>
@@ -846,8 +846,8 @@ function home(){
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="head"><h2 class="h2">${t({fr:"Ce que disent les organisateurs",en:"What organisers say"})}</h2></div>
-    <div class="quotes">${window.TESTIMONIALS.map(q=>`<figure class="quote" style="margin:0"><blockquote>« ${t(q.q)} »</blockquote><cite>${esc(q.a)}</cite><span class="sample">${t({fr:"Exemple à remplacer",en:"Sample, to replace"})}</span></figure>`).join("")}</div>
+    <div class="head"><div><span class="eyebrow">${t({fr:"Exemples de programmes",en:"Sample programmes"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ce que vivent les équipes",en:"What teams get up to"})}</h2></div><a class="link" href="#activites">${t(U.lib)}</a></div>
+    <div class="acts">${(window.PROGRAMS||[]).map(g=>{ const r = byR(g.r); return r ? `<a class="act" href="#retraite-${r.s}"><div class="ph">${img(g.img, t(r.n))}</div><span class="eyebrow">${t(r.n)} · ${g.pax} ${t({fr:"personnes",en:"people"})} · ${g.nights} ${t({fr:"nuits",en:"nights"})}</span><p style="color:var(--ink)">${t(g.t)}</p><span class="link" style="align-self:flex-start">${t({fr:"Voir la destination",en:"See the destination"})}</span></a>` : ""; }).join("")}</div>
     <div style="margin-top:56px">${promiseBox()}</div>
   </div></section>`;
 }
@@ -894,10 +894,10 @@ function voyagesHome(){
     </div>
   </div></section>
 
-  <section class="section surface"><div class="wrap">
+  ${(window.AMBASSADORS||[]).length ? `<section class="section surface"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.travellers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ils sont partis avec nous",en:"They travelled with us"})}</h2></div><a class="link" href="#voyageurs">${t({fr:"Toutes les vidéos",en:"All videos"})}</a></div>
-    <div class="reels">${(window.AMBASSADORS||[]).slice(0,3).map((a,i)=>reel(a,i)).join("")}</div>
-  </div></section>
+    <div class="reels">${window.AMBASSADORS.slice(0,3).map((a,i)=>reel(a,i)).join("")}</div>
+  </div></section>` : ""}
 
   <section class="section"><div class="wrap split">
     <div class="text"><span class="eyebrow">${t(U.book)}</span><h2 class="h2">${t({fr:"Parlons de votre prochain voyage",en:"Let's talk about your next trip"})}</h2><p class="lede">${t({fr:"Trente minutes pour poser les bases : dates, budget, envies. Vous recevez ensuite un devis détaillé.",en:"Thirty minutes to set the basics: dates, budget, wishes. Then you get a detailed quote."})}</p>
@@ -1405,7 +1405,8 @@ function book(){
       <span class="eyebrow">${t(U.book)}</span>
       <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Choisissez un créneau, nous vous appelons.",en:"Pick a time, we'll call you."})}</h1>
       <div class="cal" id="cal">
-        <div class="calendly-inline-widget" data-url="${esc(C.calendly)}?hide_gdpr_banner=1" id="calw"></div>
+        <div class="calendly-inline-widget" data-url="${esc(C.calendly)}?hide_gdpr_banner=1" id="calw" style="min-width:280px;height:700px"></div>
+        <p class="note" style="margin-top:10px">${t({fr:"Le calendrier ne s'affiche pas ?",en:"Calendar not showing?"})} <a class="link" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a></p>
         <div class="calfb" id="calfb" hidden>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Appel découverte · 30 min",en:"Discovery call · 30 min"})}</b><span class="note">${t({fr:"Affiché dans votre fuseau horaire",en:"Shown in your time zone"})}</span></div>
           ${miniCal()}
@@ -1485,13 +1486,13 @@ function offersPage(){
   <section class="hero short"><div class="ph">${img("venue_hotel","",true)}</div><div class="wrap">
     <div class="eyebrow" style="color:#fff">${t(U.offers)}</div>
     <h1 class="display" style="margin-top:12px">${t({fr:"Offres & formules clés en main",en:"Offers & turnkey retreats"})}</h1>
-    <p class="sub">${t({fr:"Des séminaires négociés à prix connu, et nos retraites les plus demandées, prêtes à adapter à votre équipe.",en:"Negotiated offsites at a set price, and our most requested retreats, ready to adapt to your team."})}</p>
+    <p class="sub">${t({fr:"Nos retraites les plus demandées, prêtes à adapter à votre équipe. Devis avec les vols de chaque participant sous 48 h.",en:"Our most requested retreats, ready to adapt to your team. Quote with every participant's flights within 48 h."})}</p>
   </div></section>
-  <section class="section"><div class="wrap">
+  ${list.length ? `<section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.offers)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Offres du moment",en:"Current offers"})}</h2></div></div>
-    ${list.length ? `<div class="offers-grid">${list.map(offerCard).join("")}</div>` : `<p class="lede">${t({fr:"Aucune offre en ce moment.",en:"No offers right now."})}</p>`}
-  </div></section>
-  <section class="section surface"><div class="wrap">
+    <div class="offers-grid">${list.map(offerCard).join("")}</div>
+  </div></section>` : ""}
+  <section class="section ${list.length ? "surface" : ""}"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t({fr:"Formules clés en main",en:"Turnkey retreats"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Nos retraites les plus demandées",en:"Our most requested retreats"})}</h2></div></div>
     <div class="grid">${PACKAGES.map(packageCard).join("")}</div>
   </div></section>
@@ -1719,14 +1720,22 @@ function guidePage(){
 }
 
 function legal(){
+  const H = x => `<h2 class="h2" style="font-size:24px;margin:36px 0 10px">${t(x)}</h2>`;
   return `<section class="section"><div class="wrap" style="max-width:820px">
     <span class="eyebrow">${t({fr:"Mentions légales",en:"Legal notice"})}</span>
-    <h1 class="display" style="font-size:clamp(36px,4.6vw,56px);margin:12px 0 28px">${t({fr:"Informations société",en:"Company information"})}</h1>
+    <h1 class="display" style="font-size:clamp(36px,4.6vw,56px);margin:12px 0 28px">${t({fr:"Mentions légales, confidentialité et conditions",en:"Legal notice, privacy and terms"})}</h1>
     <div class="prose" style="font-size:16px">
-      <p><b style="font-weight:400">Permanent Summer Lda</b><br>${t({fr:"Société de droit portugais · NIF : à compléter · Siège : Algarve, Portugal",en:"Portuguese company · NIF: to complete · Registered office: Algarve, Portugal"})}</p>
-      <p>${t({fr:"Permanent Summer Lda conçoit et coordonne les retraites, séminaires et voyages de groupe, et facture ses honoraires d'organisation. Les billets d'avion sont émis par notre partenaire agence agréé ; les hébergements, lieux et activités sont réservés au nom du client auprès des prestataires, qui le facturent directement.",en:"Permanent Summer Lda designs and coordinates retreats, offsites and group trips, and invoices its planning fees. Flight tickets are issued by our licensed travel agency partner; accommodation, venues and activities are booked in the client's name with the suppliers, who invoice the client directly."})}</p>
-      <p>${t({fr:"Données personnelles : les informations transmises via ce site servent uniquement à répondre à votre demande, conformément au RGPD. Politique de confidentialité et conditions générales de vente à publier avant le lancement.",en:"Personal data: information sent through this site is used only to answer your request, in line with the GDPR. Privacy policy and terms of sale to be published before launch."})}</p>
-      <p class="note">${t({fr:"Page de travail : contenu à valider avec le comptable et le juriste.",en:"Working page: content to be validated with the accountant and lawyer."})}</p>
+      ${H({fr:"Éditeur du site",en:"Site publisher"})}
+      <p><b style="font-weight:400">Permanent Summer Lda</b><br>${t({fr:"Société de droit portugais",en:"Portuguese company"})} · NIF / NIPC 516416804<br>Casas da Alcaria, Lote 81, 8950-413 Altura, Portugal<br>${esc(C.email)} · ${esc(C.phone)}</p>
+      <p>${t({fr:"Hébergement : GitHub Pages (GitHub, Inc.), avec Cloudflare pour le domaine.",en:"Hosting: GitHub Pages (GitHub, Inc.), with Cloudflare for the domain."})}</p>
+      ${H({fr:"Notre rôle",en:"Our role"})}
+      <p>${t({fr:"Permanent Summer Lda conçoit et coordonne les retraites, séminaires et voyages, et facture ses honoraires d'organisation. Les billets d'avion sont émis par notre partenaire agence agréé. Les hébergements, lieux et activités sont réservés au nom du client auprès des prestataires, qui le facturent directement selon leurs propres conditions.",en:"Permanent Summer Lda designs and coordinates retreats, offsites and trips, and invoices its planning fees. Flight tickets are issued by our licensed travel agency partner. Accommodation, venues and activities are booked in the client's name with the suppliers, who invoice the client directly under their own terms."})}</p>
+      ${H({fr:"Conditions",en:"Terms"})}
+      <p>${t({fr:"Nos propositions et devis sont gratuits et sans engagement. Une réservation n'est confirmée qu'après accord écrit du client et, le cas échéant, versement de l'acompte demandé par le prestataire. Les conditions de modification et d'annulation sont celles de chaque prestataire et des tarifs aériens choisis ; elles figurent dans la proposition. Nos honoraires d'organisation sont fixés à l'avance et facturés par Permanent Summer Lda.",en:"Our proposals and quotes are free and non-binding. A booking is confirmed only after the client's written agreement and, where applicable, payment of the deposit requested by the supplier. Change and cancellation terms are those of each supplier and of the chosen air fares; they are set out in the proposal. Our planning fees are agreed upfront and invoiced by Permanent Summer Lda."})}</p>
+      ${H({fr:"Données personnelles",en:"Personal data"})}
+      <p>${t({fr:"Les informations envoyées via ce site (formulaires, WhatsApp, email) servent uniquement à répondre à votre demande et à organiser votre voyage. Elles sont transmises aux prestataires concernés (compagnies aériennes, hôtels, lieux) seulement lorsque c'est nécessaire à la réservation, et ne sont jamais vendues. Ce site n'utilise pas de cookies publicitaires ; la prise de rendez-vous est assurée par Calendly. Vous pouvez demander l'accès, la rectification ou la suppression de vos données à",en:"Information sent through this site (forms, WhatsApp, email) is used only to answer your request and organise your trip. It is shared with the relevant suppliers (airlines, hotels, venues) only when needed for a booking, and is never sold. This site uses no advertising cookies; appointment booking is provided by Calendly. You can request access to, correction or deletion of your data at"})} ${esc(C.email)}.</p>
+      ${H({fr:"Réclamations",en:"Complaints"})}
+      <p>${t({fr:"Pour toute réclamation, écrivez-nous à",en:"For any complaint, write to us at"})} ${esc(C.email)}. ${t({fr:"Vous pouvez aussi utiliser le",en:"You can also use the"})} <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a> ${t({fr:"(livre de réclamations électronique portugais).",en:"(Portuguese electronic complaints book)."})}</p>
     </div></div></section>`;
 }
 function notFound(){ return `<section class="section"><div class="wrap"><h1 class="display h2">${t({fr:"Page introuvable",en:"Page not found"})}</h1><p style="margin-top:16px"><a class="link" href="#home">${t({fr:"Retour à l'accueil",en:"Back to home"})}</a></p></div></section>`; }
@@ -1793,15 +1802,15 @@ function loadCalendly(cb){
   const done = ok => { calState = ok ? "ready" : "failed"; calWait.splice(0).forEach(f => f(ok)); };
   s.onload = () => done(!!window.Calendly); s.onerror = () => done(false);
   document.head.appendChild(s);
-  setTimeout(() => { if (calState === "loading") done(false); }, 4000);
+  setTimeout(() => { if (calState === "loading") done(false); }, 20000);
 }
 function mountCalendly(){
   const fb = document.getElementById("calfb"), w = document.getElementById("calw");
   const showFb = () => { if (w && !w.querySelector("iframe")) { w.hidden = true; fb.hidden = false; } };
   loadCalendly(ok => {
     if (!ok) return showFb();
+    if (w.querySelector("iframe")) return;
     try { window.Calendly.initInlineWidget({ url: w.dataset.url, parentElement: w }); } catch(e){ showFb(); }
-    setTimeout(showFb, 3500);
   });
 }
 /* forms: post to CONFIG.formEndpoint when set (e.g. Formspree), otherwise offer WhatsApp + copy */
