@@ -553,3 +553,6 @@ nav.main > *{white-space:nowrap}
 .lang button,.lang a{border-radius:999px}
 .field input,.field select,.field textarea,.mega .regions button,.toast{border-radius:12px}
 @media (max-width:1080px){.mini,.search{border-radius:22px}.mini .btn,.search .btn{border-radius:999px;margin:8px 4px 4px;height:52px}.mini label:first-child,.search label:first-child{padding-left:22px}}
+
+/* scrolling performance: skip rendering sections far below the screen */
+main > section:not(:first-child),main > div > section:not(:first-child){content-visibility:auto;contain-intrinsic-size:auto 760px}
