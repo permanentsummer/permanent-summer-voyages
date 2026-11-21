@@ -577,7 +577,7 @@ window.RFACTOR = { pt:1, es:1.1, it:1.15, gr:1.05, ce:0.9, ea:0.85, far:1.1 };
 
 /* ---------- EVENT TYPES (one page each) ---------- */
 window.EVENTS = [
- { k:"seminaire", slug:["seminaire-entreprise","company-offsite"], img:"ev_seminar",
+ { k:"seminaire", slug:["seminaire-entreprise","company-offsite"], img:"ev_offsite",
    n:{fr:"Séminaire d'entreprise",en:"Company offsite"},
    t:{fr:"Réunir toute l'équipe hors du bureau pour travailler, décider et repartir alignés.",en:"Bring the whole team out of the office to work, decide and come back aligned."},
    d:{fr:"Le séminaire, c'est le format le plus demandé : deux à quatre jours avec des sessions de travail le matin, une activité qui soude l'après-midi et un dîner qui reste dans les mémoires. Nous trouvons le lieu avec la bonne salle, nous construisons le programme avec vous et nous réservons les vols de chaque participant, depuis sa ville.",en:"The offsite is our most requested format: two to four days with work sessions in the morning, a bonding activity in the afternoon and a dinner people remember. We find the venue with the right meeting room, build the programme with you and book every participant's flights from their own city."},
@@ -629,7 +629,7 @@ window.EVENTS = [
    dests:["ile-maurice","marrakech","pouilles","madere"],
    faq:[[{fr:"Les conjoints peuvent-ils venir ?",en:"Can partners come along?"},{fr:"Oui, c'est fréquent pour ce format. Nous gérons leurs vols et un programme adapté.",en:"Yes, it's common for this format. We handle their flights and a tailored programme."}],
         [{fr:"Peut-on partir loin ?",en:"Can we go long-haul?"},{fr:"Oui : l'île Maurice, le Maroc ou l'Afrique du Sud sont des classiques. Nous réservons les vols long-courriers en même temps que le reste.",en:"Yes: Mauritius, Morocco or South Africa are classics. We book the long-haul flights together with everything else."}]]},
- { k:"client", slug:["evenement-clients","client-event"], img:"ev_client",
+ { k:"client", slug:["evenement-clients","client-event"], img:"ev_partners",
    n:{fr:"Événement clients & partenaires",en:"Client & partner event"},
    t:{fr:"Inviter vos meilleurs clients quelque part dont ils se souviendront.",en:"Take your best clients somewhere they'll remember."},
    d:{fr:"Un voyage pour vos clients, distributeurs ou partenaires : moins de réunions, plus de moments partagés. Nous gérons les invitations, les vols de chaque invité depuis sa ville, un lieu qui fait bonne impression et un programme qui laisse le temps de parler affaires sans en avoir l'air.",en:"A trip for your clients, distributors or partners: fewer meetings, more shared moments. We handle invitations, each guest's flights from their own city, a venue that makes an impression and a programme that leaves room to talk business without it feeling like work."},
