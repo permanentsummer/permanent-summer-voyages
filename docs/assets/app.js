@@ -1414,9 +1414,9 @@ function sendForm(f, data, msg, okText){
       <pre id="qmsg">${esc(msg)}</pre>
       <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn accent" href="${wa(msg)}" target="_blank" rel="noopener">${t(U.whatsapp)}</a><button class="btn ghost" data-copy="qmsg" type="button">${L?"Copier le texte":"Copy text"}</button></div>
     </div>`; };
-  if (!C.formEndpoint) { fallback(); return; }
+  if (!C.formEndpoint || !C.formKey) { fallback(); return; }
   const btn = f.querySelector("button[type=submit]"); if (btn) { btn.disabled = true; btn.textContent = L ? "Envoi…" : "Sending…"; }
-  fetch(C.formEndpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(Object.assign({ _subject: (data.form||"form") + " · " + (data.company || data.name || "") }, data)) })
+  fetch(C.formEndpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(Object.assign({ access_key: C.formKey || undefined, subject: "Website · " + (data.form||"form") + " · " + (data.company || data.venue || data.name || ""), from_name: "Permanent Summer Voyages website", replyto: data.email || undefined, message: msg, botcheck: "" }, data)) })
     .then(r => { if (!r.ok) throw new Error(r.status); f.outerHTML = withCall ? callNext(data) : `<div class="sent"><b style="font-weight:400;font-size:22px">${L?"Merci !":"Thank you!"}</b><p>${esc(okText)}</p><a class="btn ghost" href="${urlFor('appel')}" style="align-self:flex-start">${t(U.book)}</a></div>`; })
     .catch(() => fallback(L ? "L'envoi n'a pas abouti. Envoyez votre demande sur WhatsApp ou par email à "+esc(C.email)+"." : "Sending failed. Send your request on WhatsApp or by email to "+esc(C.email)+"."));
 }

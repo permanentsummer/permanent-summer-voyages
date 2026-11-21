@@ -6,7 +6,8 @@ window.CONFIG = {
   whatsapp: "351924477353",          // international format, digits only
   email: "contact@permanentsummervoyages.com",
   calendly: "https://calendly.com/permanentsummer/30min",
-  formEndpoint: "", // retreat brief + quote forms post here (e.g. a Formspree URL); empty = WhatsApp/email fallback
+  formEndpoint: "https://api.web3forms.com/submit", // brief, quote and venue forms post here (Web3Forms); empty = WhatsApp/email fallback
+  formKey: "", // Web3Forms access key (public by design, tied to contact@permanentsummervoyages.com)
   social: { facebook: "", instagram: "" }, // paste full profile URLs here; empty = icon shown as "link to add"
   hours: { fr: "Du lundi au samedi. Assistance voyage 7j/7.", en: "Monday to Saturday. Travel support 7 days a week." }
 };
