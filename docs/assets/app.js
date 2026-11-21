@@ -31,6 +31,8 @@ function pathFor(key, lg){
   lg = lg || lang; const pre = lg === "fr" ? "fr/" : "", P = PAGES[lg];
   if (key.startsWith("dest-")) { const d = byS(key.slice(5)); return d ? pre + "destinations/" + destSlug(d, lg) + "/" : pre; }
   if (key.startsWith("theme-")) { const k = key.slice(6); return pre + P.inspiration + (THEME_SLUG[k] ? THEME_SLUG[k][lg==="en"?1:0] : k) + "/"; }
+  if (key === "blog") return "blog/";
+  if (key.startsWith("post-")) return "blog/" + key.slice(5) + "/";
   if (key.startsWith("offre-")) return pre + P.offres + key.slice(6) + "/";
   if (key.startsWith("event-")) { const e = byE(key.slice(6)); return e ? pre + P.evenements + e.slug[lg==="en"?1:0] + "/" : pre; }
   if (key.startsWith("retraite-")) { const r = byR(key.slice(9)); return r ? pre + P.retraites + (lg === "en" ? slugify(r.n.en) : r.s) + "/" : pre; }
@@ -138,7 +140,7 @@ function megaInsp(){
 }
 function megaRes(){
   return `<div class="mega insp"><div class="wrap">
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#blog">Blog</a><a href="#guide">${t(U.guide)}</a></div>
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#appel">${t(U.book)}</a><a href="#brief">${t({fr:"Décrire mon projet",en:"Tell us about your project"})}</a><a href="#partenaires">${t(U.host)}</a></div>
     <a class="promo" href="#budget">${img("nomad_balcony")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Gratuit",en:"Free"})}</div><div style="font-size:20px">${t({fr:"Estimez votre budget, vols compris",en:"Estimate your budget, flights included"})}</div></div></a>
   </div></div>`;
@@ -164,7 +166,7 @@ function drawer(){
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#devis" class="btn accent">${t(U.quote)}</a><a href="#appel" class="btn ghost">${t(U.book)}</a>` : `
     <details open><summary>${t(U.sol)}</summary><div><a href="#evenements">${t({fr:"Tous les événements",en:"All events"})}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#comment">${t(U.how)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div></details>
     <details><summary>${t(U.dest)}</summary><div><a href="#retraites">${t(U.allRetreats)}</a>${RETREATS.map(r=>`<a href="#retraite-${r.s}">${t(r.n)}</a>`).join("")}</div></details>
-    <details><summary>${t(U.res)}</summary><div><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div></details>
+    <details><summary>${t(U.res)}</summary><div><a href="#blog">Blog</a><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#blog">Blog</a><a href="#guide">${t(U.guide)}</a></div></details>
     <a href="#offres">${t(U.offers)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t(U.about)}</a>
     <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#appel" class="btn accent">${t(U.book)}</a><a href="#brief" class="btn ghost">${t({fr:"Décrire mon projet",en:"Tell us about your project"})}</a>`;
   return `<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
@@ -186,7 +188,7 @@ function footer(){
         <form class="news" data-form="news"><label for="nl" class="sr" style="position:absolute;left:-9999px">Email</label><input id="nl" type="email" required placeholder="email@exemple.com"><button class="btn">${t({fr:"S'inscrire",en:"Sign up"})}</button></form>
       </div>
       <div><h4>${t(U.biz)}</h4><a href="#retraites">${t(U.retreatsLong)}</a>${EVENTS.map(e=>`<a href="#event-${e.k}">${t(e.n)}</a>`).join("")}<a href="#groupes">${t(U.grpB2B)}</a><a href="#offres">${t(U.offers)}</a><a href="#entreprises">${t({fr:"Voyages d'affaires",en:"Business travel"})}</a></div>
-      <div><h4>${t(U.res)}</h4><a href="#comment">${t(U.how)}</a><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
+      <div><h4>${t(U.res)}</h4><a href="#blog">Blog</a><a href="#comment">${t(U.how)}</a><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#blog">Blog</a><a href="#guide">${t(U.guide)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t({fr:"Notre histoire",en:"Our story"})}</a><a href="#mentions">${t({fr:"Mentions légales",en:"Legal notice"})}</a></div>
       <div><h4>${t(U.perso)}</h4><a href="#voyages">${t(U.leisure)}</a><a href="#destinations">${t(U.dest)}</a><a href="#inspiration">${t(U.insp)}</a><a href="#devis">${t(U.quote)}</a></div>
       <div><h4>${t(U.contact)}</h4><a href="#appel">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener">WhatsApp</a><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.phone)}</span><span style="display:block;padding:4px 0;font-size:15px;user-select:all">${esc(C.email)}</span></div>
     </div>
@@ -821,7 +823,7 @@ function corporate(){
     <div class="pillar"><div class="big">${t({fr:"Devoir",en:"Duty"})} <em>${t({fr:"de protection",en:"of care"})}</em></div><p>${t({fr:"Nous savons où sont vos voyageurs et pouvons les réacheminer rapidement en cas de grève, météo ou crise.",en:"We know where your travellers are and can reroute them quickly in case of strikes, weather or crises."})}</p></div>
   </div></section>
   <section class="band"><div class="ph">${img("corporate")}</div><div class="wrap">
-    <h2 class="display">${t({fr:"Un appel de 30 minutes pour faire le point",en:"A 30-minute call to review your travel"})}</h2>
+    <h2 class="display">${t({fr:"Un appel de 15 minutes pour faire le point",en:"A 15-minute call to review your travel"})}</h2>
     <p>${t({fr:"Nombre de voyages par an, destinations habituelles, process de validation : nous vous proposons une organisation simple.",en:"Trips per year, usual destinations, approval process: we'll propose a simple setup."})}</p>
     <div class="ctas"><a href="#appel" class="btn light">${t(U.book)}</a><a href="#devis" class="btn light ghost">${t(U.quote)}</a></div>
   </div></section>`;
@@ -891,7 +893,7 @@ function book(){
         <div class="calendly-inline-widget" data-url="${esc(C.calendly)}?hide_gdpr_banner=1" id="calw" style="min-width:280px;height:700px"></div>
         <p class="note" style="margin-top:10px">${t({fr:"Le calendrier ne s'affiche pas ?",en:"Calendar not showing?"})} <a class="link" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a></p>
         <div class="calfb" id="calfb" hidden>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Appel découverte · 30 min",en:"Discovery call · 30 min"})}</b><span class="note">${t({fr:"Affiché dans votre fuseau horaire",en:"Shown in your time zone"})}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Appel découverte · 15 min",en:"Discovery call · 15 min"})}</b><span class="note">${t({fr:"Affiché dans votre fuseau horaire",en:"Shown in your time zone"})}</span></div>
           ${miniCal()}
           <p class="note">${(STATIC ? t({fr:"Le calendrier ne s'est pas chargé. Ouvrez-le directement :",en:"The calendar didn't load. Open it directly:"}) : t({fr:"Aperçu : le calendrier Calendly s'affiche ici une fois le site en ligne.",en:"Preview: the Calendly calendar appears here once the site is live."}))}</p>
           <a class="btn accent" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a>
@@ -1053,6 +1055,46 @@ function videoModal(){
   </div>`;
 }
 
+
+/* ---------- blog (English only) ---------- */
+const BLOGCAT = { guide:"Planning guides", dest:"Destinations", ideas:"Ideas & programmes", compare:"Comparisons", trends:"Trends & news" };
+const fmtDate = d => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { day:"numeric", month:"long", year:"numeric" });
+function postCard(p){
+  return `<a class="pcard" href="#post-${p.slug}"><div class="ph">${img(p.cover, p.coverAlt || p.title)}</div><div class="b"><span class="eyebrow">${BLOGCAT[p.cat] || "Blog"} · ${p.minutes} min read</span><h3>${esc(p.title)}</h3><p class="note">${esc(p.desc)}</p></div></a>`;
+}
+function blogIndex(){
+  const B = (window.BLOG || []).slice().sort((a,b) => b.date.localeCompare(a.date));
+  const f = state.bcat || "all"; const list = f === "all" ? B : B.filter(p => p.cat === f);
+  const lead = list.find(p => p.pin) || list[0];
+  return `<section class="section"><div class="wrap">
+    <span class="eyebrow">Blog</span>
+    <h1 class="display" style="font-size:clamp(38px,5vw,64px);margin:12px 0 14px;max-width:20ch">Company retreats, offsites and team travel</h1>
+    <p class="lede" style="max-width:62ch">Planning guides, destination ideas, budgets and trends from the team that books your venue, your programme and every participant's flight.</p>
+    <div class="chips" style="margin:28px 0 34px">${[["all","All"],...Object.entries(BLOGCAT)].map(([k,l])=>`<button type="button" class="chip" data-bcat="${k}" aria-pressed="${f===k}">${l}</button>`).join("")}</div>
+    ${lead ? `<a class="plead" href="#post-${lead.slug}"><div class="ph">${img(lead.cover, lead.coverAlt || lead.title)}</div><div class="b"><span class="eyebrow">${BLOGCAT[lead.cat]} · ${lead.minutes} min read</span><h2 class="h2">${esc(lead.title)}</h2><p class="lede">${esc(lead.desc)}</p><span class="link">Read the article →</span></div></a>` : ""}
+    <div class="pgrid">${list.filter(p => p !== lead).map(postCard).join("")}</div>
+  </div></section>
+  <section class="section surface"><div class="wrap">${promiseBox()}</div></section>`;
+}
+function postPage(slug){
+  const p = (window.BLOGPOST && window.BLOGPOST.slug === slug) ? window.BLOGPOST : null;
+  const meta = (window.BLOG || []).find(x => x.slug === slug);
+  if (!p || !meta) return `<section class="section"><div class="wrap"><h1 class="h2">Article not found</h1><p><a class="link" href="#blog">Back to the blog</a></p></div></section>`;
+  const body = p.html.replace(/<img src="IMG:([\w-]+)" alt="([^"]*)"[^>]*>/g, (m, k, a) => `<span class="ph pfig">${img(k, a)}</span>`);
+  const related = (window.BLOG || []).filter(x => x.slug !== slug && (p.related || []).includes(x.slug)).concat((window.BLOG || []).filter(x => x.slug !== slug && x.cat === meta.cat)).filter((x,i,a) => a.findIndex(y => y.slug === x.slug) === i).slice(0, 3);
+  return `<article class="section post"><div class="wrap">
+    <nav class="crumbs note"><a href="#blog">Blog</a> · <span>${BLOGCAT[meta.cat]}</span></nav>
+    <h1 class="display">${esc(meta.title)}</h1>
+    <p class="lede pdesc">${esc(meta.desc)}</p>
+    <div class="pmeta note">By Christopher Kwo · ${fmtDate(meta.date)} · ${meta.minutes} min read</div>
+    <div class="ph pcover">${img(meta.cover, meta.coverAlt || meta.title, true)}</div>
+    <div class="pbody"><div class="prose">${body}</div>
+      <aside class="pside"><div class="pbox"><span class="eyebrow">Planning a retreat?</span><b>A 15-min call, then 3 tailored proposals, flights included.</b><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#budget">${t(U.calc)}</a></div></aside>
+    </div>
+    <div class="pcta"><div><span class="eyebrow">Next step</span><h2 class="h2" style="margin-top:8px">Let's plan your team's next retreat</h2><p class="note">Venue, programme, activities and every participant's flight, handled by one team. It starts with a 15-minute call.</p></div><div class="ctas"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#brief">Tell us about your project</a></div></div>
+    ${related.length ? `<div class="head" style="margin-top:70px"><h2 class="h2">Keep reading</h2><a class="link" href="#blog">All articles</a></div><div class="pgrid">${related.map(postCard).join("")}</div>` : ""}
+  </div></article>`;
+}
 /* ---------- events ---------- */
 function eventsHub(){
   return `
@@ -1250,6 +1292,8 @@ function route(){
   else if (h === "budget") { html = budgetPage(); overlay = false; }
   else if (h === "activites") html = activitiesPage();
   else if (h === "guide") html = guidePage();
+  else if (h === "blog") { html = blogIndex(); overlay = false; }
+  else if (h.startsWith("post-")) { html = postPage(h.slice(5)); overlay = false; }
   else if (h === "destinations") html = destinations();
   else if (h.startsWith("dest-")) html = destPage(h.slice(5));
   else if (h === "inspiration") html = inspiration();
@@ -1370,7 +1414,7 @@ function toast(msg){ const d=document.createElement("div"); d.className="toast";
 
 /* ---------- events ---------- */
 document.addEventListener("click", e => {
-  const el = e.target.closest("[data-lang],[data-mega],[data-region],[data-rregion],[data-rfilter],[data-tab],[data-filter],[data-act],[data-pre],[data-rpre],[data-offer],[data-copy],[data-video],[data-calc],[data-acat],[data-pax],[data-ev],[data-k],a[href^='#']");
+  const el = e.target.closest("[data-lang],[data-bcat],[data-mega],[data-region],[data-rregion],[data-rfilter],[data-tab],[data-filter],[data-act],[data-pre],[data-rpre],[data-offer],[data-copy],[data-video],[data-calc],[data-acat],[data-pax],[data-ev],[data-k],a[href^='#']");
   if (!el) { if (state.megaOpen && !e.target.closest(".mega")) { state.megaOpen=null; render(true); } return; }
   if (el.dataset.lang){ lang = el.dataset.lang; try{localStorage.setItem("ps-lang",lang)}catch(_){}; render(true); return; }
   if (el.dataset.mega){ state.megaOpen = state.megaOpen===el.dataset.mega ? null : el.dataset.mega; render(true); return; }
@@ -1379,6 +1423,7 @@ document.addEventListener("click", e => {
   if (el.dataset.rfilter){ state.rfilter = el.dataset.rfilter; render(true); return; }
   if (el.dataset.tab){ state.homeTab = el.dataset.tab; render(true); return; }
   if (el.dataset.acat){ state.acat = el.dataset.acat; render(true); return; }
+  if (el.dataset.bcat){ state.bcat = el.dataset.bcat; render(true); return; }
   if (el.dataset.calc && el.tagName === "BUTTON"){ setCalc(el.dataset.calc, el.dataset.v); el.parentNode.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b === el)); return; }
   if (el.dataset.act==="drawer"){ state.drawer = !state.drawer; render(true); return; }
   if (el.dataset.act==="closevideo"){ if (e.target.closest("video,.soon")) return; state.video = null; render(true); return; }

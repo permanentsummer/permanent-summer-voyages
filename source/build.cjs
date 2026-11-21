@@ -13,6 +13,31 @@ const BRAND = "Permanent Summer Voyages";
 
 const src = fs.readFileSync(path.join(SRC, "index.src.html"), "utf8");
 const dataJs = fs.readFileSync(path.join(SRC, "data.js"), "utf8");
+/* ---------- blog: source/blog/*.md (front matter + markdown) ---------- */
+const { marked } = require(path.join(SRC, "node_modules", "marked"));
+const BLOG_DIR = path.join(SRC, "blog");
+const POSTS = (fs.existsSync(BLOG_DIR) ? fs.readdirSync(BLOG_DIR).filter(f => f.endsWith(".md")) : []).map(f => {
+  const raw = fs.readFileSync(path.join(BLOG_DIR, f), "utf8");
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/); if (!m) throw new Error("bad front matter: " + f);
+  const fm = {}; for (const line of m[1].split("\n")) { const i = line.indexOf(":"); if (i > 0) fm[line.slice(0, i).trim()] = line.slice(i + 1).trim(); }
+  const md = m[2];
+  // FAQ: "## FAQ" then "### question" + answer paragraphs → <details>; also kept for FAQPage JSON-LD
+  const faq = []; let main = md, faqMd = "";
+  const fi = md.search(/^## (FAQ|Frequently asked questions)/m);
+  if (fi >= 0) { main = md.slice(0, fi); faqMd = md.slice(fi).replace(/^##[^\n]*\n/, ""); }
+  for (const blk of faqMd.split(/^### /m).slice(1)) { const nl = blk.indexOf("\n"); faq.push({ q: blk.slice(0, nl).trim(), a: blk.slice(nl + 1).trim() }); }
+  let html = marked.parse(main, { mangle: false, headerIds: false });
+  html = html.replace(/<img src="([\w-]+)" alt="([^"]*)">/g, '<img src="IMG:$1" alt="$2">');
+  if (faq.length) html += `<h2>Frequently asked questions</h2>` + faq.map(x => `<details><summary>${x.q}</summary>${marked.parse(x.a)}</details>`).join("");
+  const words = md.split(/\s+/).length;
+  return { slug: f.replace(/\.md$/, ""), title: fm.title, seo: fm.seo || fm.title, desc: fm.desc, cat: fm.cat || "guide", date: fm.date, cover: fm.cover, coverAlt: fm.coverAlt || fm.title,
+    related: (fm.related || "").split(",").map(x => x.trim()).filter(Boolean), keyword: fm.keyword || "", pin: fm.pin === "1", minutes: Math.max(3, Math.round(words / 220)), html, faq,
+    text: main.replace(/[#*\[\]()>|`-]/g, " ").replace(/\s+/g, " ").trim() };
+}).sort((a, b) => b.date.localeCompare(a.date));
+const blogIndexJs = "window.BLOG=" + JSON.stringify(POSTS.map(({ slug, title, desc, cat, date, cover, coverAlt, minutes, pin }) => ({ slug, title, desc, cat, date, cover, coverAlt, minutes, pin }))) + ";";
+const postJs = p => "window.BLOGPOST=" + JSON.stringify({ slug: p.slug, html: p.html, related: p.related }) + ";";
+const isBlogKey = k => k === "blog" || k.startsWith("post-");
+const postOf = k => POSTS.find(p => "post-" + p.slug === k);
 const css = src.slice(src.indexOf("<style>") + 7, src.indexOf("</style>"));
 const appStart = src.indexOf("<script>\n(function(){");
 const appJs = src.slice(appStart + 8, src.lastIndexOf("</script>"));
@@ -36,7 +61,7 @@ function renderPage(page, lang, root) {
     { runScripts: "outside-only", url: "https://build.local/", virtualConsole: vc });
   const w = dom.window; w.scrollTo = () => {};
   w.SITE = { page, lang, root };
-  w.eval(dataJs); w.eval(appJs);
+  w.eval(dataJs); w.eval(blogIndexJs); if (page.startsWith("post-")) w.eval(postJs(POSTS.find(p => "post-" + p.slug === page))); w.eval(appJs);
   return { html: w.document.getElementById("app").innerHTML, bodyClass: w.document.body.className, theme: w.document.documentElement.dataset.theme || "dark", w };
 }
 
@@ -50,7 +75,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const { EVENTS } = ref;
 const keys = ["home", "voyages", "comment", "partenaires", "retraites", ...RETREATS.map(r => "retraite-" + r.s), "brief", "evenements", ...EVENTS.map(e => "event-" + e.k), "budget", "activites", "guide",
   "destinations", ...DESTS.map(d => "dest-" + d.s), "inspiration", ...THEMES.map(t => "theme-" + t.k),
-  "offres", ...OFFERS.map(o => "offre-" + o.id), ...(ref.AMBASSADORS.length ? ["voyageurs"] : []), "groupes", "entreprises", "a-propos", "appel", "devis", "mentions"];
+  "offres", ...OFFERS.map(o => "offre-" + o.id), ...(ref.AMBASSADORS.length ? ["voyageurs"] : []), "groupes", "entreprises", "a-propos", "appel", "devis", "mentions", ...(POSTS.length ? ["blog", ...POSTS.map(p => "post-" + p.slug)] : [])];
 
 function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
@@ -122,13 +147,15 @@ function meta(key, lg) {
     desc = L("Une agence familiale : 35 ans d'expérience en agence de voyage et l'hôtellerie internationale, au service des équipes et des groupes.",
              "A family agency: 35 years in travel agencies plus international hospitality, serving teams and groups."); image = "team"; }
   else if (key === "appel") { title = L("Réserver un appel", "Book a call");
-    desc = L("Choisissez un créneau de 30 minutes pour parler de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
-             "Pick a 30-minute slot to talk about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
+    desc = L("Choisissez un créneau de 15 minutes pour parler de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
+             "Pick a 15-minute slot to talk about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
   else if (key === "devis") { title = L("Demander un devis de voyage de groupe", "Request a group trip quote");
     desc = L("Décrivez votre voyage de groupe et recevez un devis personnalisé : vols, hébergement, transferts, activités.",
              "Describe your group trip and get a tailored quote: flights, accommodation, transfers, activities."); image = "map"; }
   else if (key === "mentions") { title = L("Mentions légales", "Legal notice"); desc = L("Informations légales de Permanent Summer Lda.", "Legal information for Permanent Summer Lda."); noindex = true; }
-  if (key !== "home") title += ` | ${BRAND}`;
+  else if (key === "blog") { title = "Company Retreat & Offsite Planning Blog"; desc = "Guides, destinations, budgets, activity ideas and trends for company retreats, offsites and team travel in Europe, from the team that also books every flight."; image = POSTS[0] ? POSTS[0].cover : image; crumbs = [["Blog", "blog"]]; }
+  else if (key.startsWith("post-")) { const p = postOf(key); title = p.seo; desc = p.desc; image = p.cover; crumbs = [["Blog", "blog"], [p.title, key]]; }
+  if (key !== "home" && !key.startsWith("post-")) title += ` | ${BRAND}`;
   return { title, desc, image, crumbs, noindex };
 }
 
@@ -147,6 +174,12 @@ const agency = {
 function head(key, lg, root, m, theme = "dark") {
   const canonical = abs(key, lg);
   const ld = [agency];
+  const post = postOf(key);
+  if (post) {
+    ld.push({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.desc, image: [SITE_URL + "img/" + post.cover + ".jpg"], datePublished: post.date, dateModified: post.updated || post.date,
+      author: { "@type": "Person", name: "Christopher Kwo", url: SITE_URL + PSV.pathFor("a-propos", "en") }, publisher: { "@id": SITE_URL + "#agency" }, mainEntityOfPage: canonical, keywords: post.keyword, inLanguage: "en" });
+    if (post.faq.length) ld.push({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: post.faq.map(f => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[*_]/g, "") } })) });
+  }
   if (m.crumbs) ld.push({ "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: [[lg === "fr" ? "Accueil" : "Home", "home"], ...m.crumbs].map(([name, k], i) => ({ "@type": "ListItem", position: i + 1, name, item: abs(k, lg) })) });
   return `<!doctype html>
@@ -157,10 +190,10 @@ function head(key, lg, root, m, theme = "dark") {
 <title>${esc(m.title)}</title>
 <meta name="description" content="${esc(m.desc)}">
 ${m.noindex ? '<meta name="robots" content="noindex">\n' : ""}<link rel="canonical" href="${canonical}">
-<link rel="alternate" hreflang="fr" href="${abs(key, "fr")}">
+${isBlogKey(key) ? `<link rel="alternate" hreflang="en" href="${abs(key, "en")}">` : `<link rel="alternate" hreflang="fr" href="${abs(key, "fr")}">
 <link rel="alternate" hreflang="en" href="${abs(key, "en")}">
-<link rel="alternate" hreflang="x-default" href="${abs(key, "en")}">
-<meta property="og:type" content="website">
+<link rel="alternate" hreflang="x-default" href="${abs(key, "en")}">`}
+<meta property="og:type" content="${post ? "article" : "website"}">
 <meta property="og:site_name" content="${BRAND}">
 <meta property="og:title" content="${esc(m.title)}">
 <meta property="og:description" content="${esc(m.desc)}">
@@ -184,7 +217,9 @@ const body = (key, lg, root, r) => `
 <body class="${r.bodyClass}">
 <div id="app">${r.html}</div>
 <script>window.SITE=${JSON.stringify({ page: key, lang: lg, root })};</script>
-<script src="${root}assets/data.js"></script>
+<script src="${root}assets/data.js"></script>${isBlogKey(key) ? `
+<script src="${root}assets/blog.js?v=${VER}"></script>` : ""}${key.startsWith("post-") ? `
+<script src="${root}assets/posts/${key.slice(5)}.js?v=${VER}"></script>` : ""}
 <script src="${root}assets/app.js?v=${VER}"></script>
 </body>
 </html>
@@ -198,6 +233,8 @@ fs.mkdirSync(path.join(OUT, "assets"), { recursive: true });
 fs.writeFileSync(path.join(OUT, "assets/style.css"), BASE_CSS + css.trim() + "\n");
 fs.writeFileSync(path.join(OUT, "assets/data.js"), dataJs);
 fs.writeFileSync(path.join(OUT, "assets/app.js"), appJs.trim() + "\n");
+if (POSTS.length) { fs.writeFileSync(path.join(OUT, "assets/blog.js"), blogIndexJs + "\n"); fs.mkdirSync(path.join(OUT, "assets/posts"), { recursive: true });
+  for (const p of POSTS) fs.writeFileSync(path.join(OUT, "assets/posts", p.slug + ".js"), postJs(p) + "\n"); }
 /* browser icons (source/brand) */
 for (const f of ["favicon.svg","favicon.ico","apple-touch-icon.png","icon-192.png","icon-512.png"])
   fs.copyFileSync(path.join(__dirname, "brand", f), path.join(OUT, f === "favicon.svg" ? "assets/favicon.svg" : f));
@@ -215,6 +252,7 @@ fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 
 let count = 0; const sitemap = [];
 for (const lg of ["fr", "en"]) for (const key of keys) {
+  if (isBlogKey(key) && lg === "fr") continue;
   const rel = PSV.pathFor(key, lg);
   const depth = rel.split("/").filter(Boolean).length;
   const root = "../".repeat(depth);
@@ -234,6 +272,7 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
 /* old addresses (French at the root, English under /en/) redirect to the new ones */
 let redirects = 0;
 for (const lg of ["fr", "en"]) for (const key of keys) {
+  if (isBlogKey(key)) continue;
   const now = PSV.pathFor(key, lg);
   const old = lg === "fr" ? now.replace(/^fr\//, "") : "en/" + now;
   const file = path.join(OUT, old, "index.html");
@@ -246,7 +285,10 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
 console.log("redirects:", redirects);
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = [...new Set(sitemap.map(x => x.split("|")[0]))].flatMap(key => ["fr", "en"].map(lg => `  <url>
+const urls = [...new Set(sitemap.map(x => x.split("|")[0]))].flatMap(key => isBlogKey(key) ? [`  <url>
+    <loc>${abs(key, "en")}</loc>
+    <lastmod>${key === "blog" ? today : (postOf(key).updated || postOf(key).date)}</lastmod>
+  </url>`] : ["fr", "en"].map(lg => `  <url>
     <loc>${abs(key, lg)}</loc>
     <lastmod>${today}</lastmod>
     <xhtml:link rel="alternate" hreflang="fr" href="${abs(key, "fr")}"/>
