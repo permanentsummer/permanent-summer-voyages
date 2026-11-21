@@ -49,7 +49,7 @@ Permanent Summer Voyages is a family agency combining 35 years of travel agency 
 
 - **We book every participant's flight**, from their own city, with coordinated arrivals.
 - **One budget per person**, flights included.
-- **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals and meeting room; then we finalise activities, special dinners, transfers and flights.
+- **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals, meeting room and flights; then we finalise activities, special dinners and transfers.
 - **A real person to call**, seven days a week during the trip.
 - **It starts with a call with our expert**, then 3 tailored proposals.
 

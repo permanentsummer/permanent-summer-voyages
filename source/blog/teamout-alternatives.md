@@ -45,7 +45,7 @@ A family agency with 35 years of travel agency experience plus hospitality and r
 
 - **Every participant's flight**, booked from their own city with coordinated arrivals.
 - **One budget per person**, flights included.
-- **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals and meeting room; then we finalise activities, special dinners, transfers and flights.
+- **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals, meeting room and flights; then we finalise activities, special dinners and transfers.
 - **A call with our expert first**, then 3 tailored proposals.
 - **A human reachable seven days a week** during the trip.
 - **More than 300 partner venues** in Europe and beyond.
