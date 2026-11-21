@@ -217,7 +217,7 @@ const body = (key, lg, root, r) => `
 <body class="${r.bodyClass}">
 <div id="app">${r.html}</div>
 <script>window.SITE=${JSON.stringify({ page: key, lang: lg, root })};</script>
-<script src="${root}assets/data.js"></script>${isBlogKey(key) ? `
+<script src="${root}assets/data.js?v=${VER}"></script>${isBlogKey(key) ? `
 <script src="${root}assets/blog.js?v=${VER}"></script>` : ""}${key.startsWith("post-") ? `
 <script src="${root}assets/posts/${key.slice(5)}.js?v=${VER}"></script>` : ""}
 <script src="${root}assets/app.js?v=${VER}"></script>
