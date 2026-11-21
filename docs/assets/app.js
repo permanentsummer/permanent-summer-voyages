@@ -43,15 +43,15 @@ const wa = (msg) => `https://wa.me/${C.whatsapp}${msg ? "?text=" + encodeURIComp
 
 const U = {
   dest:{fr:"Destinations",en:"Destinations"}, insp:{fr:"Inspiration",en:"Inspiration"}, groups:{fr:"Groupes",en:"Groups"},
-  corp:{fr:"Entreprises",en:"Business"}, about:{fr:"À propos",en:"About"}, book:{fr:"Réserver un appel",en:"Book a call"},
+  corp:{fr:"Entreprises",en:"Business"}, about:{fr:"À propos",en:"About"}, book:{fr:"Réserver un appel de 15 min",en:"Book a 15-min call"},
   quote:{fr:"Demander un devis",en:"Request a quote"}, contact:{fr:"Contact",en:"Contact"},
   retreats:{fr:"Retraites",en:"Retreats"}, retreatsLong:{fr:"Retraites d'entreprise",en:"Company retreats"}, plan:{fr:"Organiser une retraite",en:"Plan a retreat"},
-  getProposal:{fr:"Recevoir une proposition",en:"Get a proposal"}, allRetreats:{fr:"Toutes les destinations de retraite",en:"All retreat destinations"},
+  getProposal:{fr:"Commencer",en:"Get started"}, allRetreats:{fr:"Toutes les destinations de retraite",en:"All retreat destinations"},
   leisure:{fr:"Voyages sur mesure",en:"Tailor-made travel"}, events:{fr:"Événements",en:"Events"}, res:{fr:"Ressources",en:"Resources"},
   calc:{fr:"Calculateur de budget",en:"Budget calculator"}, lib:{fr:"Activités de team building",en:"Team-building activities"}, guide:{fr:"Guide : organiser un séminaire",en:"Guide: planning an offsite"},
-  promise:{fr:"3 propositions sur mesure, vols compris",en:"3 tailored proposals, flights included"},
+  promise:{fr:"Un appel de 15 min, puis 3 propositions sur mesure",en:"A 15-min call, then 3 tailored proposals"},
   biz:{fr:"Entreprises",en:"Business"}, perso:{fr:"Particuliers",en:"Personal"}, sol:{fr:"Solutions",en:"Solutions"},
-  get3:{fr:"Obtenir 3 propositions",en:"Get 3 proposals"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
+  get3:{fr:"Réserver un appel de 15 min",en:"Book a 15-min call"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
   travel:{fr:"Voyages",en:"Travel"}, grpB2B:{fr:"Associations, clubs & équipes",en:"Associations, clubs & teams"},
   offers:{fr:"Offres",en:"Offers"}, travellers:{fr:"Voyageurs",en:"Travellers"}, from:{fr:"À partir de",en:"From"},
   example:{fr:"Exemple à remplacer",en:"Sample, to replace"}, seeOffer:{fr:"Voir l'offre",en:"See the offer"},
@@ -98,7 +98,7 @@ function header(){
             ? `<a href="${urlFor(window.SITE.page, l)}" hreflang="${l}" lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</a>`
             : `<button data-lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</button>`).join("")}
         </div>
-        ${b2c ? `<a href="#devis" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.quote)}</a>` : `<a href="#brief" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.get3)}</a>`}
+        ${b2c ? `<a href="#devis" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.quote)}</a>` : `<a href="#appel" class="btn ghost hide-m" style="height:40px;padding:0 18px">${t(U.get3)}</a>`}
         <button class="burger" aria-label="Menu" data-act="drawer"><i></i><i></i><i></i></button>
       </div>
     </div>
@@ -139,7 +139,7 @@ function megaInsp(){
 function megaRes(){
   return `<div class="mega insp"><div class="wrap">
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div>
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#brief">${t(U.get3)}</a><a href="#appel">${t(U.book)}</a><a href="#partenaires">${t(U.host)}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#appel">${t(U.book)}</a><a href="#brief">${t({fr:"Décrire mon projet",en:"Tell us about your project"})}</a><a href="#partenaires">${t(U.host)}</a></div>
     <a class="promo" href="#budget">${img("nomad_balcony")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Gratuit",en:"Free"})}</div><div style="font-size:20px">${t({fr:"Estimez votre budget, vols compris",en:"Estimate your budget, flights included"})}</div></div></a>
   </div></div>`;
 }
@@ -166,7 +166,7 @@ function drawer(){
     <details><summary>${t(U.dest)}</summary><div><a href="#retraites">${t(U.allRetreats)}</a>${RETREATS.map(r=>`<a href="#retraite-${r.s}">${t(r.n)}</a>`).join("")}</div></details>
     <details><summary>${t(U.res)}</summary><div><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div></details>
     <a href="#offres">${t(U.offers)}</a><a href="#partenaires">${t(U.host)}</a><a href="#a-propos">${t(U.about)}</a>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#brief" class="btn accent">${t(U.get3)}</a><a href="#appel" class="btn ghost">${t(U.book)}</a>`;
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:28px"><a href="#appel" class="btn accent">${t(U.book)}</a><a href="#brief" class="btn ghost">${t({fr:"Décrire mon projet",en:"Tell us about your project"})}</a>`;
   return `<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="top"><a href="${b2c ? "#voyages" : "#home"}" class="logo" style="align-items:flex-start"><b>Permanent Summer</b><span>Voyages</span></a><button class="x" data-act="drawer" aria-label="${t({fr:'Fermer',en:'Close'})}">×</button></div>
     <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px">${sideSwitch()}<div class="lang" role="group" aria-label="Langue / Language">${["fr","en"].map(l => STATIC ? `<a href="${urlFor(window.SITE.page, l)}" hreflang="${l}" lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</a>` : `<button data-lang="${l}" aria-pressed="${lang===l}">${l.toUpperCase()}</button>`).join("")}</div></div>
@@ -215,7 +215,7 @@ function sizeCards(){
   return `<div class="sizes">${S.map(([im,r,pax,h,p])=>`<a class="size" href="#brief" data-pax="${pax}"><div class="ph">${img(im, t(h))}</div><div class="b"><span class="eyebrow">${t(h)}</span><span class="n">${r} <small style="font-family:var(--body);font-size:15px;color:var(--muted)">${t({fr:"personnes",en:"people"})}</small></span><p>${t(p)}</p><span class="link" style="align-self:flex-start">${t(U.getProposal)} →</span></div></a>`).join("")}</div>`;
 }
 function promiseBox(){
-  return `<div class="promise"><div><span class="eyebrow">${t({fr:"Notre engagement",en:"Our promise"})}</span><div style="margin-top:6px"><b>${t(U.promise)}</b></div><p class="note" style="margin-top:6px">${t({fr:"Lieu, programme, activités, vols de chaque participant et budget par personne. Sans engagement.",en:"Venue, programme, activities, every participant's flights and budget per person. No commitment."})}</p></div><a class="btn accent" href="#brief">${t(U.plan)}</a></div>`;
+  return `<div class="promise"><div><span class="eyebrow">${t({fr:"Notre engagement",en:"Our promise"})}</span><div style="margin-top:6px"><b>${t(U.promise)}</b></div><p class="note" style="margin-top:6px">${t({fr:"Lieu, programme, activités, vols de chaque participant et budget par personne. Sans engagement.",en:"Venue, programme, activities, every participant's flights and budget per person. No commitment."})}</p></div><a class="btn accent" href="#appel">${t(U.book)}</a></div>`;
 }
 function compareTable(){
   const Y = `<span class="yes">${t({fr:"Oui",en:"Yes"})}</span>`, N = `<span class="no">${t({fr:"Non",en:"No"})}</span>`, P = x => `<span class="part">${t(x)}</span>`;
@@ -256,12 +256,12 @@ function home(){
   const featured = ["algarve","lisbonne","ericeira","majorque","athenes","toscane","marrakech","cracovie"].map(byR).filter(Boolean);
   return `
   <section class="hero center">
-    <div class="ph">${img("hero_sandboard", t({fr:"Une équipe fait du sandboard sur les dunes",en:"A team sandboarding on the dunes"}), true)}</div>
+    <div class="ph"><picture><source media="(max-width:820px)" srcset="${ROOT}img/p/hero_sandboard.jpg"><img src="${ROOT}img/hero_sandboard.jpg" alt="${t({fr:"Une équipe fait du sandboard sur les dunes",en:"A team sandboarding on the dunes"})}" fetchpriority="high" decoding="async"></picture></div>
     <div class="wrap">
       <h1 class="display">${t({fr:"Vos retraites d'entreprise, vols compris.",en:"Company retreats, flights included."})}</h1>
       <div class="lower">
         <p class="sub">${t({fr:"Le lieu, le programme et le billet d'avion de chaque participant, organisés par une seule équipe.",en:"The venue, the programme and every participant's plane ticket, handled by one team."})}</p>
-        <div class="ctas"><a class="btn accent" href="#brief">${t(U.get3)}</a><a class="btn light" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
+        <div class="ctas"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn light" href="#budget">${t({fr:"Estimer mon budget",en:"Estimate my budget"})}</a></div>
       </div>
     </div>
   </section>
@@ -486,7 +486,7 @@ function monthOptions(sel){
 }
 function howSteps(){
   return `<ol class="steps">
-      <li><b>${t({fr:"Votre brief",en:"Your brief"})}</b><span>${t({fr:"5 minutes : taille de l'équipe, villes de départ, dates, budget, envies.",en:"5 minutes: team size, departure cities, dates, budget, wishes."})}</span></li>
+      <li><b>${t({fr:"Un appel de 15 minutes",en:"A 15-minute call"})}</b><span>${t({fr:"Pour bien comprendre votre équipe : taille, villes de départ, dates, budget, objectifs. Nous n'envoyons aucune proposition sans cet appel.",en:"To properly understand your team: size, departure cities, dates, budget, goals. We never send proposals without this call."})}</span></li>
       <li><b>${t({fr:"3 propositions sur mesure",en:"3 tailored proposals"})}</b><span>${t({fr:"Trois options complètes : lieu, programme, activités, vols et budget par personne.",en:"Three complete options: venue, programme, activities, flights and budget per person."})}</span></li>
       <li><b>${t({fr:"On réserve tout",en:"We book everything"})}</b><span>${t({fr:"Les vols de chacun, le lieu, les transferts et les activités.",en:"Everyone's flights, the venue, transfers and activities."})}</span></li>
       <li><b>${t({fr:"On reste joignables",en:"We stay on call"})}</b><span>${t({fr:"Un interlocuteur sur WhatsApp 7j/7, jusqu'au retour de tous.",en:"One contact on WhatsApp 7 days a week, until everyone is home."})}</span></li>
@@ -548,7 +548,7 @@ function retreatsPage(){
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_workshop")}</div>
       <h3>${t({fr:"Un projet de retraite ?",en:"Planning a retreat?"})}</h3>
-      <p class="note">${t({fr:"Décrivez votre projet en 5 minutes. 3 propositions complètes, vols compris.",en:"Describe your project in 5 minutes. 3 complete proposals, flights included."})}</p>
+      <p class="note">${t({fr:"Quelques questions rapides, un appel de 15 minutes, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a 15-minute call, then 3 complete proposals, flights included."})}</p>
       <a class="btn accent" href="#brief">${t(U.plan)}</a>
       <a class="btn ghost" href="#budget">${t(U.calc)}</a>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
@@ -615,10 +615,10 @@ function retreatPage(sl){
       <div class="row"><span>${t({fr:"Où dormir",en:"Where to stay"})}</span><span>${t(r.stay)}</span></div>
       <div class="row"><span>${t({fr:"Y aller",en:"Getting there"})}</span><span>${t(r.fly)}</span></div>
       <div class="row"><span>${t(U.when)}</span><span>${t(r.when)}</span></div>
-      <a href="#brief" class="btn accent" data-rpre="${r.s}">${t({fr:"3 propositions pour ",en:"3 proposals for "})}${name}</a>
+      <a href="#brief" class="btn accent" data-rpre="${r.s}">${t({fr:"Préparer ma retraite : ",en:"Plan my retreat: "})}${name}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
       ${advisor()}
-      <p class="note">${t({fr:"Vous recevez 3 propositions : lieux, programme, vols et budget par personne.",en:"You get 3 proposals: venues, programme, flights and budget per person."})}</p>
+      <p class="note">${t({fr:"Un appel de 15 minutes, puis 3 propositions : lieux, programme, vols et budget par personne.",en:"A 15-minute call, then 3 proposals: venues, programme, flights and budget per person."})}</p>
     </aside>
   </div></section>
   <section class="section surface"><div class="wrap">
@@ -636,31 +636,44 @@ function briefPage(){
     <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
       <span class="eyebrow">${t(U.plan)}</span>
       <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Parlez-nous de votre équipe",en:"Tell us about your team"})}</h1>
-      <p class="lede">${t({fr:"5 minutes pour nous donner l'essentiel. Vous recevez 3 propositions complètes, vols compris, sans engagement.",en:"5 minutes to give us the essentials. You'll get 3 complete proposals, flights included, with no commitment."})}</p>
-      <div id="bwrap"><form class="form" data-form="brief" id="bf">
-        <label class="field"><span>${t({fr:"Entreprise ou organisation",en:"Company or organisation"})}</span><input id="b-co" required autocomplete="organization"></label>
-        <label class="field"><span>${t({fr:"Votre nom",en:"Your name"})}</span><input id="b-name" required autocomplete="name"></label>
-        <label class="field"><span>Email</span><input id="b-mail" type="email" required autocomplete="email"></label>
-        <label class="field"><span>${t({fr:"Téléphone / WhatsApp",en:"Phone / WhatsApp"})}</span><input id="b-tel" autocomplete="tel"></label>
-        <label class="field full"><span>${t({fr:"Type d'événement",en:"Event type"})}</span><select id="b-type">${EVENTS.map(e=>`<option value="${e.k}" ${e.k===(p.ev||"seminaire")?"selected":""}>${esc(t(e.n))}</option>`).join("")}<option value="group" ${p.ev==="group"?"selected":""}>${t({fr:"Association, club ou équipe sportive",en:"Association, club or sports team"})}</option></select></label>
-        <label class="field"><span>${t({fr:"Nombre de participants",en:"Number of people"})}</span><input id="b-pax" type="number" min="10" value="${esc(p.pax || 20)}" required></label>
-        <label class="field"><span>${t({fr:"Nombre de nuits",en:"Number of nights"})}</span><select id="b-nights">${["2","3","4","5","6+"].map(n=>`<option ${n===String(p.nights||"3")?"selected":""}>${n}</option>`).join("")}</select></label>
-        <label class="field"><span>${t({fr:"Période souhaitée",en:"Preferred period"})}</span><select id="b-month">${monthOptions(p.month)}</select></label>
-        <label class="field"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="b-dest">${retreatOptions(p.rdest)}</select></label>
-        <label class="field full"><span>${t({fr:"Villes de départ des participants",en:"Participants' departure cities"})}</span><input id="b-cities" placeholder="${t({fr:'Ex. : Lisbonne 12, Berlin 8, Londres 5',en:'E.g. Lisbon 12, Berlin 8, London 5'})}"></label>
-        <label class="field"><span>${t({fr:"Budget par personne (hors vols)",en:"Budget per person (excl. flights)"})}</span><select id="b-budget"><option>${t({fr:"À définir",en:"To be defined"})}</option><option>&lt; €800</option><option>€800 – €1,500</option><option>€1,500 – €2,500</option><option>&gt; €2,500</option></select></label>
-        <label class="field"><span>${t({fr:"On s'occupe des vols ?",en:"Shall we book the flights?"})}</span><select id="b-flights"><option>${t({fr:"Oui, pour tout le monde",en:"Yes, for everyone"})}</option><option>${t({fr:"Pour une partie du groupe",en:"For part of the group"})}</option><option>${t({fr:"Non, pas besoin",en:"No, not needed"})}</option></select></label>
-        <div class="field full"><span>${t({fr:"Objectifs",en:"Goals"})}</span>${chips("goal", goals)}</div>
-        <div class="field full"><span>${t({fr:"Activités qui vous tentent",en:"Activities you like"})}</span>${chips("act", acts)}</div>
-        <label class="field full"><span>${t({fr:"Autre chose à savoir ?",en:"Anything else?"})}</span><textarea id="b-msg" placeholder="${t({fr:'Style de lieu, besoins en salles, régimes alimentaires, dates fixes…',en:'Venue style, meeting room needs, dietary needs, fixed dates…'})}">${p.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + p.offer) : ""}</textarea></label>
-        <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer mon brief",en:"Send my brief"})}</button><span class="note">${t({fr:"3 propositions sur mesure, sans engagement.",en:"3 tailored proposals, no commitment."})}</span></div>
+      <p class="lede">${t({fr:"Quelques questions rapides, puis un appel de 15 minutes pour bien comprendre vos besoins. Ensuite, 3 propositions complètes, vols compris.",en:"A few quick questions, then a 15-minute call to properly understand your needs. Then 3 complete proposals, flights included."})}</p>
+      <div id="bwrap"><form class="form stepper" data-form="brief" id="bf">
+        <div class="sprog"><span class="scount">1 / 6</span><div class="sbar"><i></i></div></div>
+        <div class="step"><h3 class="sq">${t({fr:"Que préparez-vous ?",en:"What are you planning?"})}</h3><div class="sfields">
+          <label class="field full"><span>${t({fr:"Type d'événement",en:"Event type"})}</span><select id="b-type">${EVENTS.map(e=>`<option value="${e.k}" ${e.k===(p.ev||"seminaire")?"selected":""}>${esc(t(e.n))}</option>`).join("")}<option value="group" ${p.ev==="group"?"selected":""}>${t({fr:"Association, club ou équipe sportive",en:"Association, club or sports team"})}</option></select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Combien de personnes, et combien de temps ?",en:"How many people, and for how long?"})}</h3><div class="sfields">
+          <label class="field"><span>${t({fr:"Nombre de participants",en:"Number of people"})}</span><input id="b-pax" type="number" min="10" value="${esc(p.pax || 20)}" required></label>
+          <label class="field"><span>${t({fr:"Nombre de nuits",en:"Number of nights"})}</span><select id="b-nights">${["2","3","4","5","6+"].map(n=>`<option ${n===String(p.nights||"3")?"selected":""}>${n}</option>`).join("")}</select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Où et quand ?",en:"Where and when?"})}</h3><div class="sfields">
+          <label class="field"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="b-dest">${retreatOptions(p.rdest)}</select></label>
+          <label class="field"><span>${t({fr:"Période souhaitée",en:"Preferred period"})}</span><select id="b-month">${monthOptions(p.month)}</select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"D'où partent les participants ?",en:"Where will people fly from?"})}</h3><div class="sfields">
+          <label class="field full"><span>${t({fr:"Villes de départ des participants",en:"Participants' departure cities"})}</span><input id="b-cities" placeholder="${t({fr:'Ex. : Lisbonne 12, Berlin 8, Londres 5',en:'E.g. Lisbon 12, Berlin 8, London 5'})}"></label>
+          <label class="field"><span>${t({fr:"On s'occupe des vols ?",en:"Shall we book the flights?"})}</span><select id="b-flights"><option>${t({fr:"Oui, pour tout le monde",en:"Yes, for everyone"})}</option><option>${t({fr:"Pour une partie du groupe",en:"For part of the group"})}</option><option>${t({fr:"Non, pas besoin",en:"No, not needed"})}</option></select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Qu'est-ce qui compte le plus ?",en:"What matters most?"})}</h3><div class="sfields">
+          <div class="field full"><span>${t({fr:"Objectifs",en:"Goals"})}</span>${chips("goal", goals)}</div>
+          <div class="field full"><span>${t({fr:"Activités qui vous tentent",en:"Activities you like"})}</span>${chips("act", acts)}</div>
+          <label class="field"><span>${t({fr:"Budget par personne (hors vols)",en:"Budget per person (excl. flights)"})}</span><select id="b-budget"><option>${t({fr:"À définir",en:"To be defined"})}</option><option>&lt; €800</option><option>€800 – €1,500</option><option>€1,500 – €2,500</option><option>&gt; €2,500</option></select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Avec qui parlons-nous ?",en:"Who should we talk to?"})}</h3><div class="sfields">
+          <label class="field"><span>${t({fr:"Entreprise ou organisation",en:"Company or organisation"})}</span><input id="b-co" required autocomplete="organization"></label>
+          <label class="field"><span>${t({fr:"Votre nom",en:"Your name"})}</span><input id="b-name" required autocomplete="name"></label>
+          <label class="field"><span>Email</span><input id="b-mail" type="email" required autocomplete="email"></label>
+          <label class="field"><span>${t({fr:"Téléphone / WhatsApp",en:"Phone / WhatsApp"})}</span><input id="b-tel" autocomplete="tel"></label>
+          <label class="field full"><span>${t({fr:"Autre chose à savoir ?",en:"Anything else?"})}</span><textarea id="b-msg" placeholder="${t({fr:'Style de lieu, besoins en salles, régimes alimentaires, dates fixes…',en:'Venue style, meeting room needs, dietary needs, fixed dates…'})}">${p.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + p.offer) : ""}</textarea></label>
+        </div></div>
+        <div class="snav"><button type="button" class="btn ghost sback" hidden>${t({fr:"Retour",en:"Back"})}</button><button type="button" class="btn accent snext">${t({fr:"Continuer",en:"Continue"})}</button><button class="btn accent ssend" type="submit" hidden>${t({fr:"Envoyer et réserver mon appel",en:"Send & book my call"})}</button></div>
       </form></div>
     </div>
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_cooking")}</div>
       <h3>${t({fr:"Et ensuite ?",en:"What happens next?"})}</h3>
+      <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"15 minutes pour bien comprendre vos besoins. Indispensable avant toute proposition.",en:"15 minutes to properly understand your needs. Required before any proposal."})}</span></div>
       <div class="row"><span>${t({fr:"Ensuite",en:"Next"})}</span><span>${t({fr:"3 propositions : lieux, programme, vols, budget par personne.",en:"3 proposals: venues, programme, flights, budget per person."})}</span></div>
-      <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"30 minutes pour affiner ensemble, si vous le souhaitez.",en:"30 minutes to refine it together, if you like."})}</span></div>
       <div class="row"><span>${t({fr:"On réserve",en:"We book"})}</span><span>${t({fr:"Vous validez, nous réservons tout.",en:"You approve, we book everything."})}</span></div>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
       ${advisor()}
@@ -780,7 +793,7 @@ function groups(){
       <li><b>${t({fr:"Acomptes & noms",en:"Deposits & names"})}</b><span>${t({fr:"Acomptes échelonnés, liste de passagers mise à jour avec vous.",en:"Staged deposits, passenger list updated with you."})}</span></li>
       <li><b>${t({fr:"Départ accompagné",en:"Supported departure"})}</b><span>${t({fr:"Documents envoyés, assistance joignable pendant tout le voyage.",en:"Documents sent, support reachable for the whole trip."})}</span></li>
     </ol>
-    <div style="margin-top:40px"><a class="btn accent" href="#brief" data-ev="group">${t(U.get3)}</a></div>
+    <div style="margin-top:40px"><a class="btn accent" href="#appel">${t(U.book)}</a></div>
   </div></section>
   <section class="section"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t(U.dest)}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Destinations faciles pour les groupes",en:"Easy destinations for groups"})}</h2></div><a class="link" href="#retraites">${t(U.allRetreats)}</a></div>
@@ -910,22 +923,33 @@ function miniCal(){
 function quoteForm(o={}){
   const pre = state.prefill || {};
   const g = !!o.group;
-  return `<form class="form" data-form="quote" id="qf">
-    <label class="field"><span>${t({fr:"Type de voyage",en:"Trip type"})}</span><select id="q-type">${[["couple",{fr:"En couple",en:"Couple"}],["family",{fr:"En famille",en:"Family"}],["friends",{fr:"Entre amis",en:"Friends"}],["cel",{fr:"Mariage / célébration",en:"Wedding / celebration"}],["solo",{fr:"En solo",en:"Solo"}],["pil",{fr:"Pèlerinage",en:"Pilgrimage"}]].map(([v,l])=>`<option value="${v}" ${(g&&v==='group')?'selected':''}>${t(l)}</option>`).join("")}</select></label>
-    <label class="field"><span>${t({fr:"Villes de départ",en:"Departure cities"})}</span><input id="q-from" placeholder="${t({fr:'Ex. : Paris',en:'E.g. London'})}"></label>
-    <label class="field full"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="q-dest">${destOptions(pre.dest)}<option value="other">${t({fr:"Autre destination",en:"Other destination"})}</option></select></label>
-    <label class="field"><span>${t({fr:"Départ",en:"Departure"})}</span><input id="q-out" type="date" value="${esc(pre.out||'')}"></label>
-    <label class="field"><span>${t({fr:"Retour",en:"Return"})}</span><input id="q-back" type="date" value="${esc(pre.back||'')}"></label>
-    <label class="field"><span>${g?t({fr:"Nombre de participants",en:"Number of participants"}):t({fr:"Adultes",en:"Adults"})}</span><input id="q-ad" type="number" min="1" value="${esc(pre.pax|| (g?20:2))}"></label>
-    <label class="field"><span>${g?t({fr:"Dont enfants / seniors",en:"Of which children / seniors"}):t({fr:"Enfants",en:"Children"})}</span><input id="q-ch" type="number" min="0" value="0"></label>
-    <label class="field"><span>${t({fr:"Budget par personne",en:"Budget per person"})}</span><select id="q-bud"><option>${t({fr:"À définir",en:"To be defined"})}</option><option>&lt; €600</option><option>€600 – €1,200</option><option>€1,200 – €2,500</option><option>&gt; €2,500</option></select></label>
-    <label class="field"><span>${t({fr:"Classe",en:"Cabin"})}</span><select id="q-cab"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First</option></select></label>
-    <div class="field full"><span>${t({fr:"Services souhaités",en:"Services needed"})}</span><div class="checks">${[{fr:"Vols",en:"Flights"},{fr:"Hôtel",en:"Hotel"},{fr:"Transferts",en:"Transfers"},{fr:"Excursions",en:"Excursions"},{fr:"Assurance voyage",en:"Travel insurance"},{fr:"Visa",en:"Visa"}].map((s,i)=>`<label><input type="checkbox" name="svc" value="${esc(t(s))}" ${i<2?'checked':''}> ${t(s)}</label>`).join("")}</div></div>
-    <label class="field"><span>${t({fr:"Nom",en:"Name"})}</span><input id="q-name" required autocomplete="name"></label>
-    <label class="field"><span>WhatsApp / ${t({fr:"téléphone",en:"phone"})}</span><input id="q-tel" required autocomplete="tel" placeholder="+33 …"></label>
-    <label class="field full"><span>Email</span><input id="q-mail" type="email" autocomplete="email"></label>
-    <label class="field full"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><textarea id="q-msg" placeholder="${t({fr:'Occasion, hôtels préférés, contraintes, flexibilité des dates…',en:'Occasion, preferred hotels, constraints, date flexibility…'})}">${pre.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + pre.offer) : ""}</textarea></label>
-    <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><button class="btn accent" type="submit">${t({fr:"Envoyer ma demande",en:"Send my request"})}</button><span class="note">${t({fr:"Nous revenons vers vous très vite.",en:"We will get back to you shortly."})}</span></div>
+  return `<form class="form stepper" data-form="quote" id="qf">
+        <div class="sprog"><span class="scount">1 / 5</span><div class="sbar"><i></i></div></div>
+        <div class="step"><h3 class="sq">${t({fr:"Quel voyage préparez-vous ?",en:"What trip are you planning?"})}</h3><div class="sfields">
+      <label class="field"><span>${t({fr:"Type de voyage",en:"Trip type"})}</span><select id="q-type">${[["couple",{fr:"En couple",en:"Couple"}],["family",{fr:"En famille",en:"Family"}],["friends",{fr:"Entre amis",en:"Friends"}],["cel",{fr:"Mariage / célébration",en:"Wedding / celebration"}],["solo",{fr:"En solo",en:"Solo"}],["pil",{fr:"Pèlerinage",en:"Pilgrimage"}]].map(([v,l])=>`<option value="${v}" ${(g&&v==='group')?'selected':''}>${t(l)}</option>`).join("")}</select></label>
+      <label class="field"><span>${t({fr:"Villes de départ",en:"Departure cities"})}</span><input id="q-from" placeholder="${t({fr:'Ex. : Paris',en:'E.g. London'})}"></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Où et quand ?",en:"Where and when?"})}</h3><div class="sfields">
+      <label class="field full"><span>${t({fr:"Destination",en:"Destination"})}</span><select id="q-dest">${destOptions(pre.dest)}<option value="other">${t({fr:"Autre destination",en:"Other destination"})}</option></select></label>
+      <label class="field"><span>${t({fr:"Départ",en:"Departure"})}</span><input id="q-out" type="date" value="${esc(pre.out||'')}"></label>
+      <label class="field"><span>${t({fr:"Retour",en:"Return"})}</span><input id="q-back" type="date" value="${esc(pre.back||'')}"></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Qui voyage ?",en:"Who is travelling?"})}</h3><div class="sfields">
+      <label class="field"><span>${g?t({fr:"Nombre de participants",en:"Number of participants"}):t({fr:"Adultes",en:"Adults"})}</span><input id="q-ad" type="number" min="1" value="${esc(pre.pax|| (g?20:2))}"></label>
+      <label class="field"><span>${g?t({fr:"Dont enfants / seniors",en:"Of which children / seniors"}):t({fr:"Enfants",en:"Children"})}</span><input id="q-ch" type="number" min="0" value="0"></label>
+      <label class="field"><span>${t({fr:"Budget par personne",en:"Budget per person"})}</span><select id="q-bud"><option>${t({fr:"À définir",en:"To be defined"})}</option><option>&lt; €600</option><option>€600 – €1,200</option><option>€1,200 – €2,500</option><option>&gt; €2,500</option></select></label>
+      <label class="field"><span>${t({fr:"Classe",en:"Cabin"})}</span><select id="q-cab"><option>Economy</option><option>Premium Economy</option><option>Business</option><option>First</option></select></label>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"De quoi avez-vous besoin ?",en:"What do you need?"})}</h3><div class="sfields">
+      <div class="field full"><span>${t({fr:"Services souhaités",en:"Services needed"})}</span><div class="checks">${[{fr:"Vols",en:"Flights"},{fr:"Hôtel",en:"Hotel"},{fr:"Transferts",en:"Transfers"},{fr:"Excursions",en:"Excursions"},{fr:"Assurance voyage",en:"Travel insurance"},{fr:"Visa",en:"Visa"}].map((s,i)=>`<label><input type="checkbox" name="svc" value="${esc(t(s))}" ${i<2?'checked':''}> ${t(s)}</label>`).join("")}</div></div>
+        </div></div>
+        <div class="step" hidden><h3 class="sq">${t({fr:"Comment vous joindre ?",en:"How can we reach you?"})}</h3><div class="sfields">
+      <label class="field"><span>${t({fr:"Nom",en:"Name"})}</span><input id="q-name" required autocomplete="name"></label>
+      <label class="field"><span>WhatsApp / ${t({fr:"téléphone",en:"phone"})}</span><input id="q-tel" required autocomplete="tel" placeholder="+33 …"></label>
+      <label class="field full"><span>Email</span><input id="q-mail" type="email" autocomplete="email"></label>
+      <label class="field full"><span>${t({fr:"Votre projet",en:"Your plans"})}</span><textarea id="q-msg" placeholder="${t({fr:'Occasion, hôtels préférés, contraintes, flexibilité des dates…',en:'Occasion, preferred hotels, constraints, date flexibility…'})}">${pre.offer ? esc(t({fr:"Offre : ",en:"Offer: "}) + pre.offer) : ""}</textarea></label>
+        </div></div>
+        <div class="snav"><button type="button" class="btn ghost sback" hidden>${t({fr:"Retour",en:"Back"})}</button><button type="button" class="btn accent snext">${t({fr:"Continuer",en:"Continue"})}</button><button class="btn accent ssend" type="submit" hidden>${t({fr:"Envoyer et réserver mon appel",en:"Send & book my call"})}</button></div>
   </form>`;
 }
 function quotePage(){
@@ -1063,7 +1087,7 @@ function eventPage(k){
     </div>
     <aside class="aside">
       <h3>${t({fr:"Votre projet",en:"Your project"})}</h3>
-      <p class="note">${t({fr:"Décrivez votre équipe en 5 minutes : 3 propositions complètes, vols compris.",en:"Describe your team in 5 minutes: 3 complete proposals, flights included."})}</p>
+      <p class="note">${t({fr:"Quelques questions rapides, un appel de 15 minutes, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a 15-minute call, then 3 complete proposals, flights included."})}</p>
       <a href="#brief" class="btn accent" data-ev="${e.k}">${t(U.getProposal)}</a>
       <a href="#budget" class="btn ghost">${t(U.calc)}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
@@ -1108,7 +1132,7 @@ function calcOut(){
     <div class="note">${t({fr:"Pour le groupe",en:"For the group"})} : <b style="font-weight:400;color:var(--ink)">${eur(r.lo*c.pax)} – ${eur(r.hi*c.pax)}</b> · ${c.pax} ${t({fr:"personnes",en:"people"})}, ${c.nights} ${t({fr:"nuits",en:"nights"})}</div>
     <div class="lines">${r.lines.filter(l=>l[1][1]>0).map(([l,v])=>`<div><span>${t(l)}</span><span>${eur(v[0])} – ${eur(v[1])}</span></div>`).join("")}</div>
     <p class="note">${t({fr:"Fourchette indicative, hors honoraires d'organisation (précisés dans votre proposition). Les prix réels dépendent des dates et des disponibilités.",en:"Indicative range, excluding our planning fee (stated in your proposal). Actual prices depend on dates and availability."})}</p>
-    <a class="btn accent" href="#brief" data-pax="${c.pax}" data-nights="${Math.min(c.nights,6) >= 6 ? "6+" : c.nights}">${t({fr:"Recevoir 3 propositions précises",en:"Get 3 precise proposals"})}</a>`;
+    <a class="btn accent" href="#brief" data-pax="${c.pax}" data-nights="${Math.min(c.nights,6) >= 6 ? "6+" : c.nights}">${t({fr:"Préparer cette retraite",en:"Plan this retreat"})}</a>`;
 }
 function budgetPage(){
   const c = state.calc;
@@ -1254,6 +1278,7 @@ function render(keepScroll){
   lastKey = r.key;
   onScroll();
   if (r.key === "appel") mountCalendly();
+  initSteppers();
 }
 let scrollTick = false, wasSolid = null;
 function onScroll(){
@@ -1289,10 +1314,47 @@ function mountCalendly(){
     try { window.Calendly.initInlineWidget({ url: w.dataset.url, parentElement: w }); } catch(e){ showFb(); }
   });
 }
+
+/* step-by-step forms: one group of questions at a time */
+function showStep(f, n){
+  const steps = [...f.querySelectorAll(".step")]; if (!steps.length) return;
+  n = Math.max(0, Math.min(n, steps.length - 1)); f.dataset.step = n;
+  steps.forEach((st, k) => st.hidden = k !== n);
+  const bar = f.querySelector(".sbar i"), cnt = f.querySelector(".scount");
+  if (bar) bar.style.width = ((n + 1) / steps.length * 100) + "%";
+  if (cnt) cnt.textContent = (n + 1) + " / " + steps.length;
+  const last = n === steps.length - 1;
+  f.querySelector(".sback").hidden = n === 0; f.querySelector(".snext").hidden = last; f.querySelector(".ssend").hidden = !last;
+}
+function initSteppers(){ document.querySelectorAll("form.stepper").forEach(f => showStep(f, +(f.dataset.step || 0))); }
+function stepGo(f, dir){
+  const n = +(f.dataset.step || 0), steps = [...f.querySelectorAll(".step")];
+  if (dir > 0){ const bad = [...steps[n].querySelectorAll("input,select,textarea")].find(x => !x.checkValidity()); if (bad){ bad.reportValidity(); return; } }
+  showStep(f, n + dir);
+  const top = f.getBoundingClientRect().top; if (top < 70) window.scrollBy({ top: top - 110 });
+  if (window.matchMedia("(pointer:fine)").matches){ const x = f.querySelectorAll(".step")[+f.dataset.step].querySelector("input:not([type=checkbox]):not([type=radio]),select,textarea"); if (x) x.focus({ preventScroll:true }); }
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".snext,.sback"); if (!b) return; const f = b.closest("form.stepper"); if (!f) return;
+  e.preventDefault(); stepGo(f, b.classList.contains("snext") ? 1 : -1);
+});
+document.addEventListener("keydown", e => {
+  if (e.key !== "Enter" || e.target.tagName !== "INPUT") return; const f = e.target.closest("form.stepper"); if (!f) return;
+  const steps = f.querySelectorAll(".step"); if (+(f.dataset.step || 0) < steps.length - 1){ e.preventDefault(); stepGo(f, 1); }
+});
 /* forms: post to CONFIG.formEndpoint when set (e.g. Formspree), otherwise offer WhatsApp + copy */
+function callNext(data){
+  const L = lang==='fr';
+  const q = new URLSearchParams(Object.entries({ name: data.name || "", email: data.email || "", a1: (data.company ? data.company + " · " : "") + (data.people ? data.people + (L?" pers. · ":" people · ") : "") + (data.destination || "") }).filter(([,v]) => v)).toString();
+  return `<div class="callnext"><span class="eyebrow">${L?"Dernière étape":"Last step"}</span>
+    <b style="font-weight:400;font-size:24px;line-height:1.2">${L?"Réservez votre appel de 15 minutes":"Book your 15-minute call"}</b>
+    <p class="note" style="margin:0">${L?"Nous n'envoyons jamais de propositions sans un court appel : 15 minutes pour bien comprendre vos besoins. Vous recevez ensuite 3 propositions sur mesure.":"We never send proposals without a short call first: 15 minutes to properly understand your needs. Then you receive 3 tailored proposals."}</p>
+    <a class="btn accent" style="align-self:flex-start" href="${urlFor('appel')}" data-k="appel" data-calq="${esc(q)}">${L?"Choisir un créneau":"Pick a time"}</a></div>`;
+}
 function sendForm(f, data, msg, okText){
   const L = lang==='fr';
-  const fallback = (note) => { f.outerHTML = `<div class="done">
+  const withCall = ["brief","quote"].includes(f.dataset.form);
+  const fallback = (note) => { f.outerHTML = (withCall ? callNext(data) : "") + `<div class="done">
       <b style="font-weight:400;font-size:22px">${L?"Votre demande est prête":"Your request is ready"}</b>
       <p class="note">${note || (L?"Envoyez-la sur WhatsApp en un clic, ou copiez le texte et envoyez-le à ":"Send it on WhatsApp in one click, or copy the text and email it to ")+esc(C.email)+"."}</p>
       <pre id="qmsg">${esc(msg)}</pre>
@@ -1301,7 +1363,7 @@ function sendForm(f, data, msg, okText){
   if (!C.formEndpoint) { fallback(); return; }
   const btn = f.querySelector("button[type=submit]"); if (btn) { btn.disabled = true; btn.textContent = L ? "Envoi…" : "Sending…"; }
   fetch(C.formEndpoint, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(Object.assign({ _subject: (data.form||"form") + " · " + (data.company || data.name || "") }, data)) })
-    .then(r => { if (!r.ok) throw new Error(r.status); f.outerHTML = `<div class="sent"><b style="font-weight:400;font-size:22px">${L?"Merci !":"Thank you!"}</b><p>${esc(okText)}</p><a class="btn ghost" href="${urlFor('appel')}" style="align-self:flex-start">${t(U.book)}</a></div>`; })
+    .then(r => { if (!r.ok) throw new Error(r.status); f.outerHTML = withCall ? callNext(data) : `<div class="sent"><b style="font-weight:400;font-size:22px">${L?"Merci !":"Thank you!"}</b><p>${esc(okText)}</p><a class="btn ghost" href="${urlFor('appel')}" style="align-self:flex-start">${t(U.book)}</a></div>`; })
     .catch(() => fallback(L ? "L'envoi n'a pas abouti. Envoyez votre demande sur WhatsApp ou par email à "+esc(C.email)+"." : "Sending failed. Send your request on WhatsApp or by email to "+esc(C.email)+"."));
 }
 function toast(msg){ const d=document.createElement("div"); d.className="toast"; d.textContent=msg; document.body.appendChild(d); setTimeout(()=>d.remove(),2600); }
@@ -1324,7 +1386,7 @@ document.addEventListener("click", e => {
   const isCall = STATIC ? (el.dataset.k === "appel" && window.SITE.page !== "appel") : (el.getAttribute("href") === "#appel" && location.hash !== "#appel");
   if (isCall && window.Calendly){
     e.preventDefault(); state.megaOpen = null; state.drawer = false; if (STATIC) render(true);
-    try { window.Calendly.initPopupWidget({ url: C.calendly + "?hide_gdpr_banner=1" }); } catch(_) { if (STATIC) location.href = el.href; else location.hash = "appel"; }
+    try { window.Calendly.initPopupWidget({ url: C.calendly + "?hide_gdpr_banner=1" + (el.dataset.calq ? "&" + el.dataset.calq : "") }); } catch(_) { if (STATIC) location.href = el.href; else location.hash = "appel"; }
     return;
   }
   if (el.dataset.copy){ const txt = document.getElementById(el.dataset.copy).textContent; navigator.clipboard.writeText(txt).then(()=>toast(lang==='fr'?"Copié":"Copied")).catch(()=>{ const r=document.createRange(); r.selectNodeContents(document.getElementById(el.dataset.copy)); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }); return; }
@@ -1370,7 +1432,7 @@ document.addEventListener("submit", e => {
       `${L?"Période":"Period"} : ${data.period} · Destination : ${data.destination}`, `${L?"Villes de départ":"Departure cities"} : ${data.departure_cities||"-"}`,
       `Budget : ${data.budget} · ${L?"Vols":"Flights"} : ${data.flights}`, `${L?"Objectifs":"Goals"} : ${data.goals||"-"}`, `${L?"Activités":"Activities"} : ${data.activities||"-"}`,
       data.notes ? `${L?"Détails":"Details"} : ${data.notes}` : "", `— ${data.name} · ${data.email}${data.phone?" · "+data.phone:""}`].filter(Boolean).join("\n");
-    sendForm(f, data, msg, L ? "Brief envoyé. Nous revenons vers vous très vite avec nos propositions." : "Brief sent. We'll come back to youours with our proposals.");
+    sendForm(f, data, msg, L ? "Brief envoyé. Nous revenons vers vous très vite avec nos propositions." : "Brief sent. We'll come back to you with our proposals.");
     return;
   }
   if (f.dataset.form === "venue"){
@@ -1435,6 +1497,7 @@ if (STATIC && document.getElementById("app").children.length){
   }
   onScroll();
   if (lastKey === "appel") mountCalendly();
+  initSteppers();
 } else render();
 loadCalendly();
 window.PSV = { render, pathFor, urlFor, slugify, destSlug, THEME_SLUG, PAGES };

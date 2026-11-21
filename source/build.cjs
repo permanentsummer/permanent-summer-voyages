@@ -62,8 +62,8 @@ function meta(key, lg) {
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
   else if (key === "comment") { title = L("Comment ça marche : retraites d'entreprise avec vols de groupe", "How it works: company retreats with group flights");
-    desc = L("Brief en 5 minutes, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
-             "5-minute brief, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
+    desc = L("Un appel de 15 minutes, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
+             "A 15-minute call, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
     desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez 300 lieux partenaires dans 38 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
              "Hotels, villas, estates: host company retreats on weekdays. Join over 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
@@ -74,8 +74,8 @@ function meta(key, lg) {
     title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
     crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
   else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
-    desc = L("Décrivez votre projet en 5 minutes et recevez 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
-             "Describe your project in 5 minutes and get 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
+    desc = L("Quelques questions rapides et un appel de 15 minutes, puis 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
+             "A few quick questions and a 15-minute call, then 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
   else if (key === "evenements") { title = L("Séminaires, team building, incentives et voyages de groupe", "Offsites, team building, incentives and group trips");
     desc = L("Séminaire d'entreprise, team building, séminaire de direction, kick-off commercial, voyage incentive : un format pour chaque objectif, vols compris.",
              "Company offsites, team building, leadership retreats, sales kickoffs, incentive trips: a format for every goal, flights included."); image = "act_workshop3"; }
@@ -176,7 +176,7 @@ ${m.noindex ? '<meta name="robots" content="noindex">\n' : ""}<link rel="canonic
 <link rel="manifest" href="${root}site.webmanifest">
 ${FONTS}
 <link rel="stylesheet" href="${root}assets/style.css?v=${VER}">
-<link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">
+${fs.existsSync(path.join(OUT, "img/p", m.image + ".jpg")) ? `<link rel="preload" as="image" href="${root}img/p/${m.image}.jpg" media="(max-width:820px)"><link rel="preload" as="image" href="${root}img/${m.image}.jpg" media="(min-width:821px)">` : `<link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">`}
 <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld)}</script>
 </head>`;
 }
@@ -208,7 +208,7 @@ fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
   const { execFileSync } = require("child_process");
   for (const f of fs.readdirSync(IMG).filter(f => f.endsWith(".jpg"))) {
     const dst = path.join(M, f); if (fs.existsSync(dst)) continue;
-    try { execFileSync("convert", [path.join(IMG, f), "-resize", "1100x1100>", "-strip", "-interlace", "Plane", "-quality", "70", dst]); }
+    try { execFileSync("convert", [path.join(IMG, f), "-resize", "1600x1600>", "-strip", "-interlace", "Plane", "-quality", "80", dst]); }
     catch (e) { fs.copyFileSync(path.join(IMG, f), dst); }
   }
   }
