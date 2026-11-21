@@ -62,7 +62,7 @@ For three nights including flights, plan roughly €1,200 to €2,300 per person
 
 ## Plan your Greek retreat
 
-[Book a 15-minute call](#appel): we'll recommend the right area for your team and send 3 proposals, flights included. Or see [all our retreat destinations](#retraites).
+[Talk to our expert](#appel): we'll recommend the right area for your team and send 3 proposals, flights included. Or see [all our retreat destinations](#retraites).
 
 ## FAQ
 

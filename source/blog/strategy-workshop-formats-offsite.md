@@ -71,7 +71,7 @@ For a full example programme, see our [3-day leadership retreat agenda](#post-le
 
 ## Plan your strategy offsite
 
-We find venues with meeting rooms that actually work and handle every flight and transfer. [Book a 15-minute call](#appel) to get 3 proposals, or see our [company offsite format](#event-seminaire).
+We find venues with meeting rooms that actually work and handle every flight and transfer. [Talk to our expert](#appel) to get 3 proposals, or see our [company offsite format](#event-seminaire).
 
 ## FAQ
 

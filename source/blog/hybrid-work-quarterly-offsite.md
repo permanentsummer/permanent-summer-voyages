@@ -52,7 +52,7 @@ Use the annual retreat for the whole company: big strategy, culture, celebration
 
 ## Plan your offsite calendar
 
-We can plan a full year of meetups, so you have one partner, one budget and one contact. [Book a 15-minute call](#appel).
+We can plan a full year of meetups, so you have one partner, one budget and one contact. [Talk to our expert](#appel).
 
 ## FAQ
 

@@ -4,8 +4,8 @@ seo: How to Plan a Company Retreat (Step-by-Step Guide)
 desc: A step-by-step guide to planning a company retreat: goals, budget, destination, venue, flights, programme and follow-up, from a team that books it all.
 cat: guide
 date: 2026-11-21
-cover: bl01a
-coverAlt: A team gathered around a wooden table during a retreat workshop
+cover: bl31a
+coverAlt: A team gathered around a table under a large tree in a garden
 keyword: how to plan a company retreat
 related: company-retreat-planning-checklist, company-retreat-cost-per-person-europe, how-to-choose-an-offsite-venue
 pin: 1
@@ -82,7 +82,7 @@ Run a three-question survey after the retreat: what was most useful, what should
 
 ## Plan it yourself, or let us handle it
 
-You can plan all of this in-house. It usually takes 60 to 100 hours of someone's time. Or you can [book a 15-minute call](#appel) with us: we listen to your goals, then send 3 tailored proposals covering venue, programme, activities and every participant's flight. You can also [tell us about your project](#brief) in a few quick questions.
+You can plan all of this in-house. It usually takes 60 to 100 hours of someone's time. Or you can [talk to our expert](#appel): we listen to your goals, then send 3 tailored proposals covering venue, programme, activities and every participant's flight. You can also [tell us about your project](#brief) in a few quick questions.
 
 ## FAQ
 

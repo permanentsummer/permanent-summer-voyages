@@ -53,7 +53,7 @@ A kickoff in the sun works wonders: a plenary in Lisbon or Seville, breakout ses
 
 ## Get proposals
 
-[Book a 15-minute call](#appel) to receive 3 winter retreat proposals with every participant's flight included, or estimate your budget with our [calculator](#budget).
+[Talk to our expert](#appel) to receive 3 winter retreat proposals with every participant's flight included, or estimate your budget with our [calculator](#budget).
 
 ## FAQ
 

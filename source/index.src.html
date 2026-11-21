@@ -272,7 +272,7 @@ html[lang="en"] .itin li::before{content:"Day " counter(d)}
 .checks input{accent-color:var(--accent)}
 .done{border:1px solid var(--accent);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:16px}
 .done pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;background:var(--surface);padding:16px;margin:0;border-radius:2px;max-height:300px;overflow:auto}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;counter-reset:s;list-style:none;padding:0;margin:0}
 .steps li{counter-increment:s;border-top:1px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:8px}
 .steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:28px}
 .steps b{font-weight:400;font-size:18px}
@@ -616,6 +616,13 @@ header.site{transform:translateZ(0)}
 .pcta .ctas{display:flex;gap:12px;flex-wrap:wrap}
 @media (max-width:1080px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pbody{grid-template-columns:1fr}.pside{position:static}.plead{grid-template-columns:1fr;gap:22px}}
 @media (max-width:640px){.pgrid{grid-template-columns:1fr}.prose{font-size:17px}.pcover{aspect-ratio:4/3}.pcta{padding:24px}}
+
+.paygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.paystep{border:1px solid var(--line);border-radius:20px;padding:28px}
+.paystep h3{font-family:var(--display);font-weight:400;font-size:28px;margin:10px 0 14px}
+.paystep ul{margin:0;padding-left:20px;color:var(--muted);line-height:1.9}
+@media (max-width:1080px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.paygrid{grid-template-columns:1fr}}
 </style>
 
 <div id="app"></div>
@@ -671,15 +678,15 @@ const wa = (msg) => `https://wa.me/${C.whatsapp}${msg ? "?text=" + encodeURIComp
 
 const U = {
   dest:{fr:"Destinations",en:"Destinations"}, insp:{fr:"Inspiration",en:"Inspiration"}, groups:{fr:"Groupes",en:"Groups"},
-  corp:{fr:"Entreprises",en:"Business"}, about:{fr:"À propos",en:"About"}, book:{fr:"Réserver un appel de 15 min",en:"Book a 15-min call"},
+  corp:{fr:"Entreprises",en:"Business"}, about:{fr:"À propos",en:"About"}, book:{fr:"Parler à un expert",en:"Talk to our expert"},
   quote:{fr:"Demander un devis",en:"Request a quote"}, contact:{fr:"Contact",en:"Contact"},
   retreats:{fr:"Retraites",en:"Retreats"}, retreatsLong:{fr:"Retraites d'entreprise",en:"Company retreats"}, plan:{fr:"Organiser une retraite",en:"Plan a retreat"},
   getProposal:{fr:"Commencer",en:"Get started"}, allRetreats:{fr:"Toutes les destinations de retraite",en:"All retreat destinations"},
   leisure:{fr:"Voyages sur mesure",en:"Tailor-made travel"}, events:{fr:"Événements",en:"Events"}, res:{fr:"Ressources",en:"Resources"},
   calc:{fr:"Calculateur de budget",en:"Budget calculator"}, lib:{fr:"Activités de team building",en:"Team-building activities"}, guide:{fr:"Guide : organiser un séminaire",en:"Guide: planning an offsite"},
-  promise:{fr:"Un appel de 15 min, puis 3 propositions sur mesure",en:"A 15-min call, then 3 tailored proposals"},
+  promise:{fr:"Un échange avec notre expert, puis 3 propositions sur mesure",en:"A call with our expert, then 3 tailored proposals"},
   biz:{fr:"Entreprises",en:"Business"}, perso:{fr:"Particuliers",en:"Personal"}, sol:{fr:"Solutions",en:"Solutions"},
-  get3:{fr:"Réserver un appel de 15 min",en:"Book a 15-min call"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
+  get3:{fr:"Parler à un expert",en:"Talk to our expert"}, host:{fr:"Proposer votre lieu",en:"List your venue"}, how:{fr:"Comment ça marche",en:"How it works"},
   travel:{fr:"Voyages",en:"Travel"}, grpB2B:{fr:"Associations, clubs & équipes",en:"Associations, clubs & teams"},
   offers:{fr:"Offres",en:"Offers"}, travellers:{fr:"Voyageurs",en:"Travellers"}, from:{fr:"À partir de",en:"From"},
   example:{fr:"Exemple à remplacer",en:"Sample, to replace"}, seeOffer:{fr:"Voir l'offre",en:"See the offer"},
@@ -766,7 +773,7 @@ function megaInsp(){
 }
 function megaRes(){
   return `<div class="mega insp"><div class="wrap">
-    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#blog">Blog</a><a href="#guide">${t(U.guide)}</a></div>
+    <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Outils",en:"Tools"})}</span><a href="#budget">${t(U.calc)}</a><a href="#activites">${t(U.lib)}</a><a href="#guide">${t(U.guide)}</a></div>
     <div class="col"><span class="eyebrow" style="margin-bottom:6px">${t({fr:"Démarrer",en:"Get started"})}</span><a href="#appel">${t(U.book)}</a><a href="#brief">${t({fr:"Décrire mon projet",en:"Tell us about your project"})}</a><a href="#partenaires">${t(U.host)}</a></div>
     <a class="promo" href="#budget">${img("nomad_balcony")}<div><div class="eyebrow" style="color:#fff;opacity:.85">${t({fr:"Gratuit",en:"Free"})}</div><div style="font-size:20px">${t({fr:"Estimez votre budget, vols compris",en:"Estimate your budget, flights included"})}</div></div></a>
   </div></div>`;
@@ -1019,10 +1026,19 @@ function howPage(){
         ].map(([k,c,h,p])=>`<div><div class="ph">${img(k)}</div><div class="t"><span class="clock">${t(c)}</span><b>${t(h)}</b><span>${t(p)}</span></div></div>`).join("")}
     </div>
   </div></section>
+  <section class="section" id="paiement" style="scroll-margin-top:90px"><div class="wrap">
+    <div class="head"><div><span class="eyebrow">${t({fr:"Paiement",en:"Payment"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Vous ne payez qu'un seul interlocuteur : nous",en:"You pay one partner only: us"})}</h2></div></div>
+    <p class="lede" style="max-width:62ch;margin-bottom:34px">${t({fr:"Pas de factures de dix prestataires différents. Un seul contact, une seule facturation, en deux étapes. On commence par le plus important.",en:"No invoices from ten different suppliers. One contact, one billing, in two stages. We start with what matters most."})}</p>
+    <div class="paygrid">
+      <div class="paystep"><span class="eyebrow">${t({fr:"Étape 1 · Premier paiement",en:"Stage 1 · First payment"})}</span><h3>${t({fr:"On sécurise l'essentiel",en:"We secure the essentials"})}</h3><ul><li>${t({fr:"La destination",en:"The destination"})}</li><li>${t({fr:"Le lieu et l'hébergement",en:"The venue and accommodation"})}</li><li>${t({fr:"Les repas",en:"Meals"})}</li><li>${t({fr:"La salle de réunion, si besoin",en:"The meeting room, if needed"})}</li></ul></div>
+      <div class="paystep"><span class="eyebrow">${t({fr:"Étape 2 · Second paiement",en:"Stage 2 · Second payment"})}</span><h3>${t({fr:"On finalise les détails",en:"We finalise the details"})}</h3><ul><li>${t({fr:"Les activités",en:"Activities"})}</li><li>${t({fr:"Les dîners spéciaux",en:"Special dinners"})}</li><li>${t({fr:"Les transferts",en:"Transfers"})}</li><li>${t({fr:"Les vols de chaque participant",en:"Every participant's flights"})}</li></ul></div>
+    </div>
+  </div></section>
   <section class="section surface"><div class="wrap">
     <div class="faq" style="max-width:820px"><h2 class="h2" style="margin-bottom:14px">${t({fr:"Prix et facturation",en:"Pricing and invoicing"})}</h2>
       ${[[{fr:"Comment est fixé le prix ?",en:"How is the price set?"},{fr:"Chaque proposition détaille le budget par personne : lieu, vols, activités et nos honoraires d'organisation, fixés à l'avance. Pas de frais cachés.",en:"Each proposal details the budget per person: venue, flights, activities and our planning fee, agreed upfront. No hidden costs."}],
-         [{fr:"Qui facture quoi ?",en:"Who invoices what?"},{fr:"Nous facturons nos honoraires d'organisation. Les lieux et prestataires vous facturent directement, au tarif que nous avons négocié, et les billets d'avion sont émis par notre partenaire agence agréé.",en:"We invoice our planning fee. Venues and suppliers invoice you directly at the rate we negotiated, and flight tickets are issued by our licensed travel agency partner."}],
+         [{fr:"Qui dois-je payer ?",en:"Who do we pay?"},{fr:"Uniquement nous. Vous n'avez pas à régler chaque hôtel, restaurant ou prestataire séparément : nous gérons tous les paiements fournisseurs pour vous.",en:"Only us. You don't pay each hotel, restaurant or supplier separately: we handle every supplier payment for you."}],
+         [{fr:"Quand paie-t-on ?",en:"When do we pay?"},{fr:"En deux étapes. D'abord, nous sécurisons la destination, le lieu, les repas et la salle de réunion si besoin : c'est le premier paiement. Ensuite, nous finalisons les activités, les dîners spéciaux, les transferts et les vols : c'est le second paiement.",en:"In two stages. First, we secure the destination, venue, meals and meeting room if needed: that's the first payment. Then we finalise activities, special dinners, transfers and flights: that's the second payment."}],
          [{fr:"Quel budget prévoir ?",en:"What budget should we plan?"},{fr:"Le plus souvent entre 700 et 2 000 € par personne pour 3 nuits, vols compris. Notre calculateur vous donne une première fourchette en 30 secondes.",en:"Usually €700 to €2,000 per person for 3 nights, flights included. Our calculator gives you a first range in 30 seconds."}]
         ].map(([q,a])=>`<details><summary>${t(q)}</summary><p>${t(a)}</p></details>`).join("")}
     </div>
@@ -1114,9 +1130,10 @@ function monthOptions(sel){
 }
 function howSteps(){
   return `<ol class="steps">
-      <li><b>${t({fr:"Un appel de 15 minutes",en:"A 15-minute call"})}</b><span>${t({fr:"Pour bien comprendre votre équipe : taille, villes de départ, dates, budget, objectifs. Nous n'envoyons aucune proposition sans cet appel.",en:"To properly understand your team: size, departure cities, dates, budget, goals. We never send proposals without this call."})}</span></li>
+      <li><b>${t({fr:"Un échange avec notre expert",en:"A call with our expert"})}</b><span>${t({fr:"Pour bien comprendre votre équipe : taille, villes de départ, dates, budget, objectifs. Nous n'envoyons aucune proposition sans cet appel.",en:"To properly understand your team: size, departure cities, dates, budget, goals. We never send proposals without this call."})}</span></li>
       <li><b>${t({fr:"3 propositions sur mesure",en:"3 tailored proposals"})}</b><span>${t({fr:"Trois options complètes : lieu, programme, activités, vols et budget par personne.",en:"Three complete options: venue, programme, activities, flights and budget per person."})}</span></li>
-      <li><b>${t({fr:"On réserve tout",en:"We book everything"})}</b><span>${t({fr:"Les vols de chacun, le lieu, les transferts et les activités.",en:"Everyone's flights, the venue, transfers and activities."})}</span></li>
+      <li><b>${t({fr:"On sécurise l'essentiel",en:"We secure the essentials"})}</b><span>${t({fr:"Destination, lieu, repas et salle de réunion si besoin. Vous réglez ici un premier paiement.",en:"Destination, venue, meals and meeting room if needed. This is when you make the first payment."})}</span></li>
+      <li><b>${t({fr:"On finalise les détails",en:"We finalise the details"})}</b><span>${t({fr:"Activités, dîners spéciaux, transferts et vols, dans un second temps.",en:"Activities, special dinners, transfers and flights, in a second stage."})}</span></li>
       <li><b>${t({fr:"On reste joignables",en:"We stay on call"})}</b><span>${t({fr:"Un interlocuteur sur WhatsApp 7j/7, jusqu'au retour de tous.",en:"One contact on WhatsApp 7 days a week, until everyone is home."})}</span></li>
     </ol>`;
 }
@@ -1176,7 +1193,7 @@ function retreatsPage(){
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_workshop")}</div>
       <h3>${t({fr:"Un projet de retraite ?",en:"Planning a retreat?"})}</h3>
-      <p class="note">${t({fr:"Quelques questions rapides, un appel de 15 minutes, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a 15-minute call, then 3 complete proposals, flights included."})}</p>
+      <p class="note">${t({fr:"Quelques questions rapides, un échange avec notre expert, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a call with our expert, then 3 complete proposals, flights included."})}</p>
       <a class="btn accent" href="#brief">${t(U.plan)}</a>
       <a class="btn ghost" href="#budget">${t(U.calc)}</a>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
@@ -1246,7 +1263,7 @@ function retreatPage(sl){
       <a href="#brief" class="btn accent" data-rpre="${r.s}">${t({fr:"Préparer ma retraite : ",en:"Plan my retreat: "})}${name}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
       ${advisor()}
-      <p class="note">${t({fr:"Un appel de 15 minutes, puis 3 propositions : lieux, programme, vols et budget par personne.",en:"A 15-minute call, then 3 proposals: venues, programme, flights and budget per person."})}</p>
+      <p class="note">${t({fr:"Un échange avec notre expert, puis 3 propositions : lieux, programme, vols et budget par personne.",en:"A call with our expert, then 3 proposals: venues, programme, flights and budget per person."})}</p>
     </aside>
   </div></section>
   <section class="section surface"><div class="wrap">
@@ -1264,7 +1281,7 @@ function briefPage(){
     <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
       <span class="eyebrow">${t(U.plan)}</span>
       <h1 class="display" style="font-size:clamp(38px,5vw,64px)">${t({fr:"Parlez-nous de votre équipe",en:"Tell us about your team"})}</h1>
-      <p class="lede">${t({fr:"Quelques questions rapides, puis un appel de 15 minutes pour bien comprendre vos besoins. Ensuite, 3 propositions complètes, vols compris.",en:"A few quick questions, then a 15-minute call to properly understand your needs. Then 3 complete proposals, flights included."})}</p>
+      <p class="lede">${t({fr:"Quelques questions rapides, puis un échange avec notre expert pour bien comprendre vos besoins. Ensuite, 3 propositions complètes, vols compris.",en:"A few quick questions, then a call with our expert to properly understand your needs. Then 3 complete proposals, flights included."})}</p>
       <div id="bwrap"><form class="form stepper" data-form="brief" id="bf">
         <div class="sprog"><span class="scount">1 / 6</span><div class="sbar"><i></i></div></div>
         <div class="step"><h3 class="sq">${t({fr:"Que préparez-vous ?",en:"What are you planning?"})}</h3><div class="sfields">
@@ -1300,7 +1317,7 @@ function briefPage(){
     <aside class="aside">
       <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_cooking")}</div>
       <h3>${t({fr:"Et ensuite ?",en:"What happens next?"})}</h3>
-      <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"15 minutes pour bien comprendre vos besoins. Indispensable avant toute proposition.",en:"15 minutes to properly understand your needs. Required before any proposal."})}</span></div>
+      <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"Un échange avec notre expert pour bien comprendre vos besoins. Indispensable avant toute proposition.",en:"A call with our expert to properly understand your needs. Required before any proposal."})}</span></div>
       <div class="row"><span>${t({fr:"Ensuite",en:"Next"})}</span><span>${t({fr:"3 propositions : lieux, programme, vols, budget par personne.",en:"3 proposals: venues, programme, flights, budget per person."})}</span></div>
       <div class="row"><span>${t({fr:"On réserve",en:"We book"})}</span><span>${t({fr:"Vous validez, nous réservons tout.",en:"You approve, we book everything."})}</span></div>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
@@ -1449,7 +1466,7 @@ function corporate(){
     <div class="pillar"><div class="big">${t({fr:"Devoir",en:"Duty"})} <em>${t({fr:"de protection",en:"of care"})}</em></div><p>${t({fr:"Nous savons où sont vos voyageurs et pouvons les réacheminer rapidement en cas de grève, météo ou crise.",en:"We know where your travellers are and can reroute them quickly in case of strikes, weather or crises."})}</p></div>
   </div></section>
   <section class="band"><div class="ph">${img("corporate")}</div><div class="wrap">
-    <h2 class="display">${t({fr:"Un appel de 15 minutes pour faire le point",en:"A 15-minute call to review your travel"})}</h2>
+    <h2 class="display">${t({fr:"Un échange avec notre expert pour faire le point",en:"A call with our expert to review your travel"})}</h2>
     <p>${t({fr:"Nombre de voyages par an, destinations habituelles, process de validation : nous vous proposons une organisation simple.",en:"Trips per year, usual destinations, approval process: we'll propose a simple setup."})}</p>
     <div class="ctas"><a href="#appel" class="btn light">${t(U.book)}</a><a href="#devis" class="btn light ghost">${t(U.quote)}</a></div>
   </div></section>`;
@@ -1519,7 +1536,7 @@ function book(){
         <div class="calendly-inline-widget" data-url="${esc(C.calendly)}?hide_gdpr_banner=1" id="calw" style="min-width:280px;height:700px"></div>
         <p class="note" style="margin-top:10px">${t({fr:"Le calendrier ne s'affiche pas ?",en:"Calendar not showing?"})} <a class="link" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a></p>
         <div class="calfb" id="calfb" hidden>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Appel découverte · 15 min",en:"Discovery call · 15 min"})}</b><span class="note">${t({fr:"Affiché dans votre fuseau horaire",en:"Shown in your time zone"})}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><b style="font-weight:400;font-size:20px">${t({fr:"Échange avec un expert",en:"Call with our expert"})}</b><span class="note">${t({fr:"Affiché dans votre fuseau horaire",en:"Shown in your time zone"})}</span></div>
           ${miniCal()}
           <p class="note">${(STATIC ? t({fr:"Le calendrier ne s'est pas chargé. Ouvrez-le directement :",en:"The calendar didn't load. Open it directly:"}) : t({fr:"Aperçu : le calendrier Calendly s'affiche ici une fois le site en ligne.",en:"Preview: the Calendly calendar appears here once the site is live."}))}</p>
           <a class="btn accent" href="${esc(C.calendly)}" target="_blank" rel="noopener">${t({fr:"Ouvrir le calendrier",en:"Open the calendar"})}</a>
@@ -1715,9 +1732,9 @@ function postPage(slug){
     <div class="pmeta note">By Christopher Kwo · ${fmtDate(meta.date)} · ${meta.minutes} min read</div>
     <div class="ph pcover">${img(meta.cover, meta.coverAlt || meta.title, true)}</div>
     <div class="pbody"><div class="prose">${body}</div>
-      <aside class="pside"><div class="pbox"><span class="eyebrow">Planning a retreat?</span><b>A 15-min call, then 3 tailored proposals, flights included.</b><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#budget">${t(U.calc)}</a></div></aside>
+      <aside class="pside"><div class="pbox"><span class="eyebrow">Planning a retreat?</span><b>A call with our expert, then 3 tailored proposals, flights included.</b><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#budget">${t(U.calc)}</a></div></aside>
     </div>
-    <div class="pcta"><div><span class="eyebrow">Next step</span><h2 class="h2" style="margin-top:8px">Let's plan your team's next retreat</h2><p class="note">Venue, programme, activities and every participant's flight, handled by one team. It starts with a 15-minute call.</p></div><div class="ctas"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#brief">Tell us about your project</a></div></div>
+    <div class="pcta"><div><span class="eyebrow">Next step</span><h2 class="h2" style="margin-top:8px">Let's plan your team's next retreat</h2><p class="note">Venue, programme, activities and every participant's flight, handled by one team. It starts with a call with our expert.</p></div><div class="ctas"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="#brief">Tell us about your project</a></div></div>
     ${related.length ? `<div class="head" style="margin-top:70px"><h2 class="h2">Keep reading</h2><a class="link" href="#blog">All articles</a></div><div class="pgrid">${related.map(postCard).join("")}</div>` : ""}
   </div></article>`;
 }
@@ -1755,7 +1772,7 @@ function eventPage(k){
     </div>
     <aside class="aside">
       <h3>${t({fr:"Votre projet",en:"Your project"})}</h3>
-      <p class="note">${t({fr:"Quelques questions rapides, un appel de 15 minutes, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a 15-minute call, then 3 complete proposals, flights included."})}</p>
+      <p class="note">${t({fr:"Quelques questions rapides, un échange avec notre expert, puis 3 propositions complètes, vols compris.",en:"A few quick questions, a call with our expert, then 3 complete proposals, flights included."})}</p>
       <a href="#brief" class="btn accent" data-ev="${e.k}">${t(U.getProposal)}</a>
       <a href="#budget" class="btn ghost">${t(U.calc)}</a>
       <a href="#appel" class="btn ghost">${t(U.book)}</a>
@@ -2017,8 +2034,8 @@ function callNext(data){
   const L = lang==='fr';
   const q = new URLSearchParams(Object.entries({ name: data.name || "", email: data.email || "", a1: (data.company ? data.company + " · " : "") + (data.people ? data.people + (L?" pers. · ":" people · ") : "") + (data.destination || "") }).filter(([,v]) => v)).toString();
   return `<div class="callnext"><span class="eyebrow">${L?"Dernière étape":"Last step"}</span>
-    <b style="font-weight:400;font-size:24px;line-height:1.2">${L?"Réservez votre appel de 15 minutes":"Book your 15-minute call"}</b>
-    <p class="note" style="margin:0">${L?"Nous n'envoyons jamais de propositions sans un court appel : 15 minutes pour bien comprendre vos besoins. Vous recevez ensuite 3 propositions sur mesure.":"We never send proposals without a short call first: 15 minutes to properly understand your needs. Then you receive 3 tailored proposals."}</p>
+    <b style="font-weight:400;font-size:24px;line-height:1.2">${L?"Réservez votre échange avec notre expert":"Book your call with our expert"}</b>
+    <p class="note" style="margin:0">${L?"Nous n'envoyons jamais de propositions sans un échange préalable avec notre expert, pour bien comprendre vos besoins. Vous recevez ensuite 3 propositions sur mesure.":"We never send proposals without a call with our expert first, to properly understand your needs. Then you receive 3 tailored proposals."}</p>
     <a class="btn accent" style="align-self:flex-start" href="${urlFor('appel')}" data-k="appel" data-calq="${esc(q)}">${L?"Choisir un créneau":"Pick a time"}</a></div>`;
 }
 function sendForm(f, data, msg, okText){

@@ -87,8 +87,8 @@ function meta(key, lg) {
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
   else if (key === "comment") { title = L("Comment ça marche : retraites d'entreprise avec vols de groupe", "How it works: company retreats with group flights");
-    desc = L("Un appel de 15 minutes, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
-             "A 15-minute call, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
+    desc = L("Un échange avec notre expert, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
+             "A call with our expert, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
     desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez 300 lieux partenaires dans 38 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
              "Hotels, villas, estates: host company retreats on weekdays. Join over 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
@@ -99,8 +99,8 @@ function meta(key, lg) {
     title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
     crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
   else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
-    desc = L("Quelques questions rapides et un appel de 15 minutes, puis 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
-             "A few quick questions and a 15-minute call, then 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
+    desc = L("Quelques questions rapides et un échange avec notre expert, puis 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
+             "A few quick questions and a call with our expert, then 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
   else if (key === "evenements") { title = L("Séminaires, team building, incentives et voyages de groupe", "Offsites, team building, incentives and group trips");
     desc = L("Séminaire d'entreprise, team building, séminaire de direction, kick-off commercial, voyage incentive : un format pour chaque objectif, vols compris.",
              "Company offsites, team building, leadership retreats, sales kickoffs, incentive trips: a format for every goal, flights included."); image = "act_workshop3"; }
@@ -147,8 +147,8 @@ function meta(key, lg) {
     desc = L("Une agence familiale : 35 ans d'expérience en agence de voyage et l'hôtellerie internationale, au service des équipes et des groupes.",
              "A family agency: 35 years in travel agencies plus international hospitality, serving teams and groups."); image = "team"; }
   else if (key === "appel") { title = L("Réserver un appel", "Book a call");
-    desc = L("Choisissez un créneau de 15 minutes pour parler de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
-             "Pick a 15-minute slot to talk about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
+    desc = L("Choisissez un créneau pour parler avec notre expert de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
+             "Pick a slot to talk with our expert about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }
   else if (key === "devis") { title = L("Demander un devis de voyage de groupe", "Request a group trip quote");
     desc = L("Décrivez votre voyage de groupe et recevez un devis personnalisé : vols, hébergement, transferts, activités.",
              "Describe your group trip and get a tailored quote: flights, accommodation, transfers, activities."); image = "map"; }

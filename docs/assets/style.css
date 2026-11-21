@@ -270,7 +270,7 @@ html[lang="en"] .itin li::before{content:"Day " counter(d)}
 .checks input{accent-color:var(--accent)}
 .done{border:1px solid var(--accent);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:16px}
 .done pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;background:var(--surface);padding:16px;margin:0;border-radius:2px;max-height:300px;overflow:auto}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;counter-reset:s;list-style:none;padding:0;margin:0}
 .steps li{counter-increment:s;border-top:1px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:8px}
 .steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:28px}
 .steps b{font-weight:400;font-size:18px}
@@ -614,3 +614,10 @@ header.site{transform:translateZ(0)}
 .pcta .ctas{display:flex;gap:12px;flex-wrap:wrap}
 @media (max-width:1080px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.pbody{grid-template-columns:1fr}.pside{position:static}.plead{grid-template-columns:1fr;gap:22px}}
 @media (max-width:640px){.pgrid{grid-template-columns:1fr}.prose{font-size:17px}.pcover{aspect-ratio:4/3}.pcta{padding:24px}}
+
+.paygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.paystep{border:1px solid var(--line);border-radius:20px;padding:28px}
+.paystep h3{font-family:var(--display);font-weight:400;font-size:28px;margin:10px 0 14px}
+.paystep ul{margin:0;padding-left:20px;color:var(--muted);line-height:1.9}
+@media (max-width:1080px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.paygrid{grid-template-columns:1fr}}

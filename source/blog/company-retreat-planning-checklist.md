@@ -77,7 +77,7 @@ Use this checklist to keep your retreat on track. It assumes about 12 weeks of l
 
 ## Prefer to hand it over?
 
-We take care of everything from week 12 onwards: venue, programme, activities, every participant's flight and support during the trip. It starts with a [15-minute call](#appel). Read the full [step-by-step planning guide](#post-how-to-plan-a-company-retreat) for more detail on each stage.
+We take care of everything from week 12 onwards: venue, programme, activities, every participant's flight and support during the trip. It starts with a [call with our expert](#appel). Read the full [step-by-step planning guide](#post-how-to-plan-a-company-retreat) for more detail on each stage.
 
 ## FAQ
 

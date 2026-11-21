@@ -69,7 +69,7 @@ Most European destinations are inside the Schengen area. For [Marrakech](#retrai
 
 ## Let us handle it
 
-We book flights for groups of 10 to 300, from any city, with coordinated arrivals and one contact reachable seven days a week during the trip. [Book a 15-minute call](#appel) and tell us where your team flies from.
+We book flights for groups of 10 to 300, from any city, with coordinated arrivals and one contact reachable seven days a week during the trip. [Talk to our expert](#appel) and tell us where your team flies from.
 
 ## FAQ
 

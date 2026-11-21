@@ -45,7 +45,8 @@ A family agency with 35 years of travel agency experience plus hospitality and r
 
 - **Every participant's flight**, booked from their own city with coordinated arrivals.
 - **One budget per person**, flights included.
-- **A 15-minute call first**, then 3 tailored proposals.
+- **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals and meeting room; then we finalise activities, special dinners, transfers and flights.
+- **A call with our expert first**, then 3 tailored proposals.
 - **A human reachable seven days a week** during the trip.
 - **More than 300 partner venues** in Europe and beyond.
 
@@ -65,7 +66,7 @@ A family agency with 35 years of travel agency experience plus hospitality and r
 
 ## Compare for yourself
 
-[Book a 15-minute call](#appel) and we'll send 3 proposals with every flight included, so you can compare like for like. Or try our [budget calculator](#budget).
+[Talk to our expert](#appel) and we'll send 3 proposals with every flight included, so you can compare like for like. Or try our [budget calculator](#budget).
 
 ## FAQ
 

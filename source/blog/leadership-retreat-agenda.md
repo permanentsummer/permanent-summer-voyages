@@ -61,7 +61,7 @@ Share a one-page summary within 48 hours of returning, then a company-wide messa
 
 ## Plan your leadership retreat
 
-See our [leadership retreat format](#event-direction), or [book a 15-minute call](#appel). We'll suggest calm, private venues and handle every flight and transfer so your leaders can focus.
+See our [leadership retreat format](#event-direction), or [talk to our expert](#appel). We'll suggest calm, private venues and handle every flight and transfer so your leaders can focus.
 
 ## FAQ
 

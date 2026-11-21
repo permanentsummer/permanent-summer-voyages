@@ -55,7 +55,7 @@ Finance teams want one number per person that includes everything: flights, venu
 
 ## Plan your 2027 retreat
 
-Popular months fill early. [Book a 15-minute call](#appel) to secure your dates and receive 3 proposals, flights included. See also our [2027 offsite calendar](#post-offsite-planning-calendar-2027).
+Popular months fill early. [Talk to our expert](#appel) to secure your dates and receive 3 proposals, flights included. See also our [2027 offsite calendar](#post-offsite-planning-calendar-2027).
 
 ## FAQ
 

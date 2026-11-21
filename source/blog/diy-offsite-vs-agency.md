@@ -63,7 +63,7 @@ Some teams plan the programme internally and hand over the logistics: venue, fli
 
 ## Make the call
 
-[Book a 15-minute call](#appel). We'll tell you honestly whether you need us, and if you do, send 3 proposals with every flight included. Not sure yet? Read the [full planning guide](#post-how-to-plan-a-company-retreat) first.
+[Talk to our expert](#appel). We'll tell you honestly whether you need us, and if you do, send 3 proposals with every flight included. Not sure yet? Read the [full planning guide](#post-how-to-plan-a-company-retreat) first.
 
 ## FAQ
 

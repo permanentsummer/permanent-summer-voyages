@@ -64,7 +64,7 @@ For two to three nights in a European city with flights, kickoffs typically land
 
 ## Plan your kickoff
 
-See our [sales kickoff format](#event-kickoff), or [book a 15-minute call](#appel) to receive 3 proposals, flights included.
+See our [sales kickoff format](#event-kickoff), or [talk to our expert](#appel) to receive 3 proposals, flights included.
 
 ## FAQ
 

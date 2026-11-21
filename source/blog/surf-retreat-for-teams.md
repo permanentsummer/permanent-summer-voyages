@@ -59,7 +59,7 @@ Surf lessons add relatively little to the total, typically €40 to €70 per pe
 
 ## Plan your surf retreat
 
-We work with partner surf hotels and schools in Ericeira and beyond. [Book a 15-minute call](#appel) to get 3 proposals, flights included. More ideas in our [team-building activities](#activites).
+We work with partner surf hotels and schools in Ericeira and beyond. [Talk to our expert](#appel) to get 3 proposals, flights included. More ideas in our [team-building activities](#activites).
 
 ## FAQ
 

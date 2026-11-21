@@ -25,8 +25,8 @@ related: slug-1, slug-2, slug-3
 ```
 Body rules:
 - 900–1,400 words, H2/H3 structure, short paragraphs, the keyword in the first paragraph and one H2.
-- At least 8 internal links using `#keys`: destinations `#retraite-algarve` (`lisbonne ericeira porto madere acores majorque barcelone seville rome toscane milan-come pouilles vienne prague budapest serbie croatie istanbul georgie marrakech taghazout athenes crete peloponnese cyclades cracovie zakopane gdansk`), events `#event-seminaire #event-team-building #event-direction #event-kickoff #event-incentive #event-client`, `#budget` (calculator), `#activites`, `#retraites`, `#comment/vols` (we book every participant's flight), `#brief`, `#appel` (15-min call), and other articles `#post-<slug>`.
-- End with a "book a 15-minute call" paragraph linking `#appel`, then `## FAQ` with 3 `### question` + answer pairs.
+- At least 8 internal links using `#keys`: destinations `#retraite-algarve` (`lisbonne ericeira porto madere acores majorque barcelone seville rome toscane milan-come pouilles vienne prague budapest serbie croatie istanbul georgie marrakech taghazout athenes crete peloponnese cyclades cracovie zakopane gdansk`), events `#event-seminaire #event-team-building #event-direction #event-kickoff #event-incentive #event-client`, `#budget` (calculator), `#activites`, `#retraites`, `#comment/vols` (we book every participant's flight), `#brief`, `#appel` (call with our expert), and other articles `#post-<slug>`.
+- End with a "talk to our expert" paragraph linking `#appel` (never mention "15 minutes"), then `## FAQ` with 3 `### question` + answer pairs.
 - One inline photo: `![alt](blNNb)`.
 - Brand rules: never relate the agency to Mauritius; no "48h" or time promises; don't emphasise Amadeus; competitors only described fairly and factually.
 

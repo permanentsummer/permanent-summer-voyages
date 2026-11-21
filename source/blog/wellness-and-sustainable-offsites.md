@@ -68,7 +68,7 @@ Add a half-day with a local project: a beach clean-up, tree planting, a farm vis
 
 ## Plan a retreat that recharges
 
-[Book a 15-minute call](#appel) and tell us what matters to your team. We'll send 3 proposals with calmer programmes, venues that care, and every participant's flight optimised for the shortest routes.
+[Talk to our expert](#appel) and tell us what matters to your team. We'll send 3 proposals with calmer programmes, venues that care, and every participant's flight optimised for the shortest routes.
 
 ## FAQ
 
