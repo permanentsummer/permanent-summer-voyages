@@ -7,6 +7,8 @@ Articles live in `source/blog/<slug>.md` (English only). The build turns them in
 - One new article per week on company retreats, offsites, team travel, destinations, activities, budgets, competitors or current news/trends for the B2B audience (HR, founders, ops, office managers).
 - Research current news with web search first (new routes, events, trends, reports). Never invent statistics: only quote figures from a source you read, and name the source in the text.
 - Check `source/blog/` so the topic or slug isn't already covered.
+- Formats that work well (inspired by leading retreat blogs such as basejam.com/articles; take ideas only, never copy text): numbered roundups ("9 team building activities in Lisbon"), venue-type roundups without naming partner hotels ("exclusive-use venues for retreats", "retreat venues for large groups"), seasonal pieces (Christmas party ideas, best month for a retreat), one-day offsite guides, goal-setting and follow-up guides, accessibility, AI for retreat planning (and what to leave to humans), nature retreats, hybrid/remote culture.
+- Topic backlog (skip any already covered): best month for a company retreat · one-day offsite guide · how to set retreat goals · how to follow up after a retreat · accessible and inclusive retreats · using AI to plan a retreat · nature retreats · exclusive-use venues · retreat venues for large groups (100+) · team building activities in Lisbon / Porto / Algarve / Barcelona · Christmas and end-of-year team events · team away day ideas · strategic planning retreat · budgeting a retreat step by step · employee wellbeing activities on a retreat.
 
 ## 2. Write the file
 Front matter (all required except related/pin):
