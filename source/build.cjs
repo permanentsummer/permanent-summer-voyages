@@ -144,8 +144,8 @@ function meta(key, lg) {
     desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME, startups et équipes internationales, avec un interlocuteur unique qui connaît vos voyageurs.",
              "Tickets, hotels, invoices and 7-day support for SMEs, startups and international teams, with one contact who knows your travellers."); image = "plane"; }
   else if (key === "a-propos") { title = L("À propos : Jennifer & Christopher Kwo", "About us: Jennifer & Christopher Kwo");
-    desc = L("Une agence familiale : 35 ans d'expérience en agence de voyage et l'hôtellerie internationale, au service des équipes et des groupes.",
-             "A family agency: 35 years in travel agencies plus international hospitality, serving teams and groups."); image = "team"; }
+    desc = L("Deux experts, un seul interlocuteur : 35 ans d'expérience en agence de voyage, l'hôtellerie internationale et les retraites d'entreprise, au service des équipes et des groupes.",
+             "Two experts, one point of contact: 35 years in travel agencies plus international hospitality and company retreats, serving teams and groups."); image = "team"; }
   else if (key === "appel") { title = L("Réserver un appel", "Book a call");
     desc = L("Choisissez un créneau pour parler avec notre expert de votre retraite ou de votre voyage de groupe : dates, budget, envies.",
              "Pick a slot to talk with our expert about your retreat or group trip: dates, budget, wishes."); image = "plane2"; }

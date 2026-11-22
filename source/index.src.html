@@ -318,7 +318,11 @@ html[lang="en"] .itin li::before{content:"Day " counter(d)}
 /* team */
 .team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px)}
 .profile{display:flex;flex-direction:column;gap:24px;min-width:0}
-.profile .ph{aspect-ratio:4/5;border-radius:2px;overflow:hidden;max-width:100%}
+.profile .ph{width:160px;height:160px;aspect-ratio:1;border-radius:50%;overflow:hidden;flex:none}
+.profile .ph img{object-position:50% 8%}
+.pisa{margin:0;display:flex;flex-direction:column;gap:12px;max-width:380px;justify-self:center;width:100%}
+.pisa .ph{aspect-ratio:4/5;border-radius:24px;overflow:hidden}
+.pisa figcaption{font-size:14px;color:var(--muted);font-style:italic;text-align:center}
 .profile .pbody{display:flex;flex-direction:column;gap:12px}
 .profile .prose{margin-top:8px}
 @media (max-width:820px){.team{grid-template-columns:1fr}}
@@ -784,6 +788,7 @@ const ICON = {
 };
 function social(){
   const S = C.social || {};
+  if (!["facebook","instagram"].some(k => S[k])) return "";
   return `<span class="social">${["facebook","instagram"].map(k => S[k]
     ? `<a href="${esc(S[k])}" target="_blank" rel="noopener" aria-label="${k}">${ICON[k]}</a>`
     : `<span data-empty title="${t({fr:'Lien à ajouter',en:'Link to add'})}" aria-label="${k}">${ICON[k]}</span>`).join("")}</span>`;
@@ -1090,7 +1095,7 @@ function partnersPage(){
       <li><b>${t({fr:"Présentez votre lieu",en:"Present your venue"})}</b><span>${t({fr:"Le formulaire ci-dessous prend 10 minutes.",en:"The form below takes 10 minutes."})}</span></li>
       <li><b>${t({fr:"Premier échange",en:"First call"})}</b><span>${t({fr:"Capacités, tarifs groupe, saisons et conditions.",en:"Capacity, group rates, seasons and terms."})}</span></li>
       <li><b>${t({fr:"Proposé à nos clients",en:"Proposed to our clients"})}</b><span>${t({fr:"Votre lieu entre dans nos propositions quand il correspond au brief.",en:"Your venue goes into our proposals when it fits the brief."})}</span></li>
-      <li><b>${t({fr:"Réservation",en:"Booking"})}</b><span>${t({fr:"Vous facturez le client directement ; nous coordonnons tout le reste.",en:"You invoice the client directly; we coordinate everything else."})}</span></li>
+      <li><b>${t({fr:"Réservation",en:"Booking"})}</b><span>${t({fr:"Le client nous paie, nous vous payons. Nous coordonnons tout le reste.",en:"The client pays us, we pay you. We coordinate everything else."})}</span></li>
     </ol>
   </div></section>
   <section class="section surface" id="vform" style="scroll-margin-top:90px"><div class="wrap dgrid" style="align-items:start">
@@ -1112,7 +1117,7 @@ function partnersPage(){
     <aside class="aside">
       <h3>${t({fr:"Questions fréquentes",en:"FAQ"})}</h3>
       <div class="row"><span>${t({fr:"Combien ça coûte ?",en:"What does it cost?"})}</span><span>${t({fr:"L'inscription est gratuite. Nous travaillons à la commission sur les réservations confirmées, convenue avec vous.",en:"Listing is free. We work on commission on confirmed bookings, agreed with you."})}</span></div>
-      <div class="row"><span>${t({fr:"Qui facture ?",en:"Who invoices?"})}</span><span>${t({fr:"Vous facturez le client directement.",en:"You invoice the client directly."})}</span></div>
+      <div class="row"><span>${t({fr:"Qui facture ?",en:"Who invoices?"})}</span><span>${t({fr:"Nous. Nous sommes le guichet unique : le client nous paie, et nous payons le lieu et les prestataires.",en:"We do. We are the one-stop shop: the client pays us, and we pay the venue and suppliers."})}</span></div>
       <div class="row"><span>${t({fr:"Quelles régions ?",en:"Which regions?"})}</span><span>${t({fr:"Europe, Méditerranée et quelques destinations long-courrier.",en:"Europe, the Mediterranean and a few long-haul destinations."})}</span></div>
       <a class="btn ghost" href="#appel">${t(U.book)}</a>
     </aside>
@@ -1184,7 +1189,7 @@ function retreatsPage(){
       ${[[{fr:"Pour combien de personnes ?",en:"For how many people?"},{fr:"Dès 10 personnes, sans limite. Au-delà de 60, nous combinons plusieurs lieux ou privatisons un hôtel.",en:"From 10 people, no upper limit. Above 60, we combine several venues or take over a whole hotel."}],
          [{fr:"Combien de temps à l'avance ?",en:"How far in advance?"},{fr:"Idéalement 3 à 6 mois, pour avoir le choix des lieux et de bons tarifs aériens. Nous savons aussi faire en quelques semaines.",en:"Ideally 3 to 6 months ahead, for the best venues and fares. We can also do it in a few weeks."}],
          [{fr:"Comment est fixé le prix ?",en:"How is the price set?"},{fr:"Chaque proposition détaille le budget par personne : lieu, vols, activités et nos honoraires d'organisation, fixés à l'avance. Pas de frais cachés.",en:"Each proposal details the budget per person: venue, flights, activities and our planning fee, agreed upfront. No hidden costs."}],
-         [{fr:"Qui facture quoi ?",en:"Who invoices what?"},{fr:"Nous facturons nos honoraires d'organisation. Les lieux et prestataires vous facturent directement, au tarif que nous avons négocié, et les billets d'avion sont émis par notre partenaire agence agréé. Vous gardez une vision claire de chaque dépense.",en:"We invoice our planning fee. Venues and suppliers invoice you directly at the rate we negotiated, and flight tickets are issued by our licensed travel agency partner. You keep a clear view of every cost."}],
+         [{fr:"Qui facture quoi ?",en:"Who invoices what?"},{fr:"Nous facturons tout. Vous ne payez que nous, en deux étapes, et nous payons le lieu, les vols et chaque prestataire. Vous gardez une vision claire de chaque dépense.",en:"We invoice everything. You pay only us, in two stages, and we pay the venue, the flights and every supplier. You keep a clear view of every cost."}],
          [{fr:"Quel budget prévoir ?",en:"What budget should we plan?"},{fr:"Le plus souvent entre 700 et 2 000 € par personne pour 3 nuits, vols compris. Notre calculateur vous donne une première fourchette en 30 secondes.",en:"Usually €700 to €2,000 per person for 3 nights, flights included. Our calculator gives you a first range in 30 seconds."}],
          [{fr:"Nos équipes partent de villes différentes, c'est possible ?",en:"Our team flies from different cities, is that OK?"},{fr:"C'est notre spécialité. Chaque participant a son vol depuis sa ville, coordonné pour que tout le monde arrive le même jour.",en:"That's our speciality. Each participant flies from their own city, coordinated so everyone lands the same day."}],
          [{fr:"Et si quelque chose se passe mal sur place ?",en:"What if something goes wrong on site?"},{fr:"Vous avez un interlocuteur sur WhatsApp 7j/7. Vol annulé, météo, imprévu : on gère.",en:"You have one contact on WhatsApp 7 days a week. Cancelled flight, weather, surprises: we handle it."}]
@@ -1474,19 +1479,17 @@ function corporate(){
 
 function about(){
   const J = {fr:[
-      "Je m'appelle Jennifer Kwo. Depuis trente-cinq ans, j'organise des voyages : billets d'avion, hôtels, groupes, voyages d'affaires, et surtout les imprévus.",
-      "Après des décennies au sein de grandes agences, j'ai choisi l'indépendance pour revenir à l'essentiel : connaître chaque client, répondre moi-même au téléphone et suivre chaque dossier jusqu'au retour.",
-      "Je garde les mêmes outils professionnels et l'accès direct aux tarifs des compagnies aériennes, avec une relation directe et sans intermédiaire."],
+      "Je m'appelle Jennifer Kwo. Depuis trente-cinq ans, j'organise des voyages pour des groupes internationaux, des entreprises partenaires et des voyageurs loisirs : billets d'avion, hôtels, groupes, voyages d'affaires, et surtout les imprévus.",
+      "Après des décennies au sein de grandes agences, j'ai choisi l'indépendance pour revenir à l'essentiel : connaître chaque client, répondre moi-même au téléphone et suivre chaque dossier jusqu'au retour."],
     en:[
-      "My name is Jennifer Kwo. For thirty-five years I've organised travel: flights, hotels, groups, business trips and, above all, the unexpected.",
-      "After decades inside large agencies, I chose independence to get back to what matters: knowing every client, answering the phone myself and following every booking until you're home.",
-      "I keep the same professional tools and direct access to airline fares, with a direct relationship and no middleman."]};
+      "My name is Jennifer Kwo. For thirty-five years I've organised travel for international corporations, B2B partners and leisure travellers: flights, hotels, groups, business trips and, above all, the unexpected.",
+      "After decades inside large agencies, I chose independence to get back to what matters: knowing every client, answering the phone myself and following every booking until you're home."]};
   const K = {fr:[
-      "Je suis Christopher, le fils de Jennifer. J'ai fait mes armes dans l'hôtellerie internationale, dans certains des établissements les plus prestigieux de Hong Kong et de Suisse. Aujourd'hui, je suis spécialiste des retraites d'entreprise, voyageur et digital nomad : je sais ce qu'une équipe attend d'un lieu pour travailler, décrocher et se retrouver.",
+      "Je suis Christopher. J'ai fait mes armes dans l'hôtellerie internationale, dans certains des établissements les plus prestigieux de Hong Kong et de Suisse. J'ai ensuite travaillé avec des startups et des entreprises internationales. Aujourd'hui, je suis spécialiste des retraites d'entreprise, voyageur et digital nomad : je sais ce qu'une équipe attend d'un lieu pour travailler, décrocher et se retrouver.",
       "Voyageur dans l'âme, je cherche toujours les adresses confidentielles : la table que personne ne connaît, la plage au bout du chemin, l'hôtel qui fait la différence. Ces pépites, je les partage avec nos clients.",
       "De l'hôtellerie, je garde un regard de l'intérieur sur ce qui fait un séjour réussi, et je l'apporte à chaque voyage que nous organisons."],
     en:[
-      "I'm Christopher, Jennifer's son. I trained in international hospitality, in some of the most prestigious establishments in Hong Kong and Switzerland. Today I'm a company retreat specialist, a traveller and a digital nomad: I know what a team needs from a place to work, switch off and reconnect.",
+      "I'm Christopher. I trained in international hospitality, in some of the most prestigious establishments in Hong Kong and Switzerland, then worked with startups and international companies. Today I'm a company retreat specialist, a traveller and a digital nomad: I know what a team needs from a place to work, switch off and reconnect.",
       "A traveller at heart, I'm always looking for the places that don't make the guidebooks: the table nobody knows, the beach at the end of the path, the hotel that makes the difference. I share those hidden gems with our clients.",
       "Hospitality taught me what makes a stay work from the inside, and I bring that eye to every trip we plan."]};
   const profile = (k, name, role, paras, extra="") => `<article class="profile">
@@ -1498,11 +1501,11 @@ function about(){
   <section class="section"><div class="wrap split" style="align-items:center">
     <div class="text">
       <span class="eyebrow">${t({fr:"Notre histoire",en:"Our story"})}</span>
-      <h1 class="display" style="font-size:clamp(42px,5.6vw,76px)">${t({fr:"Une affaire de famille",en:"A family business"})}</h1>
-      <p class="lede">${t({fr:"Une mère et son fils. Trente-cinq ans d'agence de voyage d'un côté, l'hôtellerie internationale de l'autre, et la même envie : que chaque voyage se passe comme prévu, ou mieux.",en:"A mother and her son. Thirty-five years in travel agencies on one side, international hospitality on the other, and the same goal: that every trip goes to plan, or better."})}</p>
+      <h1 class="display" style="font-size:clamp(42px,5.6vw,76px)">${t({fr:"Deux experts, un seul interlocuteur",en:"Two experts, one point of contact"})}</h1>
+      <p class="lede">${t({fr:"Trente-cinq ans d'agence de voyage d'un côté, l'hôtellerie internationale et les retraites d'entreprise de l'autre, et la même envie : que chaque voyage se passe comme prévu, ou mieux.",en:"Thirty-five years in travel agencies on one side, international hospitality and company retreats on the other, and the same goal: that every trip goes to plan, or better."})}</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#appel" class="btn accent">${t(U.book)}</a><a href="${wa()}" target="_blank" rel="noopener" class="btn ghost">${t(U.whatsapp)}</a></div>
     </div>
-    <figure class="media ph" style="aspect-ratio:4/5;margin:0">${img("team","Jennifer & Christopher Kwo",true)}</figure>
+    <figure class="pisa"><div class="ph">${img("team","Jennifer & Christopher Kwo",true)}</div><figcaption>${t({fr:"Pise. La tour penche depuis plus de 800 ans. Nous, on a tenu trois secondes.",en:"Pisa. The tower has been leaning for over 800 years. We managed about three seconds."})}</figcaption></figure>
   </div></section>
   <section class="section surface"><div class="wrap team">
     ${profile("jennifer","Jennifer Kwo",{fr:"Fondatrice & conseillère voyage",en:"Founder & travel advisor"},J,
@@ -1908,7 +1911,7 @@ function legal(){
       <p><b style="font-weight:400">Permanent Summer Lda</b><br>${t({fr:"Société de droit portugais",en:"Portuguese company"})} · NIF / NIPC 516416804<br>Casas da Alcaria, Lote 81, 8950-413 Altura, Portugal<br>${esc(C.email)} · ${esc(C.phone)}</p>
       <p>${t({fr:"Hébergement : GitHub Pages (GitHub, Inc.), avec Cloudflare pour le domaine.",en:"Hosting: GitHub Pages (GitHub, Inc.), with Cloudflare for the domain."})}</p>
       ${H({fr:"Notre rôle",en:"Our role"})}
-      <p>${t({fr:"Permanent Summer Lda conçoit et coordonne les retraites, séminaires et voyages, et facture ses honoraires d'organisation. Les billets d'avion sont émis par notre partenaire agence agréé. Les hébergements, lieux et activités sont réservés au nom du client auprès des prestataires, qui le facturent directement selon leurs propres conditions.",en:"Permanent Summer Lda designs and coordinates retreats, offsites and trips, and invoices its planning fees. Flight tickets are issued by our licensed travel agency partner. Accommodation, venues and activities are booked in the client's name with the suppliers, who invoice the client directly under their own terms."})}</p>
+      <p>${t({fr:"Permanent Summer Lda conçoit et coordonne les retraites, séminaires et voyages. Le client règle l'ensemble du voyage à Permanent Summer Lda, qui paie les lieux, hébergements, activités et autres prestataires. Les billets d'avion sont émis par notre partenaire agence agréé.",en:"Permanent Summer Lda designs and coordinates retreats, offsites and trips. The client pays Permanent Summer Lda for the whole trip, and Permanent Summer Lda pays the venues, accommodation, activities and other suppliers. Flight tickets are issued by our licensed travel agency partner."})}</p>
       ${H({fr:"Conditions",en:"Terms"})}
       <p>${t({fr:"Nos propositions et devis sont gratuits et sans engagement. Une réservation n'est confirmée qu'après accord écrit du client et, le cas échéant, versement de l'acompte demandé par le prestataire. Les conditions de modification et d'annulation sont celles de chaque prestataire et des tarifs aériens choisis ; elles figurent dans la proposition. Nos honoraires d'organisation sont fixés à l'avance et facturés par Permanent Summer Lda.",en:"Our proposals and quotes are free and non-binding. A booking is confirmed only after the client's written agreement and, where applicable, payment of the deposit requested by the supplier. Change and cancellation terms are those of each supplier and of the chosen air fares; they are set out in the proposal. Our planning fees are agreed upfront and invoiced by Permanent Summer Lda."})}</p>
       ${H({fr:"Données personnelles",en:"Personal data"})}
