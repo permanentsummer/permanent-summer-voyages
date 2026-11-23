@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your retreat proposal | Permanent Summer Voyages</title>
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+:root{--deep:#0b4744;--teal:#1f7a72;--acc:#3E9E91;--sand:#f6efe4;--cream:#fbf8f2;--sun:#f2c14e;--coral:#e76f51;--ink:#1d2321;--muted:#6b7a77;--disp:"Bodoni Moda",Didot,Georgia,serif;--body:"Jost",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#d9d4cb}
+body{font-family:var(--body);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased}
+.deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 16px 90px}
+.slide{position:relative;width:min(1180px,100%);aspect-ratio:297/210;background:var(--cream);overflow:hidden;container-type:inline-size;box-shadow:0 18px 50px rgba(20,40,38,.18)}
+.slide>*{position:absolute}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.ph{overflow:hidden;background:var(--sand)}
+.d{font-family:var(--disp);font-weight:500;line-height:1.02;letter-spacing:-.01em}
+.eb{font-size:1.05cqw;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.p{font-size:1.32cqw;line-height:1.62}
+.foot{left:0;right:0;bottom:0;height:5.4cqw;background:var(--cream);z-index:3;display:flex;align-items:center;justify-content:space-between;padding:0 3.4cqw;font-size:.95cqw;color:var(--muted);letter-spacing:.04em}
+.logo{font-family:var(--disp);font-size:1.6cqw;line-height:1;color:var(--deep)}.logo small{display:block;font-family:var(--body);font-size:.62cqw;letter-spacing:.42em;margin-top:.3cqw}
+.logo.w{color:#fff}
+.chip{display:inline-block;padding:.35cqw 1cqw;border-radius:99px;font-size:.95cqw;font-weight:500;letter-spacing:.06em}
+.ul{list-style:none}.ul li{position:relative;padding-left:1.8cqw;margin:.55cqw 0;font-size:1.28cqw;line-height:1.45}
+.ul li:before{content:"";position:absolute;left:0;top:.62cqw;width:.75cqw;height:.75cqw;border-radius:50%;background:var(--acc)}
+.ul.sun li:before{background:var(--sun)}
+a.lnk{color:var(--teal);font-weight:500;text-decoration:none;border-bottom:.12cqw solid var(--sun);font-size:1.2cqw}
+.price{font-family:var(--disp);font-size:4.6cqw;color:var(--deep);line-height:1}
+.toolbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:10px;z-index:9;background:rgba(11,71,68,.94);padding:8px;border-radius:99px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.toolbar a,.toolbar button{font:500 14px var(--body);border:0;border-radius:99px;padding:11px 20px;cursor:pointer;text-decoration:none;color:var(--deep);background:var(--sun)}
+.toolbar .g{background:transparent;color:#fff}
+.err{max-width:560px;margin:15vh auto;text-align:center;font-size:18px;line-height:1.6;padding:20px}
+@media print{
+ @page{size:297mm 210mm;margin:0}
+ html,body{background:#fff}
+ .deck{padding:0;gap:0;display:block}
+ .slide{width:297mm;height:210mm;aspect-ratio:auto;box-shadow:none;page-break-after:always;break-after:page}
+ .toolbar{display:none}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (max-width:700px){.deck{gap:14px;padding:12px 8px 90px}.toolbar a,.toolbar button{padding:10px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck"></div>
+<div class="toolbar" id="tb" style="display:none"><button onclick="window.print()" id="tbPdf">Download PDF</button><a href="../book-a-call/" class="g" id="tbCall">Talk to our expert</a></div>
+<script src="../assets/data.js"></script>
+<script>
+(async function(){
+const MEDIA='https://media.permanentsummervoyages.com/venues/';
+const deck=document.getElementById('deck');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function decode(h){const b=h.replace(/-/g,'+').replace(/_/g,'/');const bin=Uint8Array.from(atob(b),c=>c.charCodeAt(0));
+ const s=new Blob([bin]).stream().pipeThrough(new DecompressionStream('deflate-raw'));return JSON.parse(await new Response(s).text())}
+let P;try{const m=location.hash.match(/d=([A-Za-z0-9_-]+)/);P=await decode(m[1])}catch(e){deck.innerHTML='<div class="err"><div class="d" style="font-size:34px;color:#0b4744;margin-bottom:12px">Proposal not found</div>This link seems incomplete. Please use the full link from our email, or contact us at contact@permanentsummervoyages.com.</div>';return}
+const L=P.l=='fr'?'fr':'en';document.documentElement.lang=L;
+const T={en:{prop:'Company retreat proposal',for:'Handcrafted for',brief:'The brief',people:'Number of people',dest:'Location',nights:'Number of nights',dates:'Dates',acc:'Venue options',why:'Why teams love',fly:'Getting there',when:'Best time to go',stay:'Where you stay',acts:'Team building',actsSub:'Experiences we can add to your programme, booked and coordinated by our team.',prog:'A taste of your programme',day:'Day',option:'Option',accom:'Accommodation',work:'Workspace & spaces',pkg:'Package',incl:'The total estimate includes',total:'Total estimate',pp:'per person',more:'See all photos',rooms:'rooms',beds:'beds',meetRooms:'meeting rooms',upTo:'Meeting space for up to',ppl:'people',compare:'Your options side by side',how:'How it works',why2:'Why Permanent Summer Voyages',thanks:'Thank you',ps:'Questions, changes, another date? We will adapt every detail of this proposal.',cta:'Talk to our expert',pdf:'Download PDF',note:'Estimate based on current availability. Final price confirmed at booking.',
+ steps:[['Discovery call','We listened to your team, goals and budget.'],['Your proposals','Hand-picked options with one all-in price each.'],['Choose & secure','The first payment secures destination, venue, meals, meeting room and flights.'],['Finalise','We add activities, special dinners and transfers, then run the retreat with you.']],
+ pillars:[['One price','Rooms, meals, meeting space, flights and planning in a single quote.'],['One expert','A dedicated planner handles venues, suppliers and payments.'],['Flights included','Group fares and ticketing managed by our team.'],['Hand-picked venues','Places we know, chosen for work and connection.']],
+ wsTxt:'A private room set up for your sessions, with Wi-Fi, screen or projector, and coffee breaks served on site. Extra equipment (flipcharts, sound, AV) on request.',
+ actTitle:'Team-building ideas in'},
+ fr:{prop:'Proposition de séminaire',for:'Préparée pour',brief:'Le brief',people:'Nombre de personnes',dest:'Destination',nights:'Nombre de nuits',dates:'Dates',acc:'Options de lieux',why:'Pourquoi les équipes adorent',fly:'Accès',when:'Meilleure période',stay:'Hébergement',acts:'Team building',actsSub:'Des expériences à ajouter à votre programme, réservées et coordonnées par notre équipe.',prog:'Un aperçu de votre programme',day:'Jour',option:'Option',accom:'Hébergement',work:'Espaces de travail',pkg:'Forfait',incl:'L\'estimation comprend',total:'Estimation totale',pp:'par personne',more:'Voir toutes les photos',rooms:'chambres',beds:'lits',meetRooms:'salles de réunion',upTo:'Espace de réunion jusqu\'à',ppl:'personnes',compare:'Vos options côte à côte',how:'Comment ça marche',why2:'Pourquoi Permanent Summer Voyages',thanks:'Merci',ps:'Des questions, une autre date, des ajustements ? Nous adaptons chaque détail de cette proposition.',cta:'Parler à notre expert',pdf:'Télécharger le PDF',note:'Estimation selon les disponibilités actuelles. Prix final confirmé à la réservation.',
+ steps:[['Appel découverte','Nous avons écouté votre équipe, vos objectifs et votre budget.'],['Vos propositions','Des options sélectionnées, avec un prix tout compris chacune.'],['Choisir et réserver','Le premier paiement sécurise destination, lieu, repas, salle et vols.'],['Finaliser','Nous ajoutons activités, dîners spéciaux et transferts, puis organisons le séjour avec vous.']],
+ pillars:[['Un seul prix','Chambres, repas, salle, vols et organisation dans un seul devis.'],['Un seul expert','Un organisateur dédié gère lieux, prestataires et paiements.'],['Vols inclus','Tarifs groupes et émission des billets par notre équipe.'],['Lieux sélectionnés','Des endroits que nous connaissons, choisis pour travailler et se retrouver.']],
+ wsTxt:'Une salle privée installée pour vos sessions, avec Wi-Fi, écran ou projecteur et pauses café servies sur place. Matériel supplémentaire (paperboards, son, vidéo) sur demande.',
+ actTitle:'Idées de team building à'}}[L];
+const t=o=>o?(o[L]||o.en||''):'';
+document.getElementById('tbPdf').textContent=T.pdf;const tbc=document.getElementById('tbCall');tbc.textContent=T.cta;tbc.href=L=='fr'?'../reserver-un-appel/':'../book-a-call/';
+const R=(window.RETREATS||[]).find(r=>r.s==P.d);
+const img=k=>'../img/'+k+'.jpg';
+const loc=L=='fr'?'fr-FR':'en-GB',fd=d=>new Date(d+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long',year:'numeric'});
+const dates=P.a&&P.b?`${new Date(P.a+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long'})} – ${fd(P.b)}`:'';
+const nights=P.a&&P.b?Math.round((new Date(P.b)-new Date(P.a))/864e5):'';
+const destName=P.dn||(R?t(R.n)+', '+t(R.c):'');
+const eur=v=>'€'+Math.round(v).toLocaleString('en-GB');
+const vph=(o,i)=>o.v&&o.v.length?MEDIA+o.s+'/'+String(o.v[Math.min(i,o.v.length-1)]).padStart(2,'0')+'.webp':'';
+const heroImg=R?img(R.img[0]):vph(P.o[0],0);
+const foot=n=>`<div class="foot"><div class="logo">Permanent Summer<small>VOYAGES</small></div><span>${esc(P.c)} · ${esc(dates)}</span><span>${n}</span></div>`;
+let S=[],n=0;const add=h=>{n++;S.push(`<section class="slide">${h}</section>`)};
+/* 1 cover */
+add(`<div class="ph" style="inset:0"><img src="${heroImg}" alt=""></div><div style="inset:0;background:linear-gradient(90deg,rgba(11,71,68,.92) 0%,rgba(11,71,68,.78) 38%,rgba(11,71,68,.05) 70%)"></div>
+<div class="logo w" style="left:4cqw;top:4cqw">Permanent Summer<small>VOYAGES</small></div>
+<div style="left:4cqw;top:15cqw;width:46cqw;color:#fff"><div class="eb" style="color:var(--sun)">${esc(T.prop)}</div><div class="d" style="font-size:6.6cqw;margin-top:1.6cqw">${esc(destName||T.prop)}</div>
+<div style="margin-top:4cqw" class="eb">${esc(T.for)}</div><div class="d" style="font-size:3.6cqw;margin-top:.8cqw">${esc(P.c)}</div>
+<div style="margin-top:2.6cqw;font-size:1.4cqw;opacity:.9">${esc(dates)} · ${esc(P.x)} ${esc(T.ppl)}</div></div>
+<div style="left:4cqw;bottom:3.4cqw;color:rgba(255,255,255,.75);font-size:1cqw;letter-spacing:.2em">PERMANENTSUMMERVOYAGES.COM</div>`);
+/* 2 brief */
+const cells=[[T.people,P.x],[T.dest,destName||'—'],[T.nights,nights],[T.dates,dates],[T.acc,P.o.map(o=>o.h||o.t).join(' · ')]];
+add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">01</div><div class="d" style="font-size:5cqw;color:var(--deep);margin-top:.6cqw">${esc(T.brief)}</div>
+<p class="p" style="width:30cqw;margin-top:2.4cqw;color:#3d4845">${esc(P.i)}</p></div>
+<div style="left:40cqw;top:4.5cqw;right:4cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw">${cells.map(([k,v],i)=>`<div style="background:${i==0?'var(--deep)':'var(--sand)'};color:${i==0?'#fff':'var(--deep)'};padding:2cqw 2.2cqw;${i==4?'grid-column:1/-1':''}"><div class="eb" style="opacity:.75;font-size:.9cqw">${esc(k)}</div><div class="d" style="font-size:${String(v).length>40?'1.9cqw':String(v).length>18?'2.5cqw':'3.6cqw'};margin-top:1cqw">${esc(v)}</div></div>`).join('')}</div>${foot(n+1)}`);
+/* 3 destination */
+if(R){
+add(`<div class="ph" style="left:0;top:0;width:58cqw;bottom:0"><img src="${img(R.img[0])}" alt=""></div>
+<div style="left:62cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">02 · ${esc(t(R.c))}</div><div class="d" style="font-size:5.4cqw;color:var(--deep);margin-top:1cqw">${esc(t(R.n))}</div>
+<div class="d" style="font-style:italic;font-weight:400;font-size:2cqw;color:var(--teal);margin-top:1.6cqw">${esc(t(R.t))}</div>
+<p class="p" style="margin-top:2cqw;color:#3d4845">${esc(t(R.d))}</p>
+<div style="margin-top:2cqw">${(t(R.vibe)||[]).map(v=>`<span class="chip" style="background:var(--sand);color:var(--deep);margin:0 .5cqw .5cqw 0">${esc(v)}</span>`).join('')}</div></div>${foot(n+1)}`);
+/* 4 why */
+const p2=[img(R.img[1]),...P.o.map(o=>vph(o,0)).filter(Boolean)].slice(0,3);
+add(`<div style="left:4cqw;top:4.5cqw;width:40cqw"><div class="eb" style="color:var(--acc)">03</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.why)} ${esc(t(R.n))}</div>
+<div style="margin-top:2.6cqw;display:grid;gap:1.6cqw">${[[T.fly,t(R.fly)],[T.when,t(R.when)],[T.stay,t(R.stay)]].map(([k,v])=>`<div style="border-left:.35cqw solid var(--sun);padding-left:1.4cqw"><div class="eb" style="color:var(--teal);font-size:.9cqw">${esc(k)}</div><div class="p" style="margin-top:.3cqw">${esc(v)}</div></div>`).join('')}</div></div>
+<div style="left:48cqw;top:4.5cqw;right:4cqw;bottom:8cqw;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqw">${p2.map((u,i)=>`<div class="ph" style="${i==0?'grid-row:1/3':''}"><img src="${u}" alt=""></div>`).join('')}</div>${foot(n+1)}`);
+}
+/* 5 activities */
+const AL=(window.ACTLIB||[]);let acts=R?AL.filter(a=>(a.where||[]).includes(R.s)):[];
+const fill=AL.filter(a=>!acts.includes(a)&&['food','crea','well','adv','sea'].includes(a.cat));
+acts=acts.concat(fill).slice(0,6);
+if(acts.length){add(`<div style="left:4cqw;top:4.5cqw;right:4cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--acc)">04 · ${esc(T.acts)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(R?T.actTitle+' '+t(R.n):T.acts)}</div></div><p class="p" style="width:34cqw;color:var(--muted);text-align:right">${esc(T.actsSub)}</p></div>
+<div style="left:4cqw;right:4cqw;top:17cqw;bottom:8cqw;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:1.4cqw">${acts.map(a=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="flex:1;min-height:0"><img src="${img(a.img)}" alt=""></div><div style="padding:1.1cqw 1.3cqw"><div style="font-weight:500;font-size:1.35cqw;color:var(--deep)">${esc(t(a.n))}</div><div style="font-size:1cqw;color:var(--muted);margin-top:.3cqw">${esc(a.size)} ${esc(T.ppl)} · ${esc(t(a.dur))}</div></div></div>`).join('')}</div>${foot(n+1)}`)}
+/* 6 programme */
+if(R&&R.prog){const pr=t(R.prog)||[];add(`<div class="ph" style="right:0;top:0;width:38cqw;bottom:0"><img src="${img(R.img[1])}" alt=""></div><div style="right:0;top:0;width:38cqw;bottom:0;background:linear-gradient(0deg,rgba(11,71,68,.55),rgba(11,71,68,0) 50%)"></div>
+<div style="left:4cqw;top:4.5cqw;width:52cqw"><div class="eb" style="color:var(--acc)">05</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.prog)}</div>
+<div style="margin-top:3cqw">${pr.map((d,i)=>`<div style="display:flex;gap:2cqw;align-items:flex-start;margin-bottom:2.2cqw"><div style="flex:none;width:6cqw;height:6cqw;border-radius:50%;background:${i==1?'var(--sun)':'var(--deep)'};color:${i==1?'var(--deep)':'#fff'};display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:.8cqw;letter-spacing:.15em">${esc(T.day.toUpperCase())}</span><span class="d" style="font-size:2.4cqw">${i+1}</span></div><div class="p" style="padding-top:1.4cqw;font-size:1.45cqw">${esc(d)}</div></div>`).join('')}</div>
+<div class="ul sun" style="margin-top:1cqw;columns:2;column-gap:2cqw">${(t(R.acts)||[]).map(a=>`<li>${esc(a)}</li>`).join('')}</div></div>${foot(n+1)}`)}
+/* per option */
+const AB='ABC';
+P.o.forEach((o,i)=>{const name=o.h||o.t;
+add(`<div class="ph" style="left:0;top:0;width:56cqw;bottom:0"><img src="${vph(o,0)}" alt=""></div>
+<div style="left:0;top:0;padding:1cqw 1.6cqw;background:var(--sun);color:var(--deep)" class="eb">${esc(T.option)} ${AB[i]}</div>
+<div style="left:60cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${esc(T.accom)}</div><div class="d" style="font-size:3.4cqw;color:var(--deep);margin-top:1cqw">${esc(name)}</div>
+<div style="font-size:1.25cqw;color:var(--muted);margin-top:1cqw">${esc(o.loc)}</div>
+<ul class="ul" style="margin-top:2cqw">${[o.r?`${o.r} ${T.rooms}${o.bd?` · ${o.bd} ${T.beds}`:''}`:'',o.mc?`${T.upTo} ${o.mc} ${T.ppl}`:'',o.m?`${o.m} ${T.meetRooms}`:'',o.st,o.ty].filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1cqw;margin-top:2.2cqw;height:14cqw">${[1,2].map(k=>`<div class="ph"><img src="${vph(o,k)}" alt=""></div>`).join('')}</div>
+${o.u?`<div style="margin-top:1.6cqw"><a class="lnk" href="${esc(o.u)}" target="_blank" rel="noopener">${esc(T.more)} »</a></div>`:''}</div>${foot(n+1)}`);
+const g=[3,4,5,6,7].map(k=>vph(o,k));
+add(`<div style="left:4cqw;top:4.5cqw;width:30cqw"><div class="eb" style="color:var(--acc)">${esc(T.option)} ${AB[i]}</div><div class="d" style="font-size:3.6cqw;color:var(--deep);margin-top:.6cqw">${esc(T.work)}</div>
+<p class="p" style="margin-top:2cqw;color:#3d4845">${esc(T.wsTxt)}</p>${o.mc?`<div style="margin-top:2.4cqw;background:var(--deep);color:#fff;padding:1.8cqw 2cqw"><div class="eb" style="color:var(--sun);font-size:.9cqw">${esc(T.upTo)}</div><div class="d" style="font-size:4cqw;margin-top:.6cqw">${o.mc} <span style="font-size:1.8cqw">${esc(T.ppl)}</span></div></div>`:''}</div>
+<div style="left:38cqw;top:4.5cqw;right:4cqw;bottom:8cqw;display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqw">${g.map((u,j)=>`<div class="ph" style="${j==0?'grid-row:1/3':''}"><img src="${u}" alt=""></div>`).join('')}</div>${foot(n+1)}`);
+add(`<div style="left:0;top:0;bottom:0;width:36cqw;background:var(--deep)"></div><div class="ph" style="left:4cqw;top:5cqw;width:28cqw;height:22cqw"><img src="${vph(o,8)}" alt=""></div>
+<div style="left:4cqw;top:30cqw;width:28cqw;color:#fff"><div class="eb" style="color:var(--sun)">${esc(T.option)} ${AB[i]} · ${esc(T.pkg)}</div><div class="d" style="font-size:2.6cqw;margin-top:1cqw">${esc(name)}</div></div>
+<div style="left:40cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${esc(T.incl)}</div><ul class="ul" style="margin-top:1.6cqw">${(o.in||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
+<div style="left:40cqw;right:4cqw;bottom:8cqw;background:var(--sand);padding:2.2cqw 2.6cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--muted);font-size:.9cqw">${esc(T.total)}</div><div class="price" style="margin-top:.8cqw">${eur(o.T)}</div></div><div style="text-align:right"><div class="d" style="font-size:2.6cqw;color:var(--teal)">${eur(o.P)}</div><div style="font-size:1.1cqw;color:var(--muted)">${esc(T.pp)}</div></div></div>${foot(n+1)}`)});
+/* compare */
+if(P.o.length>1){add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">${esc(T.acc)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.compare)}</div></div>
+<div style="left:4cqw;right:4cqw;top:15cqw;bottom:9cqw;display:grid;grid-template-columns:repeat(${P.o.length},1fr);gap:2cqw">${P.o.map((o,i)=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="height:15cqw;position:relative"><img src="${vph(o,0)}" alt=""><span class="eb" style="position:absolute;left:0;top:0;background:var(--sun);color:var(--deep);padding:.7cqw 1.2cqw">${esc(T.option)} ${AB[i]}</span></div>
+<div style="padding:1.6cqw 1.8cqw;display:flex;flex-direction:column;flex:1"><div class="d" style="font-size:1.9cqw;color:var(--deep)">${esc(o.h||o.t)}</div><div style="font-size:1.05cqw;color:var(--muted);margin-top:.5cqw">${esc(o.loc)}</div>
+<div style="margin-top:auto"><div class="d" style="font-size:3cqw;color:var(--deep)">${eur(o.T)}</div><div style="font-size:1.1cqw;color:var(--teal)">${eur(o.P)} ${esc(T.pp)}</div>${o.u?`<div style="margin-top:.8cqw"><a class="lnk" style="font-size:1.05cqw" href="${esc(o.u)}" target="_blank" rel="noopener">${esc(T.more)} »</a></div>`:''}</div></div></div>`).join('')}</div>
+<div style="left:4cqw;bottom:6cqw;font-size:1cqw;color:var(--muted);font-style:italic">${esc(P.n||T.note)}</div>${foot(n+1)}`)}
+/* how it works */
+add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">${esc(T.why2)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.how)}</div></div>
+<div style="left:4cqw;right:4cqw;top:15cqw;height:20cqw;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2cqw">${T.steps.map(([a,b],i)=>`<div style="background:${['#f3d9c9','#fbe7b0','#cfe6e1','#dfe3ef'][i]};padding:1.8cqw"><div class="d" style="font-size:3.4cqw;color:var(--deep)">0${i+1}</div><div style="font-weight:500;font-size:1.45cqw;color:var(--deep);margin-top:.8cqw">${esc(a)}</div><div style="font-size:1.12cqw;line-height:1.5;margin-top:.6cqw;color:#3d4845">${esc(b)}</div></div>`).join('')}</div>
+<div style="left:4cqw;right:4cqw;top:38.5cqw;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2cqw">${T.pillars.map(([a,b])=>`<div style="border-top:.3cqw solid var(--sun);padding-top:1.2cqw"><div class="d" style="font-size:1.8cqw;color:var(--deep)">${esc(a)}</div><div style="font-size:1.1cqw;line-height:1.5;margin-top:.5cqw;color:#3d4845">${esc(b)}</div></div>`).join('')}</div>${foot(n+1)}`);
+/* thanks */
+const sn=P.s||{};
+add(`<div class="ph" style="left:52cqw;top:0;right:0;bottom:0"><img src="${vph(P.o[0],9)||(R?img(R.img[1]):'')}" alt=""></div><div style="left:0;top:0;bottom:0;width:52cqw;background:var(--deep)"></div>
+<div class="logo w" style="left:4cqw;top:4cqw">Permanent Summer<small>VOYAGES</small></div>
+<div style="left:4cqw;top:16cqw;width:42cqw;color:#fff"><div class="d" style="font-size:7cqw">${esc(T.thanks)}</div><p class="p" style="margin-top:2cqw;opacity:.85">${esc(T.ps)}</p>
+<div style="margin-top:3cqw;font-size:1.35cqw;line-height:1.7">${[sn.n,sn.t,sn.e||'contact@permanentsummervoyages.com',sn.p||'+351 924 477 353'].filter(Boolean).map(esc).join('<br>')}</div>
+<a href="${L=='fr'?'../reserver-un-appel/':'../book-a-call/'}" style="display:inline-block;margin-top:2.6cqw;background:var(--sun);color:var(--deep);padding:1.1cqw 2.4cqw;border-radius:99px;font-weight:500;font-size:1.3cqw;text-decoration:none">${esc(T.cta)}</a></div>
+<div style="left:4cqw;bottom:3.4cqw;color:rgba(255,255,255,.6);font-size:1cqw;letter-spacing:.2em">PERMANENTSUMMERVOYAGES.COM</div>`);
+deck.innerHTML=S.join('');document.getElementById('tb').style.display='flex';
+document.title=(L=='fr'?'Proposition – ':'Proposal – ')+P.c+' | Permanent Summer Voyages';
+})();
+</script>
+</body>
+</html>
