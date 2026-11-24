@@ -20,6 +20,7 @@ body{font-family:var(--body);color:var(--ink);font-weight:300;-webkit-font-smoot
 .slide>*{position:absolute}
 img{display:block;width:100%;height:100%;object-fit:cover}
 .ph{overflow:hidden;background:var(--sand)}
+.slide>* .ph{position:relative}.slide>* .ph>img{position:absolute;inset:0}
 .d{font-family:var(--disp);font-weight:500;line-height:1.02;letter-spacing:-.01em}
 .eb{font-size:1.05cqw;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
 .p{font-size:1.32cqw;line-height:1.62}
@@ -101,7 +102,7 @@ add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">
 <p class="p" style="width:30cqw;margin-top:2.4cqw;color:#3d4845">${esc(P.i)}</p></div>
 <div style="left:40cqw;top:4.5cqw;right:4cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw">${cells.map(([k,v],i)=>`<div style="background:${i==0?'var(--deep)':'var(--sand)'};color:${i==0?'#fff':'var(--deep)'};padding:2cqw 2.2cqw;${i==4?'grid-column:1/-1':''}"><div class="eb" style="opacity:.75;font-size:.9cqw">${esc(k)}</div><div class="d" style="font-size:${String(v).length>40?'1.9cqw':String(v).length>18?'2.5cqw':'3.6cqw'};margin-top:1cqw">${esc(v)}</div></div>`).join('')}</div>${foot(n+1)}`);
 /* destination blocks */
-function destBlock(R,prog,label){
+function destBlock(R,prog,label,Xin,dname){
 if(R){
 add(`<div class="ph" style="left:0;top:0;width:58cqw;bottom:0"><img src="${img(R.img[0])}" alt=""></div>
 <div style="left:62cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${sec()} · ${esc(label?label+' · ':'')}${esc(t(R.c))}</div><div class="d" style="font-size:5.4cqw;color:var(--deep);margin-top:1cqw">${esc(t(R.n))}</div>
@@ -114,12 +115,15 @@ add(`<div style="left:4cqw;top:4.5cqw;width:40cqw"><div class="eb" style="color:
 <div style="margin-top:2.6cqw;display:grid;gap:1.6cqw">${[[T.fly,t(R.fly)],[T.when,t(R.when)],[T.stay,t(R.stay)]].map(([k,v])=>`<div style="border-left:.35cqw solid var(--sun);padding-left:1.4cqw"><div class="eb" style="color:var(--teal);font-size:.9cqw">${esc(k)}</div><div class="p" style="margin-top:.3cqw">${esc(v)}</div></div>`).join('')}</div></div>
 <div style="left:48cqw;top:4.5cqw;right:4cqw;bottom:8cqw;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqw">${p2.map((u,i)=>`<div class="ph" style="${i==0?'grid-row:1/3':''}"><img src="${u}" alt=""></div>`).join('')}</div>${foot(n+1)}`);
 }
-/* activities */
-const AL=(window.ACTLIB||[]);let acts=R?AL.filter(a=>(a.where||[]).includes(R.s)):[];
-const fill=AL.filter(a=>!acts.includes(a)&&['food','crea','well','adv','sea'].includes(a.cat));
-acts=acts.concat(fill).slice(0,6);
-if(acts.length){add(`<div style="left:4cqw;top:4.5cqw;right:4cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--acc)">${sec()} · ${esc(T.acts)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(R?T.actTitle+' '+t(R.n):T.acts)}</div></div><p class="p" style="width:34cqw;color:var(--muted);text-align:right">${esc(T.actsSub)}</p></div>
-<div style="left:4cqw;right:4cqw;top:17cqw;bottom:8cqw;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:1.4cqw">${acts.map(a=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="flex:1;min-height:0"><img src="${img(a.img)}" alt=""></div><div style="padding:1.1cqw 1.3cqw"><div style="font-weight:500;font-size:1.35cqw;color:var(--deep)">${esc(t(a.n))}</div><div style="font-size:1cqw;color:var(--muted);margin-top:.3cqw">${esc(a.size)} ${esc(T.ppl)} · ${esc(t(a.dur))}</div></div></div>`).join('')}</div>${foot(n+1)}`)}
+/* activities: real local activities first, then guide activities for this exact destination, then only location-neutral ideas */
+const AL=(window.ACTLIB||[]);const X=(Xin||[]).slice(0,6);
+let lib=R?AL.filter(a=>(a.where||[]).includes(R.s)):[];
+if(X.length<6&&X.length+lib.length<6&&(R||X.length))lib=lib.concat(AL.filter(a=>!lib.includes(a)&&['food','crea','well'].includes(a.cat)&&!(a.where||[]).length));
+const cards=X.map(a=>({txt:1,e:a.e||'✨',n:a.n,m:[a.cp?(/^\s*\d+\s*([–-]\s*\d+)?\s*\+?\s*$/.test(a.cp)?a.cp.trim()+' '+T.ppl:a.cp):'',a.du].filter(Boolean).join(' · '),d:a.d})).concat(lib.map(a=>({img:img(a.img),n:t(a.n),m:`${a.size} ${T.ppl} · ${t(a.dur)}`,d:t(a.d)}))).slice(0,6);
+const place=R?t(R.n):(dname||'');
+if(cards.length){const rows=cards.length>3?2:1;add(`<div style="left:4cqw;top:4.5cqw;right:4cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--acc)">${sec()} · ${esc(T.acts)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(place?T.actTitle+' '+place:T.acts)}</div></div><p class="p" style="width:34cqw;color:var(--muted);text-align:right">${esc(T.actsSub)}</p></div>
+<div style="left:4cqw;right:4cqw;top:16cqw;bottom:8.5cqw;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(${rows},minmax(0,1fr));gap:1.4cqw">${cards.map((a,i)=>a.txt?`<div style="min-height:0;overflow:hidden;display:flex;flex-direction:column;background:${['#f6efe4','#e7f1ee','#fbf1d6'][i%3]};padding:1.8cqw 2cqw"><div style="font-size:2.6cqw;line-height:1">${a.e}</div><div class="d" style="font-size:1.75cqw;color:var(--deep);margin-top:1.2cqw;line-height:1.15">${esc(a.n)}</div>${a.m?`<div style="font-size:1cqw;color:var(--teal);margin-top:.6cqw;letter-spacing:.04em">${esc(a.m)}</div>`:''}${a.d?`<div style="font-size:1.08cqw;line-height:1.5;color:#3d4845;margin-top:.8cqw;overflow:hidden">${esc(a.d)}</div>`:''}</div>`
+:`<div style="min-height:0;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="position:relative;flex:1 1 0;min-height:0"><img src="${a.img}" alt=""></div><div style="flex:none;padding:1cqw 1.3cqw"><div style="font-weight:500;font-size:1.3cqw;color:var(--deep)">${esc(a.n)}</div><div style="font-size:1cqw;color:var(--muted);margin-top:.3cqw">${esc(a.m)}</div></div></div>`).join('')}</div>${foot(n+1)}`)}
 /* 6 programme */
 if(prog&&R&&R.prog){const pr=t(R.prog)||[];add(`<div class="ph" style="right:0;top:0;width:38cqw;bottom:0"><img src="${img(R.img[1])}" alt=""></div><div style="right:0;top:0;width:38cqw;bottom:0;background:linear-gradient(0deg,rgba(11,71,68,.55),rgba(11,71,68,0) 50%)"></div>
 <div style="left:4cqw;top:4.5cqw;width:52cqw"><div class="eb" style="color:var(--acc)">${sec()}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.prog)}</div>
@@ -144,8 +148,8 @@ add(`<div style="left:0;top:0;bottom:0;width:36cqw;background:var(--deep)"></div
 <div style="left:40cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${esc(T.incl)}</div><ul class="ul" style="margin-top:1.6cqw">${(o.in||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
 <div style="left:40cqw;right:4cqw;bottom:8cqw;background:var(--sand);padding:2.2cqw 2.6cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--muted);font-size:.9cqw">${esc(T.total)}</div><div class="price" style="margin-top:.8cqw">${eur(o.T)}</div></div><div style="text-align:right"><div class="d" style="font-size:2.6cqw;color:var(--teal)">${eur(o.P)}</div><div style="font-size:1.1cqw;color:var(--muted)">${esc(T.pp)}</div></div></div>${foot(n+1)}`)}
 /* flow: one destination = story then options; several = each destination followed by its options */
-if(!MULTI){destBlock(R,true,'');P.o.forEach((o,i)=>optBlock(o,i))}
-else{const done=new Set();DS.forEach((x,j)=>{if(x.R)destBlock(x.R,false,(L=='fr'?'Destination ':'Destination ')+(j+1));P.o.forEach((o,i)=>{if(!done.has(i)&&(o.d||'')==(x.d||'')&&(o.dn||'')==(x.dn||'')){done.add(i);optBlock(o,i)}})});P.o.forEach((o,i)=>{if(!done.has(i))optBlock(o,i)})}
+if(!MULTI){destBlock(R,true,'',DS[0]&&DS[0].x,DS[0]&&DS[0].name);P.o.forEach((o,i)=>optBlock(o,i))}
+else{const done=new Set();DS.forEach((x,j)=>{if(x.R||(x.x||[]).length)destBlock(x.R,false,'Destination '+(j+1),x.x,x.name);P.o.forEach((o,i)=>{if(!done.has(i)&&(o.d||'')==(x.d||'')&&(o.dn||'')==(x.dn||'')){done.add(i);optBlock(o,i)}})});P.o.forEach((o,i)=>{if(!done.has(i))optBlock(o,i)})}
 /* compare */
 if(P.o.length>1){add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">${esc(T.acc)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.compare)}</div></div>
 <div style="left:4cqw;right:4cqw;top:15cqw;bottom:9cqw;display:grid;grid-template-columns:repeat(${P.o.length},1fr);gap:2cqw">${P.o.map((o,i)=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="height:15cqw;position:relative"><img src="${vph(o,0)}" alt=""><span class="eb" style="position:absolute;left:0;top:0;background:var(--sun);color:var(--deep);padding:.7cqw 1.2cqw">${esc(T.option)} ${optNo(i)}</span></div>
