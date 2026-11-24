@@ -72,12 +72,17 @@ const T={en:{prop:'Company retreat proposal',for:'Handcrafted for',brief:'The br
  actTitle:'Idées de team building à'}}[L];
 const t=o=>o?(o[L]||o.en||''):'';
 document.getElementById('tbPdf').textContent=T.pdf;const tbc=document.getElementById('tbCall');tbc.textContent=T.cta;tbc.href=L=='fr'?'../reserver-un-appel/':'../book-a-call/';
-const R=(window.RETREATS||[]).find(r=>r.s==P.d);
+const RT=window.RETREATS||[];
+const DS=(P.ds&&P.ds.length?P.ds:(P.d||P.dn?[{d:P.d,dn:P.dn}]:[])).map(x=>{const R=RT.find(r=>r.s==x.d)||null;return{...x,R,name:x.dn||(R?t(R.n):'')}});
+const MULTI=DS.length>1;let R=DS[0]&&DS[0].R||null;
+let SEC=1;const sec=()=>String(++SEC).padStart(2,'0');
 const img=k=>'../img/'+k+'.jpg';
 const loc=L=='fr'?'fr-FR':'en-GB',fd=d=>new Date(d+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long',year:'numeric'});
 const dates=P.a&&P.b?`${new Date(P.a+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long'})} – ${fd(P.b)}`:'';
 const nights=P.a&&P.b?Math.round((new Date(P.b)-new Date(P.a))/864e5):'';
-const destName=P.dn||(R?t(R.n)+', '+t(R.c):'');
+const joinL=a=>a.length<2?(a[0]||''):a.slice(0,-1).join(', ')+(L=='fr'?' et ':' & ')+a[a.length-1];
+const destName=MULTI?joinL(DS.map(x=>x.name).filter(Boolean)):(DS[0]?(DS[0].dn||(R?t(R.n)+', '+t(R.c):'')):'');
+const optNo=i=>i+1;
 const eur=v=>'€'+Math.round(v).toLocaleString('en-GB');
 const vph=(o,i)=>o.v&&o.v.length?MEDIA+o.s+'/'+String(o.v[Math.min(i,o.v.length-1)]).padStart(2,'0')+'.webp':'';
 const heroImg=R?img(R.img[0]):vph(P.o[0],0);
@@ -95,51 +100,55 @@ const cells=[[T.people,P.x],[T.dest,destName||'—'],[T.nights,nights],[T.dates,
 add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">01</div><div class="d" style="font-size:5cqw;color:var(--deep);margin-top:.6cqw">${esc(T.brief)}</div>
 <p class="p" style="width:30cqw;margin-top:2.4cqw;color:#3d4845">${esc(P.i)}</p></div>
 <div style="left:40cqw;top:4.5cqw;right:4cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw">${cells.map(([k,v],i)=>`<div style="background:${i==0?'var(--deep)':'var(--sand)'};color:${i==0?'#fff':'var(--deep)'};padding:2cqw 2.2cqw;${i==4?'grid-column:1/-1':''}"><div class="eb" style="opacity:.75;font-size:.9cqw">${esc(k)}</div><div class="d" style="font-size:${String(v).length>40?'1.9cqw':String(v).length>18?'2.5cqw':'3.6cqw'};margin-top:1cqw">${esc(v)}</div></div>`).join('')}</div>${foot(n+1)}`);
-/* 3 destination */
+/* destination blocks */
+function destBlock(R,prog,label){
 if(R){
 add(`<div class="ph" style="left:0;top:0;width:58cqw;bottom:0"><img src="${img(R.img[0])}" alt=""></div>
-<div style="left:62cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">02 · ${esc(t(R.c))}</div><div class="d" style="font-size:5.4cqw;color:var(--deep);margin-top:1cqw">${esc(t(R.n))}</div>
+<div style="left:62cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${sec()} · ${esc(label?label+' · ':'')}${esc(t(R.c))}</div><div class="d" style="font-size:5.4cqw;color:var(--deep);margin-top:1cqw">${esc(t(R.n))}</div>
 <div class="d" style="font-style:italic;font-weight:400;font-size:2cqw;color:var(--teal);margin-top:1.6cqw">${esc(t(R.t))}</div>
 <p class="p" style="margin-top:2cqw;color:#3d4845">${esc(t(R.d))}</p>
 <div style="margin-top:2cqw">${(t(R.vibe)||[]).map(v=>`<span class="chip" style="background:var(--sand);color:var(--deep);margin:0 .5cqw .5cqw 0">${esc(v)}</span>`).join('')}</div></div>${foot(n+1)}`);
 /* 4 why */
-const p2=[img(R.img[1]),...P.o.map(o=>vph(o,0)).filter(Boolean)].slice(0,3);
-add(`<div style="left:4cqw;top:4.5cqw;width:40cqw"><div class="eb" style="color:var(--acc)">03</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.why)} ${esc(t(R.n))}</div>
+const p2=[img(R.img[1]),...P.o.filter(o=>!MULTI||o.d==R.s).map(o=>vph(o,0)).filter(Boolean),img(R.img[2]||R.img[0])].slice(0,3);
+add(`<div style="left:4cqw;top:4.5cqw;width:40cqw"><div class="eb" style="color:var(--acc)">${sec()}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.why)} ${esc(t(R.n))}</div>
 <div style="margin-top:2.6cqw;display:grid;gap:1.6cqw">${[[T.fly,t(R.fly)],[T.when,t(R.when)],[T.stay,t(R.stay)]].map(([k,v])=>`<div style="border-left:.35cqw solid var(--sun);padding-left:1.4cqw"><div class="eb" style="color:var(--teal);font-size:.9cqw">${esc(k)}</div><div class="p" style="margin-top:.3cqw">${esc(v)}</div></div>`).join('')}</div></div>
 <div style="left:48cqw;top:4.5cqw;right:4cqw;bottom:8cqw;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqw">${p2.map((u,i)=>`<div class="ph" style="${i==0?'grid-row:1/3':''}"><img src="${u}" alt=""></div>`).join('')}</div>${foot(n+1)}`);
 }
-/* 5 activities */
+/* activities */
 const AL=(window.ACTLIB||[]);let acts=R?AL.filter(a=>(a.where||[]).includes(R.s)):[];
 const fill=AL.filter(a=>!acts.includes(a)&&['food','crea','well','adv','sea'].includes(a.cat));
 acts=acts.concat(fill).slice(0,6);
-if(acts.length){add(`<div style="left:4cqw;top:4.5cqw;right:4cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--acc)">04 · ${esc(T.acts)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(R?T.actTitle+' '+t(R.n):T.acts)}</div></div><p class="p" style="width:34cqw;color:var(--muted);text-align:right">${esc(T.actsSub)}</p></div>
+if(acts.length){add(`<div style="left:4cqw;top:4.5cqw;right:4cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--acc)">${sec()} · ${esc(T.acts)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(R?T.actTitle+' '+t(R.n):T.acts)}</div></div><p class="p" style="width:34cqw;color:var(--muted);text-align:right">${esc(T.actsSub)}</p></div>
 <div style="left:4cqw;right:4cqw;top:17cqw;bottom:8cqw;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:1.4cqw">${acts.map(a=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="flex:1;min-height:0"><img src="${img(a.img)}" alt=""></div><div style="padding:1.1cqw 1.3cqw"><div style="font-weight:500;font-size:1.35cqw;color:var(--deep)">${esc(t(a.n))}</div><div style="font-size:1cqw;color:var(--muted);margin-top:.3cqw">${esc(a.size)} ${esc(T.ppl)} · ${esc(t(a.dur))}</div></div></div>`).join('')}</div>${foot(n+1)}`)}
 /* 6 programme */
-if(R&&R.prog){const pr=t(R.prog)||[];add(`<div class="ph" style="right:0;top:0;width:38cqw;bottom:0"><img src="${img(R.img[1])}" alt=""></div><div style="right:0;top:0;width:38cqw;bottom:0;background:linear-gradient(0deg,rgba(11,71,68,.55),rgba(11,71,68,0) 50%)"></div>
-<div style="left:4cqw;top:4.5cqw;width:52cqw"><div class="eb" style="color:var(--acc)">05</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.prog)}</div>
+if(prog&&R&&R.prog){const pr=t(R.prog)||[];add(`<div class="ph" style="right:0;top:0;width:38cqw;bottom:0"><img src="${img(R.img[1])}" alt=""></div><div style="right:0;top:0;width:38cqw;bottom:0;background:linear-gradient(0deg,rgba(11,71,68,.55),rgba(11,71,68,0) 50%)"></div>
+<div style="left:4cqw;top:4.5cqw;width:52cqw"><div class="eb" style="color:var(--acc)">${sec()}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.prog)}</div>
 <div style="margin-top:3cqw">${pr.map((d,i)=>`<div style="display:flex;gap:2cqw;align-items:flex-start;margin-bottom:2.2cqw"><div style="flex:none;width:6cqw;height:6cqw;border-radius:50%;background:${i==1?'var(--sun)':'var(--deep)'};color:${i==1?'var(--deep)':'#fff'};display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:.8cqw;letter-spacing:.15em">${esc(T.day.toUpperCase())}</span><span class="d" style="font-size:2.4cqw">${i+1}</span></div><div class="p" style="padding-top:1.4cqw;font-size:1.45cqw">${esc(d)}</div></div>`).join('')}</div>
 <div class="ul sun" style="margin-top:1cqw;columns:2;column-gap:2cqw">${(t(R.acts)||[]).map(a=>`<li>${esc(a)}</li>`).join('')}</div></div>${foot(n+1)}`)}
+}
 /* per option */
-const AB='ABC';
-P.o.forEach((o,i)=>{const name=o.h||o.t;
+function optBlock(o,i){const name=o.h||o.t;
 add(`<div class="ph" style="left:0;top:0;width:56cqw;bottom:0"><img src="${vph(o,0)}" alt=""></div>
-<div style="left:0;top:0;padding:1cqw 1.6cqw;background:var(--sun);color:var(--deep)" class="eb">${esc(T.option)} ${AB[i]}</div>
+<div style="left:0;top:0;padding:1cqw 1.6cqw;background:var(--sun);color:var(--deep)" class="eb">${esc(T.option)} ${optNo(i)}</div>
 <div style="left:60cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${esc(T.accom)}</div><div class="d" style="font-size:3.4cqw;color:var(--deep);margin-top:1cqw">${esc(name)}</div>
 <div style="font-size:1.25cqw;color:var(--muted);margin-top:1cqw">${esc(o.loc)}</div>
 <ul class="ul" style="margin-top:2cqw">${[o.r?`${o.r} ${T.rooms}${o.bd?` · ${o.bd} ${T.beds}`:''}`:'',o.mc?`${T.upTo} ${o.mc} ${T.ppl}`:'',o.m?`${o.m} ${T.meetRooms}`:'',o.st,o.ty].filter(Boolean).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1cqw;margin-top:2.2cqw;height:14cqw">${[1,2].map(k=>`<div class="ph"><img src="${vph(o,k)}" alt=""></div>`).join('')}</div>
 ${o.u?`<div style="margin-top:1.6cqw"><a class="lnk" href="${esc(o.u)}" target="_blank" rel="noopener">${esc(T.more)} »</a></div>`:''}</div>${foot(n+1)}`);
 const g=[3,4,5,6,7].map(k=>vph(o,k));
-add(`<div style="left:4cqw;top:4.5cqw;width:30cqw"><div class="eb" style="color:var(--acc)">${esc(T.option)} ${AB[i]}</div><div class="d" style="font-size:3.6cqw;color:var(--deep);margin-top:.6cqw">${esc(T.work)}</div>
+add(`<div style="left:4cqw;top:4.5cqw;width:30cqw"><div class="eb" style="color:var(--acc)">${esc(T.option)} ${optNo(i)}</div><div class="d" style="font-size:3.6cqw;color:var(--deep);margin-top:.6cqw">${esc(T.work)}</div>
 <p class="p" style="margin-top:2cqw;color:#3d4845">${esc(T.wsTxt)}</p>${o.mc?`<div style="margin-top:2.4cqw;background:var(--deep);color:#fff;padding:1.8cqw 2cqw"><div class="eb" style="color:var(--sun);font-size:.9cqw">${esc(T.upTo)}</div><div class="d" style="font-size:4cqw;margin-top:.6cqw">${o.mc} <span style="font-size:1.8cqw">${esc(T.ppl)}</span></div></div>`:''}</div>
 <div style="left:38cqw;top:4.5cqw;right:4cqw;bottom:8cqw;display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:1cqw">${g.map((u,j)=>`<div class="ph" style="${j==0?'grid-row:1/3':''}"><img src="${u}" alt=""></div>`).join('')}</div>${foot(n+1)}`);
 add(`<div style="left:0;top:0;bottom:0;width:36cqw;background:var(--deep)"></div><div class="ph" style="left:4cqw;top:5cqw;width:28cqw;height:22cqw"><img src="${vph(o,8)}" alt=""></div>
-<div style="left:4cqw;top:30cqw;width:28cqw;color:#fff"><div class="eb" style="color:var(--sun)">${esc(T.option)} ${AB[i]} · ${esc(T.pkg)}</div><div class="d" style="font-size:2.6cqw;margin-top:1cqw">${esc(name)}</div></div>
+<div style="left:4cqw;top:30cqw;width:28cqw;color:#fff"><div class="eb" style="color:var(--sun)">${esc(T.option)} ${optNo(i)} · ${esc(T.pkg)}</div><div class="d" style="font-size:2.6cqw;margin-top:1cqw">${esc(name)}</div></div>
 <div style="left:40cqw;top:5cqw;right:4cqw"><div class="eb" style="color:var(--acc)">${esc(T.incl)}</div><ul class="ul" style="margin-top:1.6cqw">${(o.in||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
-<div style="left:40cqw;right:4cqw;bottom:8cqw;background:var(--sand);padding:2.2cqw 2.6cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--muted);font-size:.9cqw">${esc(T.total)}</div><div class="price" style="margin-top:.8cqw">${eur(o.T)}</div></div><div style="text-align:right"><div class="d" style="font-size:2.6cqw;color:var(--teal)">${eur(o.P)}</div><div style="font-size:1.1cqw;color:var(--muted)">${esc(T.pp)}</div></div></div>${foot(n+1)}`)});
+<div style="left:40cqw;right:4cqw;bottom:8cqw;background:var(--sand);padding:2.2cqw 2.6cqw;display:flex;justify-content:space-between;align-items:flex-end"><div><div class="eb" style="color:var(--muted);font-size:.9cqw">${esc(T.total)}</div><div class="price" style="margin-top:.8cqw">${eur(o.T)}</div></div><div style="text-align:right"><div class="d" style="font-size:2.6cqw;color:var(--teal)">${eur(o.P)}</div><div style="font-size:1.1cqw;color:var(--muted)">${esc(T.pp)}</div></div></div>${foot(n+1)}`)}
+/* flow: one destination = story then options; several = each destination followed by its options */
+if(!MULTI){destBlock(R,true,'');P.o.forEach((o,i)=>optBlock(o,i))}
+else{const done=new Set();DS.forEach((x,j)=>{if(x.R)destBlock(x.R,false,(L=='fr'?'Destination ':'Destination ')+(j+1));P.o.forEach((o,i)=>{if(!done.has(i)&&(o.d||'')==(x.d||'')&&(o.dn||'')==(x.dn||'')){done.add(i);optBlock(o,i)}})});P.o.forEach((o,i)=>{if(!done.has(i))optBlock(o,i)})}
 /* compare */
 if(P.o.length>1){add(`<div style="left:4cqw;top:4.5cqw"><div class="eb" style="color:var(--acc)">${esc(T.acc)}</div><div class="d" style="font-size:4.2cqw;color:var(--deep);margin-top:.6cqw">${esc(T.compare)}</div></div>
-<div style="left:4cqw;right:4cqw;top:15cqw;bottom:9cqw;display:grid;grid-template-columns:repeat(${P.o.length},1fr);gap:2cqw">${P.o.map((o,i)=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="height:15cqw;position:relative"><img src="${vph(o,0)}" alt=""><span class="eb" style="position:absolute;left:0;top:0;background:var(--sun);color:var(--deep);padding:.7cqw 1.2cqw">${esc(T.option)} ${AB[i]}</span></div>
+<div style="left:4cqw;right:4cqw;top:15cqw;bottom:9cqw;display:grid;grid-template-columns:repeat(${P.o.length},1fr);gap:2cqw">${P.o.map((o,i)=>`<div style="display:flex;flex-direction:column;background:#fff;box-shadow:0 .4cqw 1.6cqw rgba(11,71,68,.08)"><div class="ph" style="height:15cqw;position:relative"><img src="${vph(o,0)}" alt=""><span class="eb" style="position:absolute;left:0;top:0;background:var(--sun);color:var(--deep);padding:.7cqw 1.2cqw">${esc(T.option)} ${optNo(i)}</span></div>
 <div style="padding:1.6cqw 1.8cqw;display:flex;flex-direction:column;flex:1"><div class="d" style="font-size:1.9cqw;color:var(--deep)">${esc(o.h||o.t)}</div><div style="font-size:1.05cqw;color:var(--muted);margin-top:.5cqw">${esc(o.loc)}</div>
 <div style="margin-top:auto"><div class="d" style="font-size:3cqw;color:var(--deep)">${eur(o.T)}</div><div style="font-size:1.1cqw;color:var(--teal)">${eur(o.P)} ${esc(T.pp)}</div>${o.u?`<div style="margin-top:.8cqw"><a class="lnk" style="font-size:1.05cqw" href="${esc(o.u)}" target="_blank" rel="noopener">${esc(T.more)} »</a></div>`:''}</div></div></div>`).join('')}</div>
 <div style="left:4cqw;bottom:6cqw;font-size:1cqw;color:var(--muted);font-style:italic">${esc(P.n||T.note)}</div>${foot(n+1)}`)}
