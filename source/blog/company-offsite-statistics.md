@@ -60,7 +60,7 @@ Emburse's report is based on a survey of 2,000 US full-time employees conducted 
 
 ## Turn the data into a plan
 
-[Talk to our expert](#appel) and we'll help you plan a retreat that fits your goals and budget, with 3 proposals including every participant's flight. Or try the [budget calculator](#budget).
+[Talk to our expert](#appel) and we'll help you plan a retreat that fits your goals and budget, with tailored proposals including every participant's flight. Or try the [budget calculator](#budget).
 
 *Sources: [Emburse, The State of Corporate Offsites](https://www.emburse.com/resources/the-state-of-corporate-offsites-2025) · [Surf Office, The State of Company Offsites Report 2026](https://www.surfoffice.com/blog/company-offsites-report)*
 

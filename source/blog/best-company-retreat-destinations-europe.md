@@ -78,7 +78,7 @@ Riads, desert camps under the stars and a short flight from Europe. [Discover Ma
 - **Match the season.** Southern Europe is best in spring and autumn; cities work all year.
 - **Match the goal.** Strategy needs calm; celebration needs energy.
 
-See every destination on our [company retreats page](#retraites), estimate your budget with the [calculator](#budget), or [talk to our expert](#appel) to get 3 tailored proposals, flights included.
+See every destination on our [company retreats page](#retraites), estimate your budget with the [calculator](#budget), or [talk to our expert](#appel) to get tailored proposals, flights included.
 
 ## FAQ
 

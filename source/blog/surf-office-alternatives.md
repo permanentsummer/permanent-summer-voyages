@@ -53,14 +53,14 @@ We combine 35 years of travel agency experience with international hospitality a
 - **Every participant's flight**, booked and coordinated from their own city.
 - **One budget per person**, flights included.
 - **One payment partner:** you pay only us, in two stages. First we secure the destination, venue, meals, meeting room and flights; then we finalise activities, special dinners and transfers.
-- **A call with our expert, then 3 tailored proposals.**
+- **A call with our expert, then tailored proposals.**
 - **A real person reachable seven days a week** during the trip.
 
 We love surf retreats too: see our [surf retreat guide](#post-surf-retreat-for-teams) and [Ericeira](#retraite-ericeira).
 
 ## Make your choice
 
-[Talk to our expert](#appel) to receive 3 proposals you can compare like for like, flights included. Or estimate your budget with our [calculator](#budget).
+[Talk to our expert](#appel) to receive proposals you can compare like for like, flights included. Or estimate your budget with our [calculator](#budget).
 
 ## FAQ
 

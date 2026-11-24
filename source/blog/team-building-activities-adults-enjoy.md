@@ -64,7 +64,7 @@ Browse our full [team-building activities library](#activites), with ideas by de
 
 ## Let us organise it
 
-We pick activities that fit your team and destination, and handle everything from guides to transfers. [Talk to our expert](#appel) to get 3 proposals including activities and every participant's flight.
+We pick activities that fit your team and destination, and handle everything from guides to transfers. [Talk to our expert](#appel) to get tailored proposals including activities and every participant's flight.
 
 ## FAQ
 
