@@ -54,7 +54,7 @@ For three nights with flights, plan roughly €1,100 to €2,200 per person. A d
 
 ## Plan it with us
 
-[Talk to our expert](#appel) and we'll design a Moroccan retreat around your goals, with 3 tailored proposals and flights included. Looking for a reward trip? Read our [incentive trip ideas](#post-incentive-trip-ideas).
+[Talk to our expert](#appel) and we'll design a Moroccan retreat around your goals, with tailored proposals and flights included. Looking for a reward trip? Read our [incentive trip ideas](#post-incentive-trip-ideas).
 
 ## FAQ
 

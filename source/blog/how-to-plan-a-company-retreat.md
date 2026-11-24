@@ -82,7 +82,7 @@ Run a three-question survey after the retreat: what was most useful, what should
 
 ## Plan it yourself, or let us handle it
 
-You can plan all of this in-house. It usually takes 60 to 100 hours of someone's time. Or you can [talk to our expert](#appel): we listen to your goals, then send 3 tailored proposals covering venue, programme, activities and every participant's flight. You can also [tell us about your project](#brief) in a few quick questions.
+You can plan all of this in-house. It usually takes 60 to 100 hours of someone's time. Or you can [talk to our expert](#appel): we listen to your goals, then send tailored proposals covering venue, programme, activities and every participant's flight. You can also [tell us about your project](#brief) in a few quick questions.
 
 ## FAQ
 

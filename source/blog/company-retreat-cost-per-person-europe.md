@@ -69,7 +69,7 @@ The same team in July, booked six weeks before, could easily cost €2,400 or mo
 
 ## Get your number
 
-Use the [budget calculator](#budget) for an instant range, or [talk to our expert](#appel): we'll check your departure cities and dates, then send 3 proposals with the full cost per person, flights included.
+Use the [budget calculator](#budget) for an instant range, or [talk to our expert](#appel): we'll check your departure cities and dates, then send tailored proposals with the full cost per person, flights included.
 
 ## FAQ
 

@@ -59,7 +59,7 @@ An event where you host clients, partners or distributors: a launch, a conferenc
 
 Ask yourself what people should feel and do on the Monday after. If the answer is "know exactly what we're doing next year", you need an offsite. If it's "trust each other more", you need a retreat. If it's "feel rewarded", you need an incentive.
 
-Not sure? [Talk to our expert](#appel). We'll help you pick the right format and send 3 proposals, flights included. Or check our [budget calculator](#budget) to see what each format costs.
+Not sure? [Talk to our expert](#appel). We'll help you pick the right format and send tailored proposals, flights included. Or check our [budget calculator](#budget) to see what each format costs.
 
 ## FAQ
 

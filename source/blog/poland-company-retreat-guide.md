@@ -61,7 +61,7 @@ Poland offers some of the best value in Europe. For three nights with flights, m
 
 ## Plan your Poland retreat
 
-We work with partner hotels in Kraków, Zakopane and Gdańsk and book every participant's flight. [Talk to our expert](#appel) to get 3 proposals.
+We work with partner hotels in Kraków, Zakopane and Gdańsk and book every participant's flight. [Talk to our expert](#appel) to get tailored proposals.
 
 ## FAQ
 

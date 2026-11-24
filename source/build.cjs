@@ -81,14 +81,14 @@ function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
   let title, desc, image = "hero_sandboard", crumbs = null, noindex = false;
   if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
-    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. 3 propositions sur mesure, vols de chaque participant compris.",
-             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. 3 tailored proposals, every participant's flights included."); }
+    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. Des propositions sur mesure, vols de chaque participant compris.",
+             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. Tailored proposals, every participant's flights included."); }
   else if (key === "voyages") { title = L("Voyages sur mesure, vols compris", "Tailor-made travel, flights included");
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
   else if (key === "comment") { title = L("Comment ça marche : retraites d'entreprise avec vols de groupe", "How it works: company retreats with group flights");
-    desc = L("Un échange avec notre expert, 3 propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
-             "A call with our expert, 3 tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
+    desc = L("Un échange avec notre expert, des propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
+             "A call with our expert, tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
     desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez 300 lieux partenaires dans 38 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
              "Hotels, villas, estates: host company retreats on weekdays. Join over 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
@@ -99,8 +99,8 @@ function meta(key, lg) {
     title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
     crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
   else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
-    desc = L("Quelques questions rapides et un échange avec notre expert, puis 3 propositions complètes : lieu, programme, activités, vols et budget par personne.",
-             "A few quick questions and a call with our expert, then 3 complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
+    desc = L("Quelques questions rapides et un échange avec notre expert, puis des propositions complètes : lieu, programme, activités, vols et budget par personne.",
+             "A few quick questions and a call with our expert, then complete proposals: venue, programme, activities, flights and budget per person."); image = "act_cooking"; }
   else if (key === "evenements") { title = L("Séminaires, team building, incentives et voyages de groupe", "Offsites, team building, incentives and group trips");
     desc = L("Séminaire d'entreprise, team building, séminaire de direction, kick-off commercial, voyage incentive : un format pour chaque objectif, vols compris.",
              "Company offsites, team building, leadership retreats, sales kickoffs, incentive trips: a format for every goal, flights included."); image = "act_workshop3"; }
@@ -138,8 +138,8 @@ function meta(key, lg) {
     desc = L("Couples, familles et amis racontent leur voyage en quelques secondes. De vraies personnes, de vrais itinéraires.",
              "Couples, families and friends share their trip in a few seconds. Real people, real itineraries."); image = "plane2"; }
   else if (key === "groupes") { title = L("Voyages de groupe pour associations, clubs et équipes", "Group travel for associations, clubs and teams");
-    desc = L("Associations, clubs, équipes sportives, CSE, écoles : vols de groupe, hébergement et coordination de 10 à 300 personnes, 3 propositions sur mesure.",
-             "Associations, clubs, sports teams, works councils, schools: group flights, accommodation and coordination for 10 to 300 people, 3 tailored proposals."); image = "act_rowing"; }
+    desc = L("Associations, clubs, équipes sportives, CSE, écoles : vols de groupe, hébergement et coordination de 10 à 300 personnes, des propositions sur mesure.",
+             "Associations, clubs, sports teams, works councils, schools: group flights, accommodation and coordination for 10 to 300 people, tailored proposals."); image = "act_rowing"; }
   else if (key === "entreprises") { title = L("Voyages d'affaires pour PME et équipes internationales", "Business travel for SMEs and international teams");
     desc = L("Billets, hôtels, factures et assistance 7j/7 pour les PME, startups et équipes internationales, avec un interlocuteur unique qui connaît vos voyageurs.",
              "Tickets, hotels, invoices and 7-day support for SMEs, startups and international teams, with one contact who knows your travellers."); image = "plane"; }

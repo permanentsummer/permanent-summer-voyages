@@ -70,7 +70,7 @@ Portugal remains good value. For three nights with flights included, most teams 
 
 ## Plan it with a local team
 
-We live here, we know the venues and we book every participant's flight. [Talk to our expert](#appel) to get 3 proposals for your Portugal retreat.
+We live here, we know the venues and we book every participant's flight. [Talk to our expert](#appel) to get tailored proposals for your Portugal retreat.
 
 ## FAQ
 

@@ -63,7 +63,7 @@ For three nights with flights, expect roughly €1,400 to €2,400 per person, d
 
 ## Let us plan it
 
-We work with partner venues across the island, from exclusive fincas to boutique hotels. [Discover Mallorca for retreats](#retraite-majorque), then [talk to our expert](#appel) to receive 3 proposals with every participant's flight included.
+We work with partner venues across the island, from exclusive fincas to boutique hotels. [Discover Mallorca for retreats](#retraite-majorque), then [talk to our expert](#appel) to receive tailored proposals with every participant's flight included.
 
 ## FAQ
 

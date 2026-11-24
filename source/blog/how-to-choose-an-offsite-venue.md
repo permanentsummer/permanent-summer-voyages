@@ -63,7 +63,7 @@ We work with partner venues across Europe: quintas in the [Algarve](#retraite-al
 
 ## Let us shortlist for you
 
-[Talk to our expert](#appel): we'll ask the right questions for you and send 3 venue proposals with programme and flights included.
+[Talk to our expert](#appel): we'll ask the right questions for you and send tailored venue proposals with programme and flights included.
 
 ## FAQ
 

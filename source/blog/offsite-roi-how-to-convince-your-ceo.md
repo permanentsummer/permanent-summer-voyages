@@ -74,7 +74,7 @@ Agree on two or three measures before you go, for example:
 
 ## Need help with the numbers?
 
-[Talk to our expert](#appel). We'll send 3 proposals with a complete cost per person, flights included, ready to put in front of your leadership team.
+[Talk to our expert](#appel). We'll send tailored proposals with a complete cost per person, flights included, ready to put in front of your leadership team.
 
 ## FAQ
 

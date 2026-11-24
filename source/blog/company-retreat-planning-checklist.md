@@ -21,7 +21,7 @@ Use this checklist to keep your retreat on track. It assumes about 12 weeks of l
 
 ## 10 weeks before
 
-- [ ] Request proposals from venues (or [ask us for 3 proposals](#appel)).
+- [ ] Request proposals from venues (or [ask us for proposals](#appel)).
 - [ ] Visit or video-tour the shortlisted venues.
 - [ ] Check meeting rooms: natural light, breakout spaces, Wi-Fi, screens.
 - [ ] Confirm the venue and sign the contract. Read the cancellation terms.

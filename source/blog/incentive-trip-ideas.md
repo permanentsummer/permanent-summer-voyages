@@ -65,7 +65,7 @@ Incentive trips are usually more premium than retreats: €2,000 to €4,000+ pe
 
 ## Plan your incentive trip
 
-See our [incentive trip format](#event-incentive) or [talk to our expert](#appel) to receive 3 proposals, flights included.
+See our [incentive trip format](#event-incentive) or [talk to our expert](#appel) to receive tailored proposals, flights included.
 
 ## FAQ
 

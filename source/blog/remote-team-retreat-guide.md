@@ -60,7 +60,7 @@ Share photos and decisions quickly, set up small cross-team follow-ups, and put 
 
 ## Plan your remote team retreat
 
-[Talk to our expert](#appel) and tell us where your team lives. We'll send 3 proposals with every flight included. Or try the [budget calculator](#budget).
+[Talk to our expert](#appel) and tell us where your team lives. We'll send tailored proposals with every flight included. Or try the [budget calculator](#budget).
 
 ## FAQ
 

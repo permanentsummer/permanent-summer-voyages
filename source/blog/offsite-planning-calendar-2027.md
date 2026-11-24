@@ -64,7 +64,7 @@ Use our [retreat checklist](#post-company-retreat-planning-checklist) to plan ba
 
 ## Secure your 2027 dates
 
-The best venues for May, June and September go first. [Talk to our expert](#appel) to lock in your window and receive 3 proposals with every participant's flight included. Or estimate your budget with our [calculator](#budget).
+The best venues for May, June and September go first. [Talk to our expert](#appel) to lock in your window and receive tailored proposals with every participant's flight included. Or estimate your budget with our [calculator](#budget).
 
 ## FAQ
 
