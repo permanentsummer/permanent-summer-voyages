@@ -74,10 +74,11 @@ const T={en:{prop:'Company retreat proposal',for:'Handcrafted for',brief:'The br
 const t=o=>o?(o[L]||o.en||''):'';
 document.getElementById('tbPdf').textContent=T.pdf;const tbc=document.getElementById('tbCall');tbc.textContent=T.cta;tbc.href=L=='fr'?'../reserver-un-appel/':'../book-a-call/';
 const RT=window.RETREATS||[];
-const DS=(P.ds&&P.ds.length?P.ds:(P.d||P.dn?[{d:P.d,dn:P.dn}]:[])).map(x=>{const R=RT.find(r=>r.s==x.d)||null;return{...x,R,name:x.dn||(R?t(R.n):'')}});
+const loadG=async s=>{if(!s)return null;const r=RT.find(r=>r.s==s);if(r)return r;try{const x=await fetch('../assets/dest/'+encodeURIComponent(s)+'.json');if(!x.ok)return null;const g=await x.json();const im=g.img||[];g.img=im.length?[...im,...im,...im].slice(0,Math.max(3,im.length)):[];return g}catch(e){return null}};
+const DS=await Promise.all((P.ds&&P.ds.length?P.ds:(P.d||P.dn?[{d:P.d,dn:P.dn}]:[])).map(async x=>{const R=await loadG(x.d);return{...x,R,name:x.dn||(R?t(R.n):'')}}));
 const MULTI=DS.length>1;let R=DS[0]&&DS[0].R||null;
 let SEC=1;const sec=()=>String(++SEC).padStart(2,'0');
-const img=k=>'../img/'+k+'.jpg';
+const img=k=>/^https?:/.test(k||'')?k:'../img/'+k+'.jpg';
 const loc=L=='fr'?'fr-FR':'en-GB',fd=d=>new Date(d+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long',year:'numeric'});
 const dates=P.a&&P.b?`${new Date(P.a+'T12:00').toLocaleDateString(loc,{day:'numeric',month:'long'})} – ${fd(P.b)}`:'';
 const nights=P.a&&P.b?Math.round((new Date(P.b)-new Date(P.a))/864e5):'';
