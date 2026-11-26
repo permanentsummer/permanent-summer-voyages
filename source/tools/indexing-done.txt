@@ -1,0 +1,11 @@
+# date<TAB>url — URLs already submitted with Request indexing in Search Console
+2026-11-26	https://permanentsummervoyages.com/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/algarve/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/athens-riviera/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/barcelona/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/ericeira/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/florence-tuscany/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/istanbul/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/lisbon/
+2026-11-26	https://permanentsummervoyages.com/company-retreats/mallorca/
