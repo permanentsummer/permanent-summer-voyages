@@ -288,6 +288,37 @@ for (const lg of ["fr", "en"]) for (const key of keys) {
   fs.writeFileSync(file, `<!doctype html><html lang="${lg}"><head><meta charset="utf-8"><title>${BRAND}</title><link rel="canonical" href="${to}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script></head><body><a href="${to}">${to}</a></body></html>\n`);
   redirects++;
 }
+/* pages that were removed: send their old address to the closest page that exists now (no 404s in Search Console) */
+const LEGACY = {
+  "destinations/abu-dhabi/":"fr/destinations/dubai/", "destinations/australie/":"fr/destinations/", "destinations/hong-kong/":"fr/destinations/",
+  "destinations/madagascar/":"fr/destinations/", "destinations/reunion/":"fr/destinations/maurice/", "destinations/rodrigues/":"fr/destinations/maurice/",
+  "destinations/singapour/":"fr/destinations/",
+  "en/destinations/abu-dhabi/":"destinations/dubai/", "en/destinations/australia/":"destinations/", "en/destinations/hong-kong/":"destinations/",
+  "en/destinations/madagascar/":"destinations/", "en/destinations/reunion/":"destinations/mauritius/", "en/destinations/rodrigues/":"destinations/mauritius/",
+  "en/destinations/santorini/":"destinations/santorini-cyclades/", "en/destinations/singapore/":"destinations/", "en/destinations/swiss-alps/":"destinations/the-alps/",
+  "en/inspiration/asia/":"inspiration/", "en/inspiration/associations-and-clubs/":"groups/", "en/inspiration/family-holidays/":"inspiration/extended-families/",
+  "en/inspiration/honeymoon/":"inspiration/", "en/inspiration/indian-ocean-islands/":"destinations/mauritius/", "en/inspiration/safaris/":"inspiration/group-safaris/",
+  "en/inspiration/shopping-stopovers/":"inspiration/city-breaks/", "en/inspiration/sports-teams/":"groups/", "en/inspiration/visiting-family/":"inspiration/extended-families/",
+  "en/inspiration/wellness/":"inspiration/",
+  "en/offers/algarve-villa-groupe/":"company-retreats/algarve/", "en/offers/dubai-fin-annee/":"offers/", "en/offers/incentive-crete/":"company-retreats/crete/",
+  "en/offers/lourdes-2027/":"destinations/lourdes/", "en/offers/marrakech-celebration/":"company-retreats/marrakech-agafay/", "en/offers/offsite-villa-algarve/":"company-retreats/algarve/",
+  "en/offers/rodrigues-weekend/":"destinations/mauritius/", "en/offers/seminaire-cracovie/":"company-retreats/krakow/", "en/offers/ski-chalet-groupe/":"inspiration/snow-and-mountains/",
+  "en/travellers/":"",
+  "inspiration/asie/":"fr/inspiration/", "inspiration/associations-et-clubs/":"fr/groupes/", "inspiration/bien-etre/":"fr/inspiration/", "inspiration/en-famille/":"fr/inspiration/grandes-familles/",
+  "inspiration/equipes-sportives/":"fr/groupes/", "inspiration/iles-ocean-indien/":"fr/destinations/maurice/", "inspiration/lune-de-miel/":"fr/inspiration/",
+  "inspiration/retrouver-les-siens/":"fr/inspiration/grandes-familles/", "inspiration/safaris/":"fr/inspiration/safaris-en-groupe/", "inspiration/shopping-et-escales/":"fr/inspiration/escapades-urbaines/",
+  "offres/algarve-villa-groupe/":"fr/retraites/algarve/", "offres/dubai-fin-annee/":"fr/offres/", "offres/incentive-crete/":"fr/retraites/crete/", "offres/lourdes-2027/":"fr/destinations/lourdes/",
+  "offres/marrakech-celebration/":"fr/retraites/marrakech/", "offres/offsite-villa-algarve/":"fr/retraites/algarve/", "offres/rodrigues-weekend/":"fr/destinations/maurice/",
+  "offres/seminaire-cracovie/":"fr/retraites/cracovie/", "offres/ski-chalet-groupe/":"fr/inspiration/neige-et-montagne/", "voyageurs/":"fr/"
+};
+for (const [old, now] of Object.entries(LEGACY)) {
+  const file = path.join(OUT, old, "index.html");
+  if (fs.existsSync(file) || !fs.existsSync(path.join(OUT, now, "index.html"))) continue;
+  const to = SITE_URL + now, lg = /^(en\/|$)/.test(old) || !/^fr\//.test(now) ? "en" : "fr";
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, `<!doctype html><html lang="${lg}"><head><meta charset="utf-8"><title>${BRAND}</title><link rel="canonical" href="${to}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"><script>location.replace(${JSON.stringify(to)} + location.search + location.hash)</script></head><body><a href="${to}">${to}</a></body></html>\n`);
+  redirects++;
+}
 console.log("redirects:", redirects);
 
 const today = new Date().toISOString().slice(0, 10);
