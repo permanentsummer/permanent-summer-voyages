@@ -80,9 +80,9 @@ const keys = ["home", "voyages", "comment", "partenaires", "retraites", ...RETRE
 function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
   let title, desc, image = "hero_sandboard", crumbs = null, noindex = false;
-  if (key === "home") { title = L(`${BRAND} · Retraites d'entreprise et voyages de groupe, vols compris`, `${BRAND} · Company retreats and group travel, flights included`);
-    desc = L("Séminaires, team building et voyages incentive dans plus de 20 destinations, de l'Algarve à Tbilissi. Des propositions sur mesure, vols de chaque participant compris.",
-             "Offsites, team building and incentive trips in 20+ destinations, from the Algarve to Tbilisi. Tailored proposals, every participant's flights included."); }
+  if (key === "home") { title = L(`Séminaires et retraites d'entreprise, vols compris | ${BRAND}`, `Company Retreats in Europe, Flights Included | ${BRAND}`);
+    desc = L(`Séminaires, team building et voyages incentive dans ${RETREATS.length} destinations, de l'Algarve à Tbilissi. Des propositions sur mesure, vols de chaque participant compris.`,
+             `Offsites, team building and incentive trips in ${RETREATS.length} destinations, from the Algarve to Tbilisi. Tailored proposals, every participant's flights included.`); }
   else if (key === "voyages") { title = L("Voyages sur mesure, vols compris", "Tailor-made travel, flights included");
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
@@ -96,7 +96,7 @@ function meta(key, lg) {
     desc = L(`${RETREATS.length} destinations de séminaire et d'offsite : Algarve, Lisbonne, Ericeira, Majorque, Toscane, Marrakech, Croatie… Dès 10 personnes, vols compris.`,
              `${RETREATS.length} offsite and retreat destinations: Algarve, Lisbon, Ericeira, Mallorca, Tuscany, Marrakech, Croatia… From 10 people, flights included.`); image = "team_villa2"; }
   else if (key.startsWith("retraite-")) { const r = RETREATS.find(x => x.s === key.slice(9)); const n = T(r.n, lg);
-    title = L(`Retraite d'entreprise ${n} : séminaire et team building`, `Company retreat in ${n}: offsite and team building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
+    title = L(`Séminaire d'entreprise ${n} : retraite et team building`, `Company Retreat in ${n}: Corporate Offsites & Team Building`); desc = clip(`${T(r.t, lg)} ${T(r.d, lg)}`); image = r.img[0];
     crumbs = [[L("Retraites d'entreprise", "Company retreats"), "retraites"], [n, key]]; }
   else if (key === "brief") { title = L("Organiser une retraite d'entreprise", "Plan a company retreat");
     desc = L("Quelques questions rapides et un échange avec notre expert, puis des propositions complètes : lieu, programme, activités, vols et budget par personne.",
@@ -155,7 +155,7 @@ function meta(key, lg) {
   else if (key === "mentions") { title = L("Mentions légales", "Legal notice"); desc = L("Informations légales de Permanent Summer Lda.", "Legal information for Permanent Summer Lda."); noindex = true; }
   else if (key === "blog") { title = "Company Retreat & Offsite Planning Blog"; desc = "Guides, destinations, budgets, activity ideas and trends for company retreats, offsites and team travel in Europe, from the team that also books every flight."; image = POSTS[0] ? POSTS[0].cover : image; crumbs = [["Blog", "blog"]]; }
   else if (key.startsWith("post-")) { const p = postOf(key); title = p.seo; desc = p.desc; image = p.cover; crumbs = [["Blog", "blog"], [p.title, key]]; }
-  if (key !== "home" && !key.startsWith("post-")) title += ` | ${BRAND}`;
+  if (key !== "home" && !key.startsWith("post-") && (title + ` | ${BRAND}`).length <= 70) title += ` | ${BRAND}`;
   return { title, desc, image, crumbs, noindex };
 }
 
@@ -168,12 +168,16 @@ const agency = {
   knowsLanguage: ["fr", "en"], parentOrganization: { "@type": "Organization", name: "Permanent Summer Lda" },
   founder: [{ "@type": "Person", name: "Jennifer Kwo" }, { "@type": "Person", name: "Christopher Kwo" }],
   contactPoint: { "@type": "ContactPoint", telephone: CONFIG.phone.replace(/\s/g, ""), contactType: "customer service", availableLanguage: ["French", "English"] },
-  sameAs: Object.values(CONFIG.social || {}).filter(Boolean)
+  sameAs: Object.values(CONFIG.social || {}).filter(Boolean),
+  alternateName: "permanentsummervoyages.com", slogan: "Company retreats, flights included.",
+  address: { "@type": "PostalAddress", addressCountry: "PT" }
 };
+const website = { "@context": "https://schema.org", "@type": "WebSite", "@id": SITE_URL + "#website", name: BRAND,
+  alternateName: ["permanentsummervoyages.com"], url: SITE_URL, inLanguage: ["en", "fr"], publisher: { "@id": SITE_URL + "#agency" } };
 
 function head(key, lg, root, m, theme = "dark") {
   const canonical = abs(key, lg);
-  const ld = [agency];
+  const ld = key === "home" ? [website, agency] : [agency];
   const post = postOf(key);
   if (post) {
     ld.push({ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.desc, image: [SITE_URL + "img/" + post.cover + ".jpg"], datePublished: post.date, dateModified: post.updated || post.date,

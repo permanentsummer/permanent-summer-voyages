@@ -888,7 +888,7 @@ function guideStrip(){
     <div class="text"><span class="eyebrow">${t({fr:"Guide gratuit",en:"Free guide"})}</span><h2 class="h2">${t({fr:"Organiser un séminaire : la checklist complète, de J-6 mois au retour",en:"Planning an offsite: the complete checklist, from 6 months out to back home"})}</h2>
       <p class="lede">${t({fr:"Budget, choix du lieu, vols, programme, communication aux participants : tout ce qu'on vérifie pour chaque retraite, étape par étape.",en:"Budget, venue, flights, programme, participant comms: everything we check for every retreat, step by step."})}</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#guide">${t({fr:"Lire le guide",en:"Read the guide"})}</a><a class="btn ghost" href="#budget">${t(U.calc)}</a></div></div>
-    <div class="media ph">${img("act_workshop2")}</div>
+    <div class="media ph">${img("act_workshop2", t({fr:"Atelier d'équipe pendant un séminaire",en:"Team workshop during a company offsite"}))}</div>
   </div></section>`;
 }
 
@@ -945,7 +945,7 @@ function home(){
       </ul>
       <a class="link" href="#comment">${t(U.how)}</a>
     </div>
-    <div class="media ph">${img("team_sail")}</div>
+    <div class="media ph">${img("team_sail", t({fr:"Équipe en voilier pendant une retraite d'entreprise",en:"Team sailing during a company retreat"}))}</div>
   </div></section>
 
   <section class="section"><div class="wrap">
@@ -1005,7 +1005,7 @@ function voyagesHome(){
   <section class="section"><div class="wrap split">
     <div class="text"><span class="eyebrow">${t(U.book)}</span><h2 class="h2">${t({fr:"Parlons de votre prochain voyage",en:"Let's talk about your next trip"})}</h2><p class="lede">${t({fr:"Trente minutes pour poser les bases : dates, budget, envies. Vous recevez ensuite un devis détaillé.",en:"Thirty minutes to set the basics: dates, budget, wishes. Then you get a detailed quote."})}</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn accent" href="#appel">${t(U.book)}</a><a class="btn ghost" href="${wa()}" target="_blank" rel="noopener">WhatsApp</a></div></div>
-    <div class="media ph">${img("travel_balloons")}</div>
+    <div class="media ph">${img("travel_balloons", t({fr:"Montgolfières au lever du soleil",en:"Hot-air balloons at sunrise"}))}</div>
   </div></section>`;
 }
 
@@ -1196,7 +1196,7 @@ function retreatsPage(){
         ].map(([q,a])=>`<details><summary>${t(q)}</summary><p>${t(a)}</p></details>`).join("")}
     </div>
     <aside class="aside">
-      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_workshop")}</div>
+      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_workshop", t({fr:"Séance de travail en groupe lors d'une retraite",en:"Group working session at a company retreat"}))}</div>
       <h3>${t({fr:"Un projet de retraite ?",en:"Planning a retreat?"})}</h3>
       <p class="note">${t({fr:"Quelques questions rapides, un échange avec notre expert, puis des propositions complètes, vols compris.",en:"A few quick questions, a call with our expert, then complete proposals, flights included."})}</p>
       <a class="btn accent" href="#brief">${t(U.plan)}</a>
@@ -1320,7 +1320,7 @@ function briefPage(){
       </form></div>
     </div>
     <aside class="aside">
-      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_cooking")}</div>
+      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("act_cooking", t({fr:"Cours de cuisine en équipe",en:"Team cooking class"}))}</div>
       <h3>${t({fr:"Et ensuite ?",en:"What happens next?"})}</h3>
       <div class="row"><span>${t({fr:"Un appel",en:"A call"})}</span><span>${t({fr:"Un échange avec notre expert pour bien comprendre vos besoins. Indispensable avant toute proposition.",en:"A call with our expert to properly understand your needs. Required before any proposal."})}</span></div>
       <div class="row"><span>${t({fr:"Ensuite",en:"Next"})}</span><span>${t({fr:"Des propositions : lieux, programme, vols, budget par personne.",en:"Tailored proposals: venues, programme, flights, budget per person."})}</span></div>
@@ -1470,7 +1470,7 @@ function corporate(){
     <div class="pillar"><div class="big">${t({fr:"Profils",en:"Traveller"})} <em>${t({fr:"voyageurs",en:"profiles"})}</em></div><p>${t({fr:"Passeports, cartes de fidélité et préférences de sièges enregistrés une fois, pour ne plus jamais les redemander.",en:"Passports, loyalty cards and seat preferences stored once, so we never need to ask again."})}</p></div>
     <div class="pillar"><div class="big">${t({fr:"Devoir",en:"Duty"})} <em>${t({fr:"de protection",en:"of care"})}</em></div><p>${t({fr:"Nous savons où sont vos voyageurs et pouvons les réacheminer rapidement en cas de grève, météo ou crise.",en:"We know where your travellers are and can reroute them quickly in case of strikes, weather or crises."})}</p></div>
   </div></section>
-  <section class="band"><div class="ph">${img("corporate")}</div><div class="wrap">
+  <section class="band"><div class="ph">${img("corporate", t({fr:"Voyageurs d'affaires à l'aéroport",en:"Business travellers at the airport"}))}</div><div class="wrap">
     <h2 class="display">${t({fr:"Un échange avec notre expert pour faire le point",en:"A call with our expert to review your travel"})}</h2>
     <p>${t({fr:"Nombre de voyages par an, destinations habituelles, process de validation : nous vous proposons une organisation simple.",en:"Trips per year, usual destinations, approval process: we'll propose a simple setup."})}</p>
     <div class="ctas"><a href="#appel" class="btn light">${t(U.book)}</a><a href="#devis" class="btn light ghost">${t(U.quote)}</a></div>
@@ -1610,7 +1610,7 @@ function quotePage(){
       <div id="qwrap">${quoteForm({group: state.prefill && state.prefill.type==='group'})}</div>
     </div>
     <aside class="aside">
-      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("map")}</div>
+      <div class="ph" style="aspect-ratio:4/3;border-radius:2px;overflow:hidden">${img("map", t({fr:"Carte pour planifier un voyage de groupe",en:"Map for planning a group trip"}))}</div>
       <h3>${t({fr:"Pourquoi passer par nous",en:"Why book with us"})}</h3>
       <div class="row"><span>${t({fr:"Tarifs",en:"Fares"})}</span><span>${t({fr:"Accès direct aux tarifs des compagnies et aux tarifs de groupe.",en:"Direct access to airline and group fares."})}</span></div>
       <div class="row"><span>${t({fr:"Suivi",en:"Follow-up"})}</span><span>${t({fr:"Une seule personne pour tout votre voyage.",en:"One person for your whole trip."})}</span></div>
@@ -1688,7 +1688,7 @@ function travellers(){
   <section class="section surface"><div class="wrap split">
     <div class="text"><span class="eyebrow">${t({fr:"Ambassadeurs",en:"Ambassadors"})}</span><h2 class="h2">${t({fr:"Vous créez du contenu voyage ?",en:"Do you create travel content?"})}</h2><p class="lede">${t({fr:"Nous travaillons avec des voyageurs, couples et familles qui aiment partager. Parlons d'une collaboration.",en:"We work with travellers, couples and families who love to share. Let's talk about working together."})}</p>
       <a class="btn" href="${wa(lang==='fr'?"Bonjour, je souhaite devenir ambassadeur Permanent Summer Voyages.":"Hello, I'd like to become a Permanent Summer Voyages ambassador.")}" target="_blank" rel="noopener">${t({fr:"Devenir ambassadeur",en:"Become an ambassador"})}</a></div>
-    <div class="media ph">${img("santorini2")}</div>
+    <div class="media ph">${img("santorini2", t({fr:"Santorin, Grèce",en:"Santorini, Greece"}))}</div>
   </div></section>`;
 }
 function videoModal(){
