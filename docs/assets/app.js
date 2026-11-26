@@ -11,7 +11,7 @@ const state = { prefill:{}, megaOpen:null, megaRegion:"eu", rRegion:"pt", rfilte
 const t = o => (o && typeof o === "object") ? (o[lang] ?? o.fr) : o;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 /* phones get the 900px version, larger screens the full one */
-const img = (k, alt="", eager) => `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+const img = (k, alt="", eager) => /^https?:/.test(k) ? `<img src="${k}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">` : `<img src="${ROOT}img/${k}.jpg" srcset="${ROOT}img/m/${k}.jpg 1200w, ${ROOT}img/${k}.jpg 1800w" sizes="${eager ? "100vw" : "(max-width:820px) 100vw, 50vw"}" alt="${esc(alt)}" ${eager?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 const byS = s => DESTS.find(d => d.s === s);
 const byR = s => RETREATS.find(r => r.s === s);
 const slugify = x => String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/&/g," ").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -205,7 +205,7 @@ const destOptions = (sel) => `<option value="">${t({fr:"Je ne sais pas encore",e
 /* ---------- pages ---------- */
 function statsBar(){
   return `<div class="stats">
-    <div><b>+300</b><span>${t({fr:"hôtels, villas et lieux partenaires",en:"partner hotels, villas and venues"})}</span></div>
+    <div><b>2,500+</b><span>${t({fr:"hôtels, villas et lieux partenaires",en:"partner hotels, villas and venues"})}</span></div>
     <div><b>+200</b><span>${t({fr:"destinations",en:"destinations"})}</span></div>
     <div><b>1</b><span>${t({fr:"seul interlocuteur, du lieu aux vols",en:"single contact, from venue to flights"})}</span></div>
     <div><b>35 ${t({fr:"ans",en:"years"})}</b><span>${t({fr:"d'expérience en agence de voyage",en:"of travel agency experience"})}</span></div>
@@ -423,14 +423,14 @@ function partnersPage(){
   return `
   <section class="hero lean"><div class="ph">${img("venue_manor", t({fr:"Un manoir avec jardins",en:"A manor house with gardens"}), true)}</div><div class="wrap">
     <h1 class="display">${t({fr:"Remplissez vos semaines avec des retraites d'entreprise.",en:"Fill your weekdays with company retreats."})}</h1>
-    <p class="sub">${t({fr:"Rejoignez un réseau de plus de 300 hôtels, villas et lieux partenaires. Des équipes entières, plusieurs nuits, chambres, repas et salles réservés ensemble. Inscription gratuite.",en:"Join a network of over 300 partner hotels, villas and venues. Whole teams, several nights, rooms, meals and meeting space booked together. Free to list."})}</p>
+    <p class="sub">${t({fr:"Rejoignez un réseau de plus de 2 500 hôtels, villas et lieux partenaires. Des équipes entières, plusieurs nuits, chambres, repas et salles réservés ensemble. Inscription gratuite.",en:"Join a network of over 2,500 partner hotels, villas and venues. Whole teams, several nights, rooms, meals and meeting space booked together. Free to list."})}</p>
     <div class="ctas"><a class="btn accent" href="#partenaires/vform">${t(U.host)}</a><a class="btn light ghost" href="#appel">${t(U.book)}</a></div>
   </div></section>
   <section class="section tight"><div class="wrap"><div class="stats">
     <div><b>10–150</b><span>${t({fr:"invités par groupe",en:"guests per group"})}</span></div>
     <div><b>2–5</b><span>${t({fr:"nuits, surtout du lundi au jeudi",en:"nights, mostly Monday to Thursday"})}</span></div>
     <div><b>3–6</b><span>${t({fr:"mois de réservation à l'avance en moyenne",en:"months booked ahead on average"})}</span></div>
-    <div><b>+300</b><span>${t({fr:"lieux partenaires dans 38 pays, à vos côtés",en:"partner venues in 38 countries, alongside yours"})}</span></div>
+    <div><b>2,500+</b><span>${t({fr:"lieux partenaires dans plus de 70 pays, à vos côtés",en:"partner venues in 70+ countries, alongside yours"})}</span></div>
   </div></div></section>
   <section class="section" style="padding-top:24px"><div class="wrap">
     <div class="head"><div><span class="eyebrow">${t({fr:"Une réservation, plusieurs revenus",en:"One booking, several revenue lines"})}</span><h2 class="h2" style="margin-top:10px">${t({fr:"Ce qu'une retraite apporte à votre lieu",en:"What a retreat brings to your venue"})}</h2></div></div>
@@ -594,8 +594,9 @@ function retreatPage(sl){
   const more = near.length < 4 ? RETREATS.filter(x => x.s !== r.s && !near.includes(x)).slice(0, 4 - near.length) : [];
   const usedImg = new Set([...r.img, ...near.concat(more).map(x => x.img[0])]);
   const acts = ACTLIB.filter(a => a.where.includes(r.s) && !usedImg.has(a.img)).slice(0,3);
-  const name = t(r.n);
+  const name = t(r.n), vs = (window.VSTATS||{})[r.s], vOk = vs && vs.n >= 3;
   const faq = [
+    ...(vOk ? [[{fr:`Combien de lieux proposez-vous à ${name} ?`,en:`How many venues do you have in ${name}?`}, {fr:`Notre réseau compte ${vs.n} hôtels, villas et lieux adaptés aux groupes à ${name}${vs.cap ? `, avec des salles de réunion jusqu'à ${vs.cap.toLocaleString("fr-FR")} personnes` : ""}. Nous en sélectionnons quelques-uns selon vos dates, votre budget et la taille de l'équipe.`,en:`Our network has ${vs.n} group-friendly hotels, villas and venues in ${name}${vs.cap ? `, with meeting rooms for up to ${vs.cap.toLocaleString("en-GB")} people` : ""}. We shortlist a few based on your dates, budget and team size.`}]] : []),
     [{fr:`Pourquoi choisir ${name} pour une retraite ?`,en:`Why choose ${name} for a retreat?`}, r.t],
     [{fr:`Comment s'y rendre ?`,en:`How do we get there?`}, {fr:r.fly.fr+" Nous réservons les vols de chaque participant depuis sa ville et coordonnons les arrivées.",en:r.fly.en+" We book every participant's flights from their own city and coordinate arrivals."}],
     [{fr:"Quelle est la meilleure période ?",en:"When is the best time to go?"}, r.when],
@@ -612,6 +613,7 @@ function retreatPage(sl){
   <section class="section"><div class="wrap dgrid">
     <div style="display:flex;flex-direction:column;gap:44px;min-width:0">
       <div class="prose"><span class="eyebrow">${t({fr:`${name} pour votre équipe`,en:`Why ${name} for your team`})}</span><p>${t(r.d)}</p><div class="vibes">${t(r.vibe).map(v=>`<span>${esc(v)}</span>`).join("")}</div></div>
+      ${vOk ? `<div class="stats" style="margin:0"><div><b>${vs.n}</b><span>${t({fr:`lieux pour les groupes à ${name}`,en:`group venues in ${name}`})}</span></div>${vs.cap ? `<div><b>${vs.cap.toLocaleString(lang==="fr"?"fr-FR":"en-GB")}</b><span>${t({fr:"personnes dans la plus grande salle",en:"people in the largest meeting room"})}</span></div>` : ""}<div><b>${t({fr:"Dès 10",en:"From 10"})}</b><span>${t({fr:"personnes, sans limite haute",en:"people, no upper limit"})}</span></div></div>` : ""}
       <div class="ph" style="aspect-ratio:16/9;border-radius:2px;overflow:hidden">${img(r.img[1], name)}</div>
       <div><h2 class="h2" style="margin-bottom:14px">${t({fr:"Activités pour l'équipe",en:"Team activities"})}</h2><ul class="inc">${t(r.acts).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
         ${acts.length ? `<div class="acts" style="margin-top:28px">${acts.map(actCard).join("")}</div>` : ""}

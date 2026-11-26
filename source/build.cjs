@@ -12,7 +12,9 @@ const SITE_URL = (process.argv[2] || process.env.SITE_URL || "https://permanents
 const BRAND = "Permanent Summer Voyages";
 
 const src = fs.readFileSync(path.join(SRC, "index.src.html"), "utf8");
-const dataJs = fs.readFileSync(path.join(SRC, "data.js"), "utf8");
+// data.js, then extra destination batches (retreats-*.js), then generated venue stats (vstats.js, see tools/venue_stats.py)
+const dataJs = ["data.js", ...fs.readdirSync(SRC).filter(f => /^retreats-.*\.js$/.test(f)).sort(), "vstats.js"]
+  .filter(f => fs.existsSync(path.join(SRC, f))).map(f => fs.readFileSync(path.join(SRC, f), "utf8")).join("\n");
 /* ---------- blog: source/blog/*.md (front matter + markdown) ---------- */
 const { marked } = require(path.join(SRC, "node_modules", "marked"));
 const BLOG_DIR = path.join(SRC, "blog");
@@ -81,8 +83,8 @@ function meta(key, lg) {
   const fr = lg === "fr", L = (a, b) => fr ? a : b;
   let title, desc, image = "hero_sandboard", crumbs = null, noindex = false;
   if (key === "home") { title = L(`Séminaires et retraites d'entreprise, vols compris | ${BRAND}`, `Company Retreats in Europe, Flights Included | ${BRAND}`);
-    desc = L(`Séminaires, team building et voyages incentive dans ${RETREATS.length} destinations, de l'Algarve à Tbilissi. Des propositions sur mesure, vols de chaque participant compris.`,
-             `Offsites, team building and incentive trips in ${RETREATS.length} destinations, from the Algarve to Tbilisi. Tailored proposals, every participant's flights included.`); }
+    desc = L(`Séminaires, team building et voyages incentive : plus de 200 destinations et 2 500 lieux, de l'Algarve à Tbilissi. Propositions sur mesure, vols de chaque participant compris.`,
+             `Offsites, team building and incentive trips: 200+ destinations and 2,500+ venues, from the Algarve to Tbilisi. Tailored proposals, every participant's flights included.`); }
   else if (key === "voyages") { title = L("Voyages sur mesure, vols compris", "Tailor-made travel, flights included");
     desc = L("En couple, en famille ou entre amis : voyages sur mesure avec vols, hôtels et assistance 7j/7. Un seul interlocuteur, du devis au retour.",
              "As a couple, a family or with friends: tailor-made trips with flights, hotels and 7-day support. One contact, from quote to coming home."); image = "travel_couple"; }
@@ -90,8 +92,8 @@ function meta(key, lg) {
     desc = L("Un échange avec notre expert, des propositions sur mesure, vols de chaque participant réservés et coordonnés, assistance 7j/7 pendant la retraite.",
              "A call with our expert, tailored proposals, every participant's flights booked and coordinated, 7-day support during the retreat."); image = "team_sail"; }
   else if (key === "partenaires") { title = L("Proposer votre lieu pour des retraites d'entreprise", "List your venue for company retreats");
-    desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez 300 lieux partenaires dans 38 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
-             "Hotels, villas, estates: host company retreats on weekdays. Join over 300 partner venues in 38 countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
+    desc = L("Hôtels, villas, domaines : accueillez des retraites d'entreprise en semaine. Rejoignez plus de 2 500 lieux partenaires dans plus de 70 pays. Groupes de 10 à 150 personnes, réservés à l’avance. Inscription gratuite.",
+             "Hotels, villas, estates: host company retreats on weekdays. Join 2,500+ partner venues in 70+ countries. Groups of 10 to 150, booked well ahead. Free listing."); image = "venue_manor"; }
   else if (key === "retraites") { title = L("Retraites d'entreprise en Europe et au-delà", "Company retreats in Europe and beyond");
     desc = L(`${RETREATS.length} destinations de séminaire et d'offsite : Algarve, Lisbonne, Ericeira, Majorque, Toscane, Marrakech, Croatie… Dès 10 personnes, vols compris.`,
              `${RETREATS.length} offsite and retreat destinations: Algarve, Lisbon, Ericeira, Mallorca, Tuscany, Marrakech, Croatia… From 10 people, flights included.`); image = "team_villa2"; }
@@ -202,7 +204,7 @@ ${isBlogKey(key) ? `<link rel="alternate" hreflang="en" href="${abs(key, "en")}"
 <meta property="og:title" content="${esc(m.title)}">
 <meta property="og:description" content="${esc(m.desc)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${SITE_URL}img/${m.image}.jpg">
+<meta property="og:image" content="${/^https?:/.test(m.image) ? m.image : SITE_URL + "img/" + m.image + ".jpg"}">
 <meta property="og:locale" content="${lg === "fr" ? "fr_FR" : "en_GB"}">
 <meta property="og:locale:alternate" content="${lg === "fr" ? "en_GB" : "fr_FR"}">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,7 +215,7 @@ ${isBlogKey(key) ? `<link rel="alternate" hreflang="en" href="${abs(key, "en")}"
 <link rel="manifest" href="${root}site.webmanifest">
 ${FONTS}
 <link rel="stylesheet" href="${root}assets/style.css?v=${VER}">
-${fs.existsSync(path.join(OUT, "img/p", m.image + ".jpg")) ? `<link rel="preload" as="image" href="${root}img/p/${m.image}.jpg" media="(max-width:820px)"><link rel="preload" as="image" href="${root}img/${m.image}.jpg" media="(min-width:821px)">` : `<link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">`}
+${/^https?:/.test(m.image) ? `<link rel="preload" as="image" href="${m.image}">` : fs.existsSync(path.join(OUT, "img/p", m.image + ".jpg")) ? `<link rel="preload" as="image" href="${root}img/p/${m.image}.jpg" media="(max-width:820px)"><link rel="preload" as="image" href="${root}img/${m.image}.jpg" media="(min-width:821px)">` : `<link rel="preload" as="image" href="${root}img/${m.image}.jpg" imagesrcset="${root}img/m/${m.image}.jpg 1200w, ${root}img/${m.image}.jpg 1800w" imagesizes="100vw">`}
 <script type="application/ld+json">${JSON.stringify(ld.length === 1 ? ld[0] : ld)}</script>
 </head>`;
 }
